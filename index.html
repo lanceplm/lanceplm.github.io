@@ -46,9 +46,179 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-2.1-正反shell讲解-jdk的安装-学习规章-IP讲解-IP分类" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/12/04/2.1-%E6%AD%A3%E5%8F%8Dshell%E8%AE%B2%E8%A7%A3-jdk%E7%9A%84%E5%AE%89%E8%A3%85-%E5%AD%A6%E4%B9%A0%E8%A7%84%E7%AB%A0-IP%E8%AE%B2%E8%A7%A3-IP%E5%88%86%E7%B1%BB/">2.1 正反shell讲解/jdk的安装/学习规章/IP讲解/IP分类</a>
+    </h1>
+  
+
+        <div class="article-meta">
+          <a href="/2023/12/04/2.1-%E6%AD%A3%E5%8F%8Dshell%E8%AE%B2%E8%A7%A3-jdk%E7%9A%84%E5%AE%89%E8%A3%85-%E5%AD%A6%E4%B9%A0%E8%A7%84%E7%AB%A0-IP%E8%AE%B2%E8%A7%A3-IP%E5%88%86%E7%B1%BB/" class="article-date">
+  <time datetime="2023-12-04T01:06:56.000Z" itemprop="datePublished">2023-12-04</time>
+</a>
+          
+          
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>cve、cnvd(<a target="_blank" rel="noopener" href="http://www.cnvd.org.cn)、cnnvd/">www.cnvd.org.cn)、cnnvd</a></p>
+<h3 id="正反shell讲解"><a href="#正反shell讲解" class="headerlink" title="正反shell讲解"></a>正反shell讲解</h3><p>信息连接：（server：服务端，client：客户端）</p>
+<p>s&lt;-c:反弹shell，反连</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231204112748363.png" alt="image-20231204112748363"></p>
+<p>server端发一个能监听自身0.0.0.0：8888端口的马给clint端，服务器端接收马后持续发信息给s的0.0.0.0：8888端口信息</p>
+<p>s-&gt;c:正向shell</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231204112652158.png" alt="image-20231204112652158"></p>
+<p>server端发一个马到clint端，获取c的ip—0.0.0.0：8888，server通过监听0.0.0.0：8888来获取数据，但是获取期间需要透过防火墙来获取信息。（0.0.0.0代表任意ip）</p>
+<p>综上所述，一般的远控一般都是反向shell</p>
+<hr>
+<h3 id="jdk的安装："><a href="#jdk的安装：" class="headerlink" title="jdk的安装："></a>jdk的安装：</h3><h5 id="jdk的下载"><a href="#jdk的下载" class="headerlink" title="jdk的下载"></a>jdk的下载</h5><p>官网下载地址：<a target="_blank" rel="noopener" href="https://www.oracle.com/java/technologies/javase/javase8-archive-downloads.html">https://www.oracle.com/java/technologies/javase/javase8-archive-downloads.html</a></p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/fcde92c99eb54b39bf1ab983a1f035ea.png" alt="img">双击点击安装，jdk安装路径可以自行安装，但是尽量选择原路径。</p>
+<h5 id="文件说明"><a href="#文件说明" class="headerlink" title="文件说明"></a>文件说明</h5><p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231204172854467.png" alt="image-20231204172854467"></p>
+<p>bin：提供 JDK 工具程序，包括 javac、java、javadoc、appletviewer 等可执行程序。</p>
+<p>include：存放用于本地访问的文件。</p>
+<p>jre：存放 Java 运行环境文件。</p>
+<p>lib：存放 Java 的类库文件，工具程序实际上使用的是 Java 类库。JDK 中的工具程序，大多也由 Java 编写而成。</p>
+<p>src.zip：Java 提供的 API 类的源代码压缩文件。如果需要查看 API 的某些功能是如何实现的，可以査看这个文件中的源代码内容。</p>
+<h5 id="测试jdk"><a href="#测试jdk" class="headerlink" title="测试jdk"></a>测试jdk</h5><p>开始-&gt;运行-&gt;cmd</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -version</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231204173037964.png" alt="image-20231204173037964"></p>
+<p>根据版本不同，显示的数字也不同，</p>
+<h5 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a>配置环境变量</h5><p>右键此电脑-&gt;属性-&gt;高级系统设置-&gt;环境变量</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231204173432571.png" alt="image-20231204173432571"></p>
+<p>在系统变量中新建一个变量</p>
+<p>变量名为  JAVA_HOME  ,变量值为%JAVA_HOME8%，数字8应该为你用的jdk版本，如果以后安装更多的jdk只需要更改%JAVA_HOME8%中的数字。</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231204173841960.png" alt="image-20231204173841960"></p>
+<p>在系统变量中新建一个变量</p>
+<p>变量名为  JAVA_HOME8,变量值为jdk版本所在文件位置，安装更多的jdk只需要新建更多的系统变量，变量名应为JAVA_HOME+版本号，变量值为jdk所在位置</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231204173857861.png" alt="image-20231204173857861"></p>
+<p>在系统变量中双击Path</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231204174313578.png" alt="image-20231204174313578"></p>
+<p>分别新建两个内容，填上：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">%JAVA_HOME%\jre\bin</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231204174515527.png" alt="image-20231204174515527"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">%JAVA_HOME%\bin</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231204174502069.png" alt="image-20231204174502069"></p>
+<p>jdk就正式安装成功了。</p>
+<hr>
+<h3 id="学习推荐"><a href="#学习推荐" class="headerlink" title="学习推荐"></a>学习推荐</h3><p>Python的代码推荐使用vscode</p>
+<p>vscode推荐的插件：code run、Python</p>
+<hr>
+<h3 id="学习规章："><a href="#学习规章：" class="headerlink" title="学习规章："></a>学习规章：</h3><p>1.文件名、文件目录不能是中文</p>
+<p>2.文件夹命名空格以“_”做代替</p>
+<p>3.遇到报错以管理员身份运行</p>
+<p>4.文件命名驼峰命名法</p>
+<p>5.应用不要装C盘</p>
+<p>6.卸载软件不能直接删文件夹，使用geek卸载</p>
+<p>7.每天写笔记</p>
+<p>8.早晚打卡</p>
+<p>9.请假在企业微信</p>
+<p>10.每个知识点有提高部分（隐藏）</p>
+<p>11.作息时间：9:00-11:30   14:00-17:30    19:00-21:00</p>
+<hr>
+<h3 id="IP讲解"><a href="#IP讲解" class="headerlink" title="IP讲解"></a>IP讲解</h3><p>windows系统查询ip地址-cmd输入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ipconfig</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231204155515239.png" alt="image-20231204155515239"></p>
+<p>ipv4每个位置命名</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231204160749999.png" alt="image-20231204160749999"></p>
+<p>每个位置的最大可用地址为254即254.254.254.254，最大位置为255即255.255.255.255</p>
+<p>d位.1表示网关，.255表示广播地址。</p>
+<p>192.168.1.0是网络地址，192.168.168.255是广播地址。</p>
+<p>192.168.1.1是一个IP地址。</p>
+<p>具体来说:</p>
+<ul>
+<li>192.168.1.1是一个私有IP地址,它属于192.168.0.0&#x2F;16网段内部的地址。</li>
+<li>192.168.1.1符合IPv4地址格式,共分为4段数字,每段范围在0-255之间。</li>
+<li>根据不同的上下文,192.168.1.1可以代表不同的地址类型:<ul>
+<li>如果是单独的主机,那么它就是这个主机的IP地址。</li>
+<li>如果是子网,那么它可能是:<ul>
+<li>子网的网络地址(很少情况)</li>
+<li>子网内第一个可用的主机地址</li>
+<li>子网的网关地址,路由器或交换机的IP地址</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>一般来说,192.168.1.1最常见的情况是作为子网内第一个可用地址分配,也常作为子网的默认网关地址。</li>
+</ul>
+<p>所以总结来说,192.168.1.1是一个私有IP地址,它可能代表单独主机的IP,也可能是子网内第一个地址或默认网关地址。</p>
+<p>192.168.1.1&#x2F;30是一个子网掩码为30位的子网。</p>
+<p><em>子网掩码</em>30位,表示:</p>
+<ul>
+<li>网络地址部分:192.168.1.0</li>
+<li>主机地址部分:2位(2^2&#x3D;4个地址)</li>
+</ul>
+<p>所以该子网可以分配的IP地址有:</p>
+<ul>
+<li>网络地址:192.168.1.0</li>
+<li>广播地址:192.168.1.3</li>
+<li>可用主机地址:192.168.1.1、192.168.1.2</li>
+</ul>
+<p>总共可以分配2个IP地址给主机使用。</p>
+<p>所以答案是:192.168.1.1&#x2F;30子网可以分配2个主机IP地址。</p>
+<p>a有8位，b有8位，c有8位，d应该有8位a+b+c+d&#x3D;32</p>
+<p>192.168.1.1&#x2F;30 8+8+8+6&#x3D;30,32-30&#x3D;2,主机地址有两位（2^两&#x3D;4个地址），分别减去网络地址(192.168.1.0)和广播地址(192.168.1.3)，可用地址剩下的是192.168.1.1、192.168.1.2</p>
+<p>192.168.1.0不是一个合法的IP地址,它是网络地址,不能直接作为主机或网关使用。</p>
+<p>正确的情况是:</p>
+<ul>
+<li>网络地址: 192.168.1.0</li>
+<li>第一个可用主机地址: 192.168.1.1</li>
+<li>网关地址: 192.168.1.1</li>
+</ul>
+<p>理由如下:</p>
+<ul>
+<li>在IP地址分配中,网络地址是不可用的,它只表示子网本身。</li>
+<li>根据地址分配规则,第一个可用地址应该是网络地址加1,也就是192.168.1.1。</li>
+<li>网关地址一般设置为第一个可用主机地址,也就是192.168.1.1,以便路由转发。</li>
+</ul>
+<p>所以您指出的正确,192.168.1.0是网络地址,不应该作为主机或网关使用。网关地址应该是第一个可用主机地址192.168.1.1。</p>
+<hr>
+<h3 id="IP分类"><a href="#IP分类" class="headerlink" title="IP分类"></a>IP分类</h3><p>一般电脑ip地址一般是在A类、B类、C类，D类和E类是用于科研，一般人用不到。</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231204163601268.png" alt="image-20231204163601268"></p>
+<p>私网IP：</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231204164604743.png" alt="image-20231204164604743"></p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231204165932947.png" alt="image-20231204165932947"></p>
+<p>正常信息传输过程。</p>
+
+      
+    </div>
+  </div>
+ 
+</article>
+
+
+  
     <article id="post-python1.2-Pytho练习" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/12/03/python1.2-Pytho%E7%BB%83%E4%B9%A0/">python1.2-Pytho练习</a>
+    </h1>
+  
+
+        <div class="article-meta">
+          <a href="/2023/12/03/python1.2-Pytho%E7%BB%83%E4%B9%A0/" class="article-date">
+  <time datetime="2023-12-03T12:30:00.000Z" itemprop="datePublished">2023-12-03</time>
+</a>
+          
+          
+        </div>
+      </header>
     
     <div class="article-entry" itemprop="articleBody">
       
