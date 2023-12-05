@@ -71,10 +71,71 @@
       
         <h3 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">PI = <span class="number">3.1415926</span></span><br><span class="line"><span class="built_in">print</span>(PI)</span><br><span class="line">PI = <span class="number">3</span></span><br><span class="line"><span class="built_in">print</span>(PI)</span><br></pre></td></tr></table></figure>
 
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231205210346915.png" alt="image-20231205210346915"></p>
 <p>所有字母大写表示常量</p>
 <p>可以把所有的变量的字母变成大写就可以认为是常量</p>
 <p>Python上没有绝对意义上的常量</p>
 <hr>
+<h3 id="简单用户交互"><a href="#简单用户交互" class="headerlink" title="简单用户交互"></a>简单用户交互</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="built_in">input</span>(<span class="string">&quot;请输入第一个数字：&quot;</span>)</span><br><span class="line">b = <span class="built_in">input</span>(<span class="string">&quot;请输入第二个数字：&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(a + b)</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231205210600627.png" alt="image-20231205210600627"></p>
+<p>以为是加法结果输出了两个数字的结合体</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(type(a)) # 用type来查看一个变量的数据类型</span><br></pre></td></tr></table></figure>
+
+<p>可以type来查看一个变量的数据类型</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">a = input(&quot;请输入第一个数字：&quot;)</span><br><span class="line">print(type(a)) # 用type来查看一个变量的数据类型</span><br><span class="line">b = input(&quot;请输入第二个数字：&quot;)</span><br><span class="line">print(type(b)) # 用type来查看一个变量的数据类型</span><br><span class="line">print(a + b)</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231205210853617.png" alt="image-20231205210853617"></p>
+<p>可以看出a、b的数据类型为’str’</p>
+<p>如果想要把数据类型a转换成数据类型b，就用b把a套起来</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="built_in">input</span>(<span class="string">&quot;数字&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">type</span>(a))</span><br><span class="line">a = <span class="built_in">int</span>(a)</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">type</span>(a))</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231205211635195.png" alt="image-20231205211635195"></p>
+<h4 id="真正意义上的加法："><a href="#真正意义上的加法：" class="headerlink" title="真正意义上的加法："></a>真正意义上的加法：</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="built_in">input</span>(<span class="string">&quot;请输入第一个数字：&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">type</span>(a)) <span class="comment"># 用type来查看一个变量的数据类型</span></span><br><span class="line">b = <span class="built_in">input</span>(<span class="string">&quot;请输入第二个数字：&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">type</span>(b)) <span class="comment"># 用type来查看一个变量的数据类型</span></span><br><span class="line">a = <span class="built_in">int</span>(a) <span class="comment"># 将a的类型改为int型 </span></span><br><span class="line">b = <span class="built_in">int</span>(b) <span class="comment"># 将b的类型改为int型</span></span><br><span class="line"><span class="built_in">print</span>(a + b)</span><br></pre></td></tr></table></figure>
+
+<img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231205211817994.png" alt="image-20231205211817994" style="zoom:150%;" />
+
+ 
+
+<hr>
+<h3 id="条件判断-if"><a href="#条件判断-if" class="headerlink" title="条件判断_if"></a>条件判断_if</h3><blockquote>
+<h5 id="if语句的语法规则："><a href="#if语句的语法规则：" class="headerlink" title="if语句的语法规则："></a>if语句的语法规则：</h5><blockquote>
+<ol>
+<li></li>
+</ol>
+<p>if 条件:</p>
+<p>​		代码</p>
+<p>如果条件成立就执行代码</p>
+<p>条件不成立就不执行</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<ol start="2">
+<li></li>
+</ol>
+<p>if条件:</p>
+<p>​		代码1</p>
+<p>else</p>
+<p>​		代码2</p>
+<p>如果条件成立，则执行代码1，否则，执行代码2</p>
+</blockquote>
+</blockquote>
+<h5 id="第一种"><a href="#第一种" class="headerlink" title="第一种"></a>第一种</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">money = <span class="number">500</span></span><br><span class="line"><span class="keyword">if</span> money &gt; <span class="number">300</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="number">123</span>) <span class="comment"># 与if是从属关系</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="number">456</span>) <span class="comment"># 与if是从属关系</span></span><br><span class="line">    <span class="comment">#123、456必须缩进相同，不然会报错</span></span><br><span class="line"><span class="built_in">print</span>(<span class="number">789</span>) <span class="comment"># 这个必定输出</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231205213022711.png" alt="image-20231205213022711"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">money = <span class="number">100</span></span><br><span class="line"><span class="keyword">if</span> money &gt; <span class="number">300</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="number">123</span>) <span class="comment"># 与if是从属关系</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="number">456</span>) <span class="comment"># 与if是从属关系</span></span><br><span class="line">    <span class="comment">#123、456必须缩进相同，不然会报错</span></span><br><span class="line"><span class="built_in">print</span>(<span class="number">789</span>) <span class="comment"># 这个必定输出</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231205213057451.png" alt="image-20231205213057451"></p>
+<h5 id="第二种"><a href="#第二种" class="headerlink" title="第二种"></a>第二种</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">money = <span class="built_in">input</span>(<span class="string">&quot;请输入你兜里的钱：&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> money &gt; <span class="number">500</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;火锅&quot;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;泡面&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231205214115195.png" alt="image-20231205214115195"></p>
+<p>更正</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">money = input(&quot;请输入你兜里的钱：&quot;)</span><br><span class="line">money = int(money)</span><br><span class="line"></span><br><span class="line">if money &gt; 500:</span><br><span class="line">    print(&quot;火锅&quot;)</span><br><span class="line">else:</span><br><span class="line">    print(&quot;泡面&quot;)</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231205214210898.png" alt="image-20231205214210898">情况1</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231205214231300.png" alt="image-20231205214231300"></p>
+<p>情况2</p>
 
       
     </div>
