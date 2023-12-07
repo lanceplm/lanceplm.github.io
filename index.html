@@ -278,6 +278,38 @@
 <p>可以把所有的变量的字母变成大写就可以认为是常量</p>
 <p>Python上没有绝对意义上的常量</p>
 <hr>
+<h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><p>变量:可以发生改变的一个量，变量是用来区分不同数据的，可以指向一个内存空间</p>
+<p>变量的命名规范：</p>
+<ol>
+<li>必须由字母或数字或下划线_</li>
+<li>不能数字开头，不能纯数字</li>
+<li>不能用python的关键字</li>
+<li>不要用中文（能用，但是不推荐）</li>
+<li>不要太长</li>
+<li>要有意义</li>
+<li>推荐使用下划线命名或驼峰命名法</li>
+</ol>
+<p>综上，变量名一定要让人看得懂，看的舒服。		</p>
+<hr>
+<h3 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h3><p>数据类型:区分不同的数据，不同的数据类型应该有不同的操作。</p>
+<p>数字：+-*&#x2F;</p>
+<p>​			1.整数：int类型</p>
+<p>​			2.小数：float类型</p>
+<p>文字：展示</p>
+<p>​			字符串：str</p>
+<p>​			表达方式：</p>
+<p>​					‘内容’               ‘’内容’’</p>
+<p>​					“内容”              “”内容“”</p>
+<p>​			操作：+  左右两边数据类型必须相同：int+int，str+str，float+float</p>
+<p>​						*  一个字符串只能×一个数字表示字符串重复的次数：str×int</p>
+<p>布尔（bool）：条件判断<br>        布尔值主要有两个：</p>
+<p>​				True 真，真命题</p>
+<p>​				False 假，假命题</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">print(100 &gt; 30)</span><br><span class="line">print(20 &gt; 500 )</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231207215153955.png" alt="image-20231207215153955"></p>
+<hr>
+<p>100 &gt; 30 –&gt;真</p>
 <h3 id="简单用户交互"><a href="#简单用户交互" class="headerlink" title="简单用户交互"></a>简单用户交互</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="built_in">input</span>(<span class="string">&quot;请输入第一个数字：&quot;</span>)</span><br><span class="line">b = <span class="built_in">input</span>(<span class="string">&quot;请输入第二个数字：&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(a + b)</span><br></pre></td></tr></table></figure>
 
 <p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231205210600627.png" alt="image-20231205210600627"></p>
@@ -345,6 +377,46 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">money = <span class="built_in">int</span>(<span class="built_in">input</span>(<span class="string">&quot;请输入你兜里的钱：&quot;</span>))</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> money &gt; <span class="number">5000</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;冲卡&quot;</span>)</span><br><span class="line"><span class="keyword">elif</span> money &gt; <span class="number">1000</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;洗脚回家&quot;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;直接回家&quot;</span>)</span><br></pre></td></tr></table></figure>
 
 <p>第四种：条件1成功则执行代码1，后面不管，条件1失败则判断2，2成功则执行条件2，以此类推。</p>
+<hr>
+<h3 id="特殊语句"><a href="#特殊语句" class="headerlink" title="特殊语句"></a>特殊语句</h3><p>break、continue</p>
+<p>break：直接结束当前循环</p>
+<p>数据出现问题，直接break</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    content = <span class="built_in">input</span>(<span class="string">&quot;请输入你要喷的内容（q结束喷人）：&quot;</span>)</span><br><span class="line">    <span class="keyword">if</span> content == <span class="string">&quot;q&quot;</span>:<span class="comment"># ==表示判断左右是否一致</span></span><br><span class="line">        <span class="keyword">break</span>     <span class="comment">#结束循环</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;发送给下路&quot;</span>,content)</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231207204329900.png" alt="image-20231207204329900"></p>
+<p>continue:停止本次循环，继续下一次新的循环</p>
+<p>判断是否无用数据，遇到停止在跳过</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">i = <span class="number">1</span></span><br><span class="line"><span class="keyword">while</span> i &lt;= <span class="number">10</span>:</span><br><span class="line">    <span class="keyword">if</span> i == <span class="number">4</span>:</span><br><span class="line">        <span class="keyword">continue</span></span><br><span class="line">    <span class="built_in">print</span>(i)</span><br><span class="line">    i = i+<span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231207204753595.png" alt="image-20231207204753595"></p>
+<p>只会循环到i&#x3D;4的时候，然后就直接结束循环，重新开始循环while i&lt;&#x3D; 10,一直循环判断，无法输出其他数字。</p>
+<p>完善：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">i = 1</span><br><span class="line">while i &lt;= 10:</span><br><span class="line">    if i == 4:</span><br><span class="line">        i = i+1</span><br><span class="line">        continue</span><br><span class="line">    print(i)</span><br><span class="line">    i = i+1</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231207205112511.png" alt="image-20231207205112511"></p>
+<hr>
+<h3 id="for循环"><a href="#for循环" class="headerlink" title="for循环"></a>for循环</h3><p>for循环主要作用于可迭代对象</p>
+<p>字符串是迭代的</p>
+<p>for循环：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> 变量 <span class="keyword">in</span> 可迭代的东西</span><br><span class="line">	代码</span><br></pre></td></tr></table></figure>
+
+<p>把可迭代的东西中的每一项内容拿出来，挨个的赋值给变量，每一次赋值都要执行一次循环体（代码）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">pys = <span class="string">&quot;你好啊，试试这个怎么样&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> c <span class="keyword">in</span> s:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;这一次得到的东西是：&quot;</span>,c)</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231207210009457.png" alt="image-20231207210009457"></p>
+<p>for循环想要计数必须借助range</p>
+<h5 id="range-n-从0数到n，不包含n"><a href="#range-n-从0数到n，不包含n" class="headerlink" title="range(n):从0数到n，不包含n"></a>range(n):从0数到n，不包含n</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">for i in range(10): #0~9</span><br><span class="line">    print(i)</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231207210320576.png" alt="image-20231207210320576"></p>
+<h5 id="range-m-n-从m数到n，不包括n"><a href="#range-m-n-从m数到n，不包括n" class="headerlink" title="range(m,n):从m数到n，不包括n"></a>range(m,n):从m数到n，不包括n</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">3</span>,<span class="number">10</span>): <span class="comment"># 3~9</span></span><br><span class="line">    <span class="built_in">print</span>(i)</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231207210610570.png" alt="image-20231207210610570"></p>
+<h5 id="range-m-n-s-从m数到n，不包含n，每次的间隔是s"><a href="#range-m-n-s-从m数到n，不包含n，每次的间隔是s" class="headerlink" title="range(m,n,s):从m数到n，不包含n，每次的间隔是s"></a>range(m,n,s):从m数到n，不包含n，每次的间隔是s</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,<span class="number">10</span>,<span class="number">2</span>):</span><br><span class="line">    <span class="built_in">print</span>(i)</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231207211026377.png" alt="image-20231207211026377"></p>
+<p>平时更多使用for循环，while循环是死循环</p>
+<hr>
+<h3 id="pass使用"><a href="#pass使用" class="headerlink" title="pass使用"></a>pass使用</h3><p>pass代码代位，保证代码完整性</p>
 <hr>
 
       
