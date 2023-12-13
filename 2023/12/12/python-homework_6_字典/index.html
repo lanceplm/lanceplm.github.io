@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>python-homework_6_字典 | LancePLM的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+ 
+  
+    <link rel="icon" href="/../img/icon.png">
+  
+  
+  <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 7.0.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="header-outer" class="outer">
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+          <a class="main-nav-link" href="/about">关于</a>
+        
+          <a class="main-nav-link" href="/board">留言</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-python-homework_6_字典" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="name">
+      python-homework_6_字典
+    </h1>
+  
+
+        <div class="article-meta">
+          <a href="/2023/12/12/python-homework_6_%E5%AD%97%E5%85%B8/" class="article-date">
+  <time datetime="2023-12-12T12:31:53.000Z" itemprop="datePublished">2023-12-12</time>
+</a>
+          
+          
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="dict-字典"><a href="#dict-字典" class="headerlink" title="dict&#x2F;字典"></a>dict&#x2F;字典</h3><p>字典是以键值对的形式进行存储数据的</p>
+<p>字典的key必须是可哈希的数据类型</p>
+<p>字典的value可以是任何数据类型</p>
+<p>字典的表示方式：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;key:value, key2:value2, key3:value&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">dic = &#123;<span class="string">&quot;jay&quot;</span>:<span class="string">&quot;周杰伦&quot;</span>,<span class="string">&quot;金毛狮王&quot;</span>:<span class="string">&quot;谢逊&quot;</span>&#125;</span><br><span class="line"></span><br><span class="line">val = dic[<span class="string">&quot;金毛狮王&quot;</span>] <span class="comment"># 把索引换成了key</span></span><br><span class="line"><span class="built_in">print</span>(val)</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231212203937060.png" alt="image-20231212203937060"></p>
+<h3 id="字典的增删改查"><a href="#字典的增删改查" class="headerlink" title="字典的增删改查"></a>字典的增删改查</h3><h4 id="增加-修改-删除"><a href="#增加-修改-删除" class="headerlink" title="增加&#x2F;修改&#x2F;删除"></a>增加&#x2F;修改&#x2F;删除</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">dic = <span class="built_in">dict</span>()</span><br><span class="line"><span class="built_in">print</span>(dic)</span><br><span class="line"></span><br><span class="line">dic[<span class="string">&#x27;jay&#x27;</span>] = <span class="string">&quot;周杰伦&quot;</span></span><br><span class="line"><span class="built_in">print</span>(dic)</span><br><span class="line"></span><br><span class="line">dic[<span class="number">1</span>] = <span class="number">123</span></span><br><span class="line"><span class="built_in">print</span>(dic)</span><br><span class="line"></span><br><span class="line">dic[<span class="string">&#x27;jay&#x27;</span>] = <span class="string">&quot;昆凌&quot;</span> <span class="comment"># 字典已有jay，执行修改操作</span></span><br><span class="line"><span class="built_in">print</span>(dic)</span><br><span class="line"></span><br><span class="line">dic.setdefault(<span class="string">&quot;jay&quot;</span>,<span class="string">&quot;胡辣汤&quot;</span>) <span class="comment"># 设置默认值，如果以前有了tom，setdefault就不起作用了</span></span><br><span class="line"></span><br><span class="line">dic.pop(<span class="number">1</span>) <span class="comment"># 根据key去删除</span></span><br><span class="line"><span class="built_in">print</span>(dic)</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231212205345829.png" alt="image-20231212205345829"></p>
+<h4 id="查询"><a href="#查询" class="headerlink" title="查询"></a>查询</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">dic = <span class="built_in">dict</span>()</span><br><span class="line">dic[<span class="string">&#x27;jay&#x27;</span>] = <span class="string">&quot;周杰伦&quot;</span></span><br><span class="line">dic[<span class="number">1</span>] = <span class="number">123</span></span><br><span class="line">dic[<span class="string">&#x27;kun&#x27;</span>] = <span class="string">&quot;昆凌&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(dic[<span class="string">&#x27;1232&#x27;</span>]) <span class="comment"># 如果程序不存在，程序会报错,当你确定你的key是没问题的，可以用。</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(dic.get(<span class="number">1222</span>)) <span class="comment"># 如果key不存在。程序返回none，当不确定你的key的时候，可以用。</span></span><br></pre></td></tr></table></figure>
+
+<p>1<img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231212205743991.png" alt="image-20231212205743991"></p>
+<p>2<img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231212205944943.png" alt="image-20231212205944943"></p>
+<h5 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">dic = &#123;</span><br><span class="line">    <span class="string">&quot;赵四&quot;</span>:<span class="string">&quot;歪嘴&quot;</span>,</span><br><span class="line">    <span class="string">&quot;刘能&quot;</span>:<span class="string">&quot;结巴&quot;</span>,</span><br><span class="line">    <span class="string">&quot;大脚&quot;</span>:<span class="string">&quot;花心&quot;</span>,</span><br><span class="line">    <span class="string">&quot;大脑袋&quot;</span>:<span class="string">&quot;折腾&quot;</span>,</span><br><span class="line">&#125;</span><br><span class="line">name = <span class="built_in">input</span>(<span class="string">&quot;请输入你想知道我的我们村的人的名字：&quot;</span>)</span><br><span class="line">val = dic.get(name)</span><br><span class="line"><span class="keyword">if</span> val <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;我们村没这人！&quot;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(val)</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231212210504835.png" alt="image-20231212210504835"></p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231212210529525.png" alt="image-20231212210529525"></p>
+<h3 id="字典的循环和嵌套"><a href="#字典的循环和嵌套" class="headerlink" title="字典的循环和嵌套"></a>字典的循环和嵌套</h3><h4 id="循环"><a href="#循环" class="headerlink" title="循环"></a>循环</h4><ol>
+<li><p>用for循环，直接拿到key</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">dic = &#123;</span><br><span class="line">    <span class="string">&quot;赵四&quot;</span>:<span class="string">&quot;歪嘴&quot;</span>,</span><br><span class="line">    <span class="string">&quot;刘能&quot;</span>:<span class="string">&quot;结巴&quot;</span>,</span><br><span class="line">    <span class="string">&quot;大脚&quot;</span>:<span class="string">&quot;花心&quot;</span>,</span><br><span class="line">    <span class="string">&quot;大脑袋&quot;</span>:<span class="string">&quot;折腾&quot;</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> key <span class="keyword">in</span> dic:</span><br><span class="line">    <span class="built_in">print</span>(key,dic[key])</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231212210823592.png" alt="image-20231212210823592"></p>
+<ol start="2">
+<li><p>希望把所有的key保存到一个列表中</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">dic = &#123;</span><br><span class="line">    <span class="string">&quot;赵四&quot;</span>:<span class="string">&quot;歪嘴&quot;</span>,</span><br><span class="line">    <span class="string">&quot;刘能&quot;</span>:<span class="string">&quot;结巴&quot;</span>,</span><br><span class="line">    <span class="string">&quot;大脚&quot;</span>:<span class="string">&quot;花心&quot;</span>,</span><br><span class="line">    <span class="string">&quot;大脑袋&quot;</span>:<span class="string">&quot;折腾&quot;</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(dic.keys())</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231212210955042.png" alt="image-20231212210955042"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">dic = &#123;</span><br><span class="line">    <span class="string">&quot;赵四&quot;</span>:<span class="string">&quot;歪嘴&quot;</span>,</span><br><span class="line">    <span class="string">&quot;刘能&quot;</span>:<span class="string">&quot;结巴&quot;</span>,</span><br><span class="line">    <span class="string">&quot;大脚&quot;</span>:<span class="string">&quot;花心&quot;</span>,</span><br><span class="line">    <span class="string">&quot;大脑袋&quot;</span>:<span class="string">&quot;折腾&quot;</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">list</span>(dic.keys()))</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231212211101696.png" alt="image-20231212211101696"></p>
+<ol start="3">
+<li><p>希望把所有的value都放在一个列表中</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">dic = &#123;</span><br><span class="line">    <span class="string">&quot;赵四&quot;</span>:<span class="string">&quot;歪嘴&quot;</span>,</span><br><span class="line">    <span class="string">&quot;刘能&quot;</span>:<span class="string">&quot;结巴&quot;</span>,</span><br><span class="line">    <span class="string">&quot;大脚&quot;</span>:<span class="string">&quot;花心&quot;</span>,</span><br><span class="line">    <span class="string">&quot;大脑袋&quot;</span>:<span class="string">&quot;折腾&quot;</span>,</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">list</span>(dic.values()))</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231212211307172.png" alt="image-20231212211307172"></p>
+<ol start="4">
+<li><p>直接拿出key和value的值</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">dic = &#123;</span><br><span class="line">       <span class="string">&quot;赵四&quot;</span>:<span class="string">&quot;歪嘴&quot;</span>,</span><br><span class="line">    <span class="string">&quot;刘能&quot;</span>:<span class="string">&quot;结巴&quot;</span>,</span><br><span class="line">       <span class="string">&quot;大脚&quot;</span>:<span class="string">&quot;花心&quot;</span>,</span><br><span class="line">       <span class="string">&quot;大脑袋&quot;</span>:<span class="string">&quot;折腾&quot;</span>,</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="built_in">print</span>(<span class="built_in">list</span>(dic.values()))</span><br><span class="line">   <span class="keyword">for</span> key,value <span class="keyword">in</span> dic.items(): <span class="comment"># 可以直接拿出字典的所有key与value</span></span><br><span class="line">       <span class="built_in">print</span>(key,value)</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231212212517213.png" alt="image-20231212212517213"></p>
+<hr>
+<h4 id="解包"><a href="#解包" class="headerlink" title="解包"></a>解包</h4><p>前后数据数量得对应，不然会报错。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a,b = (<span class="number">1</span>,<span class="number">2</span>) <span class="comment"># 元组和列表都可以执行该操作，称为解构/解包</span></span><br><span class="line"><span class="built_in">print</span>(a)</span><br><span class="line"><span class="built_in">print</span>(b)</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231212212117997.png" alt="image-20231212212117997"></p>
+<hr>
+</li>
+</ol>
+<h4 id="嵌套"><a href="#嵌套" class="headerlink" title="嵌套"></a>嵌套</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">wangfeng = &#123;</span><br><span class="line">    <span class="string">&quot;name&quot;</span>:<span class="string">&quot;汪峰&quot;</span>,</span><br><span class="line">    <span class="string">&quot;age&quot;</span>:<span class="string">&quot;18&quot;</span>,</span><br><span class="line">    <span class="string">&quot;wife&quot;</span>:&#123;</span><br><span class="line">        <span class="string">&quot;name&quot;</span>:<span class="string">&quot;章子怡&quot;</span>,</span><br><span class="line">        <span class="string">&quot;hobby&quot;</span>:<span class="string">&quot;演戏&quot;</span>,</span><br><span class="line">        <span class="string">&quot;assistant&quot;</span>:&#123;</span><br><span class="line">            <span class="string">&quot;name&quot;</span>:<span class="string">&quot;樵夫&quot;</span>,</span><br><span class="line">            <span class="string">&quot;age&quot;</span>:<span class="string">&quot;19&quot;</span>,</span><br><span class="line">            <span class="string">&quot;hobby&quot;</span>:<span class="string">&quot;打游戏&quot;</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">&quot;children&quot;</span>:[</span><br><span class="line">        &#123;<span class="string">&quot;name&quot;</span>:<span class="string">&quot;孩儿1&quot;</span>,<span class="string">&quot;age&quot;</span>:<span class="number">1</span>&#125;,</span><br><span class="line">        &#123;<span class="string">&quot;name&quot;</span>:<span class="string">&quot;孩儿2&quot;</span>,<span class="string">&quot;age&quot;</span>:<span class="number">8</span>&#125;,</span><br><span class="line">        &#123;<span class="string">&quot;name&quot;</span>:<span class="string">&quot;孩儿3&quot;</span>,<span class="string">&quot;age&quot;</span>:<span class="number">12</span>&#125;,</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment"># 汪峰妻子助手的名字</span></span><br><span class="line">name = wangfeng[<span class="string">&#x27;wife&#x27;</span>][<span class="string">&#x27;assistant&#x27;</span>][<span class="string">&#x27;name&#x27;</span>]</span><br><span class="line"><span class="built_in">print</span>(name)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 汪峰的第二个孩子加一岁</span></span><br><span class="line">wangfeng[<span class="string">&#x27;children&#x27;</span>][<span class="number">1</span>][<span class="string">&#x27;age&#x27;</span>] = wangfeng[<span class="string">&#x27;children&#x27;</span>][<span class="number">1</span>][<span class="string">&#x27;age&#x27;</span>] + <span class="number">1</span></span><br><span class="line"><span class="built_in">print</span>(wangfeng)</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231212214403705.png" alt="image-20231212214403705"></p>
+<h3 id="字典的循环删除"><a href="#字典的循环删除" class="headerlink" title="字典的循环删除"></a>字典的循环删除</h3><p>不能够直接pop删除，直接pop删除会报错，需要新建一个空的字典存放要删除的key，在删除这个存放字典，最后在输出源字典。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">dic = &#123;</span><br><span class="line">    <span class="string">&quot;赵四&quot;</span>:<span class="string">&quot;歪嘴&quot;</span>,</span><br><span class="line">    <span class="string">&quot;刘能&quot;</span>:<span class="string">&quot;结巴&quot;</span>,</span><br><span class="line">    <span class="string">&quot;大脚&quot;</span>:<span class="string">&quot;花心&quot;</span>,</span><br><span class="line">    <span class="string">&quot;大脑袋&quot;</span>:<span class="string">&quot;折腾&quot;</span>,</span><br><span class="line">&#125;</span><br><span class="line">temp = [] <span class="comment"># 存放即将删除的key</span></span><br><span class="line"><span class="keyword">for</span> key <span class="keyword">in</span> dic:</span><br><span class="line">    <span class="keyword">if</span> key.startswith(<span class="string">&quot;大&quot;</span>):</span><br><span class="line">        <span class="comment"># dic.pop(key) # dictionary changed size during iteration</span></span><br><span class="line">        temp.append(key)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> t <span class="keyword">in</span> temp: <span class="comment"># 循环列表，删除字典中的内容</span></span><br><span class="line">    dic.pop(t)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(dic)</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231213191647331.png" alt="image-20231213191647331"></p>
+
+      
+    </div>
+  </div>
+ 
+</article>
+
+
+  
+    <section id="comments" class="comments">
+      <style>
+        .comments{margin:30px;padding:10px;background:#fff}
+        @media screen and (max-width:800px){.comments{margin:auto;padding:10px;background:#fff}}
+      </style>
+      <div id="vcomment" class="comment"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+<script src="https://cdnjs.loli.net/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+    var notify = 'true' == true ? true : false;
+    var verify = 'false' == true ? true : false;
+    new Valine({
+        av: AV,
+        el: '#vcomment',
+        notify: notify,
+        app_id: "5e1QK1vWlhrgxofsnjGRQonC-gzGzoHsz",
+        app_key: "nFoJj93POX4EMfQy8R2K8vv6",
+        placeholder: "留下你来过的痕迹~",
+        avatar:"robohash",
+    });
+</script>
+
+  </section>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    <div class="widget-wrap">
+    <div class="widget-wrap-info">
+        <img src="/../img/avator.jpg" class="widget-wrap-info-img">
+        <div class="widget-wrap-info-author">LancePLM</div>
+        <div class="widget-wrap-info-signature">业精于勤，荒于嬉。</div>
+    </div>
+    <div class="info-nav">
+        <ul class="info-nav-ul">
+        
+            <li class="info-nav-li">
+            <a class="info-nav-link" href="/">
+                <div class="info-nav-div">
+                    <span class="info-nav-icon">
+                        <i data-feather="home"></i>
+                    </span>
+                    <span class="info-nav-name">首页</span>
+                </div>
+            </a>
+           </li>
+          
+            <li class="info-nav-li">
+            <a class="info-nav-link" href="/archives">
+                <div class="info-nav-div">
+                    <span class="info-nav-icon">
+                        <i data-feather="archive"></i>
+                    </span>
+                    <span class="info-nav-name">归档</span>
+                </div>
+            </a>
+           </li>
+          
+            <li class="info-nav-li">
+            <a class="info-nav-link" href="/about">
+                <div class="info-nav-div">
+                    <span class="info-nav-icon">
+                        <i data-feather="alert-circle"></i>
+                    </span>
+                    <span class="info-nav-name">关于</span>
+                </div>
+            </a>
+           </li>
+          
+            <li class="info-nav-li">
+            <a class="info-nav-link" href="/board">
+                <div class="info-nav-div">
+                    <span class="info-nav-icon">
+                        <i data-feather="edit-3"></i>
+                    </span>
+                    <span class="info-nav-name">留言</span>
+                </div>
+            </a>
+           </li>
+          
+        </ul>
+    </div>
+</div>
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2023 LancePLM<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> | Theme by  <a href="https://github.com/FuShaoLei/hexo-theme-hiya" target="_blank">Hiya</a>
+      
+        <br>
+        <span id="busuanzi_container_site_pv">总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+      <span id="busuanzi_container_site_uv">
+        访客数<span id="busuanzi_value_site_uv"></span>人次
+      </span>
+        
+      
+    </div>
+    
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/,home" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives,archive" class="mobile-nav-link">归档</a>
+  
+    <a href="/about,alert-circle" class="mobile-nav-link">关于</a>
+  
+    <a href="/board,edit-3" class="mobile-nav-link">留言</a>
+  
+</nav>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<script>
+    feather.replace()
+</script>
+
+<script src="/js/script.js"></script>
+
+
+  </div>
+</body>
+</html>
