@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>8.1-phpstudy的安装与使用-php代码-MySQL-php网站练习 | LancePLM的博客</title>
+  <title>8.1-phpstudy的安装与使用-php代码-MySQL-php网站练习-PHP学习-图书馆练习 | LancePLM的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
  
   
@@ -52,7 +52,7 @@
         
   
     <h1 class="p-name article-title" itemprop="name">
-      8.1-phpstudy的安装与使用-php代码-MySQL-php网站练习
+      8.1-phpstudy的安装与使用-php代码-MySQL-php网站练习-PHP学习-图书馆练习
     </h1>
   
 
@@ -189,10 +189,48 @@
 <li><p>输入MySQL中已有的数据。</p>
 <p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231212171804687.png" alt="image-20231212171804687"></p>
 <p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231212171837270.png" alt="image-20231212171837270"></p>
-</li>
+<h3 id="kali-linux知识回顾"><a href="#kali-linux知识回顾" class="headerlink" title="kali-linux知识回顾"></a>kali-linux知识回顾</h3><p>kali用户前缀是$</p>
+<p><img src="/8.1-phpstudy%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8-php%E4%BB%A3%E7%A0%81-MySQL-php%E7%BD%91%E7%AB%99%E7%BB%83%E4%B9%A0.assets/image-20231213091254872.png" alt="image-20231213091254872"></p>
+<p>root用户前缀是#</p>
+<p>vi 没有文字颜色标识</p>
+<p>vim有文字颜色标识</p>
+<p>在底线命令模式中，基本的命令有（已经省略了冒号)∶</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">:w︰保存文件。</span><br><span class="line"></span><br><span class="line">:q：退出Vim编辑器。</span><br><span class="line"></span><br><span class="line">:wq：保存文件并退出Vim 编辑器。:q!:强制退出Vim编辑器，不保存修改。</span><br><span class="line"></span><br><span class="line">:set nu：显示行号，设定之后，会在每一行的前缀显示该行的行号</span><br><span class="line"></span><br><span class="line">: set nonu :与set nu相反，为取消行号</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="绝对路径"><a href="#绝对路径" class="headerlink" title="绝对路径"></a>绝对路径</h5><p>路径的写法，由根目录&#x2F;写起，例如: &#x2F;usr&#x2F;share&#x2F;doc这个目录。</p>
+<h5 id="相对路径"><a href="#相对路径" class="headerlink" title="相对路径"></a>相对路径</h5><p>路径的写法，不是由&#x2F;写起，例如由&#x2F;usr&#x2F;share&#x2F;doc要到&#x2F;usr&#x2F;share&#x2F;man底下时，可以写成: cd ..&#x2F;man这就是相对路径的写法。</p>
+<h3 id="PHP学习"><a href="#PHP学习" class="headerlink" title="PHP学习"></a>PHP学习</h3><h5 id="连接数据库"><a href="#连接数据库" class="headerlink" title="连接数据库"></a>连接数据库</h5><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$变量名=<span class="title function_ invoke__">mysqli_connect</span>(<span class="string">&quot;连接IP&quot;</span>,<span class="string">&quot;数据库用户名&quot;</span>,<span class="string">&quot;数据库用户密码&quot;</span>,<span class="string">&quot;数据库&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>数据库连接可以放在另一个文件当中.</p>
+<h5 id="mysqli-query"><a href="#mysqli-query" class="headerlink" title="mysqli_query()"></a>mysqli_query()</h5><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_ invoke__">mysqli_query</span>(connection,query,resultmode)</span><br></pre></td></tr></table></figure>
+
+<p> connection:</p>
+<p>必需。规定要使用的MySQL连接。即连接数据库时定义的变量名。</p>
+<p>query:</p>
+<p>必需。规定查询字符。即进行查询语句，写相关的sql语句。</p>
+<p>resultmode:</p>
+<p>可选可选。一个常量。可以是下列值中的任意一个：</p>
+<ul>
+<li>MYSQLI_USE_RESULT（如果需要检索大量数据，请使用这个）</li>
+<li>MYSQLI_STORE_RESULT（默认）</li>
+</ul>
+<h5 id="网络爬取"><a href="#网络爬取" class="headerlink" title="网络爬取"></a>网络爬取</h5><p>进入网站，查看网站，复制网址，进入pycharm，创建python文件用来获取request包</p>
+<p>通过查看网站信息一步步下载图片。</p>
+<h3 id="VUE2的应用"><a href="#VUE2的应用" class="headerlink" title="VUE2的应用"></a>VUE2的应用</h3><p>应用vue2网页设置需要如此</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;app&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    </span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;./vue.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;./index.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">  </span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">new</span> <span class="title class_">Vue</span>(&#123;</span></span><br><span class="line"><span class="language-javascript">    <span class="attr">el</span>: <span class="string">&#x27;#app&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">    <span class="attr">data</span>: <span class="keyword">function</span> (<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">              <span class="keyword">return</span> &#123;</span></span><br><span class="line"><span class="language-javascript">              &#125;</span></span><br><span class="line"><span class="language-javascript">            &#125;,</span></span><br><span class="line"><span class="language-javascript">&#125;)</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
 </ol>
 </li>
 </ol>
+<p>内容需要在下面写才能正常运行</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;app&quot;</span>&gt;</span></span><br><span class="line">    </span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>因为html中的js与cs需要代理，就直接从网站上下载下来，保存在本地</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231216230335311.png" alt="image-20231216230335311"></p>
+<h3 id="图书馆练习"><a href="#图书馆练习" class="headerlink" title="图书馆练习"></a>图书馆练习</h3><p>$_POST 变量</p>
+<p>预定义的 $_POST 变量用于收集来自 method&#x3D;”post” 的表单中的值。</p>
+<p>从带有 POST 方法的表单发送的信息，对任何人都是不可见的（不会显示在浏览器的地址栏），并且对发送信息的量也没有限制。</p>
 
       
     </div>
