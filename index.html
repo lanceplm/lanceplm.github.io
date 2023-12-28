@@ -1179,7 +1179,19 @@ schemata表 - 存储所有数据库名
 <h5 id="实际演示"><a href="#实际演示" class="headerlink" title="实际演示"></a>实际演示</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=1 &#x27;and (extractvalue(1,concat(0x7e,(select user()),0x7e)))-- -</span><br></pre></td></tr></table></figure>
 
 <p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224101324836.png" alt="image-20231224101324836"></p>
-<h5 id="1-floor报错注入"><a href="#1-floor报错注入" class="headerlink" title="1.floor报错注入"></a>1.floor报错注入</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(select 1 from (select count(*),concat(user(),floor(rand(0)*2))x from information_schema.tables group by x)a)</span><br></pre></td></tr></table></figure>
+<h5 id="1-floor报错注入"><a href="#1-floor报错注入" class="headerlink" title="1.floor报错注入"></a>1.floor报错注入</h5><p><strong>floor()报错注入的原因</strong>是   <strong>group by</strong>在向临时表插入数据时，由于   **rand()**多次计算导致插入临时表时主键重复，从而报错，又因为报错前   **concat()**中的SQL语句或函数被执行，所以该语句报错且被抛出的主键是SQL语句或数执行后的结果。</p>
+<p> floor()函数：对传入的值进行向下取整操作，并返回结果，如floor(1.999),则返回1.</p>
+<p>rand()函数，返回随机数</p>
+<p>rand(x)函数，x在这里代表参数，当rand()函数有了参数后，生成的就是伪随机数，什么意思呢？比如你使用rand(0)产生的第一个随机数产生的随机数相同，也就是当rand(x)这个参数x已知的时候我们就能知道，</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/c5c3670460544da39472cf2bdad747c9.png" alt="img">    </p>
+<p>同样的，刚才我们说的是使用rand(0)产生的第一个随机数都相同，产生的第n个随机数其实都相同，但是这n个随机数之间可能不相同</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/9121cb077ff1467f876c50c6892ccd9b.png" alt="img"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">简单来说就是rand()函数有参数，即rand(x)时，rand(x)产生的就是伪随机的一个数组，数组中元素的值由x决定，就是你使用rand(x)产生的第n次数据，与我使用rand(x)产生的第n次数据是相同的 </span><br></pre></td></tr></table></figure>
+
+<p><strong>count(*)函数</strong>，返回值的条目，与<strong>count()<strong>的区别在于其不排除NULL，count()如果统计到NULL,返回的结果即为NULL，返回列数。如下，就是统计</strong>user表的内容条数</strong></p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/23eaf7b8cef0473dae044f1cb2d4ece3.png" alt="img"></p>
+<p>​    具体请查看<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_63844103/article/details/128569910">【web安全】——floor报错注入</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(select 1 from (select count(*),concat(user(),floor(rand(0)*2))x from information_schema.tables group by x)a)</span><br></pre></td></tr></table></figure>
 
 <p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224101955130.png" alt="image-20231224101955130"></p>
 <p>csdn例子</p>
@@ -1192,7 +1204,7 @@ schemata表 - 存储所有数据库名
 <p><strong>第一个参数</strong>：XML_document是String格式，为XML文档对象的名称，文中为Doc</p>
 <p><strong>第二个参数</strong>：XPath_string (Xpath格式的字符串)</p>
 <p><strong>concat</strong>:返回结果为连接参数产生的字符串。</p>
-<p>原理与updatexml格式相似。</p>
+<p>原理与updatexml格式相似。 </p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(extractvalue(1,concat(0x7e,(select user()),0x7e)))</span><br></pre></td></tr></table></figure>
 
 <p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224102040340.png" alt="image-20231224102040340"></p>
