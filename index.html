@@ -46,6 +46,266 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-11.1-信息收集" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<h2 id="title-11-1-信息收集date-2024-01-03-21-09-07"><a href="#title-11-1-信息收集date-2024-01-03-21-09-07" class="headerlink" title="title:11.1-信息收集date:2024-01-03 21:09:07"></a>title:11.1-信息收集<br>date:2024-01-03 21:09:07</h2><h3 id="信息收集"><a href="#信息收集" class="headerlink" title="信息收集"></a>信息收集</h3><p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240103202242749.png" alt="image-20240103202242749"></p>
+<p>网址和域名之间可以互相进行查询，后续有提到</p>
+<p>知晓上面的信息后我们需要进行</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240103202733380.png" alt="image-20240103202733380"></p>
+<p>知道网站后可以通过爆破来获取各类信息：ssh、ftp、smb、rdp等</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240103203224372.png" alt="image-20240103203224372"></p>
+<p>了解到web还可以查询api信息</p>
+<h4 id="网站其他信息查询"><a href="#网站其他信息查询" class="headerlink" title="网站其他信息查询"></a>网站其他信息查询</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x.threatbook.com</span><br></pre></td></tr></table></figure>
+
+<p>该网址可以通过ip查询网址相关信息。</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240103203530943.png" alt="image-20240103203530943"></p>
+<p>还可以查询该ip的地址</p>
+<h4 id="网站备案查询"><a href="#网站备案查询" class="headerlink" title="网站备案查询"></a>网站备案查询</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://beian.miit.gov.cn/#/Integrated/index</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240103203738592.png" alt="image-20240103203738592"></p>
+<p>借此可以查询网站的邮箱，姓名，主体，备案号</p>
+<h5 id="通过邮箱查询已知注册网站"><a href="#通过邮箱查询已知注册网站" class="headerlink" title="通过邮箱查询已知注册网站"></a>通过邮箱查询已知注册网站</h5><p>该网站需要付费请注意</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">reg007.com</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240103203956071.png" alt="image-20240103203956071"></p>
+<h4 id="nmap相关"><a href="#nmap相关" class="headerlink" title="nmap相关"></a>nmap相关</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -sS 192.168.2.88 -p 80 -sV</span><br></pre></td></tr></table></figure>
+
+<p>使用nmap进行半开放式SYN扫描,仅扫描目标IP 192.168.2.88的80端口,同时开启版本检测功能,目的是获取80端口服务(通常为Web服务)的详细版本信息。</p>
+<p>通过SYN扫描可以快速探测端口是否开放,并且较低侵入性。版本检测可以知道Web服务具体运行的软件及版本,有利于后续的安全评估。</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240103204552359.png" alt="image-20240103204552359"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -p- 192.168.2.88</span><br></pre></td></tr></table></figure>
+
+<p>使用nmap工具对IP地址192.168.2.88进行全端口扫描,即扫描该IP地址从1-65535的所有TCP端口。</p>
+<p>通过这条命令可以检测目标主机是否开放了全部TCP端口,获取目标主机打开的TCP服务类型。</p>
+<p>如果端口打开,还可以使用其他nmap参数如-sV进行版本检测。</p>
+<p>它是一条用于全面探测目标主机开放端口状况的基础nmap命令。通过全端口扫描可以得到目标主机端口开放的完整情况。</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240103204651640.png" alt="image-20240103204651640"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -sn 192.168.2.2/24</span><br></pre></td></tr></table></figure>
+
+<p>使用nmap进行ping扫描,检测192.168.2.0-192.168.2.255网段内主机是否存活,但不进行端口扫描。</p>
+<p>通过-sn参数只发出ICMP回显请求包(ping包),快速检测网络段内主机是否可达,但不会检测主机开放的端口。</p>
+<p>这主要用于初步探测网络拓扑结构,快速获取网络段内活跃主机的IP列表。</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240103204821773.png" alt="image-20240103204821773"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -p1-500 192.168.2.88</span><br></pre></td></tr></table></figure>
+
+<p>使用nmap对IP地址192.168.2.88进行端口扫描,但只扫描目标从1至500的TCP端口号。</p>
+<p>通过限定端口范围-p1-500,可以缩小扫描范围,避免全端口扫描需要的长时间。</p>
+<p>这主要用于快速扫描常用端口,获取目标主机可能开放的服务类型,如HTTP、FTP等。</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240103205236581.png" alt="image-20240103205236581"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -p 80 -sV 192.168.2.88</span><br></pre></td></tr></table></figure>
+
+<p>使用nmap对IP地址192.168.2.88进行80端口扫描,同时开启版本检测功能(-sV)。</p>
+<p>通过限定端口-p 80,只扫描HTTP服务端口80。</p>
+<p>开启-sV版本检测,可以获取80端口服务(通常为Web服务)的详细版本信息。</p>
+<p>这主要用于识别目标Web服务器软件及版本号,有利于后续安全评估和攻防对抗。</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240103205410250.png" alt="image-20240103205410250"></p>
+<p>以下操作均在kali中执行</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dirsearch -u &quot;http://192.168.30.139&quot; -x 403,404 </span><br></pre></td></tr></table></figure>
+
+<p>查询该网站有哪些文件，方便后续攻击（耗时很久）</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202023-12-29%20160951.png" alt="屏幕截图 2023-12-29 160951"></p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202023-12-29%20171645.png" alt="屏幕截图 2023-12-29 171645"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msfconsole</span><br></pre></td></tr></table></figure>
+
+<p>打开msfconsole</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202023-12-29%20162658.png" alt="屏幕截图 2023-12-29 162658"></p>
+<p>每次显示的图都不一样。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">search drupal</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202023-12-29%20162724.png" alt="屏幕截图 2023-12-29 162724"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">use 2</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202023-12-29%20162806.png" alt="屏幕截图 2023-12-29 162806"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show options</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202023-12-29%20163526.png" alt="屏幕截图 2023-12-29 163526"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set rhosts 192.168.2.88</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202023-12-29%20162901.png" alt="屏幕截图 2023-12-29 162901"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">run</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202023-12-29%20163111.png" alt="屏幕截图 2023-12-29 163111"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">shell</span><br><span class="line">python -c &quot;import pty;pty.spawn(&#x27;/bin/bash&#x27;)&quot;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202023-12-29%20163135-1704118688741.png" alt="屏幕截图 2023-12-29 163135"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find / -user root -perm -4000 -print 2&gt;/dev/null</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202023-12-29%20163751.png" alt="屏幕截图 2023-12-29 163751"></p>
+<h5 id="查询ip下有哪些主机"><a href="#查询ip下有哪些主机" class="headerlink" title="查询ip下有哪些主机"></a>查询ip下有哪些主机</h5><p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/QQ%E6%88%AA%E5%9B%BE20231229165559.png" alt="QQ截图20231229165559"></p>
+<h3 id="已知域名"><a href="#已知域名" class="headerlink" title="已知域名"></a>已知域名</h3><p>全球域名图</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/c062ecddc0d3d1c0866497ce4798160a85706b8923678-yIw5YE_fw658" alt="img"></p>
+<p>一级域名（不贩卖）</p>
+<p>.cn、.com、.org等</p>
+<p>二级域名可以进行购买</p>
+<ul>
+<li>根域</li>
+<li>edu.cn</li>
+<li>gov.cn等</li>
+</ul>
+<p>三级域名</p>
+<p><a target="_blank" rel="noopener" href="https://www.zju.edu.cn/">https://www.zju.edu.cn/</a></p>
+<h4 id="域名查询"><a href="#域名查询" class="headerlink" title="域名查询"></a>域名查询</h4><p>通过站长之家查询<a target="_blank" rel="noopener" href="http://www.chinaz.com/">www.chinaz.com</a></p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240103191411021.png" alt="image-20240103191411021"></p>
+<p>选择站长工具里的域名Whois查询<a target="_blank" rel="noopener" href="https://whois.chinaz.com/">https://whois.chinaz.com/</a></p>
+<p>可以查询到该网址的各类信息</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240103191754605.png" alt="image-20240103191754605"></p>
+<h4 id="二级域名挖掘"><a href="#二级域名挖掘" class="headerlink" title="二级域名挖掘"></a>二级域名挖掘</h4><p>z.zcjun.com</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240103191939945.png" alt="image-20240103191939945"></p>
+<p>可以通过该网站查询到网站下的各类二级域名</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240103192100047.png" alt="image-20240103192100047"></p>
+<p>该方法有用但是有一定的局限性</p>
+<h5 id="域名挖掘机"><a href="#域名挖掘机" class="headerlink" title="域名挖掘机"></a>域名挖掘机</h5><p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240103192330994.png" alt="image-20240103192330994"></p>
+<p>该应用需要大量电脑资源，应用需谨慎。</p>
+<h5 id="FOFA"><a href="#FOFA" class="headerlink" title="FOFA"></a>FOFA</h5><p>网址：fofa.info</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240103192912466.png" alt="image-20240103192912466"></p>
+<p>可以点击下面的查询语法查看语法</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240103192959279.png" alt="image-20240103192959279"></p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240103193129575.png" alt="image-20240103193129575"></p>
+<p>其他相关网址</p>
+<p>hunter.qianxin.com</p>
+<p>quake.360.net&#x2F;quake&#x2F;#&#x2F;index</p>
+<p>zoomeye.org</p>
+<p>search.censys.io&#x2F;hosts&#x2F;</p>
+<h4 id="个人信息查询"><a href="#个人信息查询" class="headerlink" title="个人信息查询"></a>个人信息查询</h4><ul>
+<li><p>社工库</p>
+</li>
+<li><p>领英</p>
+</li>
+<li><p>学信网</p>
+</li>
+<li><p>支付宝</p>
+</li>
+</ul>
+<p>可以通过支付宝收款码了解到用户姓名最后一位</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240103193900945.png" alt="image-20240103193900945"></p>
+<p>然后用常见姓进行姓名爆破</p>
+<p>谷歌搜索更注重于搜索词</p>
+<p>百度搜索更注重于与搜索词相关知识</p>
+<h4 id="浏览器搜索"><a href="#浏览器搜索" class="headerlink" title="浏览器搜索"></a>浏览器搜索</h4><p>搜索 +-内容 ：增加或去掉内容，谷歌百度适用</p>
+<p>原搜索情况</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jdk安装</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240103195015036.png" alt="image-20240103195015036"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jdk安装 +csdn</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240103195108408.png" alt="image-20240103195108408"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jdk安装 -知乎</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240103195208539.png" alt="image-20240103195208539"></p>
+<p>将搜索内容用双引号包住，可以保证搜索内容是在一起的（<strong>谷歌专用</strong>）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;mac地址&quot;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240103195440434.png" alt="image-20240103195440434"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mac*是代表以mac开头的内容，不限后面的语言</span><br></pre></td></tr></table></figure>
+
+<p>*代表通配符，匹配一段字符串</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240103195646239.png" alt="image-20240103195646239"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;网址&quot;</span><br></pre></td></tr></table></figure>
+
+<p>可以查询该网址下所有的子网页</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;hnuit.edu.cn&quot;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240103195955193.png" alt="image-20240103195955193"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">网址 filetype:pdf 文字形容，可以查看该网址内文件格式为pdf，包含文字形容的文件，文字可以为学号等。</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;hnuit.edu.cn&quot; filetype:pdf</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240103200057638.png" alt="image-20240103200057638"></p>
+<p>里面的内容全是pdf的文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;网址&quot; inurl:id 网站内容包含id</span><br></pre></td></tr></table></figure>
+
+<p>可以查询出网址中所有包含id的网页，可以去掉网址，单独搜索后面的内容进而可以查询出网络中所有包含id的网址。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;hnuit.edu.cn&quot; inurl:id</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240103200609975.png" alt="image-20240103200609975"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">inurl:id</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240103200626653.png" alt="image-20240103200626653"></p>
+<h3 id="Google-Hacking"><a href="#Google-Hacking" class="headerlink" title="Google Hacking"></a>Google Hacking</h3><h4 id="site"><a href="#site" class="headerlink" title="site"></a>site</h4><blockquote>
+<p>语法：site</p>
+<p>作用：限定在特定的网址中搜索</p>
+</blockquote>
+<p><strong>Site规则：</strong>这个规则会限定搜索引擎的搜索范围，比如site:<a target="_blank" rel="noopener" href="http://co.uk,显示搜索结果都是英国网站.“site/">http://co.uk，显示搜索结果都是英国网站。“site</a>: Amazon.* clothes”即可找到全球亚马逊的服装商品（*表示任何内容）。</p>
+<p>Google命令语言搜索带“……”后缀的公司网站。</p>
+<p>比如，我想搜德国经销carpet的公司：</p>
+<p>在Google搜索栏中键入：site: de. carpet.gmbh，这是德国公司的后缀，如果再知道德语teppich（&#x3D;carpet）就更好了。</p>
+<p>site: de. Carpet.gmbh</p>
+<p>site: as … 丹麦</p>
+<p>site: inc … 美+中东</p>
+<p>site: srl … 意大利(有小小的改动)</p>
+<h4 id="filetype"><a href="#filetype" class="headerlink" title="filetype"></a>filetype</h4><blockquote>
+<p>语法：filetype</p>
+<p>作用：搜索特定的文件类型</p>
+</blockquote>
+<p>有时候我们想找特定类型的文档，比如PPT、PDF等，但默认情况下出来的都是网页，很难找到我们想要的内容，这个时候就可以用上filetype语法。</p>
+<h4 id="inurl"><a href="#inurl" class="headerlink" title="inurl"></a>inurl</h4><blockquote>
+<p>语法：inurl</p>
+<p>作用：在URL中搜索出现指定内容的链接</p>
+</blockquote>
+<p>这一个语法有什么用？普通人很少直接关心链接本身的内容，但是对于咱们hacker来说，URL就重要了，比如我们可以用来搜索可能存在SQL注入的链接：</p>
+<blockquote>
+<ul>
+<li>inurl:.php?id&#x3D;</li>
+<li>inurl:.jsp?id&#x3D;</li>
+<li>inurl:.asp?id&#x3D;</li>
+</ul>
+</blockquote>
+<p>除了SQL注入，还可以搜索可能存在的网站后台管理入口：</p>
+<blockquote>
+<ul>
+<li>inurl:login.php</li>
+<li>inurl:login.jsp</li>
+<li>inurl:login.asp</li>
+</ul>
+</blockquote>
+<p>如果我们再加上前面的site语法组合使用，就可以找出指定网站的这种链接了，定向寻找攻击点。</p>
+<h4 id="intitle"><a href="#intitle" class="headerlink" title="intitle"></a>intitle</h4><blockquote>
+<p>语法：intitle</p>
+<p>作用：在网页title中搜索出现指定内容的网页</p>
+</blockquote>
+<p>除了在URL中搜索，咱们还能在标题中搜索。一般网站后台管理页面都会带有“后台”、“管理”、“登录”等字眼，我们可以通过在HTML的title字段位置搜索这些关键词，寻找可疑的后台登录页面。</p>
+<h4 id="intext"><a href="#intext" class="headerlink" title="intext"></a>intext</h4><blockquote>
+<p>语法：intext</p>
+<p>作用：除了URL和title，剩下的就是正文位置搜索了</p>
+</blockquote>
+<h3 id="用户-网站-CDN-服务器"><a href="#用户-网站-CDN-服务器" class="headerlink" title="用户-网站-CDN-服务器"></a>用户-网站-CDN-服务器</h3><p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240103211426550.png" alt="image-20240103211426550"></p>
+<h5 id="CDN-内容分发网络"><a href="#CDN-内容分发网络" class="headerlink" title="CDN(内容分发网络)"></a>CDN(内容分发网络)</h5><p>CDN会储存服务器发送的副本，用户可以通过就近的CDN来访问服务器内容，如果服务器有新的内容，就会将新内容发送给CDN。</p>
+<p>内容分发网络的英文缩写(Content Delivery Network)。它是一个分布式的系统,将Web内容存储到世界各地的边缘位置,从而内容可以离用户更近,访问速度更快。</p>
+<h5 id="CDN作用："><a href="#CDN作用：" class="headerlink" title="CDN作用："></a>CDN作用：</h5><ul>
+<li><p>提高访问速度:通过将内容缓存到边缘节点,大大缩短用户访问内容的距离,提高访问速度。</p>
+</li>
+<li><p>分担源站压力:将部分流量引导到边缘节点处理,减轻源站服务器的负载。</p>
+</li>
+<li><p>提高可用性:通过分布式节点,一旦部分节点宕机,不影响整体访问。</p>
+</li>
+<li><p>安全防护:CDN节点可以过滤攻击流量,为源站提供一定程度的保护。</p>
+</li>
+<li><p>负载均衡:CDN可以根据用户地理位置自动选择就近节点,实现全球负载均衡。</p>
+</li>
+</ul>
+<h4 id="域名查ip"><a href="#域名查ip" class="headerlink" title="域名查ip"></a>域名查ip</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ping.chinaz.com</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240103212017330.png" alt="image-20240103212017330"></p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240103212656925.png" alt="image-20240103212656925"></p>
+<p>一个ip可以对应ip:1-65535个服务，服务可能没有放在网站上，没有放上去的内容可以借此找到漏洞。</p>
+<p>在FOFA中</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;qq.com&quot;&amp;&amp;country=&quot;CN&quot;&amp;&amp;body=&quot;腾讯公司 版权所有&quot;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240104192738881.png" alt="image-20240104192738881"></p>
+
+      
+    </div>
+  </div>
+ 
+</article>
+
+
+  
     <article id="post-sqli" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -2806,638 +3066,6 @@ schemata表 - 存储所有数据库名
 <p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231206161644179.png" alt="image-20231206161644179"></p>
 <p>标题属性</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">h1&#123;各种位置;</span><br><span class="line">top: 0px;</span><br><span class="line">left: 0px;</span><br><span class="line">padding: 10px;</span><br><span class="line">margin: 0px;</span><br><span class="line">width:100％;</span><br><span class="line">background-color:#efefef;&#125;</span><br><span class="line">position:static 普通流</span><br><span class="line">width: 450px 每450个像素就换行</span><br><span class="line">position:relative相对定位</span><br><span class="line">top: 10px;向下移动10个像素</span><br><span class="line">left: 100px 自左边距100像素开始</span><br><span class="line">position:absolute绝对定位</span><br><span class="line">position:fixed固定定位 一直显示在页面</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-  </div>
- 
-</article>
-
-
-  
-    <article id="post-python-homework_1_基础知识" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2023/12/05/python-homework_1_%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">python_homework-基础知识-1</a>
-    </h1>
-  
-
-        <div class="article-meta">
-          <a href="/2023/12/05/python-homework_1_%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" class="article-date">
-  <time datetime="2023-12-05T12:30:53.000Z" itemprop="datePublished">2023-12-05</time>
-</a>
-          
-          
-        </div>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h2><h4 id="一、算术运算符"><a href="#一、算术运算符" class="headerlink" title="一、算术运算符"></a>一、算术运算符</h4><p>算术运算符用于执行常见的数学运算，如加减乘除等。下表列出了 Python 中的算术运算符及其优先级。</p>
-<table>
-<thead>
-<tr>
-<th>运算符</th>
-<th>描述</th>
-<th align="center">示例</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>+</td>
-<td>加</td>
-<td align="center">2 + 3 &#x3D; 5</td>
-</tr>
-<tr>
-<td>-</td>
-<td>减</td>
-<td align="center">2 - 3 &#x3D; -1</td>
-</tr>
-<tr>
-<td>*</td>
-<td>乘</td>
-<td align="center">2 * 3 &#x3D; 6</td>
-</tr>
-<tr>
-<td>&#x2F;</td>
-<td>除</td>
-<td align="center">8 &#x2F; 3 &#x3D; 2.6666666666666665</td>
-</tr>
-<tr>
-<td>&#x2F;&#x2F;</td>
-<td>整除</td>
-<td align="center">8 &#x2F;&#x2F; 3 &#x3D; 2</td>
-</tr>
-<tr>
-<td>%</td>
-<td>取余数</td>
-<td align="center">8 % 3 &#x3D; 2</td>
-</tr>
-<tr>
-<td>**</td>
-<td>指数</td>
-<td align="center">2 ** 3 &#x3D; 8</td>
-</tr>
-</tbody></table>
-<p>从上表中可以看出，乘、除、整除、取余和指数运算的优先级高于加和减运算。如果表达式中同时存在多个算术运算符，则优先级高的先执行。同时，可以使用小括号来改变运算符的优先级。</p>
-<h4 id="二、比较运算符"><a href="#二、比较运算符" class="headerlink" title="二、比较运算符"></a><strong>二、比较运算符</strong></h4><p>比较运算符用于比较两个值之间的大小。它们返回布尔值 <code>True</code> 或 <code>False</code>。下表列出了 Python 中的比较运算符及其优先级。</p>
-<table>
-<thead>
-<tr>
-<th>运算符</th>
-<th>描述</th>
-<th align="center">示例</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>&#x3D;&#x3D;</td>
-<td>等于</td>
-<td align="center">2 &#x3D;&#x3D; 3 返回 False</td>
-</tr>
-<tr>
-<td>!&#x3D;</td>
-<td>不等于</td>
-<td align="center">2 !&#x3D; 3 返回 True</td>
-</tr>
-<tr>
-<td>&gt;</td>
-<td>大于</td>
-<td align="center">2 &gt; 3 返回 False</td>
-</tr>
-<tr>
-<td>&lt;</td>
-<td>小于</td>
-<td align="center">2 &lt; 3 返回 True</td>
-</tr>
-<tr>
-<td>&gt;&#x3D;</td>
-<td>大于等于</td>
-<td align="center">2 &gt;&#x3D; 3 返回 False</td>
-</tr>
-<tr>
-<td>&lt;&#x3D;</td>
-<td>小于等于</td>
-<td align="center">2 &lt;&#x3D; 3 返回 True</td>
-</tr>
-</tbody></table>
-<p>需要注意的是，比较运算符优先级要低于算术运算符。在表达式中混合使用时，需要使用圆括号来明确优先级。</p>
-<h4 id="三、逻辑运算符"><a href="#三、逻辑运算符" class="headerlink" title="三、逻辑运算符"></a><strong>三、逻辑运算符</strong></h4><p>逻辑运算符用于执行逻辑操作，如与、或、非等。下表列出了 Python 中的逻辑运算符及其优先级。</p>
-<table>
-<thead>
-<tr>
-<th>运算符</th>
-<th>描述</th>
-<th align="center">示例</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>and</td>
-<td>与</td>
-<td align="center">x and y</td>
-</tr>
-<tr>
-<td>or</td>
-<td>或</td>
-<td align="center">x or y</td>
-</tr>
-<tr>
-<td>not</td>
-<td>非</td>
-<td align="center">not x</td>
-</tr>
-</tbody></table>
-<p>逻辑运算符优先级顺序为：not &gt; and &gt; or。需要注意的是，and 和 or 运算符都是短路运算符，即如果表达式的结果可以通过某个运算符得出而不需要继续执行后面的运算，则不会执行后续运算符。</p>
-<h4 id="四、位运算符"><a href="#四、位运算符" class="headerlink" title="四、位运算符"></a><strong>四、位运算符</strong></h4><p>位运算符用于执行位级别的操作。它们操作输入参数的二进制位，返回结果与输入参数具有相同的类型。下表列出了 Python 中的位运算符及其优先级。</p>
-<table>
-<thead>
-<tr>
-<th>运算符</th>
-<th>描述</th>
-<th>示例</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>&amp;</td>
-<td>按位与</td>
-<td>x &amp; y</td>
-</tr>
-<tr>
-<td>|</td>
-<td>按位或</td>
-<td>x | y</td>
-</tr>
-<tr>
-<td>^</td>
-<td>按位异或</td>
-<td>x ^ y</td>
-</tr>
-<tr>
-<td>~</td>
-<td>按位取反</td>
-<td>~x</td>
-</tr>
-<tr>
-<td>&lt;&lt;</td>
-<td>左移</td>
-<td>x &lt;&lt; y</td>
-</tr>
-<tr>
-<td>&gt;&gt;</td>
-<td>右移</td>
-<td>x &gt;&gt; y</td>
-</tr>
-</tbody></table>
-<p>其中，按位与、按位或、按位异或、按位取反的优先级在位运算符中最低，其次是左移和右移运算符。</p>
-<h5 id="4-1-位与运算"><a href="#4-1-位与运算" class="headerlink" title="4.1 位与运算(&amp;)"></a><strong>4.1 位与运算(&amp;)</strong></h5><p>位与运算是将两个整数的二进制按位进行“与”操作，并返回一个新的整数。如a &#x3D; 13,b &#x3D; 7，其中a的值的二进制为1101，b的值二进制为0111，则将1101与0111进行“与”运算结果为：<code>0101</code>转换成十进制整数则为<code>5</code>如果不知道如何将整数换算成2进制的话可以通过在线工具或者python代码来实现。如下:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">print(bin(5))   # 0b101</span><br><span class="line">print(bin(17))  # 0b10001</span><br></pre></td></tr></table></figure>
-
-<p>运算时如果不足位，则在左边补零，如17&amp;5</p>
-<h5 id="4-2-位“或”运算"><a href="#4-2-位“或”运算" class="headerlink" title="4.2 位“或”运算"></a><strong>4.2 位“或”运算</strong></h5><p>位“或”运算是将两个整数的二进制按位进行或操作，对每一位进行比较，返回一个新的整数，运算时以“一真即真”原则进行运算，即1+0&#x3D;1,1+1&#x3D;1,0+0&#x3D;0。</p>
-<p>代码运算：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="number">5</span>|<span class="number">7</span>)</span><br></pre></td></tr></table></figure>
-
-<h5 id="4-3-异或运算"><a href="#4-3-异或运算" class="headerlink" title="4.3 异或运算"></a><strong>4.3 异或运算</strong></h5><p>异或运算时，按照相应位不同时取1，否则取0，例如a &#x3D; 13（二进制：1101），b &#x3D; 7（二进制：0111），则a ^ b &#x3D; 10（二进制：1010）。</p>
-<p>代码</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="number">7</span>^<span class="number">13</span>) <span class="comment"># 10</span></span><br></pre></td></tr></table></figure>
-
-<h5 id="4-4-取反运算"><a href="#4-4-取反运算" class="headerlink" title="4.4 取反运算"></a><strong>4.4 取反运算</strong></h5><p>取反即按位将0变1,1变0生成一个新的数。但要注意的是整数转换之后是以二进制补码表示，所以在取反之后需要加上1才是正确的取反运算的值（<strong>取反+1</strong>）。例如，a &#x3D; 5（二进制表示为 0101），则 ~a 的结果为 -6（二进制表示为 1010）。</p>
-<p>实行的是先取反再+1的步骤，此处的+1为二进制加法，下方为二进制加法的描述：</p>
-<p><strong>二进制加法</strong>是一种计算二进制数之间加法的方法。二进制加法的规则与十进制加法很类似，只是在二进制数位上只允许有两个数值，0 和 1，因此每个位上的和最大只能是 1。</p>
-<p>对于两个二进制数字 A 和 B 相加，可以按照以下步骤进行：</p>
-<ol>
-<li>从最低位开始，将 A 和 B 的第一位相加，如果结果小于二进制数的基值 2，则直接写入和，否则将余数记为本位结果，进位 1 到下一位。</li>
-<li>重复上述步骤，对每一位相加，直到加到最高位。</li>
-<li>如果最高位有进位，则需要在结果最前面增加一个 1 表示进位。</li>
-</ol>
-<p>因此，二进制数 1011 和 0110 的和为 10001（十进制数为 17）。</p>
-<p>需要注意的是，二进制加法和十进制加法类似，可能会出现进位。如果最高位有进位，应该在结果的最前面添加一个数字 1 表示进位。此外，对于任意的二进制加法，如果两个二进制数位数不相等，可以在较短的二进制数的前面加上 0，使得它们的位数相等，然后再进行加法操作。</p>
-<p>总之，二进制加法是计算二进制数之间加法的基本方法，其规则很简单，只需将两个二进制数对应位相加，并注意进位和最高位的处理即可。</p>
-<h5 id="4-5-左移和右移"><a href="#4-5-左移和右移" class="headerlink" title="4.5 左移和右移"></a><strong>4.5 左移和右移</strong></h5><p>左移和右移运算是计算机中的基本运算之一，其指的是将操作数(二进制数)的位值按照指定的位数向左或者向右移动。往左移和右移时，移动后空出的位用0或者符号位(在带符号数的情况下)进行补齐。</p>
-<p>代码：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="number">3</span>&lt;&lt;<span class="number">2</span>) <span class="comment"># 12</span></span><br></pre></td></tr></table></figure>
-
-<h6 id="右移示例"><a href="#右移示例" class="headerlink" title="右移示例"></a><strong>右移示例</strong></h6><p>代码</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="number">12</span>&gt;&gt;<span class="number">2</span>)  <span class="comment"># 3</span></span><br></pre></td></tr></table></figure>
-
-<p>如果移动位数大于要进行左移右移运算的数值位数，则可先在要进行运算的数值前补零进行填充，如2左移11位运算：</p>
-<p>代码：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="number">2</span>&lt;&lt;<span class="number">11</span>)    <span class="comment"># 4096</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="五、赋值运算符"><a href="#五、赋值运算符" class="headerlink" title="五、赋值运算符"></a><strong>五、赋值运算符</strong></h4><p>赋值运算符用于将值分配给变量。下表列出了 Python 中的赋值运算符及其优先级。</p>
-<table>
-<thead>
-<tr>
-<th>运算符</th>
-<th>描述</th>
-<th>示例</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>&#x3D;</td>
-<td>简单赋值</td>
-<td>x &#x3D; 3</td>
-</tr>
-<tr>
-<td>+&#x3D;</td>
-<td>加法赋值</td>
-<td>x +&#x3D; 3</td>
-</tr>
-<tr>
-<td>-&#x3D;</td>
-<td>减法赋值</td>
-<td>x -&#x3D; 3</td>
-</tr>
-<tr>
-<td>*&#x3D;</td>
-<td>乘法赋值</td>
-<td>x *&#x3D; 3</td>
-</tr>
-<tr>
-<td>&#x2F;&#x3D;</td>
-<td>除法赋值</td>
-<td>x &#x2F;&#x3D; 3</td>
-</tr>
-<tr>
-<td>&#x2F;&#x2F;&#x3D;</td>
-<td>整除赋值</td>
-<td>x &#x2F;&#x2F;&#x3D; 3</td>
-</tr>
-<tr>
-<td>%&#x3D;</td>
-<td>取余数赋值</td>
-<td>x %&#x3D; 3</td>
-</tr>
-<tr>
-<td>**&#x3D;</td>
-<td>指数赋值</td>
-<td>x **&#x3D; 3</td>
-</tr>
-<tr>
-<td>&amp;&#x3D;</td>
-<td>按位与赋值</td>
-<td>x &amp;&#x3D; 3</td>
-</tr>
-<tr>
-<td>|&#x3D;</td>
-<td>按位或赋值</td>
-<td>x |&#x3D; 3</td>
-</tr>
-<tr>
-<td>^&#x3D;</td>
-<td>按位异或赋值</td>
-<td>x ^&#x3D; 3</td>
-</tr>
-<tr>
-<td>&lt;&lt;&#x3D;</td>
-<td>左移赋值</td>
-<td>x &lt;&lt;&#x3D; 3</td>
-</tr>
-<tr>
-<td>&gt;&gt;&#x3D;</td>
-<td>右移赋值</td>
-<td>x &gt;&gt;&#x3D; 3</td>
-</tr>
-</tbody></table>
-<p>需要注意的是，赋值运算符优先级最低。在表达式中混合使用时，需要使用圆括号来明确优先级。</p>
-<h4 id="六、身份运算符"><a href="#六、身份运算符" class="headerlink" title="六、身份运算符"></a><strong>六、身份运算符</strong></h4><p>身份运算符用于比较两个对象的内存地址是否相等。下表列出了 Python 中的身份运算符及其优先级。</p>
-<table>
-<thead>
-<tr>
-<th>运算符</th>
-<th>描述</th>
-<th>示例</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>is</td>
-<td>判断是否为同一个对象</td>
-<td>x is y</td>
-</tr>
-<tr>
-<td>is not</td>
-<td>判断是否不为同一个对象</td>
-<td>x is not y</td>
-</tr>
-</tbody></table>
-<p>需要注意的是，身份运算符优先级低于算术运算符和比较运算符。</p>
-<h4 id="七、成员运算符"><a href="#七、成员运算符" class="headerlink" title="七、成员运算符"></a><strong>七、成员运算符</strong></h4><p>成员运算符用于测试序列（如列表、元组、字符串）是否包含指定的元素。下表列出了 Python 中的成员运算符及其优先级。</p>
-<table>
-<thead>
-<tr>
-<th>运算符</th>
-<th>描述</th>
-<th>示例</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>in</td>
-<td>判断是否包含元素</td>
-<td>x in y</td>
-</tr>
-<tr>
-<td>not in</td>
-<td>判断是否不包含元素</td>
-<td>x not in y</td>
-</tr>
-</tbody></table>
-<p>需要注意的是，成员运算符优先级低于算术运算符、比较运算符和身份运算符。</p>
-<h4 id="八、优先级总结"><a href="#八、优先级总结" class="headerlink" title="八、优先级总结"></a><strong>八、优先级总结</strong></h4><p>总的来说，Python 运算符的优先级可以用以下图表表示（从高到低）：</p>
-<table>
-<thead>
-<tr>
-<th>运算符</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>**</td>
-<td>指数</td>
-</tr>
-<tr>
-<td>~ + -</td>
-<td>按位取反、正负号</td>
-</tr>
-<tr>
-<td>* &#x2F; % &#x2F;&#x2F;</td>
-<td>乘、除、取余数、整除</td>
-</tr>
-<tr>
-<td>+ -</td>
-<td>加、减</td>
-</tr>
-<tr>
-<td>&gt;&gt; &lt;&lt;</td>
-<td>右移、左移</td>
-</tr>
-<tr>
-<td>&amp;</td>
-<td>按位与</td>
-</tr>
-<tr>
-<td>^ |</td>
-<td>按位异或、按位或</td>
-</tr>
-<tr>
-<td>&lt;&#x3D; &lt; &gt; &gt;&#x3D;</td>
-<td>小于等于、小于、大于、大于等于</td>
-</tr>
-<tr>
-<td>&#x3D;&#x3D; !&#x3D;</td>
-<td>等于、不等于</td>
-</tr>
-<tr>
-<td>&#x3D; %&#x3D; &#x2F;&#x3D; &#x2F;&#x2F;&#x3D; -&#x3D; +&#x3D; *&#x3D; **&#x3D;</td>
-<td>赋值、取余数赋值、除法赋值、整除赋值、减法赋值、加法赋值、乘法赋值、指数赋值</td>
-</tr>
-<tr>
-<td>is is not</td>
-<td>判断是否为同一个对象、判断是否不为同一个对象</td>
-</tr>
-<tr>
-<td>in not in</td>
-<td>判断是否包含元素、判断是否不包含元素</td>
-</tr>
-<tr>
-<td>not or and</td>
-<td>非、或、与</td>
-</tr>
-</tbody></table>
-<p>需要注意的是，优先级高的运算符先执行，低优先级的运算符后执行。如果不确定运算符的优先级，可以使用圆括号来明确表达式的执行顺序。</p>
-<p>在编写 Python 的表达式时，了解运算符的优先级关系是非常重要的，它可以让你编写更有表现力的代码，并且避免不必要的错误。</p>
-<h4 id="九、其他运算符"><a href="#九、其他运算符" class="headerlink" title="九、其他运算符"></a><strong>九、其他运算符</strong></h4><p>除了上述分类的运算符外，Python 中还有一些其他的运算符，如下表所示。</p>
-<table>
-<thead>
-<tr>
-<th>运算符</th>
-<th>描述</th>
-<th>示例</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>+</td>
-<td>字符串连接</td>
-<td>“Hello” + “ “ + “world”</td>
-</tr>
-<tr>
-<td>*</td>
-<td>复制操作符</td>
-<td>“-“ * 10</td>
-</tr>
-<tr>
-<td>[]</td>
-<td>用于索引操作</td>
-<td>x[0]</td>
-</tr>
-<tr>
-<td>[:]</td>
-<td>切片操作符</td>
-<td>x[1:3]</td>
-</tr>
-<tr>
-<td>,</td>
-<td>用于分隔多个值</td>
-<td>x, y, z &#x3D; 1, 2, 3</td>
-</tr>
-<tr>
-<td>()</td>
-<td>用于创建元组或改变优先级</td>
-<td>(1, 2)</td>
-</tr>
-</tbody></table>
-<p>需要注意的是，这些运算符的优先级可能会依赖于运算符所处的上下文，而且它们的优先级可能高于或低于其他分类中的运算符。</p>
-<hr>
-<h3 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">PI = <span class="number">3.1415926</span></span><br><span class="line"><span class="built_in">print</span>(PI)</span><br><span class="line">PI = <span class="number">3</span></span><br><span class="line"><span class="built_in">print</span>(PI)</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231205210346915.png" alt="image-20231205210346915"></p>
-<p>所有字母大写表示常量</p>
-<p>可以把所有的变量的字母变成大写就可以认为是常量</p>
-<p>Python上没有绝对意义上的常量</p>
-<hr>
-<h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><p>变量:可以发生改变的一个量，变量是用来区分不同数据的，可以指向一个内存空间</p>
-<p>变量的命名规范：</p>
-<ol>
-<li>必须由字母或数字或下划线_</li>
-<li>不能数字开头，不能纯数字</li>
-<li>不能用python的关键字</li>
-<li>不要用中文（能用，但是不推荐）</li>
-<li>不要太长</li>
-<li>要有意义</li>
-<li>推荐使用下划线命名或驼峰命名法</li>
-</ol>
-<p>综上，变量名一定要让人看得懂，看的舒服。		</p>
-<hr>
-<h3 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h3><p>数据类型:区分不同的数据，不同的数据类型应该有不同的操作。</p>
-<p>数字：+-*&#x2F;</p>
-<p>​			1.整数：int类型</p>
-<p>​			2.小数：float类型</p>
-<p>文字：展示</p>
-<p>​			字符串：str</p>
-<p>​			表达方式：</p>
-<p>​					‘内容’               ‘’内容’’</p>
-<p>​					“内容”              “”内容“”</p>
-<p>​			操作：+  左右两边数据类型必须相同：int+int，str+str，float+float</p>
-<p>​						*  一个字符串只能×一个数字表示字符串重复的次数：str×int</p>
-<p>布尔（bool）：条件判断<br>        布尔值主要有两个：</p>
-<p>​				True 真，真命题</p>
-<p>​				False 假，假命题</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">print(100 &gt; 30)</span><br><span class="line">print(20 &gt; 500 )</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231207215153955.png" alt="image-20231207215153955"></p>
-<hr>
-<p>100 &gt; 30 –&gt;真</p>
-<h3 id="简单用户交互"><a href="#简单用户交互" class="headerlink" title="简单用户交互"></a>简单用户交互</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="built_in">input</span>(<span class="string">&quot;请输入第一个数字：&quot;</span>)</span><br><span class="line">b = <span class="built_in">input</span>(<span class="string">&quot;请输入第二个数字：&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(a + b)</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231205210600627.png" alt="image-20231205210600627"></p>
-<p>以为是加法结果输出了两个数字的结合体</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(type(a)) # 用type来查看一个变量的数据类型</span><br></pre></td></tr></table></figure>
-
-<p>可以type来查看一个变量的数据类型</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">a = input(&quot;请输入第一个数字：&quot;)</span><br><span class="line">print(type(a)) # 用type来查看一个变量的数据类型</span><br><span class="line">b = input(&quot;请输入第二个数字：&quot;)</span><br><span class="line">print(type(b)) # 用type来查看一个变量的数据类型</span><br><span class="line">print(a + b)</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231205210853617.png" alt="image-20231205210853617"></p>
-<p>可以看出a、b的数据类型为’str’</p>
-<p>如果想要把数据类型a转换成数据类型b，就用b把a套起来</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="built_in">input</span>(<span class="string">&quot;数字&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">type</span>(a))</span><br><span class="line">a = <span class="built_in">int</span>(a)</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">type</span>(a))</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231205211635195.png" alt="image-20231205211635195"></p>
-<h4 id="真正意义上的加法："><a href="#真正意义上的加法：" class="headerlink" title="真正意义上的加法："></a>真正意义上的加法：</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="built_in">input</span>(<span class="string">&quot;请输入第一个数字：&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">type</span>(a)) <span class="comment"># 用type来查看一个变量的数据类型</span></span><br><span class="line">b = <span class="built_in">input</span>(<span class="string">&quot;请输入第二个数字：&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">type</span>(b)) <span class="comment"># 用type来查看一个变量的数据类型</span></span><br><span class="line">a = <span class="built_in">int</span>(a) <span class="comment"># 将a的类型改为int型 </span></span><br><span class="line">b = <span class="built_in">int</span>(b) <span class="comment"># 将b的类型改为int型</span></span><br><span class="line"><span class="built_in">print</span>(a + b)</span><br></pre></td></tr></table></figure>
-
-<img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231205211817994.png" alt="image-20231205211817994" style="zoom:150%;" />
-
- 
-
-<hr>
-<h3 id="条件判断-if"><a href="#条件判断-if" class="headerlink" title="条件判断_if"></a>条件判断_if</h3><blockquote>
-<h5 id="if语句的语法规则："><a href="#if语句的语法规则：" class="headerlink" title="if语句的语法规则："></a>if语句的语法规则：</h5><blockquote>
-<ol>
-<li></li>
-</ol>
-<p>if 条件:</p>
-<p>​		代码</p>
-<p>如果条件成立就执行代码</p>
-<p>条件不成立就不执行</p>
-</blockquote>
-</blockquote>
-<blockquote>
-<blockquote>
-<ol start="2">
-<li></li>
-</ol>
-<p>if条件:</p>
-<p>​		代码1</p>
-<p>else</p>
-<p>​		代码2</p>
-<p>如果条件成立，则执行代码1，否则，执行代码2</p>
-</blockquote>
-</blockquote>
-<h5 id="第一种"><a href="#第一种" class="headerlink" title="第一种"></a>第一种</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">money = <span class="number">500</span></span><br><span class="line"><span class="keyword">if</span> money &gt; <span class="number">300</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="number">123</span>) <span class="comment"># 与if是从属关系</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="number">456</span>) <span class="comment"># 与if是从属关系</span></span><br><span class="line">    <span class="comment">#123、456必须缩进相同，不然会报错</span></span><br><span class="line"><span class="built_in">print</span>(<span class="number">789</span>) <span class="comment"># 这个必定输出</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231205213022711.png" alt="image-20231205213022711"></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">money = <span class="number">100</span></span><br><span class="line"><span class="keyword">if</span> money &gt; <span class="number">300</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="number">123</span>) <span class="comment"># 与if是从属关系</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="number">456</span>) <span class="comment"># 与if是从属关系</span></span><br><span class="line">    <span class="comment">#123、456必须缩进相同，不然会报错</span></span><br><span class="line"><span class="built_in">print</span>(<span class="number">789</span>) <span class="comment"># 这个必定输出</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231205213057451.png" alt="image-20231205213057451"></p>
-<h5 id="第二种"><a href="#第二种" class="headerlink" title="第二种"></a>第二种</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">money = <span class="built_in">input</span>(<span class="string">&quot;请输入你兜里的钱：&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> money &gt; <span class="number">500</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;火锅&quot;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;泡面&quot;</span>)</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231205214115195.png" alt="image-20231205214115195"></p>
-<p>更正</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">money = input(&quot;请输入你兜里的钱：&quot;)</span><br><span class="line">money = int(money)</span><br><span class="line"></span><br><span class="line">if money &gt; 500:</span><br><span class="line">    print(&quot;火锅&quot;)</span><br><span class="line">else:</span><br><span class="line">    print(&quot;泡面&quot;)</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231205214210898.png" alt="image-20231205214210898">情况1</p>
-<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231205214231300.png" alt="image-20231205214231300"></p>
-<p>情况2</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">money = <span class="built_in">int</span>(<span class="built_in">input</span>(<span class="string">&quot;请输入你兜里的钱：&quot;</span>))</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> money &gt;= <span class="number">1000</span>:</span><br><span class="line">    <span class="keyword">if</span> money&gt;=<span class="number">5000</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;办卡&quot;</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;洗脚&quot;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;回家&quot;</span>)</span><br></pre></td></tr></table></figure>
-
-<h5 id="第三种if语句可以进行嵌套"><a href="#第三种if语句可以进行嵌套" class="headerlink" title="第三种if语句可以进行嵌套"></a>第三种if语句可以进行嵌套</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> 条件<span class="number">1</span>:</span><br><span class="line">	代码<span class="number">1</span></span><br><span class="line"><span class="keyword">elif</span> 条件<span class="number">2</span>：</span><br><span class="line">	代码<span class="number">2</span></span><br><span class="line"><span class="keyword">elif</span> 条件<span class="number">3</span>：</span><br><span class="line">	代码<span class="number">3</span></span><br><span class="line">    .。。。。</span><br><span class="line"><span class="keyword">else</span>：</span><br><span class="line">	xxxx</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">money = <span class="built_in">int</span>(<span class="built_in">input</span>(<span class="string">&quot;请输入你兜里的钱：&quot;</span>))</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> money &gt; <span class="number">5000</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;冲卡&quot;</span>)</span><br><span class="line"><span class="keyword">elif</span> money &gt; <span class="number">1000</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;洗脚回家&quot;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;直接回家&quot;</span>)</span><br></pre></td></tr></table></figure>
-
-<p>第四种：条件1成功则执行代码1，后面不管，条件1失败则判断2，2成功则执行条件2，以此类推。</p>
-<hr>
-<h3 id="循环语句while"><a href="#循环语句while" class="headerlink" title="循环语句while"></a>循环语句while</h3><p>可以让我们的代码重复的去执行</p>
-<p>while 循环:</p>
-<p>​		while 条件:</p>
-<p>​				代码</p>
-<p>过程:判断条件是否为真，如果真，执行代码。然后再次判断条件。….直到条件为假循环结束</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;好好好&quot;</span>)</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231209153703160.png" alt="image-20231209153703160"></p>
-<p>这是死循环。</p>
-<p>数1~100：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">i = <span class="number">1</span></span><br><span class="line"><span class="keyword">while</span> i&lt;=<span class="number">100</span>:</span><br><span class="line">    <span class="built_in">print</span>(i)</span><br><span class="line">    i = si+<span class="number">1</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231209154029424.png" alt="image-20231209154029424"></p>
-<p>计算1+2+3+….+100</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">i = <span class="number">1</span></span><br><span class="line">s = <span class="number">0</span></span><br><span class="line"><span class="keyword">while</span> i&lt;=<span class="number">100</span>:</span><br><span class="line">    s = s + i</span><br><span class="line">    i = i + <span class="number">1</span></span><br><span class="line"><span class="built_in">print</span>(s)</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231209154543242.png" alt="image-20231209154543242"></p>
-<p>作业1 1+2-3+4-5…+100</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">i = <span class="number">1</span></span><br><span class="line">s = <span class="number">2</span></span><br><span class="line"><span class="keyword">while</span> i&lt;=<span class="number">100</span>:</span><br><span class="line">    <span class="keyword">if</span> i % <span class="number">2</span> ==<span class="number">0</span>:</span><br><span class="line">        s = s + i</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        s = s - i</span><br><span class="line">    i = i + <span class="number">1</span></span><br><span class="line"><span class="built_in">print</span>(s)</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231209161725341.png" alt="image-20231209161725341"></p>
-<hr>
-<h3 id="特殊语句"><a href="#特殊语句" class="headerlink" title="特殊语句"></a>特殊语句</h3><p>break、continue</p>
-<p>break：直接结束当前循环</p>
-<p>数据出现问题，直接break</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    content = <span class="built_in">input</span>(<span class="string">&quot;请输入你要喷的内容（q结束喷人）：&quot;</span>)</span><br><span class="line">    <span class="keyword">if</span> content == <span class="string">&quot;q&quot;</span>:<span class="comment"># ==表示判断左右是否一致</span></span><br><span class="line">        <span class="keyword">break</span>     <span class="comment">#结束循环</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;发送给下路&quot;</span>,content)</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231207204329900.png" alt="image-20231207204329900"></p>
-<p>continue:停止本次循环，继续下一次新的循环</p>
-<p>判断是否无用数据，遇到停止在跳过</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">i = <span class="number">1</span></span><br><span class="line"><span class="keyword">while</span> i &lt;= <span class="number">10</span>:</span><br><span class="line">    <span class="keyword">if</span> i == <span class="number">4</span>:</span><br><span class="line">        <span class="keyword">continue</span></span><br><span class="line">    <span class="built_in">print</span>(i)</span><br><span class="line">    i = i+<span class="number">1</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231207204753595.png" alt="image-20231207204753595"></p>
-<p>只会循环到i&#x3D;4的时候，然后就直接结束循环，重新开始循环while i&lt;&#x3D; 10,一直循环判断，无法输出其他数字。</p>
-<p>完善：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">i = 1</span><br><span class="line">while i &lt;= 10:</span><br><span class="line">    if i == 4:</span><br><span class="line">        i = i+1</span><br><span class="line">        continue</span><br><span class="line">    print(i)</span><br><span class="line">    i = i+1</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231207205112511.png" alt="image-20231207205112511"></p>
-<hr>
-<h3 id="for循环"><a href="#for循环" class="headerlink" title="for循环"></a>for循环</h3><p>for循环主要作用于可迭代对象</p>
-<p>字符串是迭代的</p>
-<p>for循环：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> 变量 <span class="keyword">in</span> 可迭代的东西</span><br><span class="line">	代码</span><br></pre></td></tr></table></figure>
-
-<p>把可迭代的东西中的每一项内容拿出来，挨个的赋值给变量，每一次赋值都要执行一次循环体（代码）</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">pys = <span class="string">&quot;你好啊，试试这个怎么样&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> c <span class="keyword">in</span> s:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;这一次得到的东西是：&quot;</span>,c)</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231207210009457.png" alt="image-20231207210009457"></p>
-<p>for循环想要计数必须借助range</p>
-<h5 id="range-n-从0数到n，不包含n"><a href="#range-n-从0数到n，不包含n" class="headerlink" title="range(n):从0数到n，不包含n"></a>range(n):从0数到n，不包含n</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">for i in range(10): #0~9</span><br><span class="line">    print(i)</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231207210320576.png" alt="image-20231207210320576"></p>
-<h5 id="range-m-n-从m数到n，不包括n"><a href="#range-m-n-从m数到n，不包括n" class="headerlink" title="range(m,n):从m数到n，不包括n"></a>range(m,n):从m数到n，不包括n</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">3</span>,<span class="number">10</span>): <span class="comment"># 3~9</span></span><br><span class="line">    <span class="built_in">print</span>(i)</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231207210610570.png" alt="image-20231207210610570"></p>
-<h5 id="range-m-n-s-从m数到n，不包含n，每次的间隔是s"><a href="#range-m-n-s-从m数到n，不包含n，每次的间隔是s" class="headerlink" title="range(m,n,s):从m数到n，不包含n，每次的间隔是s"></a>range(m,n,s):从m数到n，不包含n，每次的间隔是s</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,<span class="number">10</span>,<span class="number">2</span>):</span><br><span class="line">    <span class="built_in">print</span>(i)</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231207211026377.png" alt="image-20231207211026377"></p>
-<p>平时更多使用for循环，while循环是死循环</p>
-<hr>
-<h3 id="pass使用"><a href="#pass使用" class="headerlink" title="pass使用"></a>pass使用</h3><p>pass代码代位，保证代码完整性</p>
-<hr>
-<h3 id="基础数据类型"><a href="#基础数据类型" class="headerlink" title="基础数据类型"></a>基础数据类型</h3><p>int :整数，加减乘除，大小比较</p>
-<p>a&#x3D;10</p>
-<p>float: 小数，浮点数</p>
-<p>a&#x3D; 10.5</p>
-<p>​	小数:数据范围是无限的，整数:在某一个特定的区间内是可以表示的很清楚的。</p>
-<p>​	计算机是一个二进制的产品:0，1</p>
-<p>​	计算机表示一个小数是会有误差的.</p>
-<p>bool :用来做条件判断的</p>
-<p>取值范围:True,False</p>
-<p>基础数据类型之间的转换</p>
-<p>在python中，所有的非零的数字都是True，零是False</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> <span class="number">1</span>:</span><br><span class="line">	<span class="built_in">print</span>(<span class="string">&quot;cao&quot;</span>) <span class="comment"># 死循环</span></span><br></pre></td></tr></table></figure>
-
-<p>在python中，所有的非空字符串都是True，空字符串是False</p>
-<p>综上，在python中，表示空的东西都是False，不空的东西都是True</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">list</span> = [<span class="number">0</span>] <span class="comment"># 列表list里面有东西，用bool表示仍为True</span></span><br></pre></td></tr></table></figure>
-
-
 
 
       
