@@ -103,7 +103,7 @@
 <p>这主要用于识别目标Web服务器软件及版本号,有利于后续安全评估和攻防对抗。</p>
 <p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240103205410250.png" alt="image-20240103205410250"></p>
 <p>以下操作均在kali中执行</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dirsearch -u &quot;http://192.168.30.139&quot; -x 403,404 </span><br></pre></td></tr></table></figure>
+<h4 id="dirsearch"><a href="#dirsearch" class="headerlink" title="dirsearch"></a>dirsearch</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dirsearch -u &quot;http://192.168.30.139&quot; -x 403,404 </span><br></pre></td></tr></table></figure>
 
 <p>查询该网站有哪些文件，方便后续攻击（耗时很久）</p>
 <p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202023-12-29%20160951.png" alt="屏幕截图 2023-12-29 160951"></p>
@@ -135,6 +135,9 @@
 
 <p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202023-12-29%20163751.png" alt="屏幕截图 2023-12-29 163751"></p>
 <h5 id="查询ip下有哪些主机"><a href="#查询ip下有哪些主机" class="headerlink" title="查询ip下有哪些主机"></a>查询ip下有哪些主机</h5><p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/QQ%E6%88%AA%E5%9B%BE20231229165559.png" alt="QQ截图20231229165559"></p>
+<h4 id="其他部分"><a href="#其他部分" class="headerlink" title="其他部分"></a>其他部分</h4><h5 id="企查查"><a href="#企查查" class="headerlink" title="企查查"></a><a target="_blank" rel="noopener" href="https://www.qcc.com/">企查查</a></h5><p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240107200104306.png" alt="image-20240107200104306"></p>
+<p>查询网站所属公司各种商业信息</p>
+<h5 id="爱企查"><a href="#爱企查" class="headerlink" title="爱企查"></a><a target="_blank" rel="noopener" href="https://aiqicha.baidu.com/">爱企查</a></h5><p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240107200506294.png" alt="image-20240107200506294"></p>
 <h3 id="已知域名"><a href="#已知域名" class="headerlink" title="已知域名"></a>已知域名</h3><p>全球域名图</p>
 <p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/c062ecddc0d3d1c0866497ce4798160a85706b8923678-yIw5YE_fw658" alt="img"></p>
 <p>一级域名（不贩卖）</p>
@@ -295,6 +298,96 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;qq.com&quot;&amp;&amp;country=&quot;CN&quot;&amp;&amp;body=&quot;腾讯公司 版权所有&quot;</span><br></pre></td></tr></table></figure>
 
 <p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240104192738881.png" alt="image-20240104192738881"></p>
+<h3 id="DNS解析"><a href="#DNS解析" class="headerlink" title="DNS解析"></a>DNS解析</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ping qq.com(网址)</span><br></pre></td></tr></table></figure>
+
+<p>来查看ip或者判断网址是否还活着</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/1.png" alt="1"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dig qq.com</span><br></pre></td></tr></table></figure>
+
+<p>dig命令用于查询域名系统(DNS)信息。</p>
+<p>命令dig qq.com会返回qq.com域名的以下DNS信息</p>
+<ul>
+<li>QUESTION SECTION查询的域名</li>
+<li>ANSWER SECTION返回的qq.com的IPv4地址</li>
+<li>ADDITIONAL SECTION返回的qq.com的IPv6地址</li>
+<li>SERVER查询使用的DNS服务器IP</li>
+<li>WHEN查询时间</li>
+<li>MSG SIZE返回信息包大小</li>
+</ul>
+<p>dig命令查询域名DNS记录,用于测试域名解析是否正常。</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/2.png" alt="2"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nslookup qq.com</span><br></pre></td></tr></table></figure>
+
+<p>nslookup命令用于查询域名系统信息。</p>
+<p>命令nslookup qq.com会返回qq.com域名的DNS查询结果</p>
+<ul>
+<li>Server: 查询使用的DNS服务器IP地址</li>
+<li>Name: 查询的域名</li>
+<li>Address: 域名对应的IPV4地址</li>
+</ul>
+<p>与dig命令不同的是,nslookup返回的结果直接显示域名对应的IP地址,而不显示额外的DNS记录类型等详细信息。</p>
+<p>此外,nslookup返回结果不是权威的,因为它使用公共DNS服务器查询,而不是从域名注册机构获取权威响应。</p>
+<p>总的来说,nslookup命令用于快速查询域名到IP的映射,验证域名是否可以正常解析;dig命令返回更全面详细的DNS记录信息,用于调试和分析域名系统设置。</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/3.png" alt="3"></p>
+<h3 id="web-finder（小米范）"><a href="#web-finder（小米范）" class="headerlink" title="web_finder（小米范）"></a>web_finder（小米范）</h3><p>Web_finder是一款开源的Java命令行工具,用于在网站上搜索文件和目录。</p>
+<p>下载好web_finder_2.9.jar</p>
+<p>确保自己的jdk版本是1.8</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -version</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240107201331916.png" alt="image-20240107201331916"></p>
+<p>在web_finder_2.9.jar目录下运行命令行窗口，运行命令</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -jar web_finder_2.9.jar</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240107201534976.png" alt="image-20240107201534976"></p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240107201553427.png" alt="image-20240107201553427"></p>
+<p>通过FOFA下载所需大量ip</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240107201813701.png" alt="image-20240107201813701"></p>
+<p>直接复制ip到<strong>新建扫描</strong>中</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240107202009308.png" alt="image-20240107202009308"></p>
+<p>点击开始进行扫描</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/4.png" alt="4"></p>
+<p>自行筛选看看有哪些网站能正常使用。</p>
+<h3 id="支付逻辑漏洞"><a href="#支付逻辑漏洞" class="headerlink" title="支付逻辑漏洞"></a>支付逻辑漏洞</h3><p>支付逻辑漏洞是指系统的支付流程中存在业务逻辑层面的漏洞</p>
+<p>常见支付流程：<br>选择商品和数量——选择支付及配送方式——生成订单编号——订单支付选择——完成支付</p>
+<p>如：最常见的支付逻辑漏洞通常是由于服务器端没有对客户端请求数据中的金额、数量等敏感信息进行效验导致。一般漏洞产生在电子商务类应用中。</p>
+<h5 id="支付逻辑漏洞一般分为四类："><a href="#支付逻辑漏洞一般分为四类：" class="headerlink" title="支付逻辑漏洞一般分为四类："></a>支付逻辑漏洞一般分为四类：</h5><p>1.支付过程中可以修改支付金额 2.可以将订单中的商品数量修改为负值 3.请求重放导致 4.其他问题（程序异常，其他参数修改导致问题等） 其他支付问题补充： 修改支付状态、修改附属值（优惠券积分等）、修改支付接口、替换多个订单、重复支付等。</p>
+<p>支付逻辑漏洞之修改订单数量：<br>1、登录网站，选择购买一个商品并抓取数据包</p>
+<p> 2、找到其中代表商品数量的参数，将参数的值修改为负数 </p>
+<p>3、发送数据包，生成订单，观察订单是否有效，是否能进入支付页面 </p>
+<p>4、完成支付</p>
+<h5 id="可能产生零元购漏洞的地方"><a href="#可能产生零元购漏洞的地方" class="headerlink" title="可能产生零元购漏洞的地方"></a>可能产生零元购漏洞的地方</h5><p>一，参数包里面没有价格，或者价格跟商品id 校验，导致无法修改商品金额 </p>
+<p>1，隐藏商品的模糊测试，商品id </p>
+<p>2，第一个:商品下单的处导致 </p>
+<p>3，第二个，商品购买处导致 </p>
+<p>4，购物车未校验加入零元商品商品 </p>
+<p>5，第四个是，支付宝接口和商品接口未校验导致商品任意购买 </p>
+<p>6.商品数量校验导致零元购， </p>
+<p>7.附带商品导致支付漏洞</p>
+<p>8.四舍五入导致支付漏洞系统的支付和微信的支付校验导致(提现) 0.009 0.01</p>
+<p>9.使用过红包的订单:有一个支付宝的订单号 有效期是15 分钟 商家对接支付宝取消订单红包返回无限使用</p>
+<p>并发漏洞(服务器对功能点的多线程处理):优惠券，微博的点赞关注 取消点赞，取。消关注 优惠商品下单所有的都能并发</p>
+<h3 id="弱口令"><a href="#弱口令" class="headerlink" title="弱口令"></a>弱口令</h3><p>弱口令(<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/weak/6157058?fromModule=lemma_inlink">weak</a> <a target="_blank" rel="noopener" href="https://baike.baidu.com/item/password/7200013?fromModule=lemma_inlink">password</a>)  没有严格和准确的定义，通常认为容易被别</p>
+<p>人（他们有可能对你很了解）猜测到或被破解工具破解的口令均为弱口</p>
+<p>令。弱口令指的是仅包含简单数字和字母的口令，例</p>
+<p>如“123”、“abc”等，因为这样的口令很容易被别人破解，从而使用户的</p>
+<p>计算机面临风险，因此不推荐用户使用。</p>
+<p>简单密码</p>
+<p>过于简单直白的口令,如123456、12345678等数字和字母组合。</p>
+<p>与账户相关的易知信息组成,如用户名、email后缀作为密码等。</p>
+<p>词典词汇,如名字、地点名、简单词汇组成的密码。</p>
+<p>系统默认口令未及时修改,如生产设备默认口令等。</p>
+<p>口令长度过短,通常小于8位口令较易破解。</p>
+<p>口令使用过于单一简单的模式,如只使用字母或只使用数字等。</p>
+<h4 id="相对-安全口令"><a href="#相对-安全口令" class="headerlink" title="相对-安全口令"></a>相对-安全口令</h4><p>1.不使用空口令或系统缺省的口令，因为这些口令众所周知，为典型的弱口令。</p>
+<p>2.口令长度不小于8个字符。</p>
+<p>3.口令不应该为连续的某个字符（例如：AAAAAAAA）或重复某些字符的组合（例如：tzf.tzf.）。</p>
+<p>4.口令应该为以下四类字符的组合，<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%A4%A7%E5%86%99%E5%AD%97%E6%AF%8D/4666274?fromModule=lemma_inlink">大写字母</a>(A-Z)、<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%B0%8F%E5%86%99%E5%AD%97%E6%AF%8D/4666069?fromModule=lemma_inlink">小写字母</a>(a-z)、数字(0-9)和<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E7%89%B9%E6%AE%8A%E5%AD%97%E7%AC%A6/112715?fromModule=lemma_inlink">特殊字符</a>。每类字符至少包含一个。如果某类字符只包含一个，那么该字符不应为首字符或尾字符。</p>
+<p>5.口令中不应包含本人、父母、子女和配偶的姓名和出生日期、纪念日期、<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E7%99%BB%E5%BD%95%E5%90%8D/2673764?fromModule=lemma_inlink">登录名</a>、<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/E-mail/225278?fromModule=lemma_inlink">E-mail</a>地址等等与本人有关的信息，以及字典中的单词。</p>
+<p>6.口令不应该为用数字或符号代替某些字母的单词。</p>
+<p>7.口令应该易记且可以快速输入，防止他人从你身后很容易看到你的输入。</p>
+<p>8.至少90天内更换一次口令，防止未被发现的入侵者继续使用该口令。</p>
+<h4 id="问题网站"><a href="#问题网站" class="headerlink" title="问题网站"></a>问题网站</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">http://222.182.184.116:9000/index.html</span><br><span class="line"></span><br><span class="line">http://117.174.166.233:800/index.htm?_1704615568</span><br><span class="line"></span><br><span class="line">http://121.224.236.101:800/index.htm?_1704613620</span><br><span class="line"></span><br><span class="line">http://49.232.208.224:8003/#/optimizedSchedul</span><br><span class="line"></span><br><span class="line">http://119.91.139.108:8091/admin/index.html</span><br><span class="line"></span><br><span class="line">http://112.91.154.58:7002/IDWebSoft/Home/</span><br><span class="line"></span><br><span class="line">http://59.37.160.245:800/index.htm?_1704614137</span><br></pre></td></tr></table></figure>
+
 
       
     </div>
