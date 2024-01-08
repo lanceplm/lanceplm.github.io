@@ -3024,56 +3024,14 @@
 <p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/367d1e261bd2bad8d1a7275d8d8f36e0.png" alt="img"></p>
 <p><strong>其他特殊符号</strong></p>
 <p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/3854c2338a94c7c3acd7646335113a81.png" alt="img"></p>
-<h4 id="Bash变量"><a href="#Bash变量" class="headerlink" title="Bash变量"></a>Bash变量</h4><h5 id="用户自定义变量"><a href="#用户自定义变量" class="headerlink" title="用户自定义变量"></a>用户自定义变量</h5><h5 id="什么是变量"><a href="#什么是变量" class="headerlink" title="什么是变量"></a>什么是变量</h5><pre><code>变量是计算机内存的单元，其中存放的值可以改变。当Shell脚本需要保存一些信息时，如一个文件名或是一个数字，就把它存放在一个变量中。每个变量有一个名字，所以很容易引用它。使用变量可以保存有用信息，使系统获知用户相关设置，变量也可以用于保存暂时信息。
-</code></pre>
-<h5 id="变量设置规则"><a href="#变量设置规则" class="headerlink" title="变量设置规则"></a>变量设置规则</h5><pre><code>变量名称可以由字母、数字和下划线组成，但是不能以数字开头。如果变量名是“2name”则是错误的。
+<h4 id="Bash变量"><a href="#Bash变量" class="headerlink" title="Bash变量"></a>Bash变量</h4><h5 id="用户自定义变量"><a href="#用户自定义变量" class="headerlink" title="用户自定义变量"></a>用户自定义变量</h5><h5 id="什么是变量"><a href="#什么是变量" class="headerlink" title="什么是变量"></a>什么是变量</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">变量是计算机内存的单元，其中存放的值可以改变。当Shell脚本需要保存一些信息时，如一个文件名或是一个数字，就把它存放在一个变量中。每个变量有一个名字，所以很容易引用它。使用变量可以保存有用信息，使系统获知用户相关设置，变量也可以用于保存暂时信息。</span><br></pre></td></tr></table></figure>
 
-在Bash中，变量的默认类型都是字符串型，如果要进行数值运算，则必修指定变量类型为数值型。
+<h5 id="变量设置规则"><a href="#变量设置规则" class="headerlink" title="变量设置规则"></a>变量设置规则</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">变量名称可以由字母、数字和下划线组成，但是不能以数字开头。如果变量名是“2name”则是错误的。</span><br><span class="line"></span><br><span class="line">在Bash中，变量的默认类型都是字符串型，如果要进行数值运算，则必修指定变量类型为数值型。</span><br><span class="line"></span><br><span class="line">变量用等号连接值，等号左右两侧不能有空格。</span><br><span class="line"></span><br><span class="line">变量的值如果有空格，需要使用单引号或双引号包括。</span><br><span class="line"></span><br><span class="line">在变量的值中，可以使用“\”转义符。</span><br><span class="line"></span><br><span class="line">如果需要增加变量的值，那么可以进行变量值的叠加。不过变量需要用双引号包含“$变量名”或用$&#123;变量名&#125;包含。</span><br><span class="line"></span><br><span class="line">如果是把命令的结果作为变量值赋予变量，则需要使用反引号或$()包含命令。</span><br><span class="line"></span><br><span class="line">环境变量名建议大写，便于区分。</span><br></pre></td></tr></table></figure>
 
-变量用等号连接值，等号左右两侧不能有空格。
+<h5 id="变量分类"><a href="#变量分类" class="headerlink" title="变量分类"></a>变量分类</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">用户自定义变量  环境变量：这种变量中主要保存的是和系统操作环境相关的数据。</span><br><span class="line"></span><br><span class="line">位置参数变量：这种变量主要是用来向脚本当中传递参数或数据的，变量名不能自定义，变量作用是固定的。</span><br><span class="line"></span><br><span class="line">预定义变量：是Bash中已经定义好的变量，变量名不能自定义，变量作用也是固定的。</span><br></pre></td></tr></table></figure>
 
-变量的值如果有空格，需要使用单引号或双引号包括。
+<h5 id="本地变量"><a href="#本地变量" class="headerlink" title="本地变量"></a>本地变量</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">变量定义</span><br><span class="line"></span><br><span class="line">    [root@localhost ~]# name=&quot;shen chao&quot;</span><br><span class="line"></span><br><span class="line">变量叠加</span><br><span class="line"></span><br><span class="line">    [root@localhost ~]# aa=123</span><br><span class="line"></span><br><span class="line">    [root@localhost ~]# aa=&quot;$aa&quot;456</span><br><span class="line"></span><br><span class="line">    [root@localhost ~]# aa=$&#123;aa&#125;789</span><br><span class="line"></span><br><span class="line">变量调用</span><br><span class="line"></span><br><span class="line">    [root@localhost ~]# echo $name</span><br><span class="line"></span><br><span class="line">变量查看</span><br><span class="line"></span><br><span class="line">    [root@localhost ~]# set</span><br><span class="line"></span><br><span class="line">    查看当前系统全部变量</span><br><span class="line"></span><br><span class="line">变量删除</span><br><span class="line"></span><br><span class="line">    [root@localhost ~]# unset name</span><br></pre></td></tr></table></figure>
 
-在变量的值中，可以使用“\”转义符。
-
-如果需要增加变量的值，那么可以进行变量值的叠加。不过变量需要用双引号包含“$变量名”或用$&#123;变量名&#125;包含。
-
-如果是把命令的结果作为变量值赋予变量，则需要使用反引号或$()包含命令。
-
-环境变量名建议大写，便于区分。
-</code></pre>
-<h5 id="变量分类"><a href="#变量分类" class="headerlink" title="变量分类"></a>变量分类</h5><pre><code>用户自定义变量  环境变量：这种变量中主要保存的是和系统操作环境相关的数据。
-
-位置参数变量：这种变量主要是用来向脚本当中传递参数或数据的，变量名不能自定义，变量作用是固定的。
-
-预定义变量：是Bash中已经定义好的变量，变量名不能自定义，变量作用也是固定的。
-</code></pre>
-<h5 id="本地变量"><a href="#本地变量" class="headerlink" title="本地变量"></a>本地变量</h5><pre><code>变量定义
-
-    [root@localhost ~]# name=&quot;shen chao&quot;
-
-变量叠加
-
-    [root@localhost ~]# aa=123
-
-    [root@localhost ~]# aa=&quot;$aa&quot;456
-
-    [root@localhost ~]# aa=$&#123;aa&#125;789
-
-变量调用
-
-    [root@localhost ~]# echo $name
-
-变量查看
-
-    [root@localhost ~]# set
-
-    查看当前系统全部变量
-
-变量删除
-
-    [root@localhost ~]# unset name
-</code></pre>
 <h4 id="环境变量"><a href="#环境变量" class="headerlink" title="环境变量"></a>环境变量</h4><p><strong>环境变量是什么</strong></p>
 <ul>
 <li>用户自定义变量只在当前的Shell中生效，而环境变量会在当前Shell和这个Shell的所有子Shell当中生效。如果把环境变量写入相应的配置文件，那么这个环境变量就会在所有的Shell中生效</li>
@@ -3091,87 +3049,26 @@
 <h4 id="预定义变量"><a href="#预定义变量" class="headerlink" title="预定义变量"></a>预定义变量</h4><p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/dd23886dd82e994aea4c04764875e7ab.png" alt="img"></p>
 <h4 id="Bash运算符"><a href="#Bash运算符" class="headerlink" title="Bash运算符"></a>Bash运算符</h4><h5 id="数值运算与运算符"><a href="#数值运算与运算符" class="headerlink" title="数值运算与运算符"></a>数值运算与运算符</h5><p>declare声明变量类型</p>
 <p>数值运算</p>
-<pre><code>[root@localhost ~]# declare [+/-][选项] 变量名 
- 
-选项：  
-  -：  给变量设定类型属性  
-  +:   取消变量的类型属性  
- -i:   将变量声明为整数型（integer）  
- -x:   将变量声明为环境变量  
- -p:   显示指定变量的被声明的类型 
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# declare [+/-][选项] 变量名 </span><br><span class="line"> </span><br><span class="line">选项：  </span><br><span class="line">  -：  给变量设定类型属性  </span><br><span class="line">  +:   取消变量的类型属性  </span><br><span class="line"> -i:   将变量声明为整数型（integer）  </span><br><span class="line"> -x:   将变量声明为环境变量  </span><br><span class="line"> -p:   显示指定变量的被声明的类型 </span><br><span class="line"></span><br><span class="line">方法1：</span><br><span class="line">[root@localhost ~]# aa=11 </span><br><span class="line">[root@localhost ~]# bb=22 #给变量aa和bb赋值</span><br><span class="line">[root@localhost ~]# declare -i cc=$aa+$bb</span><br><span class="line"> </span><br><span class="line">方法2：expr或let数值运算工具 </span><br><span class="line">[root@localhost ~]# aa=11 </span><br><span class="line">[root@localhost ~]# bb=22 </span><br><span class="line">#给变量aa和变量bb赋值 </span><br><span class="line">[root@localhost ~]# dd=$(expr $aa + $bb) </span><br><span class="line">#dd的值是aa和bb的和。注意“+”号左右两侧必须有空格  </span><br><span class="line"> </span><br><span class="line">方法3：“$((运算式))”或“$[运算式]” (推荐)</span><br><span class="line">[root@localhost ~]# aa=11 </span><br><span class="line">[root@localhost ~]# bb=22 </span><br><span class="line">[root@localhost ~]# ff=$(( $aa+$bb )) </span><br><span class="line">[root@localhost ~]# gg=$[ $aa+$bb ]</span><br></pre></td></tr></table></figure>
 
-方法1：
-[root@localhost ~]# aa=11 
-[root@localhost ~]# bb=22 #给变量aa和bb赋值
-[root@localhost ~]# declare -i cc=$aa+$bb
- 
-方法2：expr或let数值运算工具 
-[root@localhost ~]# aa=11 
-[root@localhost ~]# bb=22 
-#给变量aa和变量bb赋值 
-[root@localhost ~]# dd=$(expr $aa + $bb) 
-#dd的值是aa和bb的和。注意“+”号左右两侧必须有空格  
- 
-方法3：“$((运算式))”或“$[运算式]” (推荐)
-[root@localhost ~]# aa=11 
-[root@localhost ~]# bb=22 
-[root@localhost ~]# ff=$(( $aa+$bb )) 
-[root@localhost ~]# gg=$[ $aa+$bb ]
-</code></pre>
 <h4 id="环境变量配置文件"><a href="#环境变量配置文件" class="headerlink" title="环境变量配置文件"></a>环境变量配置文件</h4><h5 id="配置文件简介"><a href="#配置文件简介" class="headerlink" title="配置文件简介"></a>配置文件简介</h5><h5 id="source命令"><a href="#source命令" class="headerlink" title="source命令"></a>source命令</h5><p>source命令通常用于保留、更改当前shell中的环境变量。</p>
-<pre><code>[root@localhost ~]# source 配置文件 
-或 
-[root@localhost ~]# . 配置文件  
-</code></pre>
-<h5 id="环境变量配置文件简介"><a href="#环境变量配置文件简介" class="headerlink" title="环境变量配置文件简介"></a>环境变量配置文件简介</h5><pre><code>环境变量配置文件中主要是定义对系统的操作环境生效的系统默认环境变量，比如PATH、HISTSIZE、PS1、HOSTNAME等默认环境变量。
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# source 配置文件 </span><br><span class="line">或 </span><br><span class="line">[root@localhost ~]# . 配置文件  </span><br></pre></td></tr></table></figure>
 
-/etc/profile
+<h5 id="环境变量置文件简介"><a href="#环境变量置文件简介" class="headerlink" title="环境变量置文件简介"></a>环境变量置文件简介</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">环境变量配置文件中主要是定义对系统的操作环境生效的系统默认环境变量，比如PATH、HISTSIZE、PS1、HOSTNAME等默认环境变量。</span><br><span class="line"></span><br><span class="line">/etc/profile</span><br><span class="line"></span><br><span class="line">/etc/profile.d/*.sh</span><br><span class="line"></span><br><span class="line">~/.bash_profile</span><br><span class="line"></span><br><span class="line">~/.bashrc</span><br><span class="line"></span><br><span class="line">/etc/bashrc</span><br></pre></td></tr></table></figure>
 
-/etc/profile.d/*.sh
-
-~/.bash_profile
-
-~/.bashrc
-
-/etc/bashrc
-</code></pre>
 <h5 id="环境变量配置文件作用"><a href="#环境变量配置文件作用" class="headerlink" title="环境变量配置文件作用"></a>环境变量配置文件作用</h5><p>配置文件列表如下：</p>
-<pre><code>/etc/profile
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">/etc/profile</span><br><span class="line"></span><br><span class="line">/etc/profile.d/*.sh</span><br><span class="line"></span><br><span class="line">~/.bash_profile</span><br><span class="line"></span><br><span class="line">~/.bashrc</span><br><span class="line"></span><br><span class="line">/etc/bashrc</span><br></pre></td></tr></table></figure>
 
-/etc/profile.d/*.sh
-
-~/.bash_profile
-
-~/.bashrc
-
-/etc/bashrc
-</code></pre>
 <p>tips:&#x2F;etc 目录下的对所有用户都生效</p>
 <p>~&#x2F;.bash_profile 和 ~&#x2F;.bashrc -&gt; 每个用户自己的配置文件，只对用户生效。</p>
 <h5 id="配置文件读取顺序"><a href="#配置文件读取顺序" class="headerlink" title="配置文件读取顺序"></a>配置文件读取顺序</h5><p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/7c980a975d73d87808a7749ca284e2ac.png" alt="img"></p>
 <p>上图从左到右如果有叠加。后面的命令会覆盖前面的命令。</p>
 <p>&#x2F;etc&#x2F;profile的作用：</p>
-<pre><code>USER变量：
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">USER变量：</span><br><span class="line"></span><br><span class="line">LOGNAME变量：</span><br><span class="line"></span><br><span class="line">MAIL变量：</span><br><span class="line"></span><br><span class="line">PATH变量：</span><br><span class="line"></span><br><span class="line">HOSTNAME变量：</span><br><span class="line"></span><br><span class="line">HISTSIZE变量：</span><br><span class="line"></span><br><span class="line">umask：</span><br><span class="line"></span><br><span class="line">调用/etc/profile.d/*.sh文件</span><br></pre></td></tr></table></figure>
 
-LOGNAME变量：
-
-MAIL变量：
-
-PATH变量：
-
-HOSTNAME变量：
-
-HISTSIZE变量：
-
-umask：
-
-调用/etc/profile.d/*.sh文件
-</code></pre>
 <p>~&#x2F;.bash_profile的作用</p>
-<pre><code>用了~/.bashrc文件。
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">用了~/.bashrc文件。</span><br><span class="line"></span><br><span class="line">在PATH变量后面加入了“:$HOME/bin”这个目录</span><br></pre></td></tr></table></figure>
 
-在PATH变量后面加入了“:$HOME/bin”这个目录
-</code></pre>
 <h4 id="其他配置文件和登录信息"><a href="#其他配置文件和登录信息" class="headerlink" title="其他配置文件和登录信息"></a>其他配置文件和登录信息</h4><p>注销时生效的环境变量配置文件</p>
 <ul>
 <li>~&#x2F;.bash_logout</li>
