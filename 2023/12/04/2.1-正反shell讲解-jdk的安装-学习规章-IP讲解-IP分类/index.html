@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>2.1 正反shell讲解/jdk的安装/学习规章/IP讲解/IP分类 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="网络安全相关网站：cve、cnvd(www.cnvd.org.cn)、cnnvd 正反shell讲解信息连接：（server：服务端，client：客户端） s&lt;-c:反弹shell，反连  server端发一个能监听自身0.0.0.0：8888端口的马给clint端，服务器端接收马后持续发信息给s的0.0.0.0：8888端口信息 s-&gt;c:正向shell  server端发一个马到">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2.1 正反shell讲解&#x2F;jdk的安装&#x2F;学习规章&#x2F;IP讲解&#x2F;IP分类">
+<meta property="og:url" content="http://example.com/2023/12/04/2.1-%E6%AD%A3%E5%8F%8Dshell%E8%AE%B2%E8%A7%A3-jdk%E7%9A%84%E5%AE%89%E8%A3%85-%E5%AD%A6%E4%B9%A0%E8%A7%84%E7%AB%A0-IP%E8%AE%B2%E8%A7%A3-IP%E5%88%86%E7%B1%BB/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="网络安全相关网站：cve、cnvd(www.cnvd.org.cn)、cnnvd 正反shell讲解信息连接：（server：服务端，client：客户端） s&lt;-c:反弹shell，反连  server端发一个能监听自身0.0.0.0：8888端口的马给clint端，服务器端接收马后持续发信息给s的0.0.0.0：8888端口信息 s-&gt;c:正向shell  server端发一个马到">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231204112748363.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231204112652158.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/fcde92c99eb54b39bf1ab983a1f035ea.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231204172854467.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231204173037964.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231204173432571.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231204173841960.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231204173857861.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231204174313578.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231204174515527.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231204174502069.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231204155515239.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210143928904.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231204163601268.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/b0fd8be3d569103b9a790edfa87d7f4.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210144238867.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210122540284.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210122648617.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210122735857.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210122857418.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210123050445.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210173122039.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210173341273.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210173445837.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210173554867.png">
+<meta property="article:published_time" content="2023-12-04T01:06:56.000Z">
+<meta property="article:modified_time" content="2023-12-10T09:35:59.954Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231204112748363.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-2.1-正反shell讲解-jdk的安装-学习规章-IP讲解-IP分类" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/12/04/2.1-%E6%AD%A3%E5%8F%8Dshell%E8%AE%B2%E8%A7%A3-jdk%E7%9A%84%E5%AE%89%E8%A3%85-%E5%AD%A6%E4%B9%A0%E8%A7%84%E7%AB%A0-IP%E8%AE%B2%E8%A7%A3-IP%E5%88%86%E7%B1%BB/" class="article-date">
+  <time class="dt-published" datetime="2023-12-04T01:06:56.000Z" itemprop="datePublished">2023-12-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      2.1 正反shell讲解/jdk的安装/学习规章/IP讲解/IP分类
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h5 id="网络安全相关网站："><a href="#网络安全相关网站：" class="headerlink" title="网络安全相关网站："></a>网络安全相关网站：</h5><p>cve、cnvd(<a target="_blank" rel="noopener" href="http://www.cnvd.org.cn)、cnnvd/">www.cnvd.org.cn)、cnnvd</a></p>
+<h3 id="正反shell讲解"><a href="#正反shell讲解" class="headerlink" title="正反shell讲解"></a>正反shell讲解</h3><p>信息连接：（server：服务端，client：客户端）</p>
+<p>s&lt;-c:反弹shell，反连</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231204112748363.png" alt="image-20231204112748363"></p>
+<p>server端发一个能监听自身0.0.0.0：8888端口的马给clint端，服务器端接收马后持续发信息给s的0.0.0.0：8888端口信息</p>
+<p>s-&gt;c:正向shell</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231204112652158.png" alt="image-20231204112652158"></p>
+<p>server端发一个马到clint端，获取c的ip—0.0.0.0：8888，server通过监听0.0.0.0：8888来获取数据，但是获取期间需要透过防火墙来获取信息。（0.0.0.0代表任意ip）</p>
+<p>综上所述，一般的远控一般都是反向shell</p>
+<hr>
+<h3 id="jdk的安装："><a href="#jdk的安装：" class="headerlink" title="jdk的安装："></a>jdk的安装：</h3><h5 id="jdk的下载"><a href="#jdk的下载" class="headerlink" title="jdk的下载"></a>jdk的下载</h5><p>官网下载地址：<a target="_blank" rel="noopener" href="https://www.oracle.com/java/technologies/javase/javase8-archive-downloads.html">https://www.oracle.com/java/technologies/javase/javase8-archive-downloads.html</a></p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/fcde92c99eb54b39bf1ab983a1f035ea.png" alt="img">双击点击安装，jdk安装路径可以自行安装，但是尽量选择原路径。</p>
+<h5 id="文件说明"><a href="#文件说明" class="headerlink" title="文件说明"></a>文件说明</h5><p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231204172854467.png" alt="image-20231204172854467"></p>
+<p>bin：提供 JDK 工具程序，包括 javac、java、javadoc、appletviewer 等可执行程序。</p>
+<p>include：存放用于本地访问的文件。</p>
+<p>jre：存放 Java 运行环境文件。</p>
+<p>lib：存放 Java 的类库文件，工具程序实际上使用的是 Java 类库。JDK 中的工具程序，大多也由 Java 编写而成。</p>
+<p>src.zip：Java 提供的 API 类的源代码压缩文件。如果需要查看 API 的某些功能是如何实现的，可以査看这个文件中的源代码内容。</p>
+<h5 id="测试jdk"><a href="#测试jdk" class="headerlink" title="测试jdk"></a>测试jdk</h5><p>开始-&gt;运行-&gt;cmd</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -version</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231204173037964.png" alt="image-20231204173037964"></p>
+<p>根据版本不同，显示的数字也不同，</p>
+<h5 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a>配置环境变量</h5><p>右键此电脑-&gt;属性-&gt;高级系统设置-&gt;环境变量</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231204173432571.png" alt="image-20231204173432571"></p>
+<p>在系统变量中新建一个变量</p>
+<p>变量名为  JAVA_HOME  ,变量值为%JAVA_HOME8%，数字8应该为你用的jdk版本，如果以后安装更多的jdk只需要更改%JAVA_HOME8%中的数字。</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231204173841960.png" alt="image-20231204173841960"></p>
+<p>在系统变量中新建一个变量</p>
+<p>变量名为  JAVA_HOME8,变量值为jdk版本所在文件位置，安装更多的jdk只需要新建更多的系统变量，变量名应为JAVA_HOME+版本号，变量值为jdk所在位置</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231204173857861.png" alt="image-20231204173857861"></p>
+<p>在系统变量中双击Path</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231204174313578.png" alt="image-20231204174313578"></p>
+<p>分别新建两个内容，填上：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">%JAVA_HOME%\jre\bin</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231204174515527.png" alt="image-20231204174515527"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">%JAVA_HOME%\bin</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231204174502069.png" alt="image-20231204174502069"></p>
+<p>jdk就正式安装成功了。</p>
+<hr>
+<h3 id="学习推荐"><a href="#学习推荐" class="headerlink" title="学习推荐"></a>学习推荐</h3><p>Python的代码推荐使用vscode</p>
+<p>vscode推荐的插件：code run、Python</p>
+<hr>
+<h3 id="学习规章："><a href="#学习规章：" class="headerlink" title="学习规章："></a>学习规章：</h3><p>1.文件名、文件目录不能是中文</p>
+<p>2.文件夹命名空格以“_”做代替</p>
+<p>3.遇到报错以管理员身份运行</p>
+<p>4.文件命名驼峰命名法</p>
+<p>5.应用不要装C盘</p>
+<p>6.卸载软件不能直接删文件夹，使用geek卸载</p>
+<p>7.每天写笔记</p>
+<p>8.早晚打卡</p>
+<p>9.请假在企业微信</p>
+<p>10.每个知识点有提高部分（隐藏）</p>
+<p>11.作息时间：9:00-11:30   14:00-17:30    19:00-21:00</p>
+<hr>
+<h3 id="IP讲解"><a href="#IP讲解" class="headerlink" title="IP讲解"></a>IP讲解</h3><p>windows系统查询ip地址-cmd输入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ipconfig</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231204155515239.png" alt="image-20231204155515239"></p>
+<p>ipv4每个位置命名</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210143928904.png" alt="image-20231210143928904"></p>
+<p>每个位置的最大可用地址为254即254.254.254.254，最大位置为255即255.255.255.255</p>
+<p>d位.1表示网关，.255表示广播地址。</p>
+<p>192.168.1.0是网络地址，192.168.168.255是广播地址。</p>
+<p>192.168.1.1是一个IP地址。</p>
+<p>具体来说:</p>
+<ul>
+<li>192.168.1.1是一个私有IP地址,它属于192.168.0.0&#x2F;16网段内部的地址。</li>
+<li>192.168.1.1符合IPv4地址格式,共分为4段数字,每段范围在0-255之间。</li>
+<li>根据不同的上下文,192.168.1.1可以代表不同的地址类型:<ul>
+<li>如果是单独的主机,那么它就是这个主机的IP地址。</li>
+<li>如果是子网,那么它可能是:<ul>
+<li>子网的网络地址(很少情况)</li>
+<li>子网内第一个可用的主机地址</li>
+<li>子网的网关地址,路由器或交换机的IP地址</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>一般来说,192.168.1.1最常见的情况是作为子网内第一个可用地址分配,也常作为子网的默认网关地址。</li>
+</ul>
+<p>所以总结来说,192.168.1.1是一个私有IP地址,它可能代表单独主机的IP,也可能是子网内第一个地址或默认网关地址。</p>
+<p>192.168.1.1&#x2F;30是一个子网掩码为30位的子网。</p>
+<p><em>子网掩码</em>30位,表示:</p>
+<ul>
+<li>网络地址部分:192.168.1.0</li>
+<li>主机地址部分:2位(2^2&#x3D;4个地址)</li>
+</ul>
+<p>所以该子网可以分配的IP地址有:</p>
+<ul>
+<li>网络地址:192.168.1.0</li>
+<li>广播地址:192.168.1.3</li>
+<li>可用主机地址:192.168.1.1、192.168.1.2</li>
+</ul>
+<p>总共可以分配2个IP地址给主机使用。</p>
+<p>所以答案是:192.168.1.1&#x2F;30子网可以分配2个主机IP地址。</p>
+<p>a有8位，b有8位，c有8位，d应该有8位a+b+c+d&#x3D;32</p>
+<p>192.168.1.1&#x2F;30 8+8+8+6&#x3D;30,32-30&#x3D;2,主机地址有两位（2^两&#x3D;4个地址），分别减去网络地址(192.168.1.0)和广播地址(192.168.1.3)，可用地址剩下的是192.168.1.1、192.168.1.2</p>
+<p>192.168.1.0不是一个合法的IP地址,它是网络地址,不能直接作为主机或网关使用。</p>
+<p>正确的情况是:</p>
+<ul>
+<li>网络地址: 192.168.1.0</li>
+<li>第一个可用主机地址: 192.168.1.1</li>
+<li>网关地址: 192.168.1.1</li>
+</ul>
+<p>理由如下:</p>
+<ul>
+<li>在IP地址分配中,网络地址是不可用的,它只表示子网本身。</li>
+<li>根据地址分配规则,第一个可用地址应该是网络地址加1,也就是192.168.1.1。</li>
+<li>网关地址一般设置为第一个可用主机地址,也就是192.168.1.1,以便路由转发。</li>
+</ul>
+<p>所以您指出的正确,192.168.1.0是网络地址,不应该作为主机或网关使用。网关地址应该是第一个可用主机地址192.168.1.1。</p>
+<hr>
+<h3 id="IP分类"><a href="#IP分类" class="headerlink" title="IP分类"></a>IP分类</h3><p>一般电脑ip地址一般是在A类、B类、C类，D类和E类是用于科研，一般人用不到。</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231204163601268.png" alt="image-20231204163601268"></p>
+<p>私网IP：</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/b0fd8be3d569103b9a790edfa87d7f4.png" alt="b0fd8be3d569103b9a790edfa87d7f4"></p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210144238867.png" alt="image-20231210144238867"></p>
+<p>正常信息传输过程。</p>
+<hr>
+<h3 id="Android远控"><a href="#Android远控" class="headerlink" title="Android远控"></a>Android远控</h3><ol>
+<li><p>下载AhMyth_Win64.exe，直接双击文件安装</p>
+</li>
+<li><p>出现该图标表示安装成功</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210122540284.png" alt="image-20231210122540284"></p>
+</li>
+<li><p>运行cmd命令窗口，输入ipconfig查询本机ip</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ipconfig</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210122648617.png" alt="image-20231210122648617"></p>
+</li>
+<li><p>右键管理员运行</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210122735857.png" alt="image-20231210122735857"></p>
+</li>
+<li><p>点击APK Builder，在Source IP输入本机ip</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210122857418.png" alt="image-20231210122857418"></p>
+</li>
+<li><p>点击Build,创建apk</p>
+</li>
+<li><p>报错</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210123050445.png" alt="image-20231210123050445"></p>
+</li>
+<li><p>切换系统仍然报错（win10,虚拟机win10,虚拟机win7）</p>
+</li>
+<li><p>在win10虚拟机中配置jdk8成功生成apk</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210173122039.png" alt="image-20231210173122039"></p>
+</li>
+<li><p>将其安装到模拟器中，模拟器运行apk后点击listen</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210173341273.png" alt="image-20231210173341273"></p>
+</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210173445837.png" alt="image-20231210173445837"></p>
+<ol start="11">
+<li><p>点击open the lab</p>
+</li>
+<li><p>后续可执行任务</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210173554867.png" alt="image-20231210173554867"></p>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/12/04/2.1-%E6%AD%A3%E5%8F%8Dshell%E8%AE%B2%E8%A7%A3-jdk%E7%9A%84%E5%AE%89%E8%A3%85-%E5%AD%A6%E4%B9%A0%E8%A7%84%E7%AB%A0-IP%E8%AE%B2%E8%A7%A3-IP%E5%88%86%E7%B1%BB/" data-id="clrcswxkf0007ugwkb09f91b3" data-title="2.1 正反shell讲解/jdk的安装/学习规章/IP讲解/IP分类" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2023/12/05/3.1-%E8%B7%AF%E7%94%B1%E7%9B%B8%E5%85%B3-TCPIP%E6%A8%A1%E5%9E%8B-%E8%B7%AF%E7%94%B1%E8%A1%A8%E7%9B%B8%E5%85%B3-Proxy(%E4%BB%A3%E7%90%86)%E9%85%8D%E7%BD%AE-TCP%E5%8D%8F%E8%AE%AE-Wireshark%20%E5%9F%BA%E6%9C%AC%E5%8A%9F%E8%83%BD/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          3.1-路由相关-TCP/IP模型-路由表相关-Proxy(代理)配置-TCP协议-Wireshark 基本功能
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2023/12/03/python1.2-Python%E7%BB%83%E4%B9%A0/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">python1.2-Pytho练习</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/01/">January 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/12/">December 2023</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2024/01/14/hexo%E5%8D%9A%E5%AE%A2%E6%A0%BC%E5%BC%8F%EF%BC%88%E5%8D%9A%E5%AE%A2%E7%89%88%EF%BC%89/">markdown的使用说明</a>
+          </li>
+        
+          <li>
+            <a href="/2024/01/14/DB/">DB</a>
+          </li>
+        
+          <li>
+            <a href="/2024/01/14/13.1-%E6%89%93%E9%9D%B6/">13.1-打靶</a>
+          </li>
+        
+          <li>
+            <a href="/2024/01/14/14.1-%E4%BB%A3%E7%90%86-%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/">14.1-代理-流量分析</a>
+          </li>
+        
+          <li>
+            <a href="/2024/01/14/1.3-%E5%8D%9A%E5%AE%A2%E7%9A%84%E7%BC%96%E5%86%99%E4%B8%8E%E4%B8%8A%E4%BC%A0/">1.3-博客的编写与上传</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2024 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

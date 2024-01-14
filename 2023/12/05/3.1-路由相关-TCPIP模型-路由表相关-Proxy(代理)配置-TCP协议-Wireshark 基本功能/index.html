@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>3.1-路由相关-TCP/IP模型-路由表相关-Proxy(代理)配置-TCP协议-Wireshark 基本功能 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="路由相关 静态路由：路线固定动态路由：根据最优解判断路线    动态ip：根据路由器dhcp分配ip，上线分配ip，下线回收ip静态ip：手动设置ip  同时，静态优先     DHCP：:DHCP服务器负责动态分配IP地址、子网掩码和默认网关等网络配置信息。   TCP&#x2F;IP模型：127.0.0.1 本地回环地址 0.0.0.0 &#x3D;&#x3D;&#x3D;&#x3D;*匹配任">
+<meta property="og:type" content="article">
+<meta property="og:title" content="3.1-路由相关-TCP&#x2F;IP模型-路由表相关-Proxy(代理)配置-TCP协议-Wireshark 基本功能">
+<meta property="og:url" content="http://example.com/2023/12/05/3.1-%E8%B7%AF%E7%94%B1%E7%9B%B8%E5%85%B3-TCPIP%E6%A8%A1%E5%9E%8B-%E8%B7%AF%E7%94%B1%E8%A1%A8%E7%9B%B8%E5%85%B3-Proxy(%E4%BB%A3%E7%90%86)%E9%85%8D%E7%BD%AE-TCP%E5%8D%8F%E8%AE%AE-Wireshark%20%E5%9F%BA%E6%9C%AC%E5%8A%9F%E8%83%BD/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="路由相关 静态路由：路线固定动态路由：根据最优解判断路线    动态ip：根据路由器dhcp分配ip，上线分配ip，下线回收ip静态ip：手动设置ip  同时，静态优先     DHCP：:DHCP服务器负责动态分配IP地址、子网掩码和默认网关等网络配置信息。   TCP&#x2F;IP模型：127.0.0.1 本地回环地址 0.0.0.0 &#x3D;&#x3D;&#x3D;&#x3D;*匹配任">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210145439490.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210145948324.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210150058929.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210150823605.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210151538873.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210151924606.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231205152408852.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231205152800698.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231205153445807.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231205154023554.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231205155700985.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231205163311224.png">
+<meta property="article:published_time" content="2023-12-05T01:10:00.000Z">
+<meta property="article:modified_time" content="2023-12-10T07:20:00.219Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210145439490.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-3.1-路由相关-TCPIP模型-路由表相关-Proxy(代理)配置-TCP协议-Wireshark 基本功能" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/12/05/3.1-%E8%B7%AF%E7%94%B1%E7%9B%B8%E5%85%B3-TCPIP%E6%A8%A1%E5%9E%8B-%E8%B7%AF%E7%94%B1%E8%A1%A8%E7%9B%B8%E5%85%B3-Proxy(%E4%BB%A3%E7%90%86)%E9%85%8D%E7%BD%AE-TCP%E5%8D%8F%E8%AE%AE-Wireshark%20%E5%9F%BA%E6%9C%AC%E5%8A%9F%E8%83%BD/" class="article-date">
+  <time class="dt-published" datetime="2023-12-05T01:10:00.000Z" itemprop="datePublished">2023-12-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      3.1-路由相关-TCP/IP模型-路由表相关-Proxy(代理)配置-TCP协议-Wireshark 基本功能
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h4 id="路由相关"><a href="#路由相关" class="headerlink" title="路由相关"></a>路由相关</h4><blockquote>
+<p>静态路由：路线固定<br>动态路由：根据最优解判断路线</p>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>动态ip：根据路由器dhcp分配ip，上线分配ip，下线回收ip<br>静态ip：手动设置ip</p>
+<blockquote>
+<p>同时，静态优先</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<blockquote>
+<p>DHCP：:DHCP服务器负责动态分配IP地址、子网掩码和默认网关等网络配置信息。</p>
+</blockquote>
+<hr>
+<h4 id="TCP-IP模型："><a href="#TCP-IP模型：" class="headerlink" title="TCP&#x2F;IP模型："></a>TCP&#x2F;IP模型：</h4><p>127.0.0.1 本地回环地址</p>
+<p>0.0.0.0 &#x3D;&#x3D;&#x3D;&#x3D;*匹配任意ip</p>
+<h5 id="TCP-IP模型共分为7层-从下到上依次是"><a href="#TCP-IP模型共分为7层-从下到上依次是" class="headerlink" title="TCP&#x2F;IP模型共分为7层,从下到上依次是:"></a>TCP&#x2F;IP模型共分为7层,从下到上依次是:</h5><p>物理层(Physical Layer)定义了计算机之间传输数据的物理媒介,如网线,光纤等。</p>
+<p>数据链路层(Data Link Layer)负责在物理层之上提供可靠的点到点连接,以太网、PPP等协议属于这一层。</p>
+<p>网络层(Internet Layer)IP协议就属于这一层,负责地址和路由功能。</p>
+<p>传输层(Transport Layer)提供端到端连接和传输控制,主要协议有TCP和UDP。</p>
+<p>会话层(Session Layer)TCP&#x2F;IP模型并没有明确定义会话层的协议规范。</p>
+<p>表示层(Presentation Layer)TCP&#x2F;IP模型并没有明确定义表示层的协议规范。</p>
+<p>应用层(Application Layer)HTTP、FTP、SMTP等应用层协议都属于这个层次。</p>
+<h5 id="协议举例："><a href="#协议举例：" class="headerlink" title="协议举例："></a>协议举例：</h5><p>物理层:Ethernet(以太网)、RS-232、USB、光纤等。</p>
+<p>数据链路层: Ethernet(IEEE 802.3)、PPP(点对点协议)、HDLC(高级数据链路控制)、ARP(地址解析协议)等。</p>
+<p>网络层:IP(Internet协议)、ICNP(Internet控制消息协议)、IPSec(IP安全性协议)、OSPF(开放最短路径优先协议)等。</p>
+<p>传输层:TCP(传输控制协议)、UDP(用户数据报协议)、SCTP(流控制传输协议)等。</p>
+<p>会话层:NetBIOS(网络基本输入输出系统)、RPC(远程过程调用协议)、SSH(安全外壳协议)等。</p>
+<p>表示层:ASCII码、JPEG(联合图像专家组)、MPEG(动态图像压缩标准)等。</p>
+<p>应用层:HTTP(超文本传输协议)、FTP(文件传输协议)、SHTP(简单邮件传输协议)、DNS(域名系统)等。</p>
+<hr>
+<p>子网掩码(Subnet Mask)是用于划分网络的一种技术，它与IP地址一起使用来确定网络中主机的地址范围。</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210145439490.png" alt="image-20231210145439490"></p>
+<hr>
+<h4 id="路由表相关"><a href="#路由表相关" class="headerlink" title="路由表相关"></a>路由表相关</h4><p>每个路由器都有自己独立的路由表。</p>
+<p>路由表是路由器内部维护的一个表,用于记录目的网络地址、下一跳路由器地址以及接口等信息,用于决定数据包的转发路径。</p>
+<p>每个路由器的路由表内容是独立的,不会与其他路由器共享:</p>
+<ul>
+<li>路由表内容取决于路由器所处位置和邻居路由器信息。两台路由器可能位于不同网络位置,路由表内容不同。</li>
+<li>路由器通过不同的路由协议和静态路由配置学习和生成自己的路由表。</li>
+<li>即使同一供应商同型号路由器,如果网络位置和配置不同,路由表也会有差异。</li>
+<li>即使同一供应商路由器通过同一路由协议学习路由,由于网络拓扑和时延不同,两个路由表同步存在延迟。</li>
+</ul>
+<p>所以总体来说:</p>
+<ul>
+<li>每个路由器都有自己独立的路由表</li>
+<li>路由表内容取决于路由器网络位置和配置信息</li>
+<li>不同路由器的路由表内容可能不同</li>
+</ul>
+<p>这就保证了每个路由器都可以根据自身路由表正确转发数据包。</p>
+<hr>
+<h5 id="上课路由器的图（自己-改）"><a href="#上课路由器的图（自己-改）" class="headerlink" title="上课路由器的图（自己~改）"></a>上课路由器的图（自己~改）</h5><p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210145948324.png" alt="image-20231210145948324"></p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210150058929.png" alt="image-20231210150058929"></p>
+<hr>
+<p>VMware workstation下的网络会生成三个，分别是vm0(桥接)、vm1(仅主机)、vm8(nat)</p>
+<blockquote>
+<p>NAT(地址转换模式)相当于一个路由器<br>NAT模式借助虚拟NAT设备和虚拟DHCP服务器，使得虚拟机可以联网。<br>在NAT模式中，主机网卡直接与虚拟NAT设备相连，然后虚拟NAT设备与虚拟DHCP服务器一起连接在虚拟交换机VMnet8上，这样就实现了虚拟机联网。</p>
+</blockquote>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210150823605.png" alt="image-20231210150823605"></p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210151538873.png" alt="image-20231210151538873"></p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210151924606.png" alt="image-20231210151924606"></p>
+<hr>
+<h4 id="Proxy-代理-配置"><a href="#Proxy-代理-配置" class="headerlink" title="Proxy(代理)配置"></a>Proxy(代理)配置</h4><h5 id="浏览器代理"><a href="#浏览器代理" class="headerlink" title="浏览器代理"></a>浏览器代理</h5><ol>
+<li>Microsoft Edge浏览器与Google Chrome浏览器右上角点击…</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231205152408852.png" alt="image-20231205152408852"></p>
+<ol start="2">
+<li>选择拓展</li>
+<li>Microsoft Edge搜索[Proxy SwitchyOmega](<a target="_blank" rel="noopener" href="https://microsoftedge.microsoft.com/addons/detail/proxy-switchyomega/fdbloeknjpnloaggplaobopplkdhnikc">Proxy SwitchyOmega - Microsoft Edge Addons</a>)，Google Chrome搜索Proxy SwitchyOmega</li>
+<li>直接添加即可</li>
+<li>Firefox浏览器打开拓展，搜索<a target="_blank" rel="noopener" href="https://addons.mozilla.org/zh-CN/firefox/addon/foxyproxy-standard/?utm_source=addons.mozilla.org&utm_medium=referral&utm_content=search">FoxyProxy Standard</a></li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231205152800698.png" alt="image-20231205152800698"></p>
+<ol start="6">
+<li>添加到Firefox即可</li>
+</ol>
+<h5 id="全局代理"><a href="#全局代理" class="headerlink" title="全局代理"></a>全局代理</h5><ol>
+<li>下载Proxifier，直接安装即可。百度网盘（汉化版）<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1w2-xsgzAW4c5iGq7zwB6fw?pwd=ansk">Proxifier链接</a> ,提取码：ansk。</li>
+<li>双击打开Proxifier</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231205153445807.png" alt="image-20231205153445807"></p>
+<ol start="3">
+<li><p>选择代理服务器</p>
+</li>
+<li><p>添加——-&gt;地址填上127.0.0.1，端口根据自己的端口自行添加,协议通常选择sock5其他情况根据具体而定，验证根据自身需求选取</p>
+</li>
+<li><p>代理规则，下面只是一个例子。“ssh*”代表所有以ssh开头的应用。</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231205154023554.png"></p>
+</li>
+<li><p>代理规则中的localhost可以删掉。</p>
+</li>
+<li><h2 id="最重要的，Default的动作必须选择Direct，不然你不开代理的时候，全局都会没网。"><a href="#最重要的，Default的动作必须选择Direct，不然你不开代理的时候，全局都会没网。" class="headerlink" title="最重要的，Default的动作必须选择Direct，不然你不开代理的时候，全局都会没网。"></a>最重要的，Default的动作必须选择Direct，不然你不开代理的时候，全局都会没网。</h2><p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231205155700985.png" alt="image-20231205155700985"></p>
+</li>
+<li><h5 id="所有选择做完之后记得点一下确认哦！"><a href="#所有选择做完之后记得点一下确认哦！" class="headerlink" title="所有选择做完之后记得点一下确认哦！"></a>所有选择做完之后记得点一下确认哦！</h5></li>
+<li><p>然后重启Proxifier即可。</p>
+</li>
+</ol>
+<hr>
+<h4 id="TCP协议"><a href="#TCP协议" class="headerlink" title="TCP协议"></a>TCP协议</h4><p>TCP是一种可靠的传输协议，在建立和终止连接时使用了三次握手和四次挥手的过程。</p>
+<h5 id="1-三次握手-Three-Way-Handshake"><a href="#1-三次握手-Three-Way-Handshake" class="headerlink" title="1.三次握手(Three-Way Handshake) :"></a>1.三次握手(Three-Way Handshake) :</h5><p>a.第一步:客户端向服务器发送一个带有SYN(同步）标志的数据包，指示客户端要发起连接请求.</p>
+<p>b.第二步:服务器收到客户端的请求后，回复一个带有SYN&#x2F;ACK(同步&#x2F;确认)标志的数据包，表示收到了请求，并同意建立连接。</p>
+<p>c.第三步:客户端收到服务器的回复后，再发送一个带有ACK(确认）标志的数据包，表示已经收到服务器的同意，连接建立成功。</p>
+<h5 id="2四次挥手-Four-Way-Handshake"><a href="#2四次挥手-Four-Way-Handshake" class="headerlink" title="2四次挥手(Four-Way Handshake) :"></a>2四次挥手(Four-Way Handshake) :</h5><p>a.第一步:当客户端要关闭连接时，发送一个带有FIN(结束）标志的数据包，表示不再发送数据。</p>
+<p>b.第二步:服务器收到客户端的关闭请求后，回复一个带有ACK标志的数据包，表示已收到关闭请求。</p>
+<p>c.第三步:服务器继续发送未完成的数据，将其发送给客户端。</p>
+<p>d.第四步:服务器发送一个带有FIN标志的数据包，表示服务器的数据发送完毕，请求关闭连接。</p>
+<p>e.第五步:客户端收到服务器的关闭请求后，回复一个带有ACK标志的数据包，表示已收到关闭请求。</p>
+<p>f.第六步:客户端等待一段时间，确保服务器收到ACK回复后，关闭连接。</p>
+<p>这样，经过三次握手和四次挥手的过程，TCP连接即建立和关闭完成。这些过程保证了可靠的数据传输和连接的安全关闭。</p>
+<hr>
+<h4 id="Wireshark-基本功能"><a href="#Wireshark-基本功能" class="headerlink" title="Wireshark 基本功能"></a>Wireshark 基本功能</h4><p>​		从线路或已经从网络链接获得的数据文件中检索数据。用户可以使用GUI或其他模型访问捕获的数据网络。用户可以使用命令行开关进行可编程编辑，并将捕获的文件转换为编辑上限框架。通过监视的流量，也可以通过网络跟踪Internet上的语音通话。</p>
+<p>（个人猜想：一个抓包工具，以后会用到，现在稍微提及一下）</p>
+<ol>
+<li><h5 id="数据包监控器"><a href="#数据包监控器" class="headerlink" title="数据包监控器"></a>数据包监控器</h5></li>
+</ol>
+<blockquote>
+<p>网络中的数据包在其部分中直观地表示。颜色代码可用于每种数据包类型。</p>
+<blockquote>
+<p>目的地址<br>数据包内容以文本形式<br>如果适用，目标端口</p>
+</blockquote>
+</blockquote>
+<ol start="2">
+<li><h5 id="从捕获文件导入"><a href="#从捕获文件导入" class="headerlink" title="从捕获文件导入"></a>从捕获文件导入</h5></li>
+</ol>
+<blockquote>
+<p>此方法可帮助您从捕获文件中导入转储数据包，以供进一步研究。Wireshark支持多种格式，<br>其中一些是：</p>
+<blockquote>
+<p>基于Windows的网络用户可捕获Sniffer和Sniffer Pro<br>HP-UX的功能<br>思科安全入侵检测程序IPLog格式<br>TamosoftCommView捕获</p>
+</blockquote>
+</blockquote>
+<ol start="3">
+<li><h5 id="导出到捕获文件"><a href="#导出到捕获文件" class="headerlink" title="导出到捕获文件"></a>导出到捕获文件</h5></li>
+</ol>
+<blockquote>
+<p>Wireshark帮助您将测试另存为捕获文件，以供以后使用。<br>支持的格式：</p>
+<blockquote>
+<p>Visual Networks视觉正常运行时间流量。<br>Novell LANalyzer</p>
+</blockquote>
+</blockquote>
+<ol start="4">
+<li><h5 id="Wireshark捕获过滤器"><a href="#Wireshark捕获过滤器" class="headerlink" title="Wireshark捕获过滤器"></a>Wireshark捕获过滤器</h5></li>
+</ol>
+<blockquote>
+<p>捕获过滤器会限制过滤器收集的数据包。换句话说，如果过滤器不匹配，它将不保存数据包。<br>捕获过滤器的一些示例如下：</p>
+<blockquote>
+<p>主机IP地址：此过滤器限制了与IP地址之间的流量捕获<br>DST主机IP地址：用于发送到指定主机的捕获数据包<br>端口号53和非arp：所有bar DNS和ARP数据捕获</p>
+</blockquote>
+</blockquote>
+<h5 id="Length的大小一般是78左右，其他大小表示该包有其他说法。"><a href="#Length的大小一般是78左右，其他大小表示该包有其他说法。" class="headerlink" title="Length的大小一般是78左右，其他大小表示该包有其他说法。"></a>Length的大小一般是78左右，其他大小表示该包有其他说法。</h5><p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231205163311224.png" alt="image-20231205163311224"></p>
+<p>这是一个ping IP的抓包展示，Length的大小为74，在78左右，属于正常ping的包。</p>
+<p>还可以通过上方的搜索栏通过各种规则筛选内容。</p>
+<h5 id="wireshark搜索栏筛选规则："><a href="#wireshark搜索栏筛选规则：" class="headerlink" title="wireshark搜索栏筛选规则："></a>wireshark搜索栏筛选规则：</h5><ol>
+<li><p>IP 地址过滤规则：使用 ip.addr 来过滤指定的 IP 地址或 IP 地址范围。</p>
+<p>&#x27A4;例如，ip.addr &#x3D;&#x3D; 192.168.0.1 可以过滤出源或目的 IP 地址为 192.168.0.1 的数据包。</p>
+</li>
+<li><p>端口过滤规则：使用 tcp.port 或 udp.port 来过滤指定的端口号或端口范围。</p>
+<p>&#x27A4;例如，tcp.port &#x3D;&#x3D; 80 可以过滤出目的端口为 80 的 TCP 数据包。</p>
+</li>
+<li><p>协议过滤规则：使用协议名来过滤指定的协议类型。</p>
+<p>&#x27A4;例如，http 可以过滤出 HTTP 协议的数据包。</p>
+</li>
+<li><p>数据包方向过滤规则：使用 src 或 dst 来过滤指定的数据包方向。</p>
+<p>&#x27A4;例如，src host 192.168.0.1 可以过滤出源 IP 地址为 192.168.0.1 的数据包。</p>
+</li>
+<li><p>数据包长度过滤规则：使用 frame.len 来过滤指定的数据包长度。</p>
+<p>&#x27A4;例如，frame.len &gt; 1000 可以过滤出长度大于 1000 字节的数据包。</p>
+</li>
+<li><p>组合过滤规则：可以通过逻辑运算符 and、or 和 not 来组合多个过滤条件。</p>
+<p>&#x27A4;例如，ip.addr &#x3D;&#x3D; 192.168.0.1 and tcp.port &#x3D;&#x3D; 80 可以过滤出源或目的 IP 地址为 192.168.0.1 且目的端口为 80 的数据包。</p>
+</li>
+<li><p>时间过滤规则：可以使用时间范围来过滤指定时间段内的数据包。</p>
+<p>&#x27A4;例如，frame.time &gt;&#x3D; “2022-01-01 00:00:00” and frame.time &lt;&#x3D; “2022-01-01 23:59:59” 可以过滤出指定日期的数据包。</p>
+</li>
+<li><p>协议字段过滤规则：可以使用协议字段来过滤指定协议字段的值。</p>
+<p>&#x27A4;例如，http.request.method &#x3D;&#x3D; “GET” 可以过滤出 HTTP 请求方法为 GET 的数据包。</p>
+</li>
+<li><p>流量统计过滤规则：可以使用统计函数来过滤指定流量的数据包。</p>
+<p>&#x27A4;例如，tcp.stream eq 1 可以过滤出流量编号为 1 的数据包。</p>
+</li>
+<li><p>SSL&#x2F;TLS 过滤规则：可以使用 ssl 或 tls 关键字来过滤 SSL&#x2F;TLS 加密的数据包。</p>
+<p>&#x27A4;例如，ssl.handshake.type &#x3D;&#x3D; 1 可以过滤出 SSL 握手类型为 Client Hello 的数据包。</p>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/12/05/3.1-%E8%B7%AF%E7%94%B1%E7%9B%B8%E5%85%B3-TCPIP%E6%A8%A1%E5%9E%8B-%E8%B7%AF%E7%94%B1%E8%A1%A8%E7%9B%B8%E5%85%B3-Proxy(%E4%BB%A3%E7%90%86)%E9%85%8D%E7%BD%AE-TCP%E5%8D%8F%E8%AE%AE-Wireshark%20%E5%9F%BA%E6%9C%AC%E5%8A%9F%E8%83%BD/" data-id="clrcswxkf0008ugwk2h5w6gtf" data-title="3.1-路由相关-TCP/IP模型-路由表相关-Proxy(代理)配置-TCP协议-Wireshark 基本功能" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2023/12/05/python-homework_1_%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          python_homework-基础知识-1
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2023/12/04/2.1-%E6%AD%A3%E5%8F%8Dshell%E8%AE%B2%E8%A7%A3-jdk%E7%9A%84%E5%AE%89%E8%A3%85-%E5%AD%A6%E4%B9%A0%E8%A7%84%E7%AB%A0-IP%E8%AE%B2%E8%A7%A3-IP%E5%88%86%E7%B1%BB/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">2.1 正反shell讲解/jdk的安装/学习规章/IP讲解/IP分类</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/01/">January 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/12/">December 2023</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2024/01/14/hexo%E5%8D%9A%E5%AE%A2%E6%A0%BC%E5%BC%8F%EF%BC%88%E5%8D%9A%E5%AE%A2%E7%89%88%EF%BC%89/">markdown的使用说明</a>
+          </li>
+        
+          <li>
+            <a href="/2024/01/14/DB/">DB</a>
+          </li>
+        
+          <li>
+            <a href="/2024/01/14/13.1-%E6%89%93%E9%9D%B6/">13.1-打靶</a>
+          </li>
+        
+          <li>
+            <a href="/2024/01/14/14.1-%E4%BB%A3%E7%90%86-%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/">14.1-代理-流量分析</a>
+          </li>
+        
+          <li>
+            <a href="/2024/01/14/1.3-%E5%8D%9A%E5%AE%A2%E7%9A%84%E7%BC%96%E5%86%99%E4%B8%8E%E4%B8%8A%E4%BC%A0/">1.3-博客的编写与上传</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2024 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

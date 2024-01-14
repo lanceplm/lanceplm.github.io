@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>python-homework_2_后续知识 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="一、字符串字符串的格式化问题字符串的占位：%s 1%s  占位整数：%d 1%d  占位小数：%f 1%f    12345678# 我叫xxx，我住在xxXx，我今年xx岁，我喜欢做x×XXXname &#x3D; input(&quot;请输入你的名字：&quot;)address &#x3D; input(&quot;请输入你的住址：&quot;)age &#x3D; int(input(&quot;请输入你的年龄：&amp;q">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python-homework_2_后续知识">
+<meta property="og:url" content="http://example.com/2023/12/10/python-homework_2_%E5%90%8E%E7%BB%AD/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="一、字符串字符串的格式化问题字符串的占位：%s 1%s  占位整数：%d 1%d  占位小数：%f 1%f    12345678# 我叫xxx，我住在xxXx，我今年xx岁，我喜欢做x×XXXname &#x3D; input(&quot;请输入你的名字：&quot;)address &#x3D; input(&quot;请输入你的住址：&quot;)age &#x3D; int(input(&quot;请输入你的年龄：&amp;q">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210161801685.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210162335130.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210162718253.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210163134188.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210164001234.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210164550835.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210164646523.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210165402162.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210165504573.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210165943061.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210170323245.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210190235027.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210190638486.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210191708562.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210191900632.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210192128163.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210192428392.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210192913813.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210193342217.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210193858188.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210194526697.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210194720722.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210195826298.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210200012739.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210200343961.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210200537253.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210200900327.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210201003568.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210201136546.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210201211584.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210201526207.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210201943101.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210202201095.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210202709639.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210202823354.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210204508847.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210205024033.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210211254052.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210211421269.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210211645998.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210211929580.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210212323972.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210212503499.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210212746282.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210213225066.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210213543310.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210213844086.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210214012417.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231211192944600.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231211193403397.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231211193622044.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231211193848506.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231211194620552.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231211200452966.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231211200558534.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231211201141252.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231211201714917.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231211202842887.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231211202857937.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231211203908416.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231211204119637.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231211204332539.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231212202321842.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231212202803186.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231212203023432.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231212203937060.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231212205345829.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231212205743991.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231212205944943.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231212210504835.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231212210529525.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231212210823592.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231212210955042.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231212211101696.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231212211307172.png">
+<meta property="og:image" content="http://example.com/python-homework_2_%E5%90%8E%E7%BB%AD.assets/image-20231212212517213.png">
+<meta property="og:image" content="http://example.com/python-homework_2_%E5%90%8E%E7%BB%AD.assets/image-20231212212117997.png">
+<meta property="og:image" content="http://example.com/python-homework_2_%E5%90%8E%E7%BB%AD.assets/image-20231212214403705.png">
+<meta property="og:image" content="http://example.com/python-homework_2_%E5%90%8E%E7%BB%AD.assets/image-20231213191647331.png">
+<meta property="og:image" content="http://example.com/python-homework_2_%E5%90%8E%E7%BB%AD.assets/image-20231213200723689.png">
+<meta property="og:image" content="http://example.com/python-homework_2_%E5%90%8E%E7%BB%AD.assets/image-20231213200803187.png">
+<meta property="og:image" content="http://example.com/python-homework_2_%E5%90%8E%E7%BB%AD.assets/image-20231213201427924.png">
+<meta property="og:image" content="http://example.com/python-homework_2_%E5%90%8E%E7%BB%AD.assets/image-20231213202148917.png">
+<meta property="og:image" content="http://example.com/python-homework_2_%E5%90%8E%E7%BB%AD.assets/image-20231213202458362.png">
+<meta property="og:image" content="http://example.com/python-homework_2_%E5%90%8E%E7%BB%AD.assets/image-20231213202514990.png">
+<meta property="og:image" content="http://example.com/python-homework_2_%E5%90%8E%E7%BB%AD.assets/image-20231213203609280.png">
+<meta property="og:image" content="http://example.com/python-homework_2_%E5%90%8E%E7%BB%AD.assets/image-20231213204815411.png">
+<meta property="og:image" content="http://example.com/python-homework_2_%E5%90%8E%E7%BB%AD.assets/image-20231213205847960.png">
+<meta property="og:image" content="http://example.com/python-homework_2_%E5%90%8E%E7%BB%AD.assets/image-20231213211425262.png">
+<meta property="og:image" content="http://example.com/python-homework_2_%E5%90%8E%E7%BB%AD.assets/image-20231213212323319.png">
+<meta property="og:image" content="http://example.com/python-homework_2_%E5%90%8E%E7%BB%AD.assets/image-20231213212506929.png">
+<meta property="og:image" content="http://example.com/python-homework_2_%E5%90%8E%E7%BB%AD.assets/image-20231213212857961.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231220202319920.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231220203021313.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231220204559457.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231220205323348.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231220205901758.png">
+<meta property="article:published_time" content="2023-12-10T08:02:45.000Z">
+<meta property="article:modified_time" content="2023-12-20T13:18:05.368Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210161801685.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-python-homework_2_后续" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/12/10/python-homework_2_%E5%90%8E%E7%BB%AD/" class="article-date">
+  <time class="dt-published" datetime="2023-12-10T08:02:45.000Z" itemprop="datePublished">2023-12-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      python-homework_2_后续知识
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="一、字符串"><a href="#一、字符串" class="headerlink" title="一、字符串"></a>一、字符串</h2><h3 id="字符串的格式化问题"><a href="#字符串的格式化问题" class="headerlink" title="字符串的格式化问题"></a>字符串的格式化问题</h3><p>字符串的占位：%s</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">%s</span><br></pre></td></tr></table></figure>
+
+<p>占位整数：%d</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">%d</span><br></pre></td></tr></table></figure>
+
+<p>占位小数：%f</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">%f</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 我叫xxx，我住在xxXx，我今年xx岁，我喜欢做x×XXX</span></span><br><span class="line">name = <span class="built_in">input</span>(<span class="string">&quot;请输入你的名字：&quot;</span>)</span><br><span class="line">address = <span class="built_in">input</span>(<span class="string">&quot;请输入你的住址：&quot;</span>)</span><br><span class="line">age = <span class="built_in">int</span>(<span class="built_in">input</span>(<span class="string">&quot;请输入你的年龄：&quot;</span>))</span><br><span class="line">hobby = <span class="built_in">input</span>(<span class="string">&quot;请输入你的爱好：&quot;</span>)</span><br><span class="line"></span><br><span class="line">s = <span class="string">&quot;我叫%s，我住在%s,我今年%d岁，我喜欢%s&quot;</span> % (name, address, age, hobby)</span><br><span class="line"><span class="built_in">print</span>(s)</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210161801685.png"></p>
+<p>注意age部分应该int一下输入内容，不然%d可能会报错，直接输入的age是字符串str类型。</p>
+<p>优化：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 优化</span></span><br><span class="line">name = <span class="built_in">input</span>(<span class="string">&quot;请输入你的名字：&quot;</span>)</span><br><span class="line">address = <span class="built_in">input</span>(<span class="string">&quot;请输入你的住址：&quot;</span>)</span><br><span class="line">age = <span class="built_in">int</span>(<span class="built_in">input</span>(<span class="string">&quot;请输入你的年龄：&quot;</span>))</span><br><span class="line">hobby = <span class="built_in">input</span>(<span class="string">&quot;请输入你的爱好：&quot;</span>)</span><br><span class="line"></span><br><span class="line">s1 = <span class="string">&quot;我叫&#123;&#125;，我住在&#123;&#125;,我今年&#123;&#125;岁，我喜欢&#123;&#125;&quot;</span>.<span class="built_in">format</span>(name, address, age, hobby)</span><br><span class="line"><span class="built_in">print</span>(s1)</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210162335130.png" alt="image-20231210162335130"></p>
+<p>在优化（f-string）：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 再优化</span></span><br><span class="line">name = <span class="built_in">input</span>(<span class="string">&quot;请输入你的名字：&quot;</span>)</span><br><span class="line">address = <span class="built_in">input</span>(<span class="string">&quot;请输入你的住址：&quot;</span>)</span><br><span class="line">age = <span class="built_in">int</span>(<span class="built_in">input</span>(<span class="string">&quot;请输入你的年龄：&quot;</span>))</span><br><span class="line">hobby = <span class="built_in">input</span>(<span class="string">&quot;请输入你的爱好：&quot;</span>)</span><br><span class="line"></span><br><span class="line">s2 = <span class="string">f&quot;我叫<span class="subst">&#123;name&#125;</span>，我住在<span class="subst">&#123;address&#125;</span>,我今年<span class="subst">&#123;age&#125;</span>岁，我喜欢<span class="subst">&#123;hobby&#125;</span>&quot;</span></span><br><span class="line"><span class="built_in">print</span>(s2)</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210162718253.png" alt="image-20231210162718253"></p>
+<p>一般推荐使用最后一种方式，更加直观的感受。</p>
+<p>特殊情况：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">name = <span class="built_in">input</span>(<span class="string">&quot;请输入你的姓名：&quot;</span>)</span><br><span class="line"></span><br><span class="line">s0=<span class="string">&quot;我叫%s&quot;</span> % name</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210163134188.png" alt="image-20231210163134188"></p>
+<h3 id="索引和切片"><a href="#索引和切片" class="headerlink" title="索引和切片"></a>索引和切片</h3><h5 id="索引："><a href="#索引：" class="headerlink" title="索引："></a>索引：</h5><p>按照位置提取元素</p>
+<p>可以采用索引的方式来提取某一个字符(文字)</p>
+<p>程序员都是从0开始数数</p>
+<p>负数表示倒数</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">s = <span class="string">&quot;我叫周杰伦&quot;</span></span><br><span class="line"><span class="built_in">print</span>(s[<span class="number">3</span>])</span><br><span class="line"><span class="built_in">print</span>(s[<span class="number">0</span>])</span><br><span class="line"><span class="built_in">print</span>(s[-<span class="number">1</span>])</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210164001234.png" alt="image-20231210164001234"></p>
+<h5 id="切片："><a href="#切片：" class="headerlink" title="切片："></a>切片：</h5><p>从一个字符串中提取一部分内容</p>
+<p>语法: s[start:end]  从start到end进行切片。但是取不到end&#x3D;&#x3D;[start,end)</p>
+<p>如果start是从开头进行切片，可以省略            [:2]</p>
+<p>从start开始一直截到结尾          [5:]</p>
+<p>∶如果左右两端有空白·表示开头或者结尾    [:]</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">s = <span class="string">&quot;我叫周杰伦，您嘞？你叫周润发吗？&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(s[<span class="number">3</span>:<span class="number">6</span>]) <span class="comment"># 索引3位置进行切片，切到6结束,切片拿不到第二个位置的元素</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210164550835.png" alt="image-20231210164550835"></p>
+<p>其他（如果start是从开头进行切片，可以省略）：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">s = <span class="string">&quot;我叫周杰伦，您嘞？你叫周润发吗？&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(s[:<span class="number">5</span>])</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210164646523.png" alt="image-20231210164646523"></p>
+<p>从start开始一直截到结尾：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">s = <span class="string">&quot;我叫周杰伦，您嘞？你叫周润发吗？&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(s[<span class="number">2</span>:])</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210165402162.png" alt="image-20231210165402162"></p>
+<p>全部：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">s = &quot;我叫周杰伦，您嘞？你叫周润发吗？&quot;</span><br><span class="line"></span><br><span class="line">print(s[:])</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210165504573.png" alt="image-20231210165504573"></p>
+<p>负数情况:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">s = <span class="string">&quot;我叫周杰伦，您嘞？你叫周润发吗？&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(s[-<span class="number">3</span>:-<span class="number">1</span>]) <span class="comment"># 目前还是只能从左往右切片</span></span><br><span class="line"><span class="built_in">print</span>(s[-<span class="number">1</span>:-<span class="number">3</span>]) <span class="comment">#没结果</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210165943061.png" alt="image-20231210165943061"></p>
+<h3 id="步长"><a href="#步长" class="headerlink" title="步长:"></a>步长:</h3><p>可以给切片添加步长来控制切片的方向</p>
+<p>语法:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">s[start:end:step] 从start切到end，每step个元素出来一个元素</span><br></pre></td></tr></table></figure>
+
+<p>步长展示</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">s = <span class="string">&quot;我爱你&quot;</span></span><br><span class="line"><span class="comment">#可以给切片添加步长来控制切片的方向</span></span><br><span class="line"><span class="built_in">print</span>(s[::-<span class="number">1</span>]) </span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210170323245.png" alt="image-20231210170323245"></p>
+<h6 id="表示从右往左"><a href="#表示从右往左" class="headerlink" title="-表示从右往左"></a>-表示从右往左</h6><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">s = <span class="string">&quot;abcdefghijklmnopqrst&quot;</span></span><br><span class="line"><span class="built_in">print</span>(s[<span class="number">3</span>:<span class="number">8</span>:<span class="number">2</span>])</span><br></pre></td></tr></table></figure>
+
+<p>s[3:8:2]代表从defgh中每两个为一组，de,fg,h,三组，2是正数，代表选择每组最左边那一个，如果负数则选择最右边那一个</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210190235027.png" alt="image-20231210190235027"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">s = <span class="string">&quot;abcdefghijklmnopqrst&quot;</span></span><br><span class="line"><span class="built_in">print</span>(s[<span class="number">2</span>:<span class="number">11</span>:<span class="number">3</span>])</span><br></pre></td></tr></table></figure>
+
+<p>s[2:11:3]代表从cdefghijk中每三个分一组，cde,fgh,ijk,三组，3是正数，代表选择每组最左边那个。</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210190638486.png" alt="image-20231210190638486"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">s = <span class="string">&quot;abcdefghijklmnopqrst&quot;</span></span><br><span class="line"><span class="built_in">print</span>(s[-<span class="number">1</span>:-<span class="number">10</span>:-<span class="number">3</span>])</span><br></pre></td></tr></table></figure>
+
+<p>s[-1:-10:-3]代表从lmnopqrst中每三个分一组，rst,opq,lmn三组，-3是负数，代表选择每组最右边那个。</p>
+<h3 id="字符串的常规操作"><a href="#字符串的常规操作" class="headerlink" title="字符串的常规操作"></a>字符串的常规操作</h3><p>字符串的操作一般不会对原字符串产生影响，一般是返回一个新的字符串。</p>
+<h5 id="capitalize"><a href="#capitalize" class="headerlink" title="capitalize():"></a>capitalize():</h5><p>将字符串首字母变成大写</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">s = <span class="string">&quot;python&quot;</span></span><br><span class="line">s.capitalize() <span class="comment"># 将字符串首字母变成大写</span></span><br><span class="line"><span class="built_in">print</span>(s)</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210191708562.png" alt="image-20231210191708562"></p>
+<p>输出结果首字母仍然是小写</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">s = <span class="string">&quot;python&quot;</span></span><br><span class="line">s1 = s.capitalize() <span class="comment"># 添加一个新变量</span></span><br><span class="line"><span class="built_in">print</span>(s1)</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210191900632.png" alt="image-20231210191900632"></p>
+<p>成功</p>
+<h5 id="title"><a href="#title" class="headerlink" title="title():"></a>title():</h5><p>单词首字母大写</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">s = <span class="string">&quot;I have a dream!&quot;</span></span><br><span class="line">s1 = s.title() <span class="comment"># 单词首字母大写</span></span><br><span class="line"><span class="built_in">print</span>(s1)</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210192128163.png" alt="image-20231210192128163"></p>
+<h5 id="lower"><a href="#lower" class="headerlink" title="lower():"></a>lower():</h5><p>把所有大写字母变成小写字母</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">s = <span class="string">&quot;I HAVE A DREAM!&quot;</span></span><br><span class="line">s1 = s.lower() <span class="comment"># 把所有大写字母变成小写字母</span></span><br><span class="line"><span class="built_in">print</span>(s1)</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210192428392.png" alt="image-20231210192428392"></p>
+<h5 id="upper"><a href="#upper" class="headerlink" title="upper():"></a>upper():</h5><p>把所有字母变成大写字母（重要）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">s = <span class="string">&quot;i have a dream&quot;</span></span><br><span class="line">s1 = s.upper() <span class="comment"># 把所有字母变成大写字母</span></span><br><span class="line"><span class="built_in">print</span>(s1)</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210192913813.png" alt="image-20231210192913813"></p>
+<p>实际用途：如何忽略大小写来进行判断（验证码判断）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 如何忽略大小写来进行判断</span></span><br><span class="line">verfify_cody = <span class="string">&quot;xAd1&quot;</span></span><br><span class="line">user_input = <span class="built_in">input</span>(<span class="string">f&quot;请输入验证码(<span class="subst">&#123;verfify_cody&#125;</span>)：&quot;</span>)</span><br><span class="line"><span class="keyword">if</span> verfify_cody .upper() == user_input.upper():</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;验证码正确&quot;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;验证码不正确&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210193342217.png" alt="image-20231210193342217"></p>
+<h3 id="替换和切割"><a href="#替换和切割" class="headerlink" title="替换和切割"></a>替换和切割</h3><h5 id="strip"><a href="#strip" class="headerlink" title="strip():"></a>strip():</h5><p>去掉字符串左右两端的空白符（空格，\t，\n）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">s = <span class="string">&quot;   你好  ，我叫        周杰伦             &quot;</span></span><br><span class="line">s1 = s.strip() <span class="comment"># 消除字符串左右两端的空格</span></span><br><span class="line"><span class="built_in">print</span>(s1)</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210193858188.png" alt="image-20231210193858188"></p>
+<p>案例</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">username = <span class="built_in">input</span>(<span class="string">&quot;请输入用户名：&quot;</span>)</span><br><span class="line">password = <span class="built_in">input</span>(<span class="string">&quot;请输入密码：&quot;</span>)</span><br><span class="line"><span class="keyword">if</span> username == <span class="string">&quot;admin&quot;</span>:</span><br><span class="line">    <span class="keyword">if</span> password == <span class="string">&quot;123456&quot;</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;登陆成功！&quot;</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;登陆失败！&quot;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;登陆失败！&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210194526697.png" alt="image-20231210194526697"></p>
+<p>账号密码显示正确但是仍然登陆失败，其实是密码多了一个空格，但是单单看截图看不出来。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">username = <span class="built_in">input</span>(<span class="string">&quot;请输入用户名：&quot;</span>).strip()</span><br><span class="line">password = <span class="built_in">input</span>(<span class="string">&quot;请输入密码：&quot;</span>).strip()</span><br><span class="line"><span class="keyword">if</span> username == <span class="string">&quot;damin&quot;</span>:</span><br><span class="line">    <span class="keyword">if</span> password == <span class="string">&quot;123456&quot;</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;登陆成功！&quot;</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;登陆失败！&quot;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;登陆失败！&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>更改代码<br><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210194720722.png" alt="image-20231210194720722"></p>
+<p>密码仍然是 123456 ，但是这次登陆成功了。</p>
+<h5 id="replace-old-new"><a href="#replace-old-new" class="headerlink" title="replace(old,new):"></a>replace(old,new):</h5><p>字符串替换</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">s = <span class="string">&quot;你好，世界！&quot;</span></span><br><span class="line"></span><br><span class="line">s1 = s.replace(<span class="string">&quot;世界&quot;</span>,<span class="string">&quot;world&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(s1)</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210195826298.png" alt="image-20231210195826298"></p>
+<p>去掉所有的空格</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="string">&quot;hello i am a good man!&quot;</span></span><br><span class="line">a1 = a.replace(<span class="string">&quot; &quot;</span>,<span class="string">&quot;&quot;</span>) <span class="comment"># 去掉所有的空格</span></span><br><span class="line"><span class="built_in">print</span>(a1)</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210200012739.png" alt="image-20231210200012739"></p>
+<h5 id="split-用什么切割"><a href="#split-用什么切割" class="headerlink" title="split(用什么切割) :"></a>split(用什么切割) :</h5><p>字符串切割,用什么切，就会损失掉谁</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="string">&quot;python_java_c_c#_javascript&quot;</span></span><br><span class="line">lst = a.split(<span class="string">&quot;_&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(lst)</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210200343961.png" alt="image-20231210200343961"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="string">&quot;python_java_c_c#_javascript&quot;</span></span><br><span class="line"><span class="comment"># lst = a.split(&quot;_&quot;)</span></span><br><span class="line"><span class="comment"># print(lst)</span></span><br><span class="line">lst = a.split(<span class="string">&quot;_java_&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(lst)</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210200537253.png" alt="image-20231210200537253"></p>
+<h5 id="重要"><a href="#重要" class="headerlink" title="重要"></a>重要</h5><p>replace(),split(),strip() &#x3D;&gt;记住</p>
+<h3 id="查找和判断"><a href="#查找和判断" class="headerlink" title="查找和判断"></a>查找和判断</h3><h4 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h4><h5 id="find"><a href="#find" class="headerlink" title="find()"></a>find()</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">s = <span class="string">&#x27;你好阿，我叫周润发&#x27;</span></span><br><span class="line">ret = s.find(<span class="string">&quot;周润发&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(ret)</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210200900327.png" alt="image-20231210200900327"></p>
+<p>代表在6号位找到</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">s = <span class="string">&#x27;你好阿，我叫周润发&#x27;</span></span><br><span class="line">ret = s.find(<span class="string">&quot;周润发1&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(ret)</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210201003568.png" alt="image-20231210201003568"></p>
+<p>返回如果是-1就是没有该字符串出现</p>
+<h5 id="index"><a href="#index" class="headerlink" title="index()"></a>index()</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">s = <span class="string">&#x27;你好阿，我叫周润发&#x27;</span></span><br><span class="line">ret = s.index(<span class="string">&quot;周润发&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(ret)</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210201136546.png" alt="image-20231210201136546"></p>
+<p>代表在6号位找到</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">s = <span class="string">&#x27;你好阿，我叫周润发&#x27;</span></span><br><span class="line">ret = s.index(<span class="string">&quot;周润2发&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(ret)</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210201211584.png" alt="image-20231210201211584"></p>
+<p>找不到直接报错</p>
+<h5 id="in-not-in"><a href="#in-not-in" class="headerlink" title="in&#x2F;not in"></a>in&#x2F;not in</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">s = <span class="string">&#x27;你好阿，我叫周润发&#x27;</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;周润发&quot;</span> <span class="keyword">in</span> s)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;zzz&quot;</span> <span class="keyword">in</span> s)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;周润发&quot;</span> <span class="keyword">not</span> <span class="keyword">in</span> s)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;zz&quot;</span> <span class="keyword">not</span> <span class="keyword">in</span> s)</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210201526207.png" alt="image-20231210201526207"></p>
+<h4 id="判断"><a href="#判断" class="headerlink" title="判断"></a>判断</h4><h5 id="startswith"><a href="#startswith" class="headerlink" title="startswith()"></a>startswith()</h5><p>判断字符串是否以xxx开头</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">name = <span class="built_in">input</span>(<span class="string">&quot;请输入你的名字：&quot;</span>)</span><br><span class="line"><span class="comment"># 判断你是不是姓张</span></span><br><span class="line"><span class="keyword">if</span> name.startswith(<span class="string">&quot;张&quot;</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;你姓张&quot;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;不姓张&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210201943101.png" alt="image-20231210201943101"></p>
+<h5 id="endswith"><a href="#endswith" class="headerlink" title="endswith()"></a>endswith()</h5><p>判断字符串是否以xxx结尾</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">name = <span class="built_in">input</span>(<span class="string">&quot;请输入你的名字：&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> name.endswith(<span class="string">&quot;芳&quot;</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;yes&quot;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;no&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210202201095.png" alt="image-20231210202201095"></p>
+<h5 id="isdight-isdecimal"><a href="#isdight-isdecimal" class="headerlink" title="isdight()&#x2F;isdecimal()"></a>isdight()&#x2F;isdecimal()</h5><p>判断字符串是否由整数&#x2F;小数组成</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">money = <span class="built_in">input</span>(<span class="string">&quot;请输入你兜里的钱：&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> money.isdigit():</span><br><span class="line">    money = <span class="built_in">int</span>(money)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;可以花钱了&quot;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;对不起，你输出有误...&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210202709639.png" alt="image-20231210202709639"></p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210202823354.png" alt="image-20231210202823354"></p>
+<h3 id="补充与总结"><a href="#补充与总结" class="headerlink" title="补充与总结"></a>补充与总结</h3><h4 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h4><h5 id="length"><a href="#length" class="headerlink" title="length()"></a>length()</h5><p>长度</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">s = <span class="string">&quot;hello&quot;</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">len</span>(s))</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210204508847.png" alt="image-20231210204508847"></p>
+<h5 id="join"><a href="#join" class="headerlink" title="join()"></a>join()</h5><p>”？？“.join(XX):将（）里的内容用？？连起来</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">lst = <span class="string">&quot;python_java_c_c#_javascript&quot;</span></span><br><span class="line">s = <span class="string">&quot;_&quot;</span>.join(lst)</span><br><span class="line"><span class="built_in">print</span>(lst)</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210205024033.png" alt="image-20231210205024033"></p>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><ol>
+<li><p>f”{变量}” 格式化一个字符串</p>
+</li>
+<li><p>索引和切片</p>
+<p>​	索引：从0开始的.[]</p>
+<p>​	切片：s[start:end：step],end为主的数据永远拿不到</p>
+</li>
+<li><p>相关操作：</p>
+<p>​	字符串操作对原字符串是不发生改变的。</p>
+<pre><code>1. upper()在忽略大小写的时候
+ 2. strip() 可以去掉字符串左右两端的空白（空格，\t，\n）
+ 3.  replace()字符串替换
+ 4. split()对字符串进行切割
+ 5. join()拼接一个列表中的内容成为新字符串
+ 6. startswith(判断字符串是否以xxx开头
+ 7. len()字符串长度(内置函数)
+</code></pre>
+<p>​	字符串的循环和遍历</p>
+<p>​	for c in s:</p>
+<p>​			print(c)  字符串中每一个字符</p>
+<p>​	关于in：</p>
+<pre><code>        1. 判断xxx是否在xxxx中出现
+           2. for循环
+</code></pre>
+</li>
+</ol>
+<h2 id="二、列表"><a href="#二、列表" class="headerlink" title="二、列表"></a>二、列表</h2><h3 id="列表的概念"><a href="#列表的概念" class="headerlink" title="列表的概念"></a>列表的概念</h3><p>定义：能装东西的东西</p>
+<p>在python中用[]来表示一个列表。列表中的元素通过,隔开</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a =[<span class="string">&quot;张三丰&quot;</span>,<span class="string">&quot;张无忌&quot;</span>,<span class="string">&quot;张绍刚&quot;</span>,[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="literal">True</span>]]</span><br></pre></td></tr></table></figure>
+
+<p>特性：</p>
+<ol>
+<li><p>也想字符串应用也有索引和切片</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">list</span> = [<span class="string">&quot;a&quot;</span>,<span class="string">&quot;b&quot;</span>,<span class="string">&quot;c&quot;</span>,<span class="string">&quot;d&quot;</span>]</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">list</span>[<span class="number">0</span>])</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">list</span>[<span class="number">1</span>:<span class="number">3</span>])</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">list</span>[::-<span class="number">1</span>])</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210211254052.png" alt="image-20231210211254052"></p>
+</li>
+<li><p>索引如果超过范围会报错</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">list</span> = [<span class="string">&quot;a&quot;</span>,<span class="string">&quot;b&quot;</span>,<span class="string">&quot;c&quot;</span>,<span class="string">&quot;d&quot;</span>]</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">list</span>[<span class="number">11111</span>])</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210211421269.png" alt="image-20231210211421269"></p>
+<p>list index out of range&#x2F;列表索引超出范围</p>
+<ol start="3">
+<li><p>可以用for循环进行遍历</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">list</span> = [<span class="string">&quot;a&quot;</span>,<span class="string">&quot;b&quot;</span>,<span class="string">&quot;c&quot;</span>,<span class="string">&quot;d&quot;</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> <span class="built_in">list</span>:</span><br><span class="line">    <span class="built_in">print</span>(item)</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210211645998.png" alt="image-20231210211645998"></p>
+<ol start="4">
+<li><p>用len可以拿到列表的长度</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">list</span> = [<span class="string">&quot;a&quot;</span>,<span class="string">&quot;b&quot;</span>,<span class="string">&quot;c&quot;</span>,<span class="string">&quot;d&quot;</span>]</span><br><span class="line">le = <span class="built_in">len</span>(<span class="built_in">list</span>)</span><br><span class="line"><span class="built_in">print</span>(le)</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210211929580.png" alt="image-20231210211929580"></p>
+<h3 id="列表的增删改查"><a href="#列表的增删改查" class="headerlink" title="列表的增删改查"></a>列表的增删改查</h3><h4 id="增加"><a href="#增加" class="headerlink" title="增加"></a>增加</h4><h5 id="append"><a href="#append" class="headerlink" title="append()"></a>append()</h5><p>追加</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">lst = []</span><br><span class="line"></span><br><span class="line">lst.append(<span class="string">&quot;a&quot;</span>)</span><br><span class="line">lst.append(<span class="string">&quot;b&quot;</span>)</span><br><span class="line">lst.append(<span class="string">&quot;c&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>()</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210212323972.png" alt="image-20231210212323972"></p>
+<h5 id="insert-num-xxxx"><a href="#insert-num-xxxx" class="headerlink" title="insert(num,xxxx)"></a>insert(num,xxxx)</h5><p>插入</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">lst = []</span><br><span class="line"></span><br><span class="line">lst.append(<span class="string">&quot;a&quot;</span>)</span><br><span class="line">lst.append(<span class="string">&quot;b&quot;</span>)</span><br><span class="line">lst.append(<span class="string">&quot;c&quot;</span>)</span><br><span class="line">lst.insert(<span class="number">0</span>,<span class="string">&quot;d&quot;</span>)</span><br><span class="line">lst</span><br><span class="line"><span class="built_in">print</span>(lst)</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210212503499.png" alt="image-20231210212503499"></p>
+<h5 id="extend"><a href="#extend" class="headerlink" title="extend()"></a>extend()</h5><p>可以合并两个列表，批量的添加</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">lst = []</span><br><span class="line"></span><br><span class="line">lst.append(&quot;a&quot;)</span><br><span class="line">lst.append(&quot;b&quot;)</span><br><span class="line">lst.append(&quot;c&quot;)</span><br><span class="line">lst.insert(0,&quot;d&quot;)</span><br><span class="line">lst.extend([&quot;操&quot;,&quot;阿？&quot;]) # [&quot;操&quot;,&quot;阿？&quot;]代表一个列表</span><br><span class="line">print(lst)</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210212746282.png" alt="image-20231210212746282"></p>
+<h4 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h4><h5 id="pop"><a href="#pop" class="headerlink" title="pop"></a>pop</h5><p>给出被删除的索引，返回被删除的元素</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">lst = []</span><br><span class="line"></span><br><span class="line">lst.append(<span class="string">&quot;a&quot;</span>)</span><br><span class="line">lst.append(<span class="string">&quot;b&quot;</span>)</span><br><span class="line">lst.append(<span class="string">&quot;c&quot;</span>)</span><br><span class="line">lst.insert(<span class="number">0</span>,<span class="string">&quot;d&quot;</span>)</span><br><span class="line">lst.extend([<span class="string">&quot;操&quot;</span>,<span class="string">&quot;阿？&quot;</span>])</span><br><span class="line"><span class="built_in">print</span>(lst)</span><br><span class="line"></span><br><span class="line">ret = lst.pop(<span class="number">3</span>)</span><br><span class="line"><span class="built_in">print</span>(lst)</span><br><span class="line"><span class="built_in">print</span>(ret)</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210213225066.png" alt="image-20231210213225066"></p>
+<h5 id="remove"><a href="#remove" class="headerlink" title="*remove()"></a>*remove()</h5><p>删除某个元素</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">lst = []</span><br><span class="line">lst.append(<span class="string">&quot;a&quot;</span>)</span><br><span class="line">lst.append(<span class="string">&quot;b&quot;</span>)</span><br><span class="line">lst.append(<span class="string">&quot;c&quot;</span>)</span><br><span class="line">lst.insert(<span class="number">0</span>,<span class="string">&quot;d&quot;</span>)</span><br><span class="line">lst.extend([<span class="string">&quot;操&quot;</span>,<span class="string">&quot;阿？&quot;</span>])</span><br><span class="line"><span class="built_in">print</span>(lst) <span class="comment"># 被删之前</span></span><br><span class="line">lst.remove(<span class="string">&quot;操&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(lst) <span class="comment"># 被删之后</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210213543310.png" alt="image-20231210213543310"></p>
+<h4 id="修改"><a href="#修改" class="headerlink" title="修改"></a>修改</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">lst = []</span><br><span class="line">lst.append(<span class="string">&quot;a&quot;</span>)</span><br><span class="line">lst.append(<span class="string">&quot;b&quot;</span>)</span><br><span class="line">lst.append(<span class="string">&quot;c&quot;</span>)</span><br><span class="line">lst.insert(<span class="number">0</span>,<span class="string">&quot;d&quot;</span>)</span><br><span class="line">lst.extend([<span class="string">&quot;操&quot;</span>,<span class="string">&quot;阿？&quot;</span>])</span><br><span class="line"><span class="built_in">print</span>(lst) <span class="comment"># 改之前</span></span><br><span class="line">lst[<span class="number">4</span>] = <span class="string">&quot;z&quot;</span></span><br><span class="line"><span class="built_in">print</span>(lst) <span class="comment"># 改之后</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210213844086.png" alt="image-20231210213844086"></p>
+<h4 id="查询"><a href="#查询" class="headerlink" title="查询"></a>查询</h4><p>直接索引查询</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">lst = []</span><br><span class="line">lst.append(<span class="string">&quot;a&quot;</span>)</span><br><span class="line">lst.append(<span class="string">&quot;b&quot;</span>)</span><br><span class="line">lst.append(<span class="string">&quot;c&quot;</span>)</span><br><span class="line">lst.insert(<span class="number">0</span>,<span class="string">&quot;d&quot;</span>)</span><br><span class="line">lst.extend([<span class="string">&quot;操&quot;</span>,<span class="string">&quot;阿？&quot;</span>])</span><br><span class="line"><span class="built_in">print</span>(lst[<span class="number">4</span>])</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210214012417.png" alt="image-20231210214012417"></p>
+<h4 id="小练习"><a href="#小练习" class="headerlink" title="小练习"></a>小练习</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">lst =[<span class="string">&#x27;赵敏&#x27;</span>,<span class="string">&#x27;张绍刚&#x27;</span>,<span class="string">&#x27;赵本山&#x27;</span>,<span class="string">&#x27;张无忌&#x27;</span>,<span class="string">&#x27;武则天&#x27;</span>,<span class="string">&#x27;嬴政&#x27;</span>,<span class="string">&#x27;马超&#x27;</span>]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># for item in lst: # 此时，我们看不到元素的索引文字</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(lst)):</span><br><span class="line">    item = lst[i] <span class="comment"># item依然是列表中的每一项</span></span><br><span class="line">    <span class="keyword">if</span> item.startswith(<span class="string">&quot;张&quot;</span>):</span><br><span class="line">        <span class="comment"># 张邵刚</span></span><br><span class="line">        new_name = <span class="string">&quot;王&quot;</span>+item[<span class="number">1</span>:]</span><br><span class="line">        <span class="built_in">print</span>(new_name)</span><br><span class="line">        <span class="comment"># 把新名字丢回列表（需要索引）</span></span><br><span class="line">        lst[i] = new_name</span><br><span class="line"><span class="built_in">print</span>(lst)</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231211192944600.png" alt="image-20231211192944600"></p>
+<h3 id="知识点补充"><a href="#知识点补充" class="headerlink" title="知识点补充"></a>知识点补充</h3><h4 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h4><p>列表会按照存放的顺序来保存。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">lst = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="string">&quot;麻花&quot;</span>,<span class="string">&quot;武大&quot;</span>]</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(lst)</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231211193403397.png" alt="image-20231211193403397"></p>
+<h5 id="sort"><a href="#sort" class="headerlink" title="sort()"></a>sort()</h5><p>对列表进行升序排序</p>
+<p>sort(reverse&#x3D;True)</p>
+<p>reverse:翻转</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">lst = [<span class="number">22</span>,<span class="number">33</span>,<span class="number">453</span>,<span class="number">43</span>,<span class="number">535353</span>,<span class="number">2323</span>]</span><br><span class="line">lst.sort()	</span><br><span class="line"><span class="built_in">print</span>(lst)</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231211193622044.png" alt="image-20231211193622044"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">lst = [<span class="number">22</span>,<span class="number">33</span>,<span class="number">453</span>,<span class="number">43</span>,<span class="number">535353</span>,<span class="number">2323</span>]</span><br><span class="line">lst.sort()</span><br><span class="line"><span class="built_in">print</span>(lst)</span><br><span class="line">lst.sort(reverse=<span class="literal">True</span>)</span><br><span class="line"><span class="built_in">print</span>(lst)</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231211193848506.png" alt="image-20231211193848506"></p>
+<h4 id="嵌套"><a href="#嵌套" class="headerlink" title="嵌套"></a>嵌套</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">lst = [<span class="string">&#x27;sss&#x27;</span>,<span class="string">&#x27;dsdsd&#x27;</span>,[<span class="string">&#x27;sdsdsd&#x27;</span>,<span class="string">&#x27;sdsdsds&#x27;</span>,[<span class="string">&#x27;晚餐&#x27;</span>,<span class="string">&#x27;呼吸&#x27;</span>,<span class="string">&#x27;hello&#x27;</span>],<span class="string">&#x27;sdsdsd&#x27;</span>],<span class="number">4654</span>]</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(lst[<span class="number">2</span>][<span class="number">2</span>][<span class="number">1</span>])</span><br><span class="line"></span><br><span class="line">lst[<span class="number">2</span>][<span class="number">2</span>][<span class="number">2</span>] = lst[<span class="number">2</span>][<span class="number">2</span>][<span class="number">2</span>].upper()</span><br><span class="line"><span class="built_in">print</span>(lst)</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231211194620552.png" alt="image-20231211194620552"></p>
+<h4 id="列表的循环删除（-）"><a href="#列表的循环删除（-）" class="headerlink" title="列表的循环删除（*）"></a>列表的循环删除（*）</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">lst =[<span class="string">&#x27;赵敏&#x27;</span>,<span class="string">&#x27;张绍刚&#x27;</span>,<span class="string">&#x27;张无忌&#x27;</span>,<span class="string">&#x27;赵本山&#x27;</span>,<span class="string">&#x27;武则天&#x27;</span>,<span class="string">&#x27;嬴政&#x27;</span>,<span class="string">&#x27;马超&#x27;</span>]</span><br><span class="line">temp = [] <span class="comment"># 左边一个临时列表，负责存储要删除的内容</span></span><br><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> lst:</span><br><span class="line">    <span class="keyword">if</span> item.startswith(<span class="string">&quot;张&quot;</span>):</span><br><span class="line">        temp.append(item) <span class="comment"># 把要删除的内容记录下来</span></span><br><span class="line">        <span class="comment"># lst.remove(item)</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;要删除的内容&quot;</span>,temp)</span><br><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> temp:</span><br><span class="line">    lst.remove(item)</span><br><span class="line"><span class="built_in">print</span>(lst)</span><br><span class="line"><span class="comment">#安全稳妥的循环制除方式:</span></span><br><span class="line"><span class="comment">#将要删除的内容保存在一个新列表中。循环新列表，制除老列表</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="三、元组"><a href="#三、元组" class="headerlink" title="三、元组"></a>三、元组</h2><h3 id="tuple-元组"><a href="#tuple-元组" class="headerlink" title="tuple&#x2F;元组"></a>tuple&#x2F;元组</h3><p>特点：不可变的列表。</p>
+<p>固定了某些元素，不允许外界修改</p>
+<p>元组如果只有1个元素（*），需要在元素末尾添加一个逗号</p>
+<p>内存地址不能变</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">t = (<span class="string">&quot;张无忌&quot;</span>,<span class="string">&quot;赵敏&quot;</span>,<span class="string">&quot;呵呵&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(t)</span><br><span class="line"><span class="built_in">print</span>(t[<span class="number">1</span>:<span class="number">3</span>])</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231211200452966.png" alt="image-20231211200452966"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">t = (<span class="string">&quot;张无忌&quot;</span>,<span class="string">&quot;赵敏&quot;</span>,<span class="string">&quot;呵呵&quot;</span>)</span><br><span class="line">t[<span class="number">0</span>] = <span class="string">&quot;好好&quot;</span> <span class="comment"># &#x27;tuple&#x27; object does not support item assignment</span></span><br><span class="line"><span class="built_in">print</span>(t)</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231211200558534.png" alt="image-20231211200558534"></p>
+<p>‘tuple’ object does not support item assignment&#x2F;“tuple”对象不支持项分配</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">t = (<span class="string">&quot;20&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(t)</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">type</span>(t))</span><br><span class="line">s = (<span class="string">&quot;20&quot;</span>,)</span><br><span class="line"><span class="built_in">print</span>(s)</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">type</span>(s))</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231211201141252.png" alt="image-20231211201141252"></p>
+<p>元组的不可变性（坑）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">t = (<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,[<span class="string">&quot;a&quot;</span>,<span class="string">&quot;b&quot;</span>,<span class="string">&quot;c&quot;</span>])</span><br><span class="line">t[<span class="number">3</span>].append(<span class="string">&quot;d&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(t)</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231211201714917.png" alt="image-20231211201714917"></p>
+<p>列表里的内容可以变，但是3号位必须是列表，内存地址不能变。</p>
+<h2 id="四、集合"><a href="#四、集合" class="headerlink" title="四、集合"></a>四、集合</h2><h3 id="set集合"><a href="#set集合" class="headerlink" title="set集合"></a>set集合</h3><p>set集合是无序的</p>
+<p> set不能空着，不然它的类型就是字典</p>
+<p>set集合要求存储的数据必须是可以进行哈希计算的</p>
+<p>不可哈希: python中的set集合进行数据存储的时候。需要对数据进				行哈希计算，根据计算出来的哈希值进行存储数据</p>
+<p>​				可变的数据类型，lsit，dict，set</p>
+<p>可哈希：不可变的数据类型，int，str，tuple，bool。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">se = &#123;&#125;<span class="comment"># set不能空着，不然它的类型就是字典。</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">type</span>(se))</span><br><span class="line"></span><br><span class="line">s = &#123;<span class="number">1</span>,<span class="string">&quot;sss&quot;</span>,<span class="number">2</span>,<span class="number">3</span>&#125; </span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">type</span>(s))</span><br><span class="line"><span class="built_in">print</span>(s)</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231211202842887.png" alt="image-20231211202842887"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">s = &#123;1,2,3,&quot;呵呵&quot;,[]&#125; # unhashable type: &#x27;list&#x27;</span><br><span class="line">print()</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231211202857937.png" alt="image-20231211202857937"></p>
+<p>unhashable type: ‘list’&#x2F;list不可哈希</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">s= <span class="built_in">set</span>() <span class="comment"># 创建空集合</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="增删"><a href="#增删" class="headerlink" title="增删"></a>增删</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">s = <span class="built_in">set</span>()</span><br><span class="line">s.add(<span class="string">&quot;a&quot;</span>)</span><br><span class="line">s.add(<span class="string">&quot;b&quot;</span>)</span><br><span class="line">s.add(<span class="string">&quot;c&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(s)</span><br><span class="line"></span><br><span class="line">s.remove(<span class="string">&quot;b&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(s)</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231211203908416.png" alt="image-20231211203908416"></p>
+<h4 id="修改-1"><a href="#修改-1" class="headerlink" title="修改"></a>修改</h4><p>想要修改，先删除，在新增</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">s = <span class="built_in">set</span>()</span><br><span class="line">s.add(<span class="string">&quot;a&quot;</span>)</span><br><span class="line">s.add(<span class="string">&quot;b&quot;</span>)</span><br><span class="line">s.add(<span class="string">&quot;c&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(s)</span><br><span class="line"></span><br><span class="line">s.remove(<span class="string">&quot;a&quot;</span>)</span><br><span class="line">s.add(<span class="string">&quot;z&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(s)</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231211204119637.png" alt="image-20231211204119637"></p>
+<h4 id="查询-1"><a href="#查询-1" class="headerlink" title="查询"></a>查询</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">s = set()</span><br><span class="line">s.add(&quot;a&quot;)</span><br><span class="line">s.add(&quot;b&quot;)</span><br><span class="line">s.add(&quot;c&quot;)</span><br><span class="line">print(s)</span><br><span class="line"></span><br><span class="line">for item in s:</span><br><span class="line">    print(item)</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231211204332539.png" alt="image-20231211204332539"></p>
+<h4 id="交集、并集"><a href="#交集、并集" class="headerlink" title="交集、并集"></a>交集、并集</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">s1 = &#123;<span class="string">&quot;刘科长&quot;</span>,<span class="string">&quot;赵四&quot;</span>,<span class="string">&quot;皮长山&quot;</span>&#125;</span><br><span class="line">s2 = &#123;<span class="string">&quot;刘科长&quot;</span>,<span class="string">&quot;冯乡长&quot;</span>,<span class="string">&quot;皮长山&quot;</span>&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(s1 &amp; s2) <span class="comment"># 交集</span></span><br><span class="line"><span class="built_in">print</span>(s1.intersection(s2))</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(s1 | s2) <span class="comment"># 并集</span></span><br><span class="line"><span class="built_in">print</span>(s1.union(s2))</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231212202321842.png" alt="image-20231212202321842"></p>
+<h5 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h5><p>去除重复</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">s1 = &#123;&quot;周杰伦&quot;,&quot;昆凌&quot;,&quot;蔡依林&quot;,&quot;侯佩岑&quot;&#125;</span><br><span class="line">print(s1)</span><br><span class="line">s1.add(&quot;周杰伦&quot;)</span><br><span class="line">print(s1)</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231212202803186.png" alt="image-20231212202803186"></p>
+<p>去除列表重复内容：去除重复之后的数据是无序的</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">lst = [<span class="string">&#x27;1&#x27;</span>,<span class="string">&#x27;2&#x27;</span>,<span class="string">&#x27;3&#x27;</span>,<span class="string">&#x27;4&#x27;</span>,<span class="string">&#x27;3&#x27;</span>,<span class="string">&#x27;4&#x27;</span>,<span class="string">&#x27;2&#x27;</span>,<span class="string">&#x27;3&#x27;</span>]</span><br><span class="line"><span class="built_in">print</span>(lst)</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">list</span>(<span class="built_in">set</span>(lst)))</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231212203023432.png" alt="image-20231212203023432"></p>
+<h2 id="五、字典"><a href="#五、字典" class="headerlink" title="五、字典"></a>五、字典</h2><h3 id="dict-字典"><a href="#dict-字典" class="headerlink" title="dict&#x2F;字典"></a>dict&#x2F;字典</h3><p>字典是以键值对的形式进行存储数据的</p>
+<p>字典的key必须是可哈希的数据类型</p>
+<p>字典的value可以是任何数据类型</p>
+<p>字典的表示方式：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;key:value, key2:value2, key3:value&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">dic = &#123;<span class="string">&quot;jay&quot;</span>:<span class="string">&quot;周杰伦&quot;</span>,<span class="string">&quot;金毛狮王&quot;</span>:<span class="string">&quot;谢逊&quot;</span>&#125;</span><br><span class="line"></span><br><span class="line">val = dic[<span class="string">&quot;金毛狮王&quot;</span>] <span class="comment"># 把索引换成了key</span></span><br><span class="line"><span class="built_in">print</span>(val)</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231212203937060.png" alt="image-20231212203937060"></p>
+<h3 id="字典的增删改查"><a href="#字典的增删改查" class="headerlink" title="字典的增删改查"></a>字典的增删改查</h3><h4 id="增加-修改-删除"><a href="#增加-修改-删除" class="headerlink" title="增加&#x2F;修改&#x2F;删除"></a>增加&#x2F;修改&#x2F;删除</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">dic = <span class="built_in">dict</span>()</span><br><span class="line"><span class="built_in">print</span>(dic)</span><br><span class="line"></span><br><span class="line">dic[<span class="string">&#x27;jay&#x27;</span>] = <span class="string">&quot;周杰伦&quot;</span></span><br><span class="line"><span class="built_in">print</span>(dic)</span><br><span class="line"></span><br><span class="line">dic[<span class="number">1</span>] = <span class="number">123</span></span><br><span class="line"><span class="built_in">print</span>(dic)</span><br><span class="line"></span><br><span class="line">dic[<span class="string">&#x27;jay&#x27;</span>] = <span class="string">&quot;昆凌&quot;</span> <span class="comment"># 字典已有jay，执行修改操作</span></span><br><span class="line"><span class="built_in">print</span>(dic)</span><br><span class="line"></span><br><span class="line">dic.setdefault(<span class="string">&quot;jay&quot;</span>,<span class="string">&quot;胡辣汤&quot;</span>) <span class="comment"># 设置默认值，如果以前有了tom，setdefault就不起作用了</span></span><br><span class="line"></span><br><span class="line">dic.pop(<span class="number">1</span>) <span class="comment"># 根据key去删除</span></span><br><span class="line"><span class="built_in">print</span>(dic)</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231212205345829.png" alt="image-20231212205345829"></p>
+<h4 id="查询-2"><a href="#查询-2" class="headerlink" title="查询"></a>查询</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">dic = <span class="built_in">dict</span>()</span><br><span class="line">dic[<span class="string">&#x27;jay&#x27;</span>] = <span class="string">&quot;周杰伦&quot;</span></span><br><span class="line">dic[<span class="number">1</span>] = <span class="number">123</span></span><br><span class="line">dic[<span class="string">&#x27;kun&#x27;</span>] = <span class="string">&quot;昆凌&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(dic[<span class="string">&#x27;1232&#x27;</span>]) <span class="comment"># 如果程序不存在，程序会报错,当你确定你的key是没问题的，可以用。</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(dic.get(<span class="number">1222</span>)) <span class="comment"># 如果key不存在。程序返回none，当不确定你的key的时候，可以用。</span></span><br></pre></td></tr></table></figure>
+
+<p>1<img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231212205743991.png" alt="image-20231212205743991"></p>
+<p>2<img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231212205944943.png" alt="image-20231212205944943"></p>
+<h5 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">dic = &#123;</span><br><span class="line">    <span class="string">&quot;赵四&quot;</span>:<span class="string">&quot;歪嘴&quot;</span>,</span><br><span class="line">    <span class="string">&quot;刘能&quot;</span>:<span class="string">&quot;结巴&quot;</span>,</span><br><span class="line">    <span class="string">&quot;大脚&quot;</span>:<span class="string">&quot;花心&quot;</span>,</span><br><span class="line">    <span class="string">&quot;大脑袋&quot;</span>:<span class="string">&quot;折腾&quot;</span>,</span><br><span class="line">&#125;</span><br><span class="line">name = <span class="built_in">input</span>(<span class="string">&quot;请输入你想知道我的我们村的人的名字：&quot;</span>)</span><br><span class="line">val = dic.get(name)</span><br><span class="line"><span class="keyword">if</span> val <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;我们村没这人！&quot;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(val)</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231212210504835.png" alt="image-20231212210504835"></p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231212210529525.png" alt="image-20231212210529525"></p>
+<h3 id="字典的循环和嵌套"><a href="#字典的循环和嵌套" class="headerlink" title="字典的循环和嵌套"></a>字典的循环和嵌套</h3><h4 id="循环"><a href="#循环" class="headerlink" title="循环"></a>循环</h4><ol>
+<li><p>用for循环，直接拿到key</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">dic = &#123;</span><br><span class="line">    <span class="string">&quot;赵四&quot;</span>:<span class="string">&quot;歪嘴&quot;</span>,</span><br><span class="line">    <span class="string">&quot;刘能&quot;</span>:<span class="string">&quot;结巴&quot;</span>,</span><br><span class="line">    <span class="string">&quot;大脚&quot;</span>:<span class="string">&quot;花心&quot;</span>,</span><br><span class="line">    <span class="string">&quot;大脑袋&quot;</span>:<span class="string">&quot;折腾&quot;</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> key <span class="keyword">in</span> dic:</span><br><span class="line">    <span class="built_in">print</span>(key,dic[key])</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231212210823592.png" alt="image-20231212210823592"></p>
+<ol start="2">
+<li><p>希望把所有的key保存到一个列表中</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">dic = &#123;</span><br><span class="line">    <span class="string">&quot;赵四&quot;</span>:<span class="string">&quot;歪嘴&quot;</span>,</span><br><span class="line">    <span class="string">&quot;刘能&quot;</span>:<span class="string">&quot;结巴&quot;</span>,</span><br><span class="line">    <span class="string">&quot;大脚&quot;</span>:<span class="string">&quot;花心&quot;</span>,</span><br><span class="line">    <span class="string">&quot;大脑袋&quot;</span>:<span class="string">&quot;折腾&quot;</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(dic.keys())</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231212210955042.png" alt="image-20231212210955042"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">dic = &#123;</span><br><span class="line">    <span class="string">&quot;赵四&quot;</span>:<span class="string">&quot;歪嘴&quot;</span>,</span><br><span class="line">    <span class="string">&quot;刘能&quot;</span>:<span class="string">&quot;结巴&quot;</span>,</span><br><span class="line">    <span class="string">&quot;大脚&quot;</span>:<span class="string">&quot;花心&quot;</span>,</span><br><span class="line">    <span class="string">&quot;大脑袋&quot;</span>:<span class="string">&quot;折腾&quot;</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">list</span>(dic.keys()))</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231212211101696.png" alt="image-20231212211101696"></p>
+<ol start="3">
+<li><p>希望把所有的value都放在一个列表中</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">dic = &#123;</span><br><span class="line">    <span class="string">&quot;赵四&quot;</span>:<span class="string">&quot;歪嘴&quot;</span>,</span><br><span class="line">    <span class="string">&quot;刘能&quot;</span>:<span class="string">&quot;结巴&quot;</span>,</span><br><span class="line">    <span class="string">&quot;大脚&quot;</span>:<span class="string">&quot;花心&quot;</span>,</span><br><span class="line">    <span class="string">&quot;大脑袋&quot;</span>:<span class="string">&quot;折腾&quot;</span>,</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">list</span>(dic.values()))</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231212211307172.png" alt="image-20231212211307172"></p>
+<ol start="4">
+<li><p>直接拿出key和value的值</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">dic = &#123;</span><br><span class="line">    <span class="string">&quot;赵四&quot;</span>:<span class="string">&quot;歪嘴&quot;</span>,</span><br><span class="line"> <span class="string">&quot;刘能&quot;</span>:<span class="string">&quot;结巴&quot;</span>,</span><br><span class="line">    <span class="string">&quot;大脚&quot;</span>:<span class="string">&quot;花心&quot;</span>,</span><br><span class="line">    <span class="string">&quot;大脑袋&quot;</span>:<span class="string">&quot;折腾&quot;</span>,</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">list</span>(dic.values()))</span><br><span class="line"><span class="keyword">for</span> key,value <span class="keyword">in</span> dic.items(): <span class="comment"># 可以直接拿出字典的所有key与value</span></span><br><span class="line">    <span class="built_in">print</span>(key,value)</span><br></pre></td></tr></table></figure>
+
+<p><img src="/python-homework_2_%E5%90%8E%E7%BB%AD.assets/image-20231212212517213.png" alt="image-20231212212517213"></p>
+<hr>
+<h4 id="解包"><a href="#解包" class="headerlink" title="解包"></a>解包</h4><p>前后数据数量得对应，不然会报错。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a,b = (<span class="number">1</span>,<span class="number">2</span>) <span class="comment"># 元组和列表都可以执行该操作，称为解构/解包</span></span><br><span class="line"><span class="built_in">print</span>(a)</span><br><span class="line"><span class="built_in">print</span>(b)</span><br></pre></td></tr></table></figure>
+
+<p><img src="/python-homework_2_%E5%90%8E%E7%BB%AD.assets/image-20231212212117997.png" alt="image-20231212212117997"></p>
+<hr>
+</li>
+</ol>
+<h4 id="嵌套-1"><a href="#嵌套-1" class="headerlink" title="嵌套"></a>嵌套</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">wangfeng = &#123;</span><br><span class="line">    <span class="string">&quot;name&quot;</span>:<span class="string">&quot;汪峰&quot;</span>,</span><br><span class="line">    <span class="string">&quot;age&quot;</span>:<span class="string">&quot;18&quot;</span>,</span><br><span class="line">    <span class="string">&quot;wife&quot;</span>:&#123;</span><br><span class="line">        <span class="string">&quot;name&quot;</span>:<span class="string">&quot;章子怡&quot;</span>,</span><br><span class="line">        <span class="string">&quot;hobby&quot;</span>:<span class="string">&quot;演戏&quot;</span>,</span><br><span class="line">        <span class="string">&quot;assistant&quot;</span>:&#123;</span><br><span class="line">            <span class="string">&quot;name&quot;</span>:<span class="string">&quot;樵夫&quot;</span>,</span><br><span class="line">            <span class="string">&quot;age&quot;</span>:<span class="string">&quot;19&quot;</span>,</span><br><span class="line">            <span class="string">&quot;hobby&quot;</span>:<span class="string">&quot;打游戏&quot;</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">&quot;children&quot;</span>:[</span><br><span class="line">        &#123;<span class="string">&quot;name&quot;</span>:<span class="string">&quot;孩儿1&quot;</span>,<span class="string">&quot;age&quot;</span>:<span class="number">1</span>&#125;,</span><br><span class="line">        &#123;<span class="string">&quot;name&quot;</span>:<span class="string">&quot;孩儿2&quot;</span>,<span class="string">&quot;age&quot;</span>:<span class="number">8</span>&#125;,</span><br><span class="line">        &#123;<span class="string">&quot;name&quot;</span>:<span class="string">&quot;孩儿3&quot;</span>,<span class="string">&quot;age&quot;</span>:<span class="number">12</span>&#125;,</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment"># 汪峰妻子助手的名字</span></span><br><span class="line">name = wangfeng[<span class="string">&#x27;wife&#x27;</span>][<span class="string">&#x27;assistant&#x27;</span>][<span class="string">&#x27;name&#x27;</span>]</span><br><span class="line"><span class="built_in">print</span>(name)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 汪峰的第二个孩子加一岁</span></span><br><span class="line">wangfeng[<span class="string">&#x27;children&#x27;</span>][<span class="number">1</span>][<span class="string">&#x27;age&#x27;</span>] = wangfeng[<span class="string">&#x27;children&#x27;</span>][<span class="number">1</span>][<span class="string">&#x27;age&#x27;</span>] + <span class="number">1</span></span><br><span class="line"><span class="built_in">print</span>(wangfeng)</span><br></pre></td></tr></table></figure>
+
+<p><img src="/python-homework_2_%E5%90%8E%E7%BB%AD.assets/image-20231212214403705.png" alt="image-20231212214403705"></p>
+<h3 id="字典的循环删除"><a href="#字典的循环删除" class="headerlink" title="字典的循环删除"></a>字典的循环删除</h3><p>不能够直接pop删除，直接pop删除会报错，需要新建一个空的字典存放要删除的key，在删除这个存放字典，最后在输出源字典。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">dic = &#123;</span><br><span class="line">    <span class="string">&quot;赵四&quot;</span>:<span class="string">&quot;歪嘴&quot;</span>,</span><br><span class="line">    <span class="string">&quot;刘能&quot;</span>:<span class="string">&quot;结巴&quot;</span>,</span><br><span class="line">    <span class="string">&quot;大脚&quot;</span>:<span class="string">&quot;花心&quot;</span>,</span><br><span class="line">    <span class="string">&quot;大脑袋&quot;</span>:<span class="string">&quot;折腾&quot;</span>,</span><br><span class="line">&#125;</span><br><span class="line">temp = [] <span class="comment"># 存放即将删除的key</span></span><br><span class="line"><span class="keyword">for</span> key <span class="keyword">in</span> dic:</span><br><span class="line">    <span class="keyword">if</span> key.startswith(<span class="string">&quot;大&quot;</span>):</span><br><span class="line">        <span class="comment"># dic.pop(key) # dictionary changed size during iteration</span></span><br><span class="line">        temp.append(key)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> t <span class="keyword">in</span> temp: <span class="comment"># 循环列表，删除字典中的内容</span></span><br><span class="line">    dic.pop(t)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(dic)</span><br></pre></td></tr></table></figure>
+
+<p><img src="/python-homework_2_%E5%90%8E%E7%BB%AD.assets/image-20231213191647331.png" alt="image-20231213191647331"></p>
+<h2 id="六、字符集和编码"><a href="#六、字符集和编码" class="headerlink" title="六、字符集和编码"></a>六、字符集和编码</h2><p>0 1  &lt;&#x3D;&gt; 10101010 &#x3D;&gt; 二进制转化成十进制 &lt;&#x3D;&gt; 88</p>
+<p>电脑如何进行存储文字信息</p>
+<p>1000000 &lt;&#x3D;&gt; a</p>
+<p>ascii &#x3D;&gt; 编排了128个文字符号。只需要7个0和1就可以表示了。</p>
+<p>01111111 &#x3D;&gt; 1byte &#x3D;&gt; 8bit</p>
+<p>ANSI &#x3D;&gt; 一套标准，每个字符 16bit,2byte</p>
+<p>00000000 01111111</p>
+<p>中国：gb2312编码，gbk编码 (windows，默认编码),</p>
+<p>日本：JIS编码</p>
+<p>国家之间编码方式不同，一样的数字有不一样的文字</p>
+<h5 id="Unicode-万国码。"><a href="#Unicode-万国码。" class="headerlink" title="Unicode: 万国码。"></a>Unicode: 万国码。</h5><p>文字量太大，从UCS-2 2个字节，扩充到了UCS-4 4个字节</p>
+<p>utf:是可变长度的unicode。可以进行数据的传输和存储。</p>
+<p>utf-8: 最短的字节长度8</p>
+<p>​			英文： 8bit，1byte</p>
+<p>​			欧洲文字：16bit，2byte</p>
+<p>​			中文：24bit，3byte</p>
+<p>utf-16：最短的字节长度16</p>
+<h5 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h5><ol>
+<li><p>ascii:8bit,1byte</p>
+</li>
+<li><p>gbk:16bit,2byte   windows默认</p>
+</li>
+<li><p>unicode:32bit,4byte(没法用，只是一个标准)</p>
+</li>
+<li><p>utf-8:                mac默认</p>
+<p>​			英文： 8bit，1byte</p>
+<p>​			欧洲：16bit，2byte</p>
+<p>​			中文：24bit，3byte</p>
+</li>
+</ol>
+<p>gbk和utf-8不能直接就进行转化</p>
+<p>gbk &lt;&#x3D;&gt; 文字 &lt;&#x3D;&gt; utf-8</p>
+<h3 id="bytes"><a href="#bytes" class="headerlink" title="bytes"></a>bytes</h3><p>程序员平时遇见的所有的数据最终单位都是字节byte</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">s = <span class="string">&quot;周杰伦&quot;</span></span><br><span class="line">bs1 = s.encode(<span class="string">&quot;gbk&quot;</span>) <span class="comment"># b&#x27;xxxx&#x27; bytes类型</span></span><br><span class="line">bs2 = s.encode(<span class="string">&quot;utf-8&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(bs1)</span><br><span class="line"><span class="built_in">print</span>(bs2</span><br></pre></td></tr></table></figure>
+
+<p><img src="/python-homework_2_%E5%90%8E%E7%BB%AD.assets/image-20231213200723689.png" alt="image-20231213200723689"></p>
+<h5 id="编码转换："><a href="#编码转换：" class="headerlink" title="编码转换："></a>编码转换：</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 怎么把一个gbk的字节转换成utf-8的字节</span></span><br><span class="line">bs = <span class="string">b&#x27;\xd6\xdc\xbd\xdc\xc2\xd7&#x27;</span></span><br><span class="line"><span class="comment"># 先变成文字符号(字符串)</span></span><br><span class="line">s = bs.decode(<span class="string">&quot;gbk&quot;</span>) <span class="comment"># 解码</span></span><br><span class="line">bs2 = s.encode(<span class="string">&quot;utf-8&quot;</span>) <span class="comment"># 重新编码</span></span><br><span class="line"><span class="built_in">print</span>(bs2)</span><br></pre></td></tr></table></figure>
+
+<p><img src="/python-homework_2_%E5%90%8E%E7%BB%AD.assets/image-20231213200803187.png" alt="image-20231213200803187"></p>
+<ol>
+<li><pre><code class="python">1. str.encode(&quot;编码&quot;)  进行编码
+2. bytes.decode(&quot;编码&quot;) 进行解码
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">   </span><br><span class="line"></span><br><span class="line">```python</span><br><span class="line">s = &quot;你好abc呵呵哒&quot;</span><br><span class="line">print(s.encode(&quot;utf-8&quot;))</span><br><span class="line">t = &quot;assdsd&quot;</span><br><span class="line">print(t.encode(&quot;utf-8&quot;))</span><br><span class="line">k = &quot;assdsd&quot;</span><br><span class="line">print(t.encode(&quot;gbk&quot;))</span><br></pre></td></tr></table></figure>
+</code></pre>
+</li>
+</ol>
+<p><img src="/python-homework_2_%E5%90%8E%E7%BB%AD.assets/image-20231213201427924.png" alt="image-20231213201427924"></p>
+<p>字母用哪种编码方式进行解码都是显示原字母。</p>
+<h2 id="七、运算符"><a href="#七、运算符" class="headerlink" title="七、运算符"></a>七、运算符</h2><p>该知识点在<a target="_blank" rel="noopener" href="https://lanceplm.github.io/2023/12/05/python-homework_1_%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">python_homework-基础知识-1</a>中有较为具体的理论知识。</p>
+<h3 id="算数运算"><a href="#算数运算" class="headerlink" title="算数运算"></a>算数运算</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">+ 加</span><br><span class="line">- 减</span><br><span class="line">* 乘</span><br><span class="line">/ 除</span><br><span class="line">% 取余数</span><br><span class="line">// 商---20//3=6</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a = 10</span><br><span class="line">b = 3</span><br><span class="line">c = a % b</span><br><span class="line">print(c)</span><br></pre></td></tr></table></figure>
+
+<p><img src="/python-homework_2_%E5%90%8E%E7%BB%AD.assets/image-20231213202148917.png" alt="image-20231213202148917"></p>
+<p>%是用来计算余数的。</p>
+<p>让用户输入一个数字．判断是否是35的倍数</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">n = <span class="built_in">int</span>(<span class="built_in">input</span>(<span class="string">&quot;请输入数字：&quot;</span>))</span><br><span class="line"><span class="keyword">if</span> n % <span class="number">35</span> ==<span class="number">0</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;是35的倍数&quot;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;不是35的倍数&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p><img src="/python-homework_2_%E5%90%8E%E7%BB%AD.assets/image-20231213202458362.png" alt="image-20231213202458362"></p>
+<p><img src="/python-homework_2_%E5%90%8E%E7%BB%AD.assets/image-20231213202514990.png" alt="image-20231213202514990"></p>
+<h3 id="比较运算"><a href="#比较运算" class="headerlink" title="比较运算"></a>比较运算</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;</span><br><span class="line">&lt;</span><br><span class="line">&gt;=</span><br><span class="line">&lt;=</span><br><span class="line">== 判断左右两边是否相同</span><br><span class="line">!= 不等于</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="number">40</span></span><br><span class="line">b = <span class="number">30</span></span><br><span class="line">a,b = b,a</span><br><span class="line"><span class="built_in">print</span>(a,b)</span><br></pre></td></tr></table></figure>
+
+<p><img src="/python-homework_2_%E5%90%8E%E7%BB%AD.assets/image-20231213203609280.png" alt="image-20231213203609280"></p>
+<p>前面提到的解包知识。</p>
+<h3 id="赋值运算"><a href="#赋值运算" class="headerlink" title="赋值运算"></a>赋值运算</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">=</span><br><span class="line">+=  a+=b 相当于 a=a+b</span><br><span class="line">-=  a-=b 相当于 a=a-b</span><br><span class="line">*=  与上面同理</span><br><span class="line">。。。</span><br></pre></td></tr></table></figure>
+
+<h3 id="逻辑运算"><a href="#逻辑运算" class="headerlink" title="逻辑运算"></a>逻辑运算</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">and  并且，左右两端同时成立，结果才成立</span><br><span class="line">or   或者，左右两端有一个条件成立，结果就成立</span><br><span class="line">not  非， 非真既假，非假既真</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="literal">True</span> <span class="keyword">and</span> <span class="literal">True</span> <span class="keyword">and</span> <span class="literal">False</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="literal">True</span> <span class="keyword">and</span> <span class="literal">True</span> <span class="keyword">and</span> <span class="literal">True</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="literal">False</span> <span class="keyword">or</span> <span class="literal">False</span> <span class="keyword">or</span> <span class="literal">False</span> <span class="keyword">or</span> <span class="literal">True</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="keyword">not</span> <span class="literal">True</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="keyword">not</span> <span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
+
+<p><img src="/python-homework_2_%E5%90%8E%E7%BB%AD.assets/image-20231213204815411.png" alt="image-20231213204815411"></p>
+<p>当三者同时出现时，最好加上括号，不会产生歧义或不易理解。<br>如果没有括号<br>    运算顺序<br>    括号 &gt; not &gt; and &gt; or</p>
+<h3 id="成员运算"><a href="#成员运算" class="headerlink" title="成员运算"></a>成员运算</h3><p>判断xxx是否在XXXX中出现了</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">in</span><br><span class="line">not in</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">s = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line"><span class="built_in">print</span>(<span class="number">1</span> <span class="keyword">in</span> s)</span><br><span class="line"><span class="built_in">print</span>(<span class="number">55</span> <span class="keyword">in</span> s)</span><br><span class="line"><span class="built_in">print</span>(<span class="number">55</span> <span class="keyword">not</span> <span class="keyword">in</span> s)</span><br></pre></td></tr></table></figure>
+
+<p><img src="/python-homework_2_%E5%90%8E%E7%BB%AD.assets/image-20231213205847960.png" alt="image-20231213205847960"></p>
+<h2 id="八、文件操作"><a href="#八、文件操作" class="headerlink" title="八、文件操作"></a>八、文件操作</h2><p>找到这个文件，双击打开它</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">open</span>(文件路径,mode=<span class="string">&quot;&quot;</span>,encoding=<span class="string">&quot;&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h4 id="文件路径"><a href="#文件路径" class="headerlink" title="文件路径"></a>文件路径</h4><h5 id="1-绝对路径"><a href="#1-绝对路径" class="headerlink" title="1.绝对路径"></a>1.绝对路径</h5><p>​	d:&#x2F;test&#x2F;xxxx.txt</p>
+<h5 id="2-相对路径"><a href="#2-相对路径" class="headerlink" title="2.相对路径"></a>2.相对路径</h5><p>​	相对于当前你的程序所在的文件夹</p>
+<p>​	..&#x2F; 上一层文件夹</p>
+<p>mode：</p>
+<p>​	r：read 读取</p>
+<p>​	w：write 写</p>
+<p>​	 b：读写的是非文本文件 -&gt; bytes</p>
+<p>with：打开文件，执行完with里的代码后，自动close</p>
+<p>encoding:</p>
+<p>​	填写读取的编码格式，能填就填，文本一般使用utf-8格式。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">f = open(&quot;国产自拍.txt&quot;,mode=&quot;r&quot;,encoding=&quot;utf-8&quot;)</span><br></pre></td></tr></table></figure>
+
+<h4 id="文件读取"><a href="#文件读取" class="headerlink" title="文件读取"></a>文件读取</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">f = <span class="built_in">open</span>(<span class="string">&quot;国产自拍.txt&quot;</span>,mode=<span class="string">&quot;r&quot;</span>,encoding=<span class="string">&quot;utf-8&quot;</span>)</span><br><span class="line">cont = f.read() <span class="comment"># 全部读取</span></span><br><span class="line"><span class="built_in">print</span>(cont)</span><br></pre></td></tr></table></figure>
+
+<p><img src="/python-homework_2_%E5%90%8E%E7%BB%AD.assets/image-20231213211425262.png" alt="image-20231213211425262"></p>
+<p>print自带一个换行</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">f = <span class="built_in">open</span>(<span class="string">&quot;国产自拍.txt&quot;</span>,mode=<span class="string">&quot;r&quot;</span>,encoding=<span class="string">&quot;utf-8&quot;</span>)</span><br><span class="line">line = f.readline().strip() <span class="comment">#去掉字符串左右两端的空白·空格，换行，制表符</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(line)</span><br><span class="line">line = f.readline()</span><br><span class="line"><span class="built_in">print</span>(line)</span><br><span class="line">line = f.readline()</span><br><span class="line"><span class="built_in">print</span>(line)</span><br></pre></td></tr></table></figure>
+
+<p><img src="/python-homework_2_%E5%90%8E%E7%BB%AD.assets/image-20231213212323319.png" alt="image-20231213212323319"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">f = <span class="built_in">open</span>(<span class="string">&quot;国产自拍.txt&quot;</span>,mode=<span class="string">&quot;r&quot;</span>,encoding=<span class="string">&quot;utf-8&quot;</span>)</span><br><span class="line">content = f.readlines()</span><br><span class="line"><span class="built_in">print</span>(content)</span><br></pre></td></tr></table></figure>
+
+<p><img src="/python-homework_2_%E5%90%8E%E7%BB%AD.assets/image-20231213212506929.png" alt="image-20231213212506929"></p>
+<p>最重要的一种文本读取方式</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">f = <span class="built_in">open</span>(<span class="string">&quot;国产自拍.txt&quot;</span>,mode=<span class="string">&quot;r&quot;</span>,encoding=<span class="string">&quot;utf-8&quot;</span>)</span><br><span class="line"><span class="keyword">for</span> line <span class="keyword">in</span> f:</span><br><span class="line">    <span class="built_in">print</span>(line.strip())</span><br></pre></td></tr></table></figure>
+
+<p><img src="/python-homework_2_%E5%90%8E%E7%BB%AD.assets/image-20231213212857961.png" alt="image-20231213212857961"></p>
+<h4 id="文件写入"><a href="#文件写入" class="headerlink" title="文件写入"></a>文件写入</h4><p>w模式下，如果文件不存在，自动的创建一个文件</p>
+<p>w模式下．每一次open都会清空掉文件中的内容</p>
+<hr>
+<h5 id="ljust"><a href="#ljust" class="headerlink" title="ljust()"></a>ljust()</h5><p>填充空格</p>
+<p>ljust(20)函数可以将这个字符串左对齐,并用空格填充到长度为20</p>
+<p>利用了字符串的ljust和len函数,可以很简单地实现字符串补齐并计算补齐后的新长度。</p>
+<hr>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">f = <span class="built_in">open</span>(<span class="string">&quot;好嫩.txt&quot;</span>,mode=<span class="string">&quot;w&quot;</span>,encoding=<span class="string">&quot;utf-8&quot;</span>)</span><br><span class="line">f.write(<span class="string">&quot;不嫩就怪了&quot;</span>)</span><br><span class="line"></span><br><span class="line">f.close() <span class="comment"># 好习惯：开启文件后记得关闭。</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231220202319920.png" alt="image-20231220202319920"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">lst = [<span class="string">&#x27;张无忌&#x27;</span>,<span class="string">&#x27;汪峰&#x27;</span>,<span class="string">&#x27;章子怡&#x27;</span>,<span class="string">&#x27;赵敏&#x27;</span>]</span><br><span class="line">s = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">f = <span class="built_in">open</span>(<span class="string">&quot;测试.txt&quot;</span>,mode=<span class="string">&quot;w&quot;</span>,encoding=<span class="string">&quot;utf-8 # open 一般写在循环外面</span></span><br><span class="line"><span class="string">while s &lt; len(lst):</span></span><br><span class="line"><span class="string">    f.write(lst[s])</span></span><br><span class="line"><span class="string">    s = s + 1</span></span><br><span class="line"><span class="string">f.close()</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231220203021313.png" alt="image-20231220203021313"></p>
+<h5 id="a模式"><a href="#a模式" class="headerlink" title="a模式"></a>a模式</h5><p>添加内容</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">f = <span class="built_in">open</span>(<span class="string">&quot;测试.txt&quot;</span>,mode=<span class="string">&quot;a&quot;</span>,encoding=<span class="string">&quot;utf-8&quot;</span>)</span><br><span class="line">f.write(<span class="string">&quot;\n&quot;</span>+<span class="string">&quot;你好厉害&quot;</span>)</span><br><span class="line"></span><br><span class="line">f.close()</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231220204559457.png" alt="image-20231220204559457"></p>
+<h5 id="with"><a href="#with" class="headerlink" title="with"></a>with</h5><p>打开文件，执行完with里的代码后，自动close</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&quot;国产自拍.txt&quot;</span>,mode=<span class="string">&quot;r&quot;</span>,encoding=<span class="string">&quot;utf-8&quot;</span>) <span class="keyword">as</span> f: <span class="comment"># f = open()</span></span><br><span class="line">    <span class="keyword">for</span> line <span class="keyword">in</span> f:</span><br><span class="line">        <span class="built_in">print</span>(line.strip())</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231220205323348.png" alt="image-20231220205323348"></p>
+<p>在with外额外打开write会报错</p>
+<h4 id="图片读取"><a href="#图片读取" class="headerlink" title="图片读取"></a>图片读取</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&quot;avator.jpg&quot;</span>,mode=<span class="string">&quot;rb&quot;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    <span class="keyword">for</span> line <span class="keyword">in</span> f:</span><br><span class="line">        <span class="built_in">print</span>(line)</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231220205901758.png" alt="image-20231220205901758"></p>
+<h4 id="文件复制"><a href="#文件复制" class="headerlink" title="文件复制"></a>文件复制</h4><p>从源文件中读取内容，写入到新路径去</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&quot;avator.jpg&quot;</span>,mode=<span class="string">&quot;rb&quot;</span>) <span class="keyword">as</span> f1,\</span><br><span class="line">    <span class="built_in">open</span>(<span class="string">&quot;../Bilibili-day01/转移测试.jpg&quot;</span>,mode=<span class="string">&quot;wb&quot;</span>) <span class="keyword">as</span> f2:</span><br><span class="line">        <span class="keyword">for</span> line <span class="keyword">in</span> f1:</span><br><span class="line">            f2.write(line)</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/12/10/python-homework_2_%E5%90%8E%E7%BB%AD/" data-id="clrcswxkk000iugwk2du5bvhv" data-title="python-homework_2_后续知识" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2023/12/11/7.1-html%E8%AE%AD%E7%BB%83/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          7.1-vue3练习-html阴影笔记-数据绑定-网页练习展示
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2023/12/08/6.1-vue%E7%9A%84%E5%AE%89%E8%A3%85-html%E9%A1%B5%E9%9D%A2%E5%AE%9E%E6%93%8D/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">6.1-vue的安装-html页面实操</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/01/">January 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/12/">December 2023</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2024/01/14/hexo%E5%8D%9A%E5%AE%A2%E6%A0%BC%E5%BC%8F%EF%BC%88%E5%8D%9A%E5%AE%A2%E7%89%88%EF%BC%89/">markdown的使用说明</a>
+          </li>
+        
+          <li>
+            <a href="/2024/01/14/DB/">DB</a>
+          </li>
+        
+          <li>
+            <a href="/2024/01/14/13.1-%E6%89%93%E9%9D%B6/">13.1-打靶</a>
+          </li>
+        
+          <li>
+            <a href="/2024/01/14/14.1-%E4%BB%A3%E7%90%86-%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/">14.1-代理-流量分析</a>
+          </li>
+        
+          <li>
+            <a href="/2024/01/14/1.3-%E5%8D%9A%E5%AE%A2%E7%9A%84%E7%BC%96%E5%86%99%E4%B8%8E%E4%B8%8A%E4%BC%A0/">1.3-博客的编写与上传</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2024 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

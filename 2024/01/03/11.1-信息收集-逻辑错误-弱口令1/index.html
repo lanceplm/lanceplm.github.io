@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>11.1-信息收集-逻辑错误-弱口令 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="信息收集 网址和域名之间可以互相进行查询，后续有提到 知晓上面的信息后我们需要进行  知道网站后可以通过爆破来获取各类信息：ssh、ftp、smb、rdp等  了解到web还可以查询api信息 网站其他信息查询1x.threatbook.com  该网址可以通过ip查询网址相关信息。  还可以查询该ip的地址 网站备案查询1https:&#x2F;&#x2F;beian.miit.gov.cn&#x2F;#&#x2F;Integrate">
+<meta property="og:type" content="article">
+<meta property="og:title" content="11.1-信息收集-逻辑错误-弱口令">
+<meta property="og:url" content="http://example.com/2024/01/03/11.1-%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86-%E9%80%BB%E8%BE%91%E9%94%99%E8%AF%AF-%E5%BC%B1%E5%8F%A3%E4%BB%A41/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="信息收集 网址和域名之间可以互相进行查询，后续有提到 知晓上面的信息后我们需要进行  知道网站后可以通过爆破来获取各类信息：ssh、ftp、smb、rdp等  了解到web还可以查询api信息 网站其他信息查询1x.threatbook.com  该网址可以通过ip查询网址相关信息。  还可以查询该ip的地址 网站备案查询1https:&#x2F;&#x2F;beian.miit.gov.cn&#x2F;#&#x2F;Integrate">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240103202242749.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240103202733380.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240103203224372.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240103203530943.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240103203738592.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240103203956071.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240103204552359.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240103204651640.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240103204821773.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240103205236581.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240103205410250.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202023-12-29%20160951.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202023-12-29%20171645.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202023-12-29%20162658.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202023-12-29%20162724.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202023-12-29%20162806.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202023-12-29%20163526.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202023-12-29%20162901.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202023-12-29%20163111.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202023-12-29%20163135-1704118688741.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202023-12-29%20163751.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/QQ%E6%88%AA%E5%9B%BE20231229165559.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240107200104306.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240107200506294.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/c062ecddc0d3d1c0866497ce4798160a85706b8923678-yIw5YE_fw658">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240103191411021.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240103191754605.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240103191939945.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240103192100047.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240103192330994.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240103192912466.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240103192959279.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240103193129575.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240103193900945.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240103195015036.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240103195108408.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240103195208539.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240103195440434.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240103195646239.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240103195955193.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240103200057638.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240103200609975.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240103200626653.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240103211426550.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240103212017330.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240103212656925.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240104192738881.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/1.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/2.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/3.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240107201331916.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240107201534976.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240107201553427.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240107201813701.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240107202009308.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/4.png">
+<meta property="article:published_time" content="2024-01-03T13:09:07.000Z">
+<meta property="article:modified_time" content="2024-01-08T08:50:26.935Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240103202242749.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-11.1-信息收集-逻辑错误-弱口令1" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/01/03/11.1-%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86-%E9%80%BB%E8%BE%91%E9%94%99%E8%AF%AF-%E5%BC%B1%E5%8F%A3%E4%BB%A41/" class="article-date">
+  <time class="dt-published" datetime="2024-01-03T13:09:07.000Z" itemprop="datePublished">2024-01-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      11.1-信息收集-逻辑错误-弱口令
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="信息收集"><a href="#信息收集" class="headerlink" title="信息收集"></a>信息收集</h3><p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240103202242749.png" alt="image-20240103202242749"></p>
+<p>网址和域名之间可以互相进行查询，后续有提到</p>
+<p>知晓上面的信息后我们需要进行</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240103202733380.png" alt="image-20240103202733380"></p>
+<p>知道网站后可以通过爆破来获取各类信息：ssh、ftp、smb、rdp等</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240103203224372.png" alt="image-20240103203224372"></p>
+<p>了解到web还可以查询api信息</p>
+<h4 id="网站其他信息查询"><a href="#网站其他信息查询" class="headerlink" title="网站其他信息查询"></a>网站其他信息查询</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x.threatbook.com</span><br></pre></td></tr></table></figure>
+
+<p>该网址可以通过ip查询网址相关信息。</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240103203530943.png" alt="image-20240103203530943"></p>
+<p>还可以查询该ip的地址</p>
+<h4 id="网站备案查询"><a href="#网站备案查询" class="headerlink" title="网站备案查询"></a>网站备案查询</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://beian.miit.gov.cn/#/Integrated/index</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240103203738592.png" alt="image-20240103203738592"></p>
+<p>借此可以查询网站的邮箱，姓名，主体，备案号</p>
+<h5 id="通过邮箱查询已知注册网站"><a href="#通过邮箱查询已知注册网站" class="headerlink" title="通过邮箱查询已知注册网站"></a>通过邮箱查询已知注册网站</h5><p>该网站需要付费请注意</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">reg007.com</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240103203956071.png" alt="image-20240103203956071"></p>
+<h4 id="nmap相关"><a href="#nmap相关" class="headerlink" title="nmap相关"></a>nmap相关</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -sS 192.168.2.88 -p 80 -sV</span><br></pre></td></tr></table></figure>
+
+<p>使用nmap进行半开放式SYN扫描,仅扫描目标IP 192.168.2.88的80端口,同时开启版本检测功能,目的是获取80端口服务(通常为Web服务)的详细版本信息。</p>
+<p>通过SYN扫描可以快速探测端口是否开放,并且较低侵入性。版本检测可以知道Web服务具体运行的软件及版本,有利于后续的安全评估。</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240103204552359.png" alt="image-20240103204552359"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -p- 192.168.2.88</span><br></pre></td></tr></table></figure>
+
+<p>使用nmap工具对IP地址192.168.2.88进行全端口扫描,即扫描该IP地址从1-65535的所有TCP端口。</p>
+<p>通过这条命令可以检测目标主机是否开放了全部TCP端口,获取目标主机打开的TCP服务类型。</p>
+<p>如果端口打开,还可以使用其他nmap参数如-sV进行版本检测。</p>
+<p>它是一条用于全面探测目标主机开放端口状况的基础nmap命令。通过全端口扫描可以得到目标主机端口开放的完整情况。</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240103204651640.png" alt="image-20240103204651640"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -sn 192.168.2.2/24</span><br></pre></td></tr></table></figure>
+
+<p>使用nmap进行ping扫描,检测192.168.2.0-192.168.2.255网段内主机是否存活,但不进行端口扫描。</p>
+<p>通过-sn参数只发出ICMP回显请求包(ping包),快速检测网络段内主机是否可达,但不会检测主机开放的端口。</p>
+<p>这主要用于初步探测网络拓扑结构,快速获取网络段内活跃主机的IP列表。</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240103204821773.png" alt="image-20240103204821773"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -p1-500 192.168.2.88</span><br></pre></td></tr></table></figure>
+
+<p>使用nmap对IP地址192.168.2.88进行端口扫描,但只扫描目标从1至500的TCP端口号。</p>
+<p>通过限定端口范围-p1-500,可以缩小扫描范围,避免全端口扫描需要的长时间。</p>
+<p>这主要用于快速扫描常用端口,获取目标主机可能开放的服务类型,如HTTP、FTP等。</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240103205236581.png" alt="image-20240103205236581"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -p 80 -sV 192.168.2.88</span><br></pre></td></tr></table></figure>
+
+<p>使用nmap对IP地址192.168.2.88进行80端口扫描,同时开启版本检测功能(-sV)。</p>
+<p>通过限定端口-p 80,只扫描HTTP服务端口80。</p>
+<p>开启-sV版本检测,可以获取80端口服务(通常为Web服务)的详细版本信息。</p>
+<p>这主要用于识别目标Web服务器软件及版本号,有利于后续安全评估和攻防对抗。</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240103205410250.png" alt="image-20240103205410250"></p>
+<p>以下操作均在kali中执行</p>
+<h4 id="dirsearch"><a href="#dirsearch" class="headerlink" title="dirsearch"></a>dirsearch</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dirsearch -u &quot;http://192.168.30.139&quot; -x 403,404 </span><br></pre></td></tr></table></figure>
+
+<p>查询该网站有哪些文件，方便后续攻击（耗时很久）</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202023-12-29%20160951.png" alt="屏幕截图 2023-12-29 160951"></p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202023-12-29%20171645.png" alt="屏幕截图 2023-12-29 171645"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msfconsole</span><br></pre></td></tr></table></figure>
+
+<p>​		msfconsole命令是Metasploit框架的交互式控制台,用于管理和操作Metasploit中的各种模块,如exploit(利用模块)、payload(有效载荷)、encoder(编码器)等。</p>
+<p>打开msfconsole</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202023-12-29%20162658.png" alt="屏幕截图 2023-12-29 162658"></p>
+<p>每次显示的图都不一样。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">search drupal</span><br></pre></td></tr></table></figure>
+
+<p>msfconsole中的search命令可以搜索Metasploit框架中的所有模块。</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202023-12-29%20162724.png" alt="屏幕截图 2023-12-29 162724"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">use 2 # 用第二个</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202023-12-29%20162806.png" alt="屏幕截图 2023-12-29 162806"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show options</span><br></pre></td></tr></table></figure>
+
+<p>在msfconsole中,show命令可以查看模块的各种参数(options)设置。</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202023-12-29%20163526.png" alt="屏幕截图 2023-12-29 163526"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set rhosts 192.168.2.88</span><br></pre></td></tr></table></figure>
+
+<p>设置exploit模块的RHOSTS参数,用于指定要攻击的目标主机IP地址。</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202023-12-29%20162901.png" alt="屏幕截图 2023-12-29 162901"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">run # 运行</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202023-12-29%20163111.png" alt="屏幕截图 2023-12-29 163111"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">shell</span><br><span class="line">python -c &quot;import pty;pty.spawn(&#x27;/bin/bash&#x27;)&quot;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202023-12-29%20163135-1704118688741.png" alt="屏幕截图 2023-12-29 163135"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find / -user root -perm -4000 -print 2&gt;/dev/null</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202023-12-29%20163751.png" alt="屏幕截图 2023-12-29 163751"></p>
+<h5 id="查询ip下有哪些主机"><a href="#查询ip下有哪些主机" class="headerlink" title="查询ip下有哪些主机"></a>查询ip下有哪些主机</h5><p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/QQ%E6%88%AA%E5%9B%BE20231229165559.png" alt="QQ截图20231229165559"></p>
+<h4 id="其他部分"><a href="#其他部分" class="headerlink" title="其他部分"></a>其他部分</h4><h5 id="企查查"><a href="#企查查" class="headerlink" title="企查查"></a><a target="_blank" rel="noopener" href="https://www.qcc.com/">企查查</a></h5><p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240107200104306.png" alt="image-20240107200104306"></p>
+<p>查询网站所属公司各种商业信息</p>
+<h5 id="爱企查"><a href="#爱企查" class="headerlink" title="爱企查"></a><a target="_blank" rel="noopener" href="https://aiqicha.baidu.com/">爱企查</a></h5><p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240107200506294.png" alt="image-20240107200506294"></p>
+<h3 id="已知域名"><a href="#已知域名" class="headerlink" title="已知域名"></a>已知域名</h3><p>全球域名图</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/c062ecddc0d3d1c0866497ce4798160a85706b8923678-yIw5YE_fw658" alt="img"></p>
+<p>一级域名（不贩卖）</p>
+<p>.cn、.com、.org等</p>
+<p>二级域名可以进行购买</p>
+<ul>
+<li>根域</li>
+<li>edu.cn</li>
+<li>gov.cn等</li>
+</ul>
+<p>三级域名</p>
+<p><a target="_blank" rel="noopener" href="https://www.zju.edu.cn/">https://www.zju.edu.cn/</a></p>
+<h4 id="域名查询"><a href="#域名查询" class="headerlink" title="域名查询"></a>域名查询</h4><p>通过站长之家查询<a target="_blank" rel="noopener" href="http://www.chinaz.com/">www.chinaz.com</a></p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240103191411021.png" alt="image-20240103191411021"></p>
+<p>选择站长工具里的域名Whois查询<a target="_blank" rel="noopener" href="https://whois.chinaz.com/">https://whois.chinaz.com/</a></p>
+<p>可以查询到该网址的各类信息</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240103191754605.png" alt="image-20240103191754605"></p>
+<h4 id="二级域名挖掘"><a href="#二级域名挖掘" class="headerlink" title="二级域名挖掘"></a>二级域名挖掘</h4><p>z.zcjun.com</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240103191939945.png" alt="image-20240103191939945"></p>
+<p>可以通过该网站查询到网站下的各类二级域名</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240103192100047.png" alt="image-20240103192100047"></p>
+<p>该方法有用但是有一定的局限性</p>
+<h5 id="域名挖掘机"><a href="#域名挖掘机" class="headerlink" title="域名挖掘机"></a>域名挖掘机</h5><p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240103192330994.png" alt="image-20240103192330994"></p>
+<p>该应用需要大量电脑资源，应用需谨慎。</p>
+<h5 id="FOFA"><a href="#FOFA" class="headerlink" title="FOFA"></a>FOFA</h5><p>网址：fofa.info</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240103192912466.png" alt="image-20240103192912466"></p>
+<p>可以点击下面的查询语法查看语法</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240103192959279.png" alt="image-20240103192959279"></p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240103193129575.png" alt="image-20240103193129575"></p>
+<p>其他相关网址</p>
+<p>hunter.qianxin.com</p>
+<p>quake.360.net&#x2F;quake&#x2F;#&#x2F;index</p>
+<p>zoomeye.org</p>
+<p>search.censys.io&#x2F;hosts&#x2F;</p>
+<h4 id="个人信息查询"><a href="#个人信息查询" class="headerlink" title="个人信息查询"></a>个人信息查询</h4><ul>
+<li><p>社工库</p>
+</li>
+<li><p>领英</p>
+</li>
+<li><p>学信网</p>
+</li>
+<li><p>支付宝</p>
+</li>
+</ul>
+<p>可以通过支付宝收款码了解到用户姓名最后一位</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240103193900945.png" alt="image-20240103193900945"></p>
+<p>然后用常见姓进行姓名爆破</p>
+<p>谷歌搜索更注重于搜索词</p>
+<p>百度搜索更注重于与搜索词相关知识</p>
+<h4 id="浏览器搜索"><a href="#浏览器搜索" class="headerlink" title="浏览器搜索"></a>浏览器搜索</h4><p>搜索 +-内容 ：增加或去掉内容，谷歌百度适用</p>
+<p>原搜索情况</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jdk安装</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240103195015036.png" alt="image-20240103195015036"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jdk安装 +csdn</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240103195108408.png" alt="image-20240103195108408"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jdk安装 -知乎</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240103195208539.png" alt="image-20240103195208539"></p>
+<p>将搜索内容用双引号包住，可以保证搜索内容是在一起的（<strong>谷歌专用</strong>）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;mac地址&quot;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240103195440434.png" alt="image-20240103195440434"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mac*是代表以mac开头的内容，不限后面的语言</span><br></pre></td></tr></table></figure>
+
+<p>*代表通配符，匹配一段字符串</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240103195646239.png" alt="image-20240103195646239"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;网址&quot;</span><br></pre></td></tr></table></figure>
+
+<p>可以查询该网址下所有的子网页</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;hnuit.edu.cn&quot;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240103195955193.png" alt="image-20240103195955193"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">网址 filetype:pdf 文字形容，可以查看该网址内文件格式为pdf，包含文字形容的文件，文字可以为学号等。</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;hnuit.edu.cn&quot; filetype:pdf</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240103200057638.png" alt="image-20240103200057638"></p>
+<p>里面的内容全是pdf的文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;网址&quot; inurl:id 网站内容包含id</span><br></pre></td></tr></table></figure>
+
+<p>可以查询出网址中所有包含id的网页，可以去掉网址，单独搜索后面的内容进而可以查询出网络中所有包含id的网址。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;hnuit.edu.cn&quot; inurl:id</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240103200609975.png" alt="image-20240103200609975"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">inurl:id</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240103200626653.png" alt="image-20240103200626653"></p>
+<h3 id="Google-Hacking"><a href="#Google-Hacking" class="headerlink" title="Google Hacking"></a>Google Hacking</h3><h4 id="site"><a href="#site" class="headerlink" title="site"></a>site</h4><blockquote>
+<p>语法：site</p>
+<p>作用：限定在特定的网址中搜索</p>
+</blockquote>
+<p><strong>Site规则：</strong>这个规则会限定搜索引擎的搜索范围，比如site:<a target="_blank" rel="noopener" href="http://co.uk,显示搜索结果都是英国网站.“site/">http://co.uk，显示搜索结果都是英国网站。“site</a>: Amazon.* clothes”即可找到全球亚马逊的服装商品（*表示任何内容）。</p>
+<p>Google命令语言搜索带“……”后缀的公司网站。</p>
+<p>比如，我想搜德国经销carpet的公司：</p>
+<p>在Google搜索栏中键入：site: de. carpet.gmbh，这是德国公司的后缀，如果再知道德语teppich（&#x3D;carpet）就更好了。</p>
+<p>site: de. Carpet.gmbh</p>
+<p>site: as … 丹麦</p>
+<p>site: inc … 美+中东</p>
+<p>site: srl … 意大利(有小小的改动)</p>
+<h4 id="filetype"><a href="#filetype" class="headerlink" title="filetype"></a>filetype</h4><blockquote>
+<p>语法：filetype</p>
+<p>作用：搜索特定的文件类型</p>
+</blockquote>
+<p>有时候我们想找特定类型的文档，比如PPT、PDF等，但默认情况下出来的都是网页，很难找到我们想要的内容，这个时候就可以用上filetype语法。</p>
+<h4 id="inurl"><a href="#inurl" class="headerlink" title="inurl"></a>inurl</h4><blockquote>
+<p>语法：inurl</p>
+<p>作用：在URL中搜索出现指定内容的链接</p>
+</blockquote>
+<p>这一个语法有什么用？普通人很少直接关心链接本身的内容，但是对于咱们hacker来说，URL就重要了，比如我们可以用来搜索可能存在SQL注入的链接：</p>
+<blockquote>
+<ul>
+<li>inurl:.php?id&#x3D;</li>
+<li>inurl:.jsp?id&#x3D;</li>
+<li>inurl:.asp?id&#x3D;</li>
+</ul>
+</blockquote>
+<p>除了SQL注入，还可以搜索可能存在的网站后台管理入口：</p>
+<blockquote>
+<ul>
+<li>inurl:login.php</li>
+<li>inurl:login.jsp</li>
+<li>inurl:login.asp</li>
+</ul>
+</blockquote>
+<p>如果我们再加上前面的site语法组合使用，就可以找出指定网站的这种链接了，定向寻找攻击点。</p>
+<h4 id="intitle"><a href="#intitle" class="headerlink" title="intitle"></a>intitle</h4><blockquote>
+<p>语法：intitle</p>
+<p>作用：在网页title中搜索出现指定内容的网页</p>
+</blockquote>
+<p>除了在URL中搜索，咱们还能在标题中搜索。一般网站后台管理页面都会带有“后台”、“管理”、“登录”等字眼，我们可以通过在HTML的title字段位置搜索这些关键词，寻找可疑的后台登录页面。</p>
+<h4 id="intext"><a href="#intext" class="headerlink" title="intext"></a>intext</h4><blockquote>
+<p>语法：intext</p>
+<p>作用：除了URL和title，剩下的就是正文位置搜索了</p>
+</blockquote>
+<h3 id="用户-网站-CDN-服务器"><a href="#用户-网站-CDN-服务器" class="headerlink" title="用户-网站-CDN-服务器"></a>用户-网站-CDN-服务器</h3><p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240103211426550.png" alt="image-20240103211426550"></p>
+<h5 id="CDN-内容分发网络"><a href="#CDN-内容分发网络" class="headerlink" title="CDN(内容分发网络)"></a>CDN(内容分发网络)</h5><p>CDN会储存服务器发送的副本，用户可以通过就近的CDN来访问服务器内容，如果服务器有新的内容，就会将新内容发送给CDN。</p>
+<p>内容分发网络的英文缩写(Content Delivery Network)。它是一个分布式的系统,将Web内容存储到世界各地的边缘位置,从而内容可以离用户更近,访问速度更快。</p>
+<h5 id="CDN作用："><a href="#CDN作用：" class="headerlink" title="CDN作用："></a>CDN作用：</h5><ul>
+<li><p>提高访问速度:通过将内容缓存到边缘节点,大大缩短用户访问内容的距离,提高访问速度。</p>
+</li>
+<li><p>分担源站压力:将部分流量引导到边缘节点处理,减轻源站服务器的负载。</p>
+</li>
+<li><p>提高可用性:通过分布式节点,一旦部分节点宕机,不影响整体访问。</p>
+</li>
+<li><p>安全防护:CDN节点可以过滤攻击流量,为源站提供一定程度的保护。</p>
+</li>
+<li><p>负载均衡:CDN可以根据用户地理位置自动选择就近节点,实现全球负载均衡。</p>
+</li>
+</ul>
+<h4 id="域名查ip"><a href="#域名查ip" class="headerlink" title="域名查ip"></a>域名查ip</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ping.chinaz.com</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240103212017330.png" alt="image-20240103212017330"></p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240103212656925.png" alt="image-20240103212656925"></p>
+<p>一个ip可以对应ip:1-65535个服务，服务可能没有放在网站上，没有放上去的内容可以借此找到漏洞。</p>
+<p>在FOFA中</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;qq.com&quot;&amp;&amp;country=&quot;CN&quot;&amp;&amp;body=&quot;腾讯公司 版权所有&quot;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240104192738881.png" alt="image-20240104192738881"></p>
+<h3 id="DNS解析"><a href="#DNS解析" class="headerlink" title="DNS解析"></a>DNS解析</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ping qq.com(网址)</span><br></pre></td></tr></table></figure>
+
+<p>来查看ip或者判断网址是否还活着</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/1.png" alt="1"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dig qq.com</span><br></pre></td></tr></table></figure>
+
+<p>dig命令用于查询域名系统(DNS)信息。</p>
+<p>命令dig qq.com会返回qq.com域名的以下DNS信息</p>
+<ul>
+<li>QUESTION SECTION查询的域名</li>
+<li>ANSWER SECTION返回的qq.com的IPv4地址</li>
+<li>ADDITIONAL SECTION返回的qq.com的IPv6地址</li>
+<li>SERVER查询使用的DNS服务器IP</li>
+<li>WHEN查询时间</li>
+<li>MSG SIZE返回信息包大小</li>
+</ul>
+<p>dig命令查询域名DNS记录,用于测试域名解析是否正常。</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/2.png" alt="2"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nslookup qq.com</span><br></pre></td></tr></table></figure>
+
+<p>nslookup命令用于查询域名系统信息。</p>
+<p>命令nslookup qq.com会返回qq.com域名的DNS查询结果</p>
+<ul>
+<li>Server: 查询使用的DNS服务器IP地址</li>
+<li>Name: 查询的域名</li>
+<li>Address: 域名对应的IPV4地址</li>
+</ul>
+<p>与dig命令不同的是,nslookup返回的结果直接显示域名对应的IP地址,而不显示额外的DNS记录类型等详细信息。</p>
+<p>此外,nslookup返回结果不是权威的,因为它使用公共DNS服务器查询,而不是从域名注册机构获取权威响应。</p>
+<p>总的来说,nslookup命令用于快速查询域名到IP的映射,验证域名是否可以正常解析;dig命令返回更全面详细的DNS记录信息,用于调试和分析域名系统设置。</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/3.png" alt="3"></p>
+<h3 id="web-finder（小米范）"><a href="#web-finder（小米范）" class="headerlink" title="web_finder（小米范）"></a>web_finder（小米范）</h3><p>Web_finder是一款开源的Java命令行工具,用于在网站上搜索文件和目录。</p>
+<p>下载好web_finder_2.9.jar</p>
+<p>确保自己的jdk版本是1.8</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -version</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240107201331916.png" alt="image-20240107201331916"></p>
+<p>在web_finder_2.9.jar目录下运行命令行窗口，运行命令</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -jar web_finder_2.9.jar</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240107201534976.png" alt="image-20240107201534976"></p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240107201553427.png" alt="image-20240107201553427"></p>
+<p>通过FOFA下载所需大量ip</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240107201813701.png" alt="image-20240107201813701"></p>
+<p>直接复制ip到<strong>新建扫描</strong>中</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240107202009308.png" alt="image-20240107202009308"></p>
+<p>点击开始进行扫描</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/4.png" alt="4"></p>
+<p>自行筛选看看有哪些网站能正常使用。</p>
+<h3 id="支付逻辑漏洞"><a href="#支付逻辑漏洞" class="headerlink" title="支付逻辑漏洞"></a>支付逻辑漏洞</h3><p>业务逻辑漏洞的成因</p>
+<ul>
+<li><p>应用程序在设计和实施的时候存在缺陷,允许攻击者诱发意外行为,像是设计的方案被人钻了空子。 通俗理解就是:在编写程序时,只考虑了常规的操作流程,即“当在A情况下，就会出现B，此时执行C即可”，但是开发者却没有考虑当用户执行了意料之外的操作时会发生什么。这种对于异常情况的欠考虑，最终导致了安全漏洞的产生。</p>
+</li>
+<li><p>常见的OWASP漏洞，通过漏洞扫描工具，大多支持自动化或者半自动化扫描出来；并且传统的安全防御设备和措施收效甚微；</p>
+</li>
+<li><p>但逻辑漏洞属于和系统自身功能和逻辑有关系的漏洞，每一家的漏洞出现可能存在一定的独特性，很难复制或者通过规则通过脚本扫描，因此逻辑漏洞大多需要配合代码审计和手动测试才可发现相关漏洞，也是工具无法完全替代人所作的一类漏洞。</p>
+</li>
+<li><p>业务逻辑属于正常请求，都是按照正常的程序走的，一般的安全设备是无法拦截的。</p>
+</li>
+</ul>
+<p>分类：</p>
+<ol>
+<li>验证码突破</li>
+<li>业务授权安全</li>
+<li>业务流程乱序</li>
+<li>业务接口调用</li>
+<li>时效绕过测试</li>
+<li>身份认证安全</li>
+<li>业务一致性安全</li>
+<li>业务数据篡改</li>
+<li>用户输入合规性</li>
+<li>密码找回漏洞</li>
+</ol>
+<p>支付逻辑漏洞是指系统的支付流程中存在业务逻辑层面的漏洞</p>
+<p>常见支付流程：<br>选择商品和数量——选择支付及配送方式——生成订单编号——订单支付选择——完成支付</p>
+<p>如：最常见的支付逻辑漏洞通常是由于服务器端没有对客户端请求数据中的金额、数量等敏感信息进行效验导致。一般漏洞产生在电子商务类应用中。</p>
+<h5 id="支付逻辑漏洞一般分为四类："><a href="#支付逻辑漏洞一般分为四类：" class="headerlink" title="支付逻辑漏洞一般分为四类："></a>支付逻辑漏洞一般分为四类：</h5><p>1.支付过程中可以修改支付金额 2.可以将订单中的商品数量修改为负值 3.请求重放导致 4.其他问题（程序异常，其他参数修改导致问题等） 其他支付问题补充： 修改支付状态、修改附属值（优惠券积分等）、修改支付接口、替换多个订单、重复支付等。</p>
+<p>支付逻辑漏洞之修改订单数量：<br>1、登录网站，选择购买一个商品并抓取数据包</p>
+<p> 2、找到其中代表商品数量的参数，将参数的值修改为负数 </p>
+<p>3、发送数据包，生成订单，观察订单是否有效，是否能进入支付页面 </p>
+<p>4、完成支付</p>
+<h5 id="可能产生零元购漏洞的地方"><a href="#可能产生零元购漏洞的地方" class="headerlink" title="可能产生零元购漏洞的地方"></a>可能产生零元购漏洞的地方</h5><p>一，参数包里面没有价格，或者价格跟商品id 校验，导致无法修改商品金额 </p>
+<p>1，隐藏商品的模糊测试，商品id </p>
+<p>2，第一个:商品下单的处导致 </p>
+<p>3，第二个，商品购买处导致 </p>
+<p>4，购物车未校验加入零元商品商品 </p>
+<p>5，第四个是，支付宝接口和商品接口未校验导致商品任意购买 </p>
+<p>6.商品数量校验导致零元购， </p>
+<p>7.附带商品导致支付漏洞</p>
+<p>8.四舍五入导致支付漏洞系统的支付和微信的支付校验导致(提现) 0.009 0.01</p>
+<p>9.使用过红包的订单:有一个支付宝的订单号 有效期是15 分钟 商家对接支付宝取消订单红包返回无限使用</p>
+<p>并发漏洞(服务器对功能点的多线程处理):优惠券，微博的点赞关注 取消点赞，取。消关注 优惠商品下单所有的都能并发</p>
+<h3 id="弱口令"><a href="#弱口令" class="headerlink" title="弱口令"></a>弱口令</h3><p>网站管理、运营人员由于安全意识不足，为了方便、避免忘记密码等，使用了非常容易记住的密码，或者是直接采用了系统的默认密码等。</p>
+<p>攻击者利用此漏洞可直接进入应用系统或者管理系统，从而进行系统、网页、数据的篡改与删除，非法获取系统、用户的数据，甚至可能导致服务器沦陷。</p>
+<p>弱口令(weak password) 没有严格和准确的定义，通常认为容易被别人（他们有可能对你很了解）猜测到或被破解工具破解的口令均为弱口令。弱口令指的是仅包含简单数字和字母的口令，例如“123456”、“abc”等，因为这样的口令很容易被别人破解，从而使用户的计算机面临风险，因此不推荐用户使用。</p>
+<h4 id="简单密码"><a href="#简单密码" class="headerlink" title="简单密码"></a>简单密码</h4><p>过于简单直白的口令,如123456、12345678等数字和字母组合。</p>
+<p>与账户相关的易知信息组成,如用户名、email后缀作为密码等。</p>
+<p>词典词汇,如名字、地点名、简单词汇组成的密码。</p>
+<p>系统默认口令未及时修改,如生产设备默认口令等。</p>
+<p>口令长度过短,通常小于8位口令较易破解。</p>
+<p>口令使用过于单一简单的模式,如只使用字母或只使用数字等。</p>
+<h4 id="口令爆破"><a href="#口令爆破" class="headerlink" title="口令爆破"></a>口令爆破</h4><p>口令爆破其实就是攻击者对用户口令进行穷举尝试。在用户登录界面，攻击者通过遍历生成口令或者加载口令字典，进行多次登录尝试，直至把用户口令穷举出来，成功登录</p>
+<p>因为一般能被成功猜测出的用户口令都是弱口令，所以口令爆破也称弱口令漏洞</p>
+<p>口令破解的漏洞原理其实很简单，即网站未对用户登录认证的请求频率和次数进行限制，使得攻击者可以无数次地进行遍历口令登录。从理论上讲，只要加载的字典范围足够大，尝试的次数足够多，攻击者可以把任意用户的口令穷举出来</p>
+<h4 id="相对-安全口令"><a href="#相对-安全口令" class="headerlink" title="相对-安全口令"></a>相对-安全口令</h4><p>1.不使用空口令或系统缺省的口令，因为这些口令众所周知，为典型的弱口令。</p>
+<p>2.口令长度不小于8个字符。</p>
+<p>3.口令不应该为连续的某个字符（例如：AAAAAAAA）或重复某些字符的组合（例如：tzf.tzf.）。</p>
+<p>4.口令应该为以下四类字符的组合，<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%A4%A7%E5%86%99%E5%AD%97%E6%AF%8D/4666274?fromModule=lemma_inlink">大写字母</a>(A-Z)、<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%B0%8F%E5%86%99%E5%AD%97%E6%AF%8D/4666069?fromModule=lemma_inlink">小写字母</a>(a-z)、数字(0-9)和<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E7%89%B9%E6%AE%8A%E5%AD%97%E7%AC%A6/112715?fromModule=lemma_inlink">特殊字符</a>。每类字符至少包含一个。如果某类字符只包含一个，那么该字符不应为首字符或尾字符。</p>
+<p>5.口令中不应包含本人、父母、子女和配偶的姓名和出生日期、纪念日期、<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E7%99%BB%E5%BD%95%E5%90%8D/2673764?fromModule=lemma_inlink">登录名</a>、<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/E-mail/225278?fromModule=lemma_inlink">E-mail</a>地址等等与本人有关的信息，以及字典中的单词。</p>
+<p>6.口令不应该为用数字或符号代替某些字母的单词。</p>
+<p>7.口令应该易记且可以快速输入，防止他人从你身后很容易看到你的输入。</p>
+<p>8.至少90天内更换一次口令，防止未被发现的入侵者继续使用该口令。</p>
+<h4 id="问题网站"><a href="#问题网站" class="headerlink" title="问题网站"></a>问题网站</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">http://222.182.184.116:9000/index.html</span><br><span class="line"></span><br><span class="line">http://117.174.166.233:800/index.htm?_1704615568</span><br><span class="line"></span><br><span class="line">http://121.224.236.101:800/index.htm?_1704613620</span><br><span class="line"></span><br><span class="line">http://49.232.208.224:8003/#/optimizedSchedul</span><br><span class="line"></span><br><span class="line">http://119.91.139.108:8091/admin/index.html</span><br><span class="line"></span><br><span class="line">http://112.91.154.58:7002/IDWebSoft/Home/</span><br><span class="line"></span><br><span class="line">http://59.37.160.245:800/index.htm?_1704614137</span><br></pre></td></tr></table></figure>
+
+<h4 id="防护手段"><a href="#防护手段" class="headerlink" title="防护手段"></a>防护手段</h4><p>防御口令爆破的方法很简单，我们对认证请求频率和失败次数进行限制，使攻击者不能无代价地进行口令尝试。如果攻击者进行口令爆破所需要付出的成本，高出其可接纳的范围，那么在一定程度上，我们达到了安全。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2024/01/03/11.1-%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86-%E9%80%BB%E8%BE%91%E9%94%99%E8%AF%AF-%E5%BC%B1%E5%8F%A3%E4%BB%A41/" data-id="clrcswxkd0004ugwkaxbl4wm9" data-title="11.1-信息收集-逻辑错误-弱口令" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2024/01/09/12.1%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          12.1-文件上传漏洞
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2023/12/24/sqli%E9%80%9A%E5%85%B3%E8%AE%B0%E5%BD%95/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">sqli通关记录</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/01/">January 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/12/">December 2023</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2024/01/14/hexo%E5%8D%9A%E5%AE%A2%E6%A0%BC%E5%BC%8F%EF%BC%88%E5%8D%9A%E5%AE%A2%E7%89%88%EF%BC%89/">markdown的使用说明</a>
+          </li>
+        
+          <li>
+            <a href="/2024/01/14/DB/">DB</a>
+          </li>
+        
+          <li>
+            <a href="/2024/01/14/13.1-%E6%89%93%E9%9D%B6/">13.1-打靶</a>
+          </li>
+        
+          <li>
+            <a href="/2024/01/14/14.1-%E4%BB%A3%E7%90%86-%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/">14.1-代理-流量分析</a>
+          </li>
+        
+          <li>
+            <a href="/2024/01/14/1.3-%E5%8D%9A%E5%AE%A2%E7%9A%84%E7%BC%96%E5%86%99%E4%B8%8E%E4%B8%8A%E4%BC%A0/">1.3-博客的编写与上传</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2024 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

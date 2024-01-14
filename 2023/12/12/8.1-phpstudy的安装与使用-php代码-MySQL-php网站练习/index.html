@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>8.1-VUE2的创建-Apache-phpstudy的安装与使用-php代码-MySQL-php网站练习-PHP学习-图书馆练习 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="PHPVUE2的创建应用vue2网页设置需要如此 1234567891011121314151617181920212223242526272829&lt;!DOCTYPE html&gt;&lt;html lang&#x3D;&quot;en&quot;&gt;&lt;head&gt;    &lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;    &lt;meta name&#x3D;&amp;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="8.1-VUE2的创建-Apache-phpstudy的安装与使用-php代码-MySQL-php网站练习-PHP学习-图书馆练习">
+<meta property="og:url" content="http://example.com/2023/12/12/8.1-phpstudy%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8-php%E4%BB%A3%E7%A0%81-MySQL-php%E7%BD%91%E7%AB%99%E7%BB%83%E4%B9%A0/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="PHPVUE2的创建应用vue2网页设置需要如此 1234567891011121314151617181920212223242526272829&lt;!DOCTYPE html&gt;&lt;html lang&#x3D;&quot;en&quot;&gt;&lt;head&gt;    &lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;    &lt;meta name&#x3D;&amp;">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231216230335311.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231217112702140.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231212145721218.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231212145901813.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231212102349564.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231212160723579.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231212150613719.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231212151256063.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231212151102681.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231212151329959.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231212151413849.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231212151744061.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231212152253717.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231212153002757.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231212171108782.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231212171717610.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231212171804687.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231212171837270.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231217094040641.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231217094809172.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231217095411037.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231213091254872.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/axios%E4%BB%A3%E7%A0%812.1.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/axios%E4%BB%A3%E7%A0%812.2.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/axios%E4%BB%A3%E7%A0%812.3.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/%E6%9F%A5%E8%AF%A2%E5%9B%BE%E4%B9%A6.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/%E5%88%A0%E9%99%A4%E5%9B%BE%E4%B9%A6%E4%BB%A3%E7%A0%81.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/%E6%95%B0%E6%8D%AE%E7%BB%91%E5%AE%9A1.1.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/%E6%95%B0%E6%8D%AE%E7%BB%91%E5%AE%9A1.2.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/%E6%95%B0%E6%8D%AE%E7%BB%91%E5%AE%9A1.3.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/%E6%B7%BB%E5%8A%A0%E5%9B%BE%E4%B9%A6.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/%E6%B7%BB%E5%8A%A0%E5%9B%BE%E4%B9%A6%E4%BB%A3%E7%A0%81.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/%E4%BF%AE%E6%94%B9%E5%9B%BE%E4%B9%A6.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/%E4%BF%AE%E6%94%B9%E5%9B%BE%E4%B9%A6%E4%BB%A3%E7%A0%81.png">
+<meta property="article:published_time" content="2023-12-12T02:19:19.000Z">
+<meta property="article:modified_time" content="2024-01-08T08:30:19.711Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231216230335311.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-8.1-phpstudy的安装与使用-php代码-MySQL-php网站练习" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/12/12/8.1-phpstudy%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8-php%E4%BB%A3%E7%A0%81-MySQL-php%E7%BD%91%E7%AB%99%E7%BB%83%E4%B9%A0/" class="article-date">
+  <time class="dt-published" datetime="2023-12-12T02:19:19.000Z" itemprop="datePublished">2023-12-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      8.1-VUE2的创建-Apache-phpstudy的安装与使用-php代码-MySQL-php网站练习-PHP学习-图书馆练习
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="PHP"><a href="#PHP" class="headerlink" title="PHP"></a>PHP</h3><h3 id="VUE2的创建"><a href="#VUE2的创建" class="headerlink" title="VUE2的创建"></a>VUE2的创建</h3><p>应用vue2网页设置需要如此</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span> <span class="attr">href</span>=<span class="string">&quot;/index.css&quot;</span>&gt;</span> #引用1</span><br><span class="line">    </span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;app&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    </span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;./vue.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span>#引用2</span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;./index.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span>#引用3</span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">  </span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">new</span> <span class="title class_">Vue</span>(&#123;</span></span><br><span class="line"><span class="language-javascript">    <span class="attr">el</span>: <span class="string">&#x27;#app&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">    <span class="attr">data</span>: <span class="keyword">function</span> (<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">              <span class="keyword">return</span> &#123;</span></span><br><span class="line"><span class="language-javascript">              &#125;</span></span><br><span class="line"><span class="language-javascript">            &#125;,</span></span><br><span class="line"><span class="language-javascript">&#125;)</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>内容需要在下面写才能正常运行</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;app&quot;</span>&gt;</span></span><br><span class="line">    </span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>因为html中的js与cs需要代理，就直接从网站上下载下来，保存在本地</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231216230335311.png" alt="image-20231216230335311"></p>
+<p>运行代码</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span> <span class="attr">href</span>=<span class="string">&quot;./index.css&quot;</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;app&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">el-row</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">el-button</span>&gt;</span>默认按钮<span class="tag">&lt;/<span class="name">el-button</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">el-button</span> <span class="attr">type</span>=<span class="string">&quot;primary&quot;</span>&gt;</span>主要按钮<span class="tag">&lt;/<span class="name">el-button</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">el-button</span> <span class="attr">type</span>=<span class="string">&quot;success&quot;</span>&gt;</span>成功按钮<span class="tag">&lt;/<span class="name">el-button</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">el-button</span> <span class="attr">type</span>=<span class="string">&quot;info&quot;</span>&gt;</span>信息按钮<span class="tag">&lt;/<span class="name">el-button</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">el-button</span> <span class="attr">type</span>=<span class="string">&quot;warning&quot;</span>&gt;</span>警告按钮<span class="tag">&lt;/<span class="name">el-button</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">el-button</span> <span class="attr">type</span>=<span class="string">&quot;danger&quot;</span>&gt;</span>危险按钮<span class="tag">&lt;/<span class="name">el-button</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">el-row</span>&gt;</span></span><br><span class="line">  </span><br><span class="line">  <span class="tag">&lt;<span class="name">el-row</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">el-button</span> <span class="attr">plain</span>&gt;</span>朴素按钮<span class="tag">&lt;/<span class="name">el-button</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">el-button</span> <span class="attr">type</span>=<span class="string">&quot;primary&quot;</span> <span class="attr">plain</span>&gt;</span>主要按钮<span class="tag">&lt;/<span class="name">el-button</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">el-button</span> <span class="attr">type</span>=<span class="string">&quot;success&quot;</span> <span class="attr">plain</span>&gt;</span>成功按钮<span class="tag">&lt;/<span class="name">el-button</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">el-button</span> <span class="attr">type</span>=<span class="string">&quot;info&quot;</span> <span class="attr">plain</span>&gt;</span>信息按钮<span class="tag">&lt;/<span class="name">el-button</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">el-button</span> <span class="attr">type</span>=<span class="string">&quot;warning&quot;</span> <span class="attr">plain</span>&gt;</span>警告按钮<span class="tag">&lt;/<span class="name">el-button</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">el-button</span> <span class="attr">type</span>=<span class="string">&quot;danger&quot;</span> <span class="attr">plain</span>&gt;</span>危险按钮<span class="tag">&lt;/<span class="name">el-button</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">el-row</span>&gt;</span></span><br><span class="line">  </span><br><span class="line">  <span class="tag">&lt;<span class="name">el-row</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">el-button</span> <span class="attr">round</span>&gt;</span>圆角按钮<span class="tag">&lt;/<span class="name">el-button</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">el-button</span> <span class="attr">type</span>=<span class="string">&quot;primary&quot;</span> <span class="attr">round</span>&gt;</span>主要按钮<span class="tag">&lt;/<span class="name">el-button</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">el-button</span> <span class="attr">type</span>=<span class="string">&quot;success&quot;</span> <span class="attr">round</span>&gt;</span>成功按钮<span class="tag">&lt;/<span class="name">el-button</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">el-button</span> <span class="attr">type</span>=<span class="string">&quot;info&quot;</span> <span class="attr">round</span>&gt;</span>信息按钮<span class="tag">&lt;/<span class="name">el-button</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">el-button</span> <span class="attr">type</span>=<span class="string">&quot;warning&quot;</span> <span class="attr">round</span>&gt;</span>警告按钮<span class="tag">&lt;/<span class="name">el-button</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">el-button</span> <span class="attr">type</span>=<span class="string">&quot;danger&quot;</span> <span class="attr">round</span>&gt;</span>危险按钮<span class="tag">&lt;/<span class="name">el-button</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">el-row</span>&gt;</span></span><br><span class="line">  </span><br><span class="line">  <span class="tag">&lt;<span class="name">el-row</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">el-button</span> <span class="attr">icon</span>=<span class="string">&quot;el-icon-search&quot;</span> <span class="attr">circle</span>&gt;</span><span class="tag">&lt;/<span class="name">el-button</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">el-button</span> <span class="attr">type</span>=<span class="string">&quot;primary&quot;</span> <span class="attr">icon</span>=<span class="string">&quot;el-icon-edit&quot;</span> <span class="attr">circle</span>&gt;</span><span class="tag">&lt;/<span class="name">el-button</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">el-button</span> <span class="attr">type</span>=<span class="string">&quot;success&quot;</span> <span class="attr">icon</span>=<span class="string">&quot;el-icon-check&quot;</span> <span class="attr">circle</span>&gt;</span><span class="tag">&lt;/<span class="name">el-button</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">el-button</span> <span class="attr">type</span>=<span class="string">&quot;info&quot;</span> <span class="attr">icon</span>=<span class="string">&quot;el-icon-message&quot;</span> <span class="attr">circle</span>&gt;</span><span class="tag">&lt;/<span class="name">el-button</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">el-button</span> <span class="attr">type</span>=<span class="string">&quot;warning&quot;</span> <span class="attr">icon</span>=<span class="string">&quot;el-icon-star-off&quot;</span> <span class="attr">circle</span>&gt;</span><span class="tag">&lt;/<span class="name">el-button</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">el-button</span> <span class="attr">type</span>=<span class="string">&quot;danger&quot;</span> <span class="attr">icon</span>=<span class="string">&quot;el-icon-delete&quot;</span> <span class="attr">circle</span>&gt;</span><span class="tag">&lt;/<span class="name">el-button</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">el-row</span>&gt;</span></span><br><span class="line">    </span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;./vue.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;./index.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">  </span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">new</span> <span class="title class_">Vue</span>(&#123;</span></span><br><span class="line"><span class="language-javascript">    <span class="attr">el</span>: <span class="string">&#x27;#app&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">    <span class="attr">data</span>: <span class="keyword">function</span> (<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">              <span class="keyword">return</span> &#123;</span></span><br><span class="line"><span class="language-javascript">              &#125;</span></span><br><span class="line"><span class="language-javascript">            &#125;,</span></span><br><span class="line"><span class="language-javascript">&#125;)</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>运行展示</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231217112702140.png" alt="image-20231217112702140"></p>
+<h4 id="Apache"><a href="#Apache" class="headerlink" title="Apache"></a>Apache</h4><p>​	Apache(音译为<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E9%98%BF%E5%B8%95%E5%A5%87/374191?fromModule=lemma_inlink">阿帕奇</a>)是世界使用排名第一的Web服务器软件。它可以运行在几乎所有广泛使用的<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%B9%B3%E5%8F%B0/2606037?fromModule=lemma_inlink">计算机平台</a>上，由于其<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E8%B7%A8%E5%B9%B3%E5%8F%B0/8558902?fromModule=lemma_inlink">跨平台</a>和安全性被广泛使用，是最流行的Web服务器端软件之一。它快速、可靠并且可通过简单的API扩充，将<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/Perl/0?fromModule=lemma_inlink">Perl</a>&#x2F;<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/Python/0?fromModule=lemma_inlink">Python</a>等<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E8%A7%A3%E9%87%8A%E5%99%A8/10418965?fromModule=lemma_inlink">解释器</a>编译到服务器中。</p>
+<h5 id="特性："><a href="#特性：" class="headerlink" title="特性："></a>特性：</h5><p>1.支持最新的<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/HTTP/0?fromModule=lemma_inlink">HTTP</a>&#x2F;1.1通信协议</p>
+<p>2.拥有简单而强有力的基于文件的配置过程</p>
+<p>3.支持<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E9%80%9A%E7%94%A8%E7%BD%91%E5%85%B3%E6%8E%A5%E5%8F%A3/3351606?fromModule=lemma_inlink">通用网关接口</a></p>
+<p>4.支持基于IP和基于域名的虚拟主机</p>
+<p>5.支持多种方式的<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/HTTP/0?fromModule=lemma_inlink">HTTP</a>认证</p>
+<p>6.集成<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/Perl/0?fromModule=lemma_inlink">Perl</a>处理模块</p>
+<p>7.集成<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E4%BB%A3%E7%90%86%E6%9C%8D%E5%8A%A1%E5%99%A8/0?fromModule=lemma_inlink">代理服务器</a>模块</p>
+<p>8.支持实时监视服务器状态和定制服务器日志</p>
+<p>9.支持服务器端包含指令(SSI)</p>
+<p>10.支持安全<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/Socket/0?fromModule=lemma_inlink">Socket</a>层(SSL)</p>
+<p>11.提供用户会话过程的跟踪</p>
+<p>12.支持FastCGI</p>
+<p>13.通过<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E7%AC%AC%E4%B8%89%E6%96%B9/0?fromModule=lemma_inlink">第三方</a>模块可以支持<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/Java/85979?fromModule=lemma_inlink">Java</a>Servlets</p>
+<p><strong>工作模式：</strong></p>
+<p>Apache一共有3种稳定的MPM模式(MPM：多进程处理模块)，它们分别是 prefork、worker、event；</p>
+<p>prefork 工作模式</p>
+<p>Apache在启动之初， 就预先fork一些子进程， 然后等待请求进来。之所以这样做， 是为了减少频繁创建和销毁进程的开销。每个子进程只有一个线程， 在一个时间点内，只能处理一个请求。</p>
+<ul>
+<li>优点： 成熟稳定，兼容所有新老模块。同时， 不需要担心线程安全的问题。</li>
+<li>缺点： 一个进程相对占用更多的系统资源，消耗更多的内存。而且，它并不擅长处理高并发请求。</li>
+</ul>
+<h5 id="工作原理："><a href="#工作原理：" class="headerlink" title="工作原理："></a>工作原理：</h5><h6 id="直接解释"><a href="#直接解释" class="headerlink" title="直接解释"></a>直接解释</h6><ol>
+<li>请求接收</li>
+</ol>
+<p>Apache服务器监听指定的端口(默认80端口)接收客户端请求。</p>
+<ol start="2">
+<li>请求解析</li>
+</ol>
+<p>Apache解析请求行,分析请求方法、URL路径、HTTP版本等信息。</p>
+<ol start="3">
+<li>文件查找</li>
+</ol>
+<p>根据URL查找文件位置,如果是目录,再查找index文件。</p>
+<ol start="4">
+<li>权限检查</li>
+</ol>
+<p>检查请求文件的读权限,如果无权限返回403错误。</p>
+<ol start="5">
+<li>MIME类型识别</li>
+</ol>
+<p>通过文件扩展名识别MIME类型。</p>
+<ol start="6">
+<li>文件打开读取</li>
+</ol>
+<p>打开文件,读取文件内容发送给客户端。</p>
+<ol start="7">
+<li>响应发送</li>
+</ol>
+<p>根据配置发送HTTP头、文件内容给客户端完成响应。</p>
+<ol start="8">
+<li>连接关闭</li>
+</ol>
+<p>响应发送完毕,关闭TCP连接等待下一次请求。</p>
+<ol start="9">
+<li>模块处理</li>
+</ol>
+<p>可以通过如PHP等模块对特定文件进行额外处理。</p>
+<p>10.日志记录</p>
+<p>访问日志记录客户端IP、时间、URL路径等访问信息。</p>
+<p>11.多进程架构</p>
+<p>采用父子进程模型处理并发请求,提高效率。</p>
+<p>12.配置管理</p>
+<p>通过配置文件管理虚拟主机、URL映射、安全策略等。</p>
+<h6 id="通俗解释"><a href="#通俗解释" class="headerlink" title="通俗解释"></a>通俗解释</h6><p>用更通俗直观的语言来解释Apache网页服务器工作原理:</p>
+<p>Apache服务器就像一个24小时值守的门卫。它会一直监视着网站的大门,等待访客上门。</p>
+<p>当有人来访时,门卫Apache会第一时间走出来迎接。它会问访客一些问题,比如姓名,来访目的等。这就是解析请求的过程。</p>
+<p>门卫Apache会根据访客的要求,寻找网站内相关的文件或服务。就像帮助访客找到正确的人或部门。如果文件在网站内,它就会帮助访客取得文件。</p>
+<p>门卫Apache还会检查访客的身份,是否有权限访问这些文件和服务。如果没有权限,就不允许访问。这是权限检查的过程。</p>
+<p>取得文件后,门卫Apache会告诉访客一些基本信息,比如文件类型是什么。然后交给访客传阅。这是响应的过程。</p>
+<p>整个访问结束后,门卫Apache会礼貌送访,并记录此次访问情况,以便日后参考。它还会及时应对更多访客,确保网站高效运行。</p>
+<p>所以,Apache就像一个24小时值守网站的门卫,它会礼貌高效地为每一位访客提供服务,保证网站的正常访问。</p>
+<h4 id="phpstudy的安装与使用"><a href="#phpstudy的安装与使用" class="headerlink" title="phpstudy的安装与使用"></a>phpstudy的安装与使用</h4><p>推荐在虚拟机中安装phpstudy。</p>
+<ol>
+<li><p>下载phpstudy</p>
+</li>
+<li><p>双击运行直接安装，双击运行打开</p>
+</li>
+<li><p>打开Apache与MySQL</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231212145721218.png" alt="image-20231212145721218"></p>
+</li>
+<li><p>点击网站中的管理，点击打开根目录</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231212145901813.png" alt="image-20231212145901813"></p>
+<ol start="5">
+<li>删除其中的所有内容，在其中放置.php文件</li>
+</ol>
+</li>
+</ol>
+<h4 id="php代码"><a href="#php代码" class="headerlink" title="php代码"></a>php代码</h4><p>PHP文件中可以包含文本、HTML、JS和PHP代码</p>
+<p>.php代码放在www根目录下</p>
+<p>.php在phpstudy和apache下打开可以进行解析</p>
+<p>php代码每句最后需要添加分号；</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">中间写代码</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h5><p>s不能为数字</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$s</span> = <span class="string">&quot;sss&quot;</span> </span><br></pre></td></tr></table></figure>
+
+<h5 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h5><h6 id="echo"><a href="#echo" class="headerlink" title="echo"></a>echo</h6><p>可以输出一个或多个字符串</p>
+<h6 id="print"><a href="#print" class="headerlink" title="print"></a>print</h6><p>只允许输出一个字符串，返回值总为1</p>
+<p>echo 输出的速度比 print 快， echo 没有返回值，print有返回值1。</p>
+<p>注意是一个或者多个“字符串”，不是单个字符。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$b</span> = <span class="string">&quot;123&quot;</span></span><br><span class="line"><span class="keyword">echo</span> <span class="variable">$b</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231212102349564.png" alt="image-20231212102349564"></p>
+<p>变量与变量之间需要用.隔开，变量与符号，符号与符号之间也一样加.隔开</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$a = $b.$c.&quot;bbb&quot; # bbb一样能够输出</span><br></pre></td></tr></table></figure>
+
+<h5 id="循环写法"><a href="#循环写法" class="headerlink" title="循环写法"></a>循环写法</h5><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (条件) &#123;</span><br><span class="line">代码;</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">	代码;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">or</span></span><br><span class="line"><span class="keyword">while</span> (条件)&#123;</span><br><span class="line">代码</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>php中只匹配数字和值</p>
+<h5 id="类型比较"><a href="#类型比较" class="headerlink" title="类型比较"></a>类型比较</h5><h6 id="松散比较："><a href="#松散比较：" class="headerlink" title="松散比较："></a>松散比较：</h6><p>只比较值，不比较类型，使用两个等号&#x3D;&#x3D;比较</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$a</span> == <span class="variable">$b</span></span><br></pre></td></tr></table></figure>
+
+<p>严格比较：</p>
+<p>既比较值，也比较类型，使用三个等号&#x3D;&#x3D;&#x3D;比较</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$a</span> === <span class="variable">$b</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="请求参数"><a href="#请求参数" class="headerlink" title="请求参数"></a>请求参数</h5><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$a</span> = <span class="variable">$_get</span>(<span class="string">&#x27;a&#x27;</span>)</span><br><span class="line"><span class="keyword">echo</span> <span class="variable">$a</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="isset"><a href="#isset" class="headerlink" title="isset"></a>isset</h5><p>判断是否传参，有内容则为true，无内容则为false</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;submit&#x27;</span>]))&#123;</span><br><span class="line"></span><br><span class="line">&#125; <span class="comment">// isset判断是否传参，有内容则为true，无内容则为false</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="trim"><a href="#trim" class="headerlink" title="trim()"></a>trim()</h5><p> 去除所有空格</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$s = trim(&#x27;&#x27;) //去除所有空格</span><br></pre></td></tr></table></figure>
+
+<h5 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h5><p>假设在笼子里有头数为8的动物，总共有22只脚。</p>
+<p>n张5毛，y张1块，z张10块，t张50，x张100，问我手上一共有156钱，一共有多少种组合，满足我手上的钱</p>
+<p>代码：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="variable">$heads</span> = <span class="number">8</span>; </span><br><span class="line"><span class="variable">$feet</span> = <span class="number">22</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable">$chickenFeet</span> = <span class="number">2</span>;</span><br><span class="line"><span class="variable">$rabbitFeet</span> = <span class="number">4</span>; </span><br><span class="line"></span><br><span class="line"><span class="variable">$chicken</span> = <span class="number">0</span>;</span><br><span class="line"><span class="variable">$rabbit</span> = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="variable">$chicken</span> = <span class="number">0</span>; <span class="variable">$chicken</span> &lt;= <span class="variable">$heads</span>; <span class="variable">$chicken</span>++) &#123;</span><br><span class="line">  <span class="variable">$rabbit</span> = <span class="variable">$heads</span> - <span class="variable">$chicken</span>;</span><br><span class="line"></span><br><span class="line">  <span class="variable">$chickenFeetNum</span> = <span class="variable">$chicken</span> * <span class="variable">$chickenFeet</span>;</span><br><span class="line">  <span class="variable">$rabbitFeetNum</span> = <span class="variable">$rabbit</span> * <span class="variable">$rabbitFeet</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span>(<span class="variable">$chickenFeetNum</span> + <span class="variable">$rabbitFeetNum</span> == <span class="variable">$feet</span>) &#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&quot;鸡有&quot;</span>;</span><br><span class="line">    <span class="keyword">echo</span> <span class="variable">$chicken</span>;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&quot;只,兔有&quot;</span>;</span><br><span class="line">    <span class="keyword">echo</span> <span class="variable">$rabbit</span>;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&quot;只&quot;</span>;</span><br><span class="line">    <span class="keyword">break</span>; </span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="variable">$total</span> = <span class="number">156</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="variable">$nickel</span> = <span class="number">0.05</span>; </span><br><span class="line"><span class="variable">$yuan</span> = <span class="number">1</span>;</span><br><span class="line"><span class="variable">$ten</span> = <span class="number">10</span>;</span><br><span class="line"><span class="variable">$fifty</span> = <span class="number">50</span>;</span><br><span class="line"><span class="variable">$hundred</span> = <span class="number">100</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="variable">$count</span> = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="variable">$n</span> = <span class="number">0</span>; <span class="variable">$n</span> &lt;= <span class="variable">$total</span>/<span class="variable">$nickel</span>; <span class="variable">$n</span>++) &#123;</span><br><span class="line">  <span class="keyword">for</span>(<span class="variable">$y</span> = <span class="number">0</span>; <span class="variable">$y</span> &lt;= <span class="variable">$total</span>/<span class="variable">$yuan</span>; <span class="variable">$y</span>++) &#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="variable">$z</span> = <span class="number">0</span>; <span class="variable">$z</span> &lt;= <span class="variable">$total</span>/<span class="variable">$ten</span>; <span class="variable">$z</span>++) &#123;</span><br><span class="line">      <span class="keyword">for</span>(<span class="variable">$t</span> = <span class="number">0</span>; <span class="variable">$t</span> &lt;= <span class="variable">$total</span>/<span class="variable">$fifty</span>; <span class="variable">$t</span>++) &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="variable">$x</span> = <span class="number">0</span>; <span class="variable">$x</span> &lt;= <span class="variable">$total</span>/<span class="variable">$hundred</span>; <span class="variable">$x</span>++) &#123;</span><br><span class="line">          </span><br><span class="line"></span><br><span class="line">          <span class="variable">$amount</span> = <span class="variable">$n</span> * <span class="variable">$nickel</span> + <span class="variable">$y</span> * <span class="variable">$yuan</span> + <span class="variable">$z</span> * <span class="variable">$ten</span> + <span class="variable">$t</span> * <span class="variable">$fifty</span> + <span class="variable">$x</span> * <span class="variable">$hundred</span>;</span><br><span class="line">          </span><br><span class="line">          <span class="keyword">if</span>(<span class="variable">$amount</span> == <span class="variable">$total</span>) &#123;</span><br><span class="line">            <span class="variable">$count</span>++;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125; </span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">echo</span> <span class="string">&quot;满足条件的组合数为:<span class="subst">$count</span>&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231212160723579.png" alt="image-20231212160723579"></p>
+<h4 id="MySQL"><a href="#MySQL" class="headerlink" title="MySQL"></a>MySQL</h4><ol>
+<li><p>在物理机上下载navicat并安装</p>
+</li>
+<li><p>打开navicat，在虚拟机中打开phpstudy，并使用phpstudy打开MySQL。</p>
+</li>
+<li><p>进入该位置.\phpstudy_pro\Extensions\MySQL5.7.26\bin，并在文件框中输入cmd，并确认</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231212150613719.png" alt="image-20231212150613719"></p>
+</li>
+<li><p>在弹出的cmd窗口中输入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -u root -p</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在输入密码，一般情况下是root，根据你自己设置而定。</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231212151256063.png" alt="image-20231212151256063"></p>
+</li>
+<li><p>在输入以下代码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">use mysql;</span><br><span class="line">update user set Host=&#x27;%&#x27; where User=&#x27;root&#x27;;</span><br><span class="line">flush privileges;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231212151102681.png" alt="image-20231212151102681"></p>
+</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231212151329959.png" alt="image-20231212151329959"></p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231212151413849.png" alt="image-20231212151413849"></p>
+<p>该步骤是解除mysql的远程连接限制</p>
+<ol start="7">
+<li><p>在物理机打开navicat，点击连接，选择MySQL</p>
+</li>
+<li><p>在新建连接中，主机输入虚拟机ip，输入密码，点击确认。</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231212151744061.png" alt="image-20231212151744061"></p>
+</li>
+<li><p>双击出现企鹅连接，连接变绿表示远程连接成功。</p>
+</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231212152253717.png" alt="image-20231212152253717"></p>
+<h4 id="PHP网站相关"><a href="#PHP网站相关" class="headerlink" title="PHP网站相关"></a>PHP网站相关</h4><ol>
+<li>下载sqli.zip</li>
+<li>解压文件至.\phpstudy_pro\WWW</li>
+<li>使用phpstudy打开网页，并浏览<a target="_blank" rel="noopener" href="http://localhost/sqli/sql-connections/setup-db.php">http://localhost/sqli/sql-connections/setup-db.php</a></li>
+<li>然后报错。</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231212153002757.png" alt="image-20231212153002757"></p>
+<h4 id="PHP网站练习2"><a href="#PHP网站练习2" class="headerlink" title="PHP网站练习2"></a>PHP网站练习2</h4><ol>
+<li>在navicat里给虚拟机的MySQL新建一个数据库security，字符集选择utf8mb4，排序规则不选。</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231212171108782.png" alt="image-20231212171108782"></p>
+<ol start="2">
+<li><p>刷新数据库，点击新建的数据库新建查询，输入老师给的sql数据，直接运行</p>
+</li>
+<li><p>在.\phpstudy_pro\WWW目录下新建index.php与link.php文件</p>
+<p>index.php文件：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=<span class="string">&quot;en&quot;</span>&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;meta charset=<span class="string">&quot;utf-8&quot;</span>&gt; </span><br><span class="line">&lt;meta name=<span class="string">&quot;viewport&quot;</span> content=<span class="string">&quot;width=device-width,initial-scale=1.0&quot;</span>&gt;</span><br><span class="line">&lt;title&gt;菜鸟教程(runoob.com)&lt;/title&gt; </span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;form method=<span class="string">&quot;post&quot;</span> action=<span class="string">&quot;link.php&quot;</span>&gt;</span><br><span class="line">  &lt;tr&gt;</span><br><span class="line">    &lt;td&gt;用户名&lt;/td&gt;</span><br><span class="line">    &lt;td&gt;&lt;input type=<span class="string">&quot;text&quot;</span> name=<span class="string">&quot;username&quot;</span> id=<span class="string">&quot;username&quot;</span>&gt;&lt;/td&gt;</span><br><span class="line">  &lt;/tr&gt;&lt;br/&gt;</span><br><span class="line">  &lt;tr&gt;</span><br><span class="line">    &lt;td&gt;密码&amp;nbsp&amp;nbsp&amp;nbsp&lt;/td&gt;</span><br><span class="line">    &lt;td&gt;&lt;input type=<span class="string">&quot;password&quot;</span> name=<span class="string">&quot;password&quot;</span> id=<span class="string">&quot;password&quot;</span>&gt;&lt;/td&gt;</span><br><span class="line">  &lt;/tr&gt;&lt;br/&gt;</span><br><span class="line">  &lt;tr&gt;</span><br><span class="line">    &lt;td&gt;&lt;input type=<span class="string">&quot;checkbox&quot;</span> name=<span class="string">&quot;remeber&quot;</span> id=<span class="string">&quot;remeber&quot;</span>&gt;记住密码&lt;/td&gt;&lt;br/&gt;</span><br><span class="line">    &lt;td&gt;&lt;input type=<span class="string">&quot;submit&quot;</span> name=<span class="string">&quot;submit&quot;</span> id=<span class="string">&quot;submit&quot;</span> value=<span class="string">&quot;提交&quot;</span>&gt;&lt;/td&gt;&lt;br/&gt;</span><br><span class="line">    &lt;td&gt;&lt;input type=<span class="string">&quot;reset&quot;</span> name=<span class="string">&quot;&quot;</span> id=<span class="string">&quot;&quot;</span> value=<span class="string">&quot;reset&quot;</span>&gt;&lt;/td&gt;</span><br><span class="line">  &lt;/tr&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h5 id="link-php文件"><a href="#link-php文件" class="headerlink" title="link.php文件"></a>link.php文件</h5><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="title function_ invoke__">header</span>(<span class="string">&#x27;content-type: text/html; charset=utf-8&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;submit&#x27;</span>]))&#123;</span><br><span class="line">    <span class="variable">$u</span> =<span class="title function_ invoke__">trim</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;username&#x27;</span>]);</span><br><span class="line">    <span class="variable">$p</span> =<span class="title function_ invoke__">trim</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;password&#x27;</span>]);</span><br><span class="line"> <span class="variable">$link</span>=<span class="title function_ invoke__">mysqli_connect</span>(<span class="string">&quot;127.0.0.1&quot;</span>,<span class="string">&quot;root&quot;</span>,<span class="string">&quot;root&quot;</span>,<span class="string">&quot;security&quot;</span>)<span class="keyword">or</span> <span class="keyword">exit</span>(<span class="string">&quot;Error connecting&quot;</span>);</span><br><span class="line">      <span class="title function_ invoke__">mysqli_query</span>(<span class="variable">$link</span>,<span class="string">&quot;set names utf8&quot;</span>);</span><br><span class="line">  <span class="variable">$sql</span>=  <span class="string">&quot;select * from users where username=&#x27;<span class="subst">$u</span>&#x27; and password=&#x27;<span class="subst">$p</span>&#x27;&quot;</span>;</span><br><span class="line">  <span class="variable">$result</span>=<span class="title function_ invoke__">mysqli_query</span>(<span class="variable">$link</span>, <span class="variable">$sql</span>) ;</span><br><span class="line">   <span class="variable">$row</span>=<span class="title function_ invoke__">mysqli_fetch_array</span>(<span class="variable">$result</span>) ;</span><br><span class="line">    <span class="keyword">if</span>(<span class="variable">$row</span>)&#123;</span><br><span class="line">       <span class="keyword">echo</span> <span class="string">&#x27;Your Login name:&#x27;</span>.Srowriusername<span class="string">&#x27;l.&quot;&lt;br/&gt;&quot;</span></span><br><span class="line"><span class="string">        echo &#x27;</span>Your Password:<span class="string">&#x27; .$row[&#x27;</span>password<span class="string">&#x27;];</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>link.php文件是为了判断index.php页面输入的代码是否正确</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$link</span> = <span class="title function_ invoke__">mysqli_connect</span>(<span class="string">&quot;127.0.0.1&quot;</span>,<span class="string">&quot;root&quot;</span>,<span class="string">&quot;root&quot;</span>,<span class="string">&quot;security&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>是为了连接mysql数据库</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$sql</span>=  <span class="string">&quot;select * from users where username=&#x27;<span class="subst">$u</span>&#x27; and password=&#x27;<span class="subst">$p</span>&#x27;&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>输出要在MySQL执行的查询语句</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$result</span>=<span class="title function_ invoke__">mysqli_query</span>(<span class="variable">$link</span>, <span class="variable">$sql</span>) ;</span><br></pre></td></tr></table></figure>
+
+<p>判断语句sql连接和语句是否能够正常运行，能够正常运行则继续执行下方语句。</p>
+<p>mysql_query是一个<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%87%BD%E6%95%B0/3504881?fromModule=lemma_inlink">计算机函数</a>，向与指定的连接<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%A0%87%E8%AF%86%E7%AC%A6/7105638?fromModule=lemma_inlink">标识符</a>关联的服务器中的当前活动数据库发送一条查询，如果没有指定 link_identifier，则使用上一个打开的连接。</p>
+<p>如果没有打开的连接，本函数会尝试无参数调用 <a target="_blank" rel="noopener" href="https://baike.baidu.com/item/mysql_connect/0?fromModule=lemma_inlink">mysql_connect</a>( ) 函数来建立一个连接并使用之。查询结果会被<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E7%BC%93%E5%AD%98/100710?fromModule=lemma_inlink">缓存</a></p>
+<h5 id="登陆界面"><a href="#登陆界面" class="headerlink" title="登陆界面"></a>登陆界面</h5></li>
+<li><p>运行网页</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231212171717610.png" alt="image-20231212171717610"></p>
+<ol start="5">
+<li><p>输入MySQL中已有的数据。</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231212171804687.png" alt="image-20231212171804687"></p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231212171837270.png" alt="image-20231212171837270"></p>
+<h5 id="主页界面"><a href="#主页界面" class="headerlink" title="主页界面"></a>主页界面</h5><p>zhuye.php,一个登陆页面（index.php）登陆成功之后显示的页面，这时候link.php页面已经没有页面输出内容了，输出内容放在了zhuye.php页面上。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="title function_ invoke__">session_start</span>();</span><br><span class="line"></span><br><span class="line"><span class="title function_ invoke__">header</span>(<span class="string">&#x27;Content-Type:text/html;charset=utf-8&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$_SESSION</span>[<span class="string">&#x27;user&#x27;</span>])) &#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&#x27;当前登陆用户:&#x27;</span>.<span class="variable">$_SESSION</span>[<span class="string">&#x27;user&#x27;</span>].<span class="string">&#x27;&#x27;</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;logout&#x27;</span>]))&#123;</span><br><span class="line">    <span class="comment">//清除会话数据</span></span><br><span class="line">    <span class="title function_ invoke__">session_unset</span>();</span><br><span class="line">    <span class="title function_ invoke__">session_destroy</span>();</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&quot;你已成功注销。&lt;br&gt;&quot;</span>;</span><br><span class="line">    <span class="title function_ invoke__">header</span>(<span class="string">&#x27;Location:index.php&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">echo</span> <span class="string">&#x27;&lt;h1&gt;&lt;a href=&quot;?logout=true&quot;&gt;注销&lt;/a&gt;&lt;/h1&gt;&#x27;</span>;</span><br><span class="line"></span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&#x27;错误！&#x27;</span>;</span><br><span class="line">    <span class="title function_ invoke__">header</span>(<span class="string">&#x27;Location:index.php&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231217094040641.png" alt="image-20231217094040641"></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_ invoke__">header</span>(<span class="string">&#x27;Location:index.php&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>作用跳转页面</p>
+<p>点击注销，单纯的跳转到登陆页面（index.php）</p>
+<h5 id="上传界面"><a href="#上传界面" class="headerlink" title="上传界面"></a>上传界面</h5><p>localhost&#x2F;upload.php</p>
+<p>需要在..&#x2F;www文件夹下创建一个uploads文件接收上传的文件</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">echo</span> <span class="string">&#x27;</span></span><br><span class="line"><span class="string">&lt;form action=&quot;&quot; method=&quot;post&quot; enctype=&quot;multipart/form-data&quot;&gt;</span></span><br><span class="line"><span class="string">&lt;label for=&quot;upload&quot;&gt;上传你的头像&lt;/label&gt;</span></span><br><span class="line"><span class="string">&lt;input name=&quot;file&quot; id=&quot;upload&quot; type=&quot;file&quot; &gt;</span></span><br><span class="line"><span class="string">&lt;label for=&quot;submit&quot;  &gt;文件上传&lt;/label&gt;</span></span><br><span class="line"><span class="string">&lt;input name=&quot;submit&quot; id=&quot;submit&quot; type=&quot;submit&quot;&gt;</span></span><br><span class="line"><span class="string">&lt;h1&gt;下面是接收到的文件&lt;/h1&gt;</span></span><br><span class="line"><span class="string">&lt;/form&gt;</span></span><br><span class="line"><span class="string">&#x27;</span>;</span><br><span class="line"><span class="title function_ invoke__">header</span>(<span class="string">&#x27;Content-Type: text/html; charset=utf-8&#x27;</span>);</span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$_FILES</span>[<span class="string">&quot;file&quot;</span>]))&#123;</span><br><span class="line">    <span class="variable">$upload_dir</span> = <span class="string">&quot;uploads&quot;</span>;</span><br><span class="line">    <span class="variable">$file_name</span> = <span class="variable">$_FILES</span>[<span class="string">&quot;file&quot;</span>][<span class="string">&quot;name&quot;</span>];</span><br><span class="line">    <span class="variable">$file_type</span> = <span class="variable">$_FILES</span>[<span class="string">&quot;file&quot;</span>][<span class="string">&quot;type&quot;</span>];</span><br><span class="line">    <span class="variable">$file_size</span> = <span class="variable">$_FILES</span>[<span class="string">&quot;file&quot;</span>][<span class="string">&quot;size&quot;</span>];</span><br><span class="line">    <span class="variable">$file_tmp</span> = <span class="variable">$_FILES</span>[<span class="string">&quot;file&quot;</span>][<span class="string">&quot;tmp_name&quot;</span>];</span><br><span class="line">    <span class="variable">$target_path</span> = <span class="variable">$upload_dir</span>.<span class="string">&#x27;/&#x27;</span>.<span class="variable">$file_name</span>;</span><br><span class="line">    <span class="keyword">if</span> (<span class="title function_ invoke__">move_uploaded_file</span>(<span class="variable">$file_tmp</span>, <span class="variable">$target_path</span>))&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;上传成功&quot;</span>.<span class="string">&quot;&lt;br&gt;&quot;</span>;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;文件类型: &quot;</span> . <span class="variable">$file_type</span> . <span class="string">&quot;&lt;br&gt;&quot;</span>;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;文件大小: &quot;</span> . (<span class="variable">$file_size</span> / <span class="number">1024</span>) . <span class="string">&quot; kB&lt;br&gt;&quot;</span>;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;文件存储的位置: &quot;</span> . <span class="variable">$target_path</span>;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;上传失败&quot;</span>.<span class="string">&quot;&lt;br&gt;&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">	<span class="keyword">echo</span> <span class="string">&quot;&lt;br/&gt;&quot;</span>;</span><br><span class="line"><span class="keyword">echo</span> <span class="string">&quot;&lt;img src=&#x27;./<span class="subst">$target_path</span>.&#x27;&gt;&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231217094809172.png" alt="image-20231217094809172"></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$upload_dir</span> = <span class="string">&quot;uploads&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>上传文件代码。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$file_name</span> = <span class="variable">$_FILES</span>[<span class="string">&quot;file&quot;</span>][<span class="string">&quot;name&quot;</span>];</span><br><span class="line">   <span class="variable">$file_type</span> = <span class="variable">$_FILES</span>[<span class="string">&quot;file&quot;</span>][<span class="string">&quot;type&quot;</span>];</span><br><span class="line">   <span class="variable">$file_size</span> = <span class="variable">$_FILES</span>[<span class="string">&quot;file&quot;</span>][<span class="string">&quot;size&quot;</span>];</span><br><span class="line">   <span class="variable">$file_tmp</span> = <span class="variable">$_FILES</span>[<span class="string">&quot;file&quot;</span>][<span class="string">&quot;tmp_name&quot;</span>];</span><br></pre></td></tr></table></figure>
+
+<p>判断上传文件格式</p>
+<h5 id="评论"><a href="#评论" class="headerlink" title="评论"></a>评论</h5><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=<span class="string">&quot;en&quot;</span>&gt;</span><br><span class="line"></span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=<span class="string">&quot;UTF-8&quot;</span>&gt;</span><br><span class="line">    &lt;meta name=<span class="string">&quot;viewport&quot;</span> content=<span class="string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span><br><span class="line">    &lt;title&gt;Document&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;form method=<span class="string">&quot;post&quot;</span> action=<span class="string">&quot;&quot;</span>&gt;</span><br><span class="line">        &lt;label <span class="keyword">for</span>=<span class="string">&quot;comment&quot;</span>&gt;发表评论&lt;/label&gt;&lt;br /&gt;</span><br><span class="line">        &lt;textarea name=<span class="string">&quot;comment&quot;</span> id=<span class="string">&quot;comment&quot;</span> rows=<span class="string">&quot;10&quot;</span> cols=<span class="string">&quot;80&quot;</span>&gt;&lt;/textarea&gt;&lt;br /&gt;</span><br><span class="line">        &lt;input type=<span class="string">&quot;submit&quot;</span> name=<span class="string">&quot;submit&quot;</span> value=<span class="string">&quot;提交评论&quot;</span>&gt;</span><br><span class="line">    &lt;/form&gt;</span><br><span class="line">    &lt;h1&gt;历史评论&lt;/h1&gt;</span><br><span class="line">    <span class="meta">&lt;?php</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="variable">$_SERVER</span>[<span class="string">&#x27;REQUEST_METHOD&#x27;</span>] == <span class="string">&#x27;POST&#x27;</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">isset</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;comment&#x27;</span>]) &amp;&amp; !<span class="keyword">empty</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;comment&#x27;</span>])) &#123;</span><br><span class="line">            <span class="variable">$comment</span> = <span class="variable">$_POST</span>[<span class="string">&#x27;comment&#x27;</span>];</span><br><span class="line">            <span class="variable">$link</span> = <span class="title function_ invoke__">mysqli_connect</span>(<span class="string">&quot;localhost&quot;</span>, <span class="string">&quot;root&quot;</span>, <span class="string">&quot;root&quot;</span>, <span class="string">&quot;security&quot;</span>) <span class="keyword">or</span> <span class="keyword">exit</span>(<span class="string">&quot;数据库连接失败！&quot;</span>);</span><br><span class="line">            <span class="title function_ invoke__">mysqli_query</span>(<span class="variable">$link</span>, <span class="string">&quot;set names utf8&quot;</span>);</span><br><span class="line">            <span class="variable">$ChaRu</span> = <span class="string">&quot;insert INTO comments (comment) VALUES(&#x27;<span class="subst">$comment</span>&#x27;)&quot;</span>;</span><br><span class="line">            <span class="keyword">if</span> (<span class="title function_ invoke__">mysqli_query</span>(<span class="variable">$link</span>, <span class="variable">$ChaRu</span>)) &#123;</span><br><span class="line">                <span class="keyword">echo</span> <span class="string">&quot;&lt;p&gt;你的评论已成功保存到数据库。&lt;/p&gt;&quot;</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">echo</span> <span class="string">&quot;&lt;p style=&#x27;color: red;&#x27;&gt;保存评论时出错。&lt;/p&gt;&quot;</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="title function_ invoke__">mysqli_close</span>(<span class="variable">$link</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 显示最近的20条评论</span></span><br><span class="line">    <span class="variable">$link</span> = <span class="title function_ invoke__">mysqli_connect</span>(<span class="string">&quot;localhost&quot;</span>, <span class="string">&quot;root&quot;</span>, <span class="string">&quot;root&quot;</span>, <span class="string">&quot;security&quot;</span>) <span class="keyword">or</span> <span class="keyword">exit</span>(<span class="string">&quot;数据库连接失败！&quot;</span>);</span><br><span class="line">    <span class="title function_ invoke__">mysqli_query</span>(<span class="variable">$link</span>, <span class="string">&quot;set names utf8&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="variable">$query</span> = <span class="string">&quot;SELECT * FROM comments ORDER BY id DESC LIMIT 20&quot;</span>;    </span><br><span class="line">    <span class="variable">$result</span> = <span class="title function_ invoke__">mysqli_query</span>(<span class="variable">$link</span>, <span class="variable">$query</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (<span class="variable">$result</span>) &#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;&lt;h2&gt;最近的评论&lt;/h2&gt;&quot;</span>;</span><br><span class="line">        <span class="keyword">while</span> (<span class="variable">$row</span> = <span class="title function_ invoke__">mysqli_fetch_assoc</span>(<span class="variable">$result</span>)) &#123;</span><br><span class="line">            <span class="keyword">echo</span> <span class="string">&quot;&lt;p&gt;<span class="subst">&#123;$row[&#x27;comment&#x27;]&#125;</span>&lt;/p&gt;&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;&lt;p style=&#x27;color: red;&#x27;&gt;获取评论时出错。&lt;/p&gt;&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="title function_ invoke__">mysqli_close</span>(<span class="variable">$link</span>);</span><br><span class="line">    <span class="meta">?&gt;</span></span><br><span class="line">&lt;/body&gt;</span><br><span class="line"></span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231217095411037.png" alt="image-20231217095411037"></p>
+<p>将评论直接输出到MySQL的一个表当中去，再将该表的内容输出到最近评论下方。</p>
+<h3 id="kali-linux知识回顾"><a href="#kali-linux知识回顾" class="headerlink" title="kali-linux知识回顾"></a>kali-linux知识回顾</h3><p>kali用户前缀是$</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231213091254872.png" alt="image-20231213091254872"></p>
+<p>root用户前缀是#</p>
+<p>vi 没有文字颜色标识</p>
+<p>vim有文字颜色标识</p>
+<p>在底线命令模式中，基本的命令有（已经省略了冒号)∶</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">:w︰保存文件。</span><br><span class="line"></span><br><span class="line">:q：退出Vim编辑器。</span><br><span class="line"></span><br><span class="line">:wq：保存文件并退出Vim 编辑器。:q!:强制退出Vim编辑器，不保存修改。</span><br><span class="line"></span><br><span class="line">:set nu：显示行号，设定之后，会在每一行的前缀显示该行的行号</span><br><span class="line"></span><br><span class="line">: set nonu :与set nu相反，为取消行号</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="绝对路径"><a href="#绝对路径" class="headerlink" title="绝对路径"></a>绝对路径</h5><p>路径的写法，由根目录&#x2F;写起，例如: &#x2F;usr&#x2F;share&#x2F;doc这个目录。</p>
+<h5 id="相对路径"><a href="#相对路径" class="headerlink" title="相对路径"></a>相对路径</h5><p>路径的写法，不是由&#x2F;写起，例如由&#x2F;usr&#x2F;share&#x2F;doc要到&#x2F;usr&#x2F;share&#x2F;man底下时，可以写成: cd ..&#x2F;man这就是相对路径的写法。</p>
+<h3 id="PHP学习"><a href="#PHP学习" class="headerlink" title="PHP学习"></a>PHP学习</h3><h5 id="连接数据库"><a href="#连接数据库" class="headerlink" title="连接数据库"></a>连接数据库</h5><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$变量名=<span class="title function_ invoke__">mysqli_connect</span>(<span class="string">&quot;连接IP&quot;</span>,<span class="string">&quot;数据库用户名&quot;</span>,<span class="string">&quot;数据库用户密码&quot;</span>,<span class="string">&quot;数据库&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>数据库连接可以放在另一个文件当中.</p>
+<h5 id="mysqli-query"><a href="#mysqli-query" class="headerlink" title="mysqli_query()"></a>mysqli_query()</h5><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_ invoke__">mysqli_query</span>(connection,query,resultmode)</span><br></pre></td></tr></table></figure>
+
+<p> connection:</p>
+<p>必需。规定要使用的MySQL连接。即连接数据库时定义的变量名。</p>
+<p>query:</p>
+<p>必需。规定查询字符。即进行查询语句，写相关的sql语句。</p>
+<p>resultmode:</p>
+<p>可选可选。一个常量。可以是下列值中的任意一个：</p>
+<ul>
+<li>MYSQLI_USE_RESULT（如果需要检索大量数据，请使用这个）</li>
+<li>MYSQLI_STORE_RESULT（默认）</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+<h5 id="网络爬取"><a href="#网络爬取" class="headerlink" title="网络爬取"></a>网络爬取</h5><p>进入网站，查看网站，复制网址，进入pycharm，创建python文件用来获取request包</p>
+<p>通过查看网站信息一步步下载图片。</p>
+<h3 id="图书馆练习"><a href="#图书馆练习" class="headerlink" title="图书馆练习"></a>图书馆练习</h3><p>$_POST 变量</p>
+<p>预定义的 $_POST 变量用于收集来自 method&#x3D;”post” 的表单中的值。</p>
+<p>从带有 POST 方法的表单发送的信息，对任何人都是不可见的（不会显示在浏览器的地址栏），并且对发送信息的量也没有限制。</p>
+<p>代码：</p>
+<p>链接：<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1myMPolL_AtxKH77_6S21bw?pwd=0sxi">https://pan.baidu.com/s/1myMPolL_AtxKH77_6S21bw?pwd=0sxi</a><br>提取码：0sxi</p>
+<h4 id="代码以及效果截图"><a href="#代码以及效果截图" class="headerlink" title="代码以及效果截图"></a>代码以及效果截图</h4><p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/axios%E4%BB%A3%E7%A0%812.1.png" alt="axios代码2.1"></p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/axios%E4%BB%A3%E7%A0%812.2.png" alt="axios代码2.2"></p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/axios%E4%BB%A3%E7%A0%812.3.png" alt="axios代码2.3"></p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/%E6%9F%A5%E8%AF%A2%E5%9B%BE%E4%B9%A6.png" alt="查询图书"></p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/%E5%88%A0%E9%99%A4%E5%9B%BE%E4%B9%A6%E4%BB%A3%E7%A0%81.png" alt="删除图书代码"></p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/%E6%95%B0%E6%8D%AE%E7%BB%91%E5%AE%9A1.1.png" alt="数据绑定1.1"></p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/%E6%95%B0%E6%8D%AE%E7%BB%91%E5%AE%9A1.2.png" alt="数据绑定1.2"></p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/%E6%95%B0%E6%8D%AE%E7%BB%91%E5%AE%9A1.3.png" alt="数据绑定1.3"></p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/%E6%B7%BB%E5%8A%A0%E5%9B%BE%E4%B9%A6.png" alt="添加图书"></p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/%E6%B7%BB%E5%8A%A0%E5%9B%BE%E4%B9%A6%E4%BB%A3%E7%A0%81.png" alt="添加图书代码"></p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/%E4%BF%AE%E6%94%B9%E5%9B%BE%E4%B9%A6.png" alt="修改图书"></p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/%E4%BF%AE%E6%94%B9%E5%9B%BE%E4%B9%A6%E4%BB%A3%E7%A0%81.png" alt="修改图书代码"></p>
+<h4 id=""><a href="#" class="headerlink" title=""></a></h4>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/12/12/8.1-phpstudy%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8-php%E4%BB%A3%E7%A0%81-MySQL-php%E7%BD%91%E7%AB%99%E7%BB%83%E4%B9%A0/" data-id="clrcswxki000dugwka7dadfy7" data-title="8.1-VUE2的创建-Apache-phpstudy的安装与使用-php代码-MySQL-php网站练习-PHP学习-图书馆练习" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2023/12/18/9.1-sql%E6%B3%A8%E5%85%A5-%E7%88%86%E7%A0%B4-moneybox/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          9.1-sql注入-爆破-moneybox
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2023/12/11/7.1-html%E8%AE%AD%E7%BB%83/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">7.1-vue3练习-html阴影笔记-数据绑定-网页练习展示</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/01/">January 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/12/">December 2023</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2024/01/14/hexo%E5%8D%9A%E5%AE%A2%E6%A0%BC%E5%BC%8F%EF%BC%88%E5%8D%9A%E5%AE%A2%E7%89%88%EF%BC%89/">markdown的使用说明</a>
+          </li>
+        
+          <li>
+            <a href="/2024/01/14/DB/">DB</a>
+          </li>
+        
+          <li>
+            <a href="/2024/01/14/13.1-%E6%89%93%E9%9D%B6/">13.1-打靶</a>
+          </li>
+        
+          <li>
+            <a href="/2024/01/14/14.1-%E4%BB%A3%E7%90%86-%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/">14.1-代理-流量分析</a>
+          </li>
+        
+          <li>
+            <a href="/2024/01/14/1.3-%E5%8D%9A%E5%AE%A2%E7%9A%84%E7%BC%96%E5%86%99%E4%B8%8E%E4%B8%8A%E4%BC%A0/">1.3-博客的编写与上传</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2024 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

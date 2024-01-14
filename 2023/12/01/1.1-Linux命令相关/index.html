@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>1.1-Linux命令相关 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="补充Linux 是一种操作系统， 就像 macOS 和 Windows 一样。 它也是最流行的开放源代码操作系统，给予用户很大的自由度。 它驱动了绝大多数的互联网服务器，是构建任何设施的“地基”，但还不仅如此。 Android 操作系统（中文也称“安卓”）实际上是基于（一种修改版的）Linux 构建的。 Linux 的“内核” （我们称之为 kernel ）诞生于 1991 年的芬兰，从最初的简陋">
+<meta property="og:type" content="article">
+<meta property="og:title" content="1.1-Linux命令相关">
+<meta property="og:url" content="http://example.com/2023/12/01/1.1-Linux%E5%91%BD%E4%BB%A4%E7%9B%B8%E5%85%B3/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="补充Linux 是一种操作系统， 就像 macOS 和 Windows 一样。 它也是最流行的开放源代码操作系统，给予用户很大的自由度。 它驱动了绝大多数的互联网服务器，是构建任何设施的“地基”，但还不仅如此。 Android 操作系统（中文也称“安卓”）实际上是基于（一种修改版的）Linux 构建的。 Linux 的“内核” （我们称之为 kernel ）诞生于 1991 年的芬兰，从最初的简陋">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240108150644046.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240108151426044.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240108151541931.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240108151622428.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240108152628018.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240108152831737.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240108152905619.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240108152953134.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240108153101590.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240108153255799.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240108153721924.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240108154009308.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240108154152855.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240108154255418.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240108154907508.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240108155027474.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240108155211329.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240108155314983.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240108155735223.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/a7a182d4a8d4a5d9b11845e79bef899e.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/89445aac50c682d7be6892d0f25ac540.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/7ac37ee1e69304d7d7756da9fe3ac645.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/be1cd81f52ec073d948be4460ea2008d.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/367d1e261bd2bad8d1a7275d8d8f36e0.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/3854c2338a94c7c3acd7646335113a81.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/c782d60407f563a386a2cdfe4c1bc36a.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/dd23886dd82e994aea4c04764875e7ab.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/7c980a975d73d87808a7749ca284e2ac.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/111.png">
+<meta property="article:published_time" content="2023-11-30T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-01-08T09:30:13.599Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240108150644046.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-1.1-Linux命令相关" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/12/01/1.1-Linux%E5%91%BD%E4%BB%A4%E7%9B%B8%E5%85%B3/" class="article-date">
+  <time class="dt-published" datetime="2023-11-30T16:00:00.000Z" itemprop="datePublished">2023-12-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      1.1-Linux命令相关
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h3><p>Linux 是一种操作系统， 就像 macOS 和 Windows 一样。</p>
+<p>它也是最流行的开放源代码操作系统，给予用户很大的自由度。</p>
+<p>它驱动了绝大多数的互联网服务器，是构建任何设施的“地基”，但还不仅如此。 Android 操作系统（中文也称“安卓”）实际上是基于（一种修改版的）Linux 构建的。</p>
+<p>Linux 的“内核” （我们称之为 <em>kernel</em> ）诞生于 1991 年的芬兰，从最初的简陋构造到今天，已经走了很长的一段路。后来它成为了 GNU 操作系统的内核，于是出现了 GNU&#x2F;Linux 组合系统。</p>
+<h4 id="命令格式"><a href="#命令格式" class="headerlink" title="命令格式"></a>命令格式</h4><p>命令格式 ：命令 [-选项] [参数]<br> 例 ： ls -la &#x2F;etc<br> 说明：</p>
+<ol>
+<li>个别命令使用不遵循此格式</li>
+<li>当有多个选项时，可以写在一起</li>
+<li>简化选项与完整选项-a 等于 –all</li>
+</ol>
+<h4 id="man"><a href="#man" class="headerlink" title="man"></a>man</h4><p>当忘记某条命令时可以采用</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">man &lt;命令名&gt;</span><br></pre></td></tr></table></figure>
+
+<p>获取命令说明</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">man ls</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240108150644046.png" alt="image-20240108150644046"></p>
+<h4 id="tldr"><a href="#tldr" class="headerlink" title="tldr"></a>tldr</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tldr &lt;命令名&gt;</span><br></pre></td></tr></table></figure>
+
+<p>作用与man相似，但是只是简单的查看命令内容没有man详细</p>
+<h4 id="列出目录的内容：ls命令"><a href="#列出目录的内容：ls命令" class="headerlink" title="列出目录的内容：ls命令"></a>列出目录的内容：ls命令</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">命令名称：ls </span><br><span class="line">命令所在路径：/bin/ls </span><br><span class="line">执行权限：所有用户</span><br><span class="line">功能描述：显示目录文件</span><br><span class="line">语法：ls  选项[-ald]  [文件或目录] </span><br><span class="line">-a    显示所有文件，包括隐藏文件</span><br><span class="line">-l     详细信息显示</span><br><span class="line">-d    查看目录属性</span><br></pre></td></tr></table></figure>
+
+<p>当使用ls -l会显示文件的详细信息，包含权限信息：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">-rw-r--r-- </span><br><span class="line">- 文件类型（- 文件 d 目录 l 软链接文件）</span><br><span class="line">rw- r-- r-- </span><br><span class="line">u g o </span><br><span class="line">u所有者 g所属组 o其他人</span><br><span class="line">r读 w写 x执行</span><br></pre></td></tr></table></figure>
+
+<p>在文件夹内，你可以使用 <code>ls</code> 命令列出其中包含的全部文件：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240108151426044.png" alt="image-20240108151426044"></p>
+<p>如果你在后面加上别的文件夹名字或者路径，它就会列出那个文件夹的内容：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ls</span> /bin</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240108151541931.png" alt="image-20240108151541931"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls -al</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240108151622428.png" alt="image-20240108151622428"></p>
+<p>与常规的 <code>ls</code> 命令相比，这会返回更多的信息。</p>
+<p>你可以看到（从左至右）：</p>
+<ul>
+<li>文件权限（如果你的系统支持 ACL，这里也会有一个 ACL 标识）</li>
+<li>链接到该文件的数量</li>
+<li>该文件的所有者</li>
+<li>该文件的用户组</li>
+<li>文件大小（单位为字节）</li>
+<li>文件最后的修改日期</li>
+<li>文件名</li>
+</ul>
+<p>这串数据是由 <code>l</code> 参数产生的，而 <code>a</code> 参数则用来包含被隐藏的文件。</p>
+<p>隐藏文件的文件名通常以英文句号（ <code>.</code> ）开头。</p>
+<h4 id="创建目录：mkdir-命令"><a href="#创建目录：mkdir-命令" class="headerlink" title="创建目录：mkdir 命令"></a>创建目录：mkdir 命令</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">命令名称：mkdir </span><br><span class="line"> </span><br><span class="line">命令所在路径：/bin/mkdir </span><br><span class="line">执行权限：所有用户</span><br><span class="line">语法：mkdir -p  [目录名] </span><br><span class="line">功能描述：创建新目录-p  递归创建</span><br><span class="line">范例： $ mkdir -p /tmp/zhang/test</span><br><span class="line">      $ mkdir /tmp/zhang/test1 /tmp/zhang/test2</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p te</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240108152628018.png" alt="image-20240108152628018"></p>
+<h4 id="切换工作目录：cd-命令"><a href="#切换工作目录：cd-命令" class="headerlink" title="切换工作目录：cd 命令"></a>切换工作目录：cd 命令</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">命令名称：cd </span><br><span class="line"> </span><br><span class="line">命令所在路径：shell内置</span><br><span class="line">命令执行权限：所有用户</span><br><span class="line">语法：cd [目录] </span><br><span class="line">功能描述：切换目录</span><br><span class="line">范例： $ cd  /tmp/zhang/test1     切换到指定目录</span><br><span class="line"> 	  $ cd  ..        回到上一级目录</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd te</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240108152831737.png" alt="image-20240108152831737"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd ..</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240108152905619.png" alt="image-20240108152905619"></p>
+<h4 id="显示当前路径：pwd-命令"><a href="#显示当前路径：pwd-命令" class="headerlink" title="显示当前路径：pwd 命令"></a>显示当前路径：pwd 命令</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">命令名称：pwd </span><br><span class="line"> </span><br><span class="line">命令所在路径：/bin/pwd </span><br><span class="line">执行权限：所有用户</span><br><span class="line">语法：pwd </span><br><span class="line">功能描述：显示当前目录</span><br><span class="line">范例：$ pwd</span><br><span class="line"> </span><br><span class="line">显示结果：/tmp/zhang</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240108152953134.png" alt="image-20240108152953134"></p>
+<h4 id="删除空目录：rmdir命令"><a href="#删除空目录：rmdir命令" class="headerlink" title="删除空目录：rmdir命令"></a>删除空目录：rmdir命令</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">命令名称：rmdir </span><br><span class="line"> </span><br><span class="line">命令所在路径：/bin/rmdir </span><br><span class="line">执行权限：所有用户</span><br><span class="line">语法：rmdir [目录名] </span><br><span class="line">功能描述： 删除空目录</span><br><span class="line">范例： $ rmdir /tmp/zhang/test</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rmdir te</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240108153101590.png" alt="image-20240108153101590"></p>
+<h4 id="拷贝文件：cp-命令"><a href="#拷贝文件：cp-命令" class="headerlink" title="拷贝文件：cp 命令"></a>拷贝文件：cp 命令</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">命令名称：cp</span><br><span class="line"> </span><br><span class="line">命令所在路径：/bin/cp </span><br><span class="line">执行权限：所有用户</span><br><span class="line">语法：cp  -rp  [原文件或目录] [目标目录] </span><br><span class="line">-r  复制目录</span><br><span class="line">-p  保留文件属性</span><br><span class="line">功能描述：复制文件或目录</span><br><span class="line">范例：$ cp  -r /tmp/zhang/test1  /root   </span><br><span class="line">     将目录/tmp/zhang/test1复制到目录/root下</span><br><span class="line"> </span><br><span class="line">     $ cp  -rp /tmp/zhang/test2 /tmp/zhang/test2 /root</span><br><span class="line">     将/tmp/zhang目录下的test1和test2目录复制到/root下，保持目录属性</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp -r /root/1.txt /root/tes</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240108153255799.png" alt="image-20240108153255799"></p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240108153721924.png" alt="image-20240108153721924"></p>
+<h4 id="删除文件：rm-命令"><a href="#删除文件：rm-命令" class="headerlink" title="删除文件：rm 命令"></a>删除文件：rm 命令</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">命令名称：rm </span><br><span class="line"> </span><br><span class="line">命令所在路径：/bin/rm </span><br><span class="line">执行权限：所有用户</span><br><span class="line">语法：rm  -rf   [文件或目录] </span><br><span class="line">-r  删除目录</span><br><span class="line">-f  强制执行</span><br><span class="line">功能描述：删除文件</span><br><span class="line">范例：$ rm  /tmp/yum.log </span><br><span class="line">     删除文件/tmp/yum.log </span><br><span class="line">     </span><br><span class="line">     $ rm -rf  /tmp/zhang/test2</span><br><span class="line">     删除目录/tmp/zhang/test2</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm 1.txt</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240108154009308.png" alt="image-20240108154009308"></p>
+<h4 id="创建文件：touch-命令"><a href="#创建文件：touch-命令" class="headerlink" title="创建文件：touch 命令"></a>创建文件：touch 命令</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">命令名称：touch </span><br><span class="line"> </span><br><span class="line">命令所在路径：/bin/touch </span><br><span class="line">执行权限：所有用户 </span><br><span class="line">语法：touch  [文件名]                 </span><br><span class="line">功能描述：创建空文件 </span><br><span class="line">范例： </span><br><span class="line">$ touch test</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">touch 1.1</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240108154152855.png" alt="image-20240108154152855"></p>
+<h4 id="显示文件内容：cat-命令"><a href="#显示文件内容：cat-命令" class="headerlink" title="显示文件内容：cat 命令"></a>显示文件内容：cat 命令</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">命令所在路径：/bin/cat </span><br><span class="line"> </span><br><span class="line">执行权限：所有用户 </span><br><span class="line">语法：cat [文件名] </span><br><span class="line">功能描述：显示文件内容            </span><br><span class="line">   -n  显示行号 </span><br><span class="line">范例： </span><br><span class="line">$ cat  /etc/issue              $ cat  -n /etc/services</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat  /etc/issue </span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240108154255418.png" alt="image-20240108154255418"></p>
+<h4 id="分屏显示：more-命令"><a href="#分屏显示：more-命令" class="headerlink" title="分屏显示：more 命令"></a>分屏显示：more 命令</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">命令名称：more </span><br><span class="line"> </span><br><span class="line">命令所在路径：/bin/more </span><br><span class="line">执行权限：所有用户 </span><br><span class="line">语法：more  [文件名]                  </span><br><span class="line">   (空格) 或f           翻页               </span><br><span class="line">   (Enter)             换行                 </span><br><span class="line">   q或Q                退出 </span><br><span class="line">功能描述：分页显示文件内容 </span><br><span class="line"> </span><br><span class="line">范例：   </span><br><span class="line">$ more  /etc/services</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">more  /etc/services</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240108154907508.png" alt="image-20240108154907508"></p>
+<h4 id="分屏显示：less-命令"><a href="#分屏显示：less-命令" class="headerlink" title="分屏显示：less 命令"></a>分屏显示：less 命令</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">命令名称：less </span><br><span class="line"> </span><br><span class="line">命令所在路径：/usr/bin/less </span><br><span class="line">执行权限：所有用户 </span><br><span class="line">语法：less  [文件名] </span><br><span class="line">功能描述：分页显示文件内容（可向上翻页） </span><br><span class="line"> </span><br><span class="line">范例：  </span><br><span class="line">$  less  /etc/services</span><br><span class="line">tips: 按下 / 后可以搜索 会反显高亮  按q退出（more也可以）</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">less  /etc/services</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240108155027474.png" alt="image-20240108155027474"></p>
+<h4 id="取首n行：head-命令"><a href="#取首n行：head-命令" class="headerlink" title="取首n行：head 命令"></a>取首n行：head 命令</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">命令名称：head</span><br><span class="line"> </span><br><span class="line">命令所在路径：/usr/bin/head </span><br><span class="line">执行权限：所有用户 </span><br><span class="line">语法：head  [文件名] </span><br><span class="line">功能描述：显示文件前面几行    </span><br><span class="line">    -n 指定行数 </span><br><span class="line"> </span><br><span class="line">范例：  </span><br><span class="line">$ head -n 20 /etc/services</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">head -n 20 /etc/services</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240108155211329.png" alt="image-20240108155211329"></p>
+<h4 id="取尾n行：tail-命令"><a href="#取尾n行：tail-命令" class="headerlink" title="取尾n行：tail 命令"></a>取尾n行：tail 命令</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">命令名称：tail </span><br><span class="line"> </span><br><span class="line">命令所在路径：/usr/bin/tail </span><br><span class="line">执行权限：所有用户 </span><br><span class="line">语法：tail  [文件名] </span><br><span class="line">功能描述：显示文件后面几行    </span><br><span class="line">    -n 指定行数    </span><br><span class="line">    -f  动态显示文件末尾内容 </span><br><span class="line"> </span><br><span class="line">范例：   </span><br><span class="line">$ tail -n 18 /etc/services</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tail -n 18 /etc/services</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240108155314983.png" alt="image-20240108155314983"></p>
+<h4 id="建立链接文件：ln-命令"><a href="#建立链接文件：ln-命令" class="headerlink" title="建立链接文件：ln 命令"></a>建立链接文件：ln 命令</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">命令名称：ln </span><br><span class="line"> </span><br><span class="line">命令所在路径：/bin/ln </span><br><span class="line">执行权限：所有用户 </span><br><span class="line">语法：ln  -s  [原文件]  [目标文件]                 </span><br><span class="line"> -s  创建软链接 </span><br><span class="line">功能描述：生成链接文件</span><br><span class="line"> </span><br><span class="line">范例：        </span><br><span class="line">$ ln -s  /etc/issue  /tmp/issue.soft        </span><br><span class="line"> 创建文件/etc/issue的软链接/tmp/issue.soft        </span><br><span class="line">$ ln  /etc/issue  /tmp/issue.hard        </span><br><span class="line"> 创建文件/etc/issue的硬链接/tmp/issue.hard</span><br></pre></td></tr></table></figure>
+
+<p>软链接特征：类似Windows快捷方式</p>
+<p>1、lrwxrwxrwx l 软链接</p>
+<p>软链接文件权限都为rwxrwxrwx</p>
+<p>2、文件大小-只是符号链接</p>
+<p>3、&#x2F;tmp&#x2F;issue.soft -&gt; &#x2F;etc&#x2F;issue 箭头指向原文件</p>
+<p>硬链接特征：</p>
+<p>1、拷贝cp -p + 同步更新</p>
+<p>2、可通过i节点识别</p>
+<p>3、不能跨分区</p>
+<p>4、不能针对目录使用</p>
+<h4 id="修改文件权限：chmod-命令"><a href="#修改文件权限：chmod-命令" class="headerlink" title="修改文件权限：chmod 命令"></a>修改文件权限：chmod 命令</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">命令名称：chmod </span><br><span class="line"> </span><br><span class="line">命令所在路径：/bin/chmod </span><br><span class="line">执行权限：所有用户 </span><br><span class="line">语法：chmod  [&#123;ugoa&#125;&#123;+-=&#125;&#123;rwx&#125;] [文件或目录]                         </span><br><span class="line">     [mode=421 ]  [文件或目录]                          </span><br><span class="line">     -R  递归修改 </span><br><span class="line">功能描述：改变文件或目录权限</span><br><span class="line"> </span><br><span class="line">权限的数字表示      </span><br><span class="line">r  ---- 4      w ---- 2      x  ---- 1</span><br><span class="line">rwxrw-r--    7   6    4</span><br><span class="line"> </span><br><span class="line">范例：       </span><br><span class="line">$ chmod  g+w  testfile         </span><br><span class="line">赋予文件testfile所属组写权限      </span><br><span class="line">$ chmod  -R 777  testdir         </span><br><span class="line">修改目录testfile及其目录下文件为所有用户具有全部权限</span><br></pre></td></tr></table></figure>
+
+<p>rwx权限的解释：</p>
+<table>
+<thead>
+<tr>
+<th>字符</th>
+<th>权限</th>
+<th>对文件的含义</th>
+<th>对目录的含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>r</td>
+<td>读权限</td>
+<td>可以查看文件内容</td>
+<td>可以列出目录中的内容</td>
+</tr>
+<tr>
+<td>w</td>
+<td>写权限</td>
+<td>可以修改文件内容</td>
+<td>可以在目录中创建、删除文件</td>
+</tr>
+<tr>
+<td>x</td>
+<td>执行权限</td>
+<td>可以执行文件</td>
+<td>可以进入目录</td>
+</tr>
+</tbody></table>
+<h4 id="修改文件所有者：chown-命令"><a href="#修改文件所有者：chown-命令" class="headerlink" title="修改文件所有者：chown 命令"></a>修改文件所有者：chown 命令</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">命令名称：chown </span><br><span class="line"> </span><br><span class="line">命令所在路径：/bin/chown </span><br><span class="line">执行权限：所有用户 </span><br><span class="line">语法：chown  [用户] [文件或目录]  </span><br><span class="line">功能描述：改变文件或目录的所有者 </span><br><span class="line"> </span><br><span class="line">范例：</span><br><span class="line">$ chown  zhang test               </span><br><span class="line"> 改变文件test的所有者为zhang</span><br></pre></td></tr></table></figure>
+
+<h4 id="修改文件所属组：chgrp-命令"><a href="#修改文件所属组：chgrp-命令" class="headerlink" title="修改文件所属组：chgrp 命令"></a>修改文件所属组：chgrp 命令</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">命令名称：chgrp</span><br><span class="line"> </span><br><span class="line">命令所在路径：/bin/chgrp</span><br><span class="line">执行权限：所有用户</span><br><span class="line">语法：chgrp [用户组] [文件或目录]</span><br><span class="line">功能描述：改变文件或目录的所属组</span><br><span class="line"> </span><br><span class="line">范例：</span><br><span class="line">$ chgrp group01 text01</span><br><span class="line">改变文件text01的所属组为group01</span><br></pre></td></tr></table></figure>
+
+<h4 id="默认权限：umask-命令"><a href="#默认权限：umask-命令" class="headerlink" title="默认权限：umask 命令"></a>默认权限：umask 命令</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">命令名称：umask </span><br><span class="line"> </span><br><span class="line">命令所在路径：Shell内置命令 </span><br><span class="line">执行权限：所有用户 </span><br><span class="line">语法：umask [-S]             </span><br><span class="line">-S   以rwx形式显示新建文件缺省权限 </span><br><span class="line">功能描述：显示、设置文件的缺省权限 </span><br><span class="line"> </span><br><span class="line">范例： </span><br><span class="line">$ umask -S</span><br><span class="line">tips: 新建文件是默认没有x权限（比如：防止木马病毒攻击）</span><br></pre></td></tr></table></figure>
+
+<h4 id="查找文件：find-命令"><a href="#查找文件：find-命令" class="headerlink" title="查找文件：find 命令"></a>查找文件：find 命令</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">命令名称：find </span><br><span class="line"> </span><br><span class="line">命令所在路径：/bin/find </span><br><span class="line">执行权限：所有用户 </span><br><span class="line">语法：find  [搜索范围]  [匹配条件] </span><br><span class="line">功能描述：文件搜索</span><br><span class="line"> </span><br><span class="line">范例：</span><br><span class="line">$ find  /etc  -name  init           </span><br><span class="line">在目录/etc中查找文件init       </span><br><span class="line">-iname 不区分大小写        </span><br><span class="line">$ find /etc -name *init*</span><br><span class="line">在目录/etc中查找文件名包含init     </span><br><span class="line">$ find /etc -name init？？？</span><br><span class="line">在目录/etc中查找文件名init开头并有3个字符的   </span><br><span class="line">$ find /etc -name init*</span><br><span class="line">在目录/etc中查找文件名init开头的   </span><br><span class="line">tips:* 匹配任意字符，?匹配单个字符</span><br><span class="line">$ find  /  -size  +204800           </span><br><span class="line">在根目录下查找大于100MB的文件        </span><br><span class="line">  +n  大于   -n 小于   n 等于        </span><br><span class="line">$ find  /home  -user  shenchao         </span><br><span class="line">在根目录下查找所有者为shenchao的文件       </span><br><span class="line"> -group  根据所属组查找</span><br><span class="line">$ find  /etc  -cmin  -5         </span><br><span class="line">在/etc下查找5分钟内被修改过属性的文件和目录</span><br><span class="line">       -amin  访问时间 access   </span><br><span class="line">       -cmin  文件属性 change     </span><br><span class="line">-mmin 文件内容 modify</span><br><span class="line"> </span><br><span class="line">$ find  /etc -size  +163840 -a -size  -204800          </span><br><span class="line">在/etc下查找大于80MB小于100MB的文件          </span><br><span class="line">-a 两个条件同时满足         </span><br><span class="line"> -o 两个条件满足任意一个即可        </span><br><span class="line">$ find /etc -name inittab -exec ls -l &#123;&#125; \;         </span><br><span class="line">在/etc下查找inittab文件并显示其详细信息          </span><br><span class="line">-exec/-ok 命令 &#123;&#125; \;  对搜索结果执行操作</span><br><span class="line">tips:-exec直接执行，ok会询问操作</span><br><span class="line"> </span><br><span class="line">-type 根据文件类型查找                  </span><br><span class="line">f 文件    d 目录    l 软链</span><br><span class="line">-inum  根据i节点查找</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find /root -name 1.txt</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240108155735223.png" alt="image-20240108155735223"></p>
+<h4 id="文件资料库查找：locate-命令"><a href="#文件资料库查找：locate-命令" class="headerlink" title="文件资料库查找：locate 命令"></a>文件资料库查找：locate 命令</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">命令名称：locate </span><br><span class="line"> </span><br><span class="line">命令所在路径：/usr/bin/locate </span><br><span class="line">执行权限：所有用户 </span><br><span class="line">语法：locate  文件名 </span><br><span class="line">功能描述：在文件资料库中查找文件 </span><br><span class="line"> </span><br><span class="line">范例：</span><br><span class="line">$ locate inittab</span><br><span class="line">tips:新建文件locate不到，可以updatedb,更新文件资料库后查找[tmp不在文件资料库内]</span><br><span class="line">$  locate -i text01 // -i 作用你不区分大小写类似 -iname</span><br></pre></td></tr></table></figure>
+
+<h4 id="查看命令位置：which-命令"><a href="#查看命令位置：which-命令" class="headerlink" title="查看命令位置：which 命令"></a>查看命令位置：which 命令</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">命令名称：which </span><br><span class="line"> </span><br><span class="line">命令所在路径：/usr/bin/which</span><br><span class="line">执行权限：所有用户 </span><br><span class="line">语法：which  命令 </span><br><span class="line">功能描述：搜索命令所在目录及别名信息 </span><br><span class="line"> </span><br><span class="line">范例：</span><br><span class="line">$ which ls</span><br></pre></td></tr></table></figure>
+
+<h4 id="查看命令位置：whereis-命令"><a href="#查看命令位置：whereis-命令" class="headerlink" title="查看命令位置：whereis 命令"></a>查看命令位置：whereis 命令</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">命令名称：whereis</span><br><span class="line"> </span><br><span class="line">命令所在路径：/usr/bin/whereis </span><br><span class="line">执行权限：所有用户 </span><br><span class="line">语法：whereis  [命令名称]  </span><br><span class="line">功能描述：搜索命令所在目录及帮助文档路径 </span><br><span class="line"> </span><br><span class="line">范例：</span><br><span class="line">$ whereis ls</span><br></pre></td></tr></table></figure>
+
+<h4 id="文本搜索：grep-命令"><a href="#文本搜索：grep-命令" class="headerlink" title="文本搜索：grep 命令"></a>文本搜索：grep 命令</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">命令名称：grep </span><br><span class="line"> </span><br><span class="line">命令所在路径：/bin/grep </span><br><span class="line">执行权限：所有用户 </span><br><span class="line">语法：grep  -iv [指定字串] [文件] </span><br><span class="line">功能描述：在文件中搜寻字串匹配的行并输出             </span><br><span class="line">-i  不区分大小写             </span><br><span class="line"> -v 排除指定字串</span><br><span class="line"> </span><br><span class="line">范例：</span><br><span class="line"># grep  mysql  /root/install.log</span><br><span class="line"># grep -v ^# /etc/inittab 去除以#开头的所有行信息,^表示以XXX开头 </span><br></pre></td></tr></table></figure>
+
+<h4 id="帮助：man-命令"><a href="#帮助：man-命令" class="headerlink" title="帮助：man 命令"></a>帮助：man 命令</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">命令名称：man</span><br><span class="line"> </span><br><span class="line">命令所在路径：/usr/bin/man </span><br><span class="line">执行权限：所有用户 </span><br><span class="line">语法：man  [命令或配置文件] </span><br><span class="line">   (空格) 或f           翻页               </span><br><span class="line">   (Enter)             换行                 </span><br><span class="line">   q或Q                退出 </span><br><span class="line">功能描述：获得帮助信息</span><br><span class="line"> </span><br><span class="line">范例： </span><br><span class="line">$ man ls                </span><br><span class="line">查看ls命令的帮助信息             </span><br><span class="line">$ man services                </span><br><span class="line">查看配置文件services的帮助信息</span><br></pre></td></tr></table></figure>
+
+<h4 id="获取简介：whatis-命令"><a href="#获取简介：whatis-命令" class="headerlink" title="获取简介：whatis 命令"></a>获取简介：whatis 命令</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">命令：whatis</span><br><span class="line">语法：whatis 命令</span><br><span class="line">功能描述：获得命令的简单介绍信息</span><br><span class="line"> </span><br><span class="line">范例：whatis ls</span><br></pre></td></tr></table></figure>
+
+<h4 id="获取帮助：help-命令"><a href="#获取帮助：help-命令" class="headerlink" title="获取帮助：help 命令"></a>获取帮助：help 命令</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">命令名称：help</span><br><span class="line"> </span><br><span class="line">命令所在路径：Shell内置命令 </span><br><span class="line">执行权限：所有用户 </span><br><span class="line">语法：help 命令 </span><br><span class="line">功能描述：获得Shell内置命令的帮助信息 </span><br><span class="line"> </span><br><span class="line">范例： </span><br><span class="line">$ help umask                </span><br><span class="line">查看umask命令的帮助信息</span><br></pre></td></tr></table></figure>
+
+<h4 id="添加用户：useradd-命令"><a href="#添加用户：useradd-命令" class="headerlink" title="添加用户：useradd 命令"></a>添加用户：useradd 命令</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">命令名称：useradd </span><br><span class="line"> </span><br><span class="line">命令所在路径：/usr/sbin/useradd </span><br><span class="line">执行权限：root </span><br><span class="line">语法：useradd 用户名 </span><br><span class="line">功能描述：添加新用户 </span><br><span class="line">范例：</span><br><span class="line">$ useradd zhangdapao</span><br></pre></td></tr></table></figure>
+
+<h4 id="修改密码：passwd-命令"><a href="#修改密码：passwd-命令" class="headerlink" title="修改密码：passwd 命令"></a>修改密码：passwd 命令</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">命令名称：passwd </span><br><span class="line"> </span><br><span class="line">命令所在路径：/usr/bin/passwd </span><br><span class="line">执行权限：所有用户 </span><br><span class="line">语法：passwd 用户名 </span><br><span class="line">功能描述：设置用户</span><br><span class="line"> </span><br><span class="line">范例：</span><br><span class="line">$ passwd zhangdapao</span><br></pre></td></tr></table></figure>
+
+<h4 id="查看登录用户：who-命令"><a href="#查看登录用户：who-命令" class="headerlink" title="查看登录用户：who 命令"></a>查看登录用户：who 命令</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">命令名称：who </span><br><span class="line"> </span><br><span class="line">命令所在路径：/usr/bin/who </span><br><span class="line">执行权限：所有用户 </span><br><span class="line">语法：who </span><br><span class="line">功能描述：查看登录用户信息 </span><br><span class="line"> </span><br><span class="line">范例： </span><br><span class="line">$ who</span><br><span class="line">显示所有登录用户信息</span><br></pre></td></tr></table></figure>
+
+<h4 id="w-命令"><a href="#w-命令" class="headerlink" title="w 命令"></a>w 命令</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">命令名称：w </span><br><span class="line"> </span><br><span class="line">命令所在路径：/usr/bin/w </span><br><span class="line">执行权限：所有用户 </span><br><span class="line">语法：w </span><br><span class="line">功能描述：查看登录用户详细信息 </span><br><span class="line"> </span><br><span class="line">范例： </span><br><span class="line">$ w</span><br></pre></td></tr></table></figure>
+
+<h4 id="切换用户：su-命令"><a href="#切换用户：su-命令" class="headerlink" title="切换用户：su 命令"></a>切换用户：su 命令</h4><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>su</td>
+<td>切换到root用户</td>
+</tr>
+<tr>
+<td>su root</td>
+<td>切换到root用户</td>
+</tr>
+<tr>
+<td>su -</td>
+<td>切换到root用户，同时切换目录到&#x2F;root</td>
+</tr>
+<tr>
+<td>su - root</td>
+<td>切换到root用户，同时切换目录到&#x2F;root</td>
+</tr>
+<tr>
+<td>su 普通用户</td>
+<td>切换到普通用户</td>
+</tr>
+<tr>
+<td>su - 普通用户</td>
+<td>切换到普通用户，同时切换普通用户所在的目录</td>
+</tr>
+</tbody></table>
+<h4 id="压缩：gzip-命令"><a href="#压缩：gzip-命令" class="headerlink" title="压缩：gzip 命令"></a>压缩：gzip 命令</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">命令名称：gzip </span><br><span class="line"> </span><br><span class="line">命令所在路径：/bin/gzip </span><br><span class="line">执行权限：所有用户 </span><br><span class="line">语法：gzip [文件]  </span><br><span class="line">功能描述：压缩文件 </span><br><span class="line">压缩后文件格式：.gz</span><br><span class="line"> </span><br><span class="line">范例：</span><br><span class="line">gzip text01</span><br></pre></td></tr></table></figure>
+
+<h4 id="解压缩：gunzip-命令"><a href="#解压缩：gunzip-命令" class="headerlink" title="解压缩：gunzip 命令"></a>解压缩：gunzip 命令</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">命令名称：gunzip  [= gzip -d]</span><br><span class="line"> </span><br><span class="line">命令所在路径：/bin/gunzip </span><br><span class="line">执行权限：所有用户 </span><br><span class="line">语法：gunzip [压缩文件] </span><br><span class="line">功能描述：解压缩.gz的压缩文件 </span><br><span class="line"> </span><br><span class="line">范例： </span><br><span class="line">$ gunzip text01.gz</span><br><span class="line">tips:只能压缩文件不能压缩目录</span><br></pre></td></tr></table></figure>
+
+<h4 id="归档管理：tar-命令"><a href="#归档管理：tar-命令" class="headerlink" title="归档管理：tar 命令"></a>归档管理：tar 命令</h4><p>tar与gzip命令结合使用实现文件打包、压缩。 tar只负责打包文件，但不压缩，用gzip压缩tar打包后的文件，其扩展名一般用xxxx.tar.gz。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">命令名称：tar </span><br><span class="line"> </span><br><span class="line">命令所在路径：/bin/tar </span><br><span class="line">执行权限：所有用户 </span><br><span class="line">语法：tar  选项[-zcf] [压缩后文件名] [目录]                                   </span><br><span class="line">-c    打包                 </span><br><span class="line">-v    显示详细信息                 </span><br><span class="line">-f     指定文件名            </span><br><span class="line">-z     打包同时压缩 </span><br><span class="line">功能描述：打包目录 压缩后文件格式：.tar.gz</span><br><span class="line"> </span><br><span class="line">范例：        </span><br><span class="line">$ tar  -zcf   Japan.tar.gz  Japan        </span><br><span class="line">将目录Japan打包并压缩为.tar.gz文件</span><br><span class="line"> </span><br><span class="line">tar命令解压缩语法：           </span><br><span class="line">-x     解包           </span><br><span class="line">-v    显示详细信息           </span><br><span class="line">-f     指定解压文件           </span><br><span class="line">-z     解压缩 </span><br><span class="line">范例：$ tar  -zxvf  Japan.tar.gz</span><br></pre></td></tr></table></figure>
+
+<h4 id="zip-命令"><a href="#zip-命令" class="headerlink" title="zip 命令"></a>zip 命令</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">命令名称：zip </span><br><span class="line"> </span><br><span class="line">命令所在路径：/usr/bin/zip </span><br><span class="line">执行权限：所有用户 </span><br><span class="line">语法：     </span><br><span class="line">zip  选项[-r]  [压缩后文件名]  [文件或目录]            </span><br><span class="line">-r    压缩目录 </span><br><span class="line">功能描述：压缩文件或目录 </span><br><span class="line">压缩后文件格式：.zip</span><br><span class="line"> </span><br><span class="line">范例：          </span><br><span class="line">$ zip  text01.zip  text01             </span><br><span class="line">压缩文件          </span><br><span class="line">$ zip  -r  zhang.zip  zhang             </span><br><span class="line">压缩目录</span><br><span class="line">tips：会保留原文件</span><br></pre></td></tr></table></figure>
+
+<h4 id="unzip-命令"><a href="#unzip-命令" class="headerlink" title="unzip 命令"></a>unzip 命令</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">命令名称：unzip </span><br><span class="line"> </span><br><span class="line">命令所在路径：/usr/bin/unzip </span><br><span class="line">执行权限：所有用户 </span><br><span class="line">语法：unzip  [压缩文件] </span><br><span class="line">功能描述：解压.zip的压缩文件 </span><br><span class="line">范例：$ unzip text01.zip</span><br></pre></td></tr></table></figure>
+
+<h4 id="write-命令"><a href="#write-命令" class="headerlink" title="write 命令"></a>write 命令</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">指令名称：write </span><br><span class="line"> </span><br><span class="line">指令所在路径：/usr/bin/write </span><br><span class="line">执行权限：所有用户 </span><br><span class="line">语法：write  &lt;用户名&gt;    </span><br><span class="line">功能描述：给用户发信息，以Ctrl+D保存结束 </span><br><span class="line"> </span><br><span class="line">范例：   </span><br><span class="line">write zhang</span><br></pre></td></tr></table></figure>
+
+<h4 id="wall-命令"><a href="#wall-命令" class="headerlink" title="wall 命令"></a>wall 命令</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">指令名称：wall </span><br><span class="line"> </span><br><span class="line">命令英文原意：write all </span><br><span class="line">指令所在路径：/usr/bin/wall </span><br><span class="line">执行权限：所有用户 </span><br><span class="line">语法：wall  [message]   </span><br><span class="line">功能描述：发广播信息 </span><br><span class="line"> </span><br><span class="line">范例：   </span><br><span class="line">wall  HelloWord</span><br></pre></td></tr></table></figure>
+
+<h4 id="测试网络连通性：ping-命令"><a href="#测试网络连通性：ping-命令" class="headerlink" title="测试网络连通性：ping 命令"></a>测试网络连通性：ping 命令</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">命令名称：ping </span><br><span class="line"> </span><br><span class="line">命令所在路径：/bin/ping </span><br><span class="line">执行权限：所有用户 </span><br><span class="line">语法：ping  选项  IP地址                      </span><br><span class="line"> -c  指定发送次数 </span><br><span class="line">功能描述：测试网络连通性 </span><br><span class="line"> </span><br><span class="line">范例：  </span><br><span class="line">ping 192.168.1.156</span><br></pre></td></tr></table></figure>
+
+<h4 id="查看和设置网卡信息：ifconfig"><a href="#查看和设置网卡信息：ifconfig" class="headerlink" title="查看和设置网卡信息：ifconfig"></a>查看和设置网卡信息：ifconfig</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">命令名称：ifconfig </span><br><span class="line"> </span><br><span class="line">命令所在路径：/sbin/ifconfig </span><br><span class="line">执行权限：root </span><br><span class="line">语法：ifconfig  网卡名称  IP地址 </span><br><span class="line">功能描述：查看和设置网卡信息 </span><br><span class="line"> </span><br><span class="line">范例：</span><br><span class="line">ifconfig</span><br></pre></td></tr></table></figure>
+
+<h4 id="查看发送电子邮件：mail-命令"><a href="#查看发送电子邮件：mail-命令" class="headerlink" title="查看发送电子邮件：mail 命令"></a>查看发送电子邮件：mail 命令</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">命令名称：mail </span><br><span class="line"> </span><br><span class="line">命令所在路径：/bin/mail </span><br><span class="line">执行权限：所有用户 </span><br><span class="line">语法：mail [用户名] </span><br><span class="line">功能描述：查看发送电子邮件 </span><br><span class="line"> </span><br><span class="line">范例：</span><br><span class="line">mail root</span><br></pre></td></tr></table></figure>
+
+<h4 id="查看登录用户历史信息：last-命令"><a href="#查看登录用户历史信息：last-命令" class="headerlink" title="查看登录用户历史信息：last 命令"></a>查看登录用户历史信息：last 命令</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">命令名称：last </span><br><span class="line"> </span><br><span class="line">命令所在路径：/usr/bin/last </span><br><span class="line">执行权限：所有用户 </span><br><span class="line">语法：last </span><br><span class="line">功能描述：列出目前与过去登入系统的用户信息 </span><br><span class="line"> </span><br><span class="line">范例：</span><br><span class="line">last</span><br></pre></td></tr></table></figure>
+
+<h4 id="显示网络相关信息：netstat-命令"><a href="#显示网络相关信息：netstat-命令" class="headerlink" title="显示网络相关信息：netstat 命令"></a>显示网络相关信息：netstat 命令</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">命令名称：netstat </span><br><span class="line"> </span><br><span class="line">命令所在路径：/bin/netstat </span><br><span class="line">执行权限：所有用户 </span><br><span class="line">语法：netstat  [选项] </span><br><span class="line">功能描述：显示网络相关信息</span><br><span class="line">选项： </span><br><span class="line">  -t ： TCP协议  </span><br><span class="line">  -u ： UDP协议  </span><br><span class="line">  	      -l ： 监听  </span><br><span class="line">  -r ： 路由  </span><br><span class="line">  -n ： 显示IP地址和端口号 </span><br><span class="line"> </span><br><span class="line">范例：  </span><br><span class="line">netstat -tlun  查看本机监听的端口 </span><br><span class="line">netstat -an  查看本机所有的网络连接  </span><br><span class="line">netstat -rn  查看本机路由表</span><br><span class="line"> </span><br><span class="line">查看某一端口是否被占用：netstat -tunlp |grep 2181</span><br></pre></td></tr></table></figure>
+
+<h4 id="配置网络：setup-命令"><a href="#配置网络：setup-命令" class="headerlink" title="配置网络：setup 命令"></a>配置网络：setup 命令</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">命令名称：setup </span><br><span class="line"> </span><br><span class="line">命令所在路径：/usr/bin/setup </span><br><span class="line">执行权限：root </span><br><span class="line">语法：setup </span><br><span class="line">功能描述：配置网络 </span><br><span class="line">范例：</span><br><span class="line">setup</span><br></pre></td></tr></table></figure>
+
+<h4 id="挂载：mount-命令"><a href="#挂载：mount-命令" class="headerlink" title="挂载：mount 命令"></a>挂载：mount 命令</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">命令名称：mount</span><br><span class="line"> </span><br><span class="line">命令位置：/bin/mount</span><br><span class="line">执行权限：所有用户</span><br><span class="line">命令语法：mount [-t 文件系统] 设备文件名 挂载点</span><br><span class="line"> </span><br><span class="line">范例：</span><br><span class="line">mount -t iso9660 /dev/sr0 /mnt/cdrom</span><br></pre></td></tr></table></figure>
+
+<h4 id="关机：shutdown-命令"><a href="#关机：shutdown-命令" class="headerlink" title="关机：shutdown 命令"></a>关机：shutdown 命令</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">命令名称：shutdown</span><br><span class="line"> </span><br><span class="line">shutdown [选项] 时间  </span><br><span class="line">选项：  -c： 取消前一个关机命令  -h： 关机  -r： 重启</span><br></pre></td></tr></table></figure>
+
+<h4 id="退出登录：logout-命令"><a href="#退出登录：logout-命令" class="headerlink" title="退出登录：logout 命令"></a>退出登录：logout 命令</h4><h4 id="文本编辑器vim"><a href="#文本编辑器vim" class="headerlink" title="文本编辑器vim"></a>文本编辑器vim</h4><p>Vim是一个功能强大的全屏幕文本编辑器， 是Linux&#x2F;UNIX上最常用的文本编辑器， 它的作用是建立、编辑、显示文本文件。</p>
+<h4 id="插入命令"><a href="#插入命令" class="headerlink" title="插入命令"></a>插入命令</h4><table>
+<thead>
+<tr>
+<th>命令</th>
+<th align="left">作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>a</td>
+<td align="left">在光标所在字符后插入</td>
+</tr>
+<tr>
+<td>A</td>
+<td align="left">在光标所在行尾插入</td>
+</tr>
+<tr>
+<td>i</td>
+<td align="left">在光标所在字符前插入</td>
+</tr>
+<tr>
+<td>I</td>
+<td align="left">在光标所在行行首插入</td>
+</tr>
+<tr>
+<td>o</td>
+<td align="left">在光标下插入新行</td>
+</tr>
+<tr>
+<td>O</td>
+<td align="left">在光标上插入新行</td>
+</tr>
+</tbody></table>
+<h4 id="定位命令"><a href="#定位命令" class="headerlink" title="定位命令"></a>定位命令</h4><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>：set nu</td>
+<td>设置行号</td>
+</tr>
+<tr>
+<td>：set nonu</td>
+<td>取消行号</td>
+</tr>
+<tr>
+<td>gg</td>
+<td>到第一行</td>
+</tr>
+<tr>
+<td>GG</td>
+<td>到最后一行</td>
+</tr>
+<tr>
+<td>nG</td>
+<td>到第n行</td>
+</tr>
+<tr>
+<td>：n</td>
+<td>到第n行</td>
+</tr>
+<tr>
+<td>$</td>
+<td>移至行尾</td>
+</tr>
+<tr>
+<td>0</td>
+<td>移至行首</td>
+</tr>
+</tbody></table>
+<h4 id="删除命令"><a href="#删除命令" class="headerlink" title="删除命令"></a>删除命令</h4><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>x</td>
+<td>删除光标所在处字符</td>
+</tr>
+<tr>
+<td>nx</td>
+<td>删除光标所在处后n个字符</td>
+</tr>
+<tr>
+<td>dd</td>
+<td>删除光标所在行，ndd删除n行</td>
+</tr>
+<tr>
+<td>dG</td>
+<td>删除光标所在行到文件末尾内容</td>
+</tr>
+<tr>
+<td>D</td>
+<td>删除光标所在处到行尾内容</td>
+</tr>
+<tr>
+<td>:n1,n2d</td>
+<td>删除指定范围的行</td>
+</tr>
+</tbody></table>
+<h4 id="复制和剪切命令"><a href="#复制和剪切命令" class="headerlink" title="复制和剪切命令"></a>复制和剪切命令</h4><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>yy</td>
+<td>复制当前行</td>
+</tr>
+<tr>
+<td>nyy</td>
+<td>复制当前行以下n行</td>
+</tr>
+<tr>
+<td>dd</td>
+<td>剪切当前行</td>
+</tr>
+<tr>
+<td>ndd</td>
+<td>剪切当前行以下n行</td>
+</tr>
+<tr>
+<td>p、P</td>
+<td>粘贴在当前光标所在行下或者行上</td>
+</tr>
+</tbody></table>
+<h4 id="保存和退出命令"><a href="#保存和退出命令" class="headerlink" title="保存和退出命令"></a>保存和退出命令</h4><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>：w</td>
+<td>保存修改</td>
+</tr>
+<tr>
+<td>：w 文件名</td>
+<td>另存为指定文件</td>
+</tr>
+<tr>
+<td>：wq</td>
+<td>保存修改并退出</td>
+</tr>
+<tr>
+<td>ZZ</td>
+<td>快捷键，保存修改并退出</td>
+</tr>
+<tr>
+<td>：q！</td>
+<td>不保存修改退出</td>
+</tr>
+<tr>
+<td>：wq！</td>
+<td>保存修改退出（文件所有者和root均可忽略只读权限强制写入）</td>
+</tr>
+</tbody></table>
+<p>包命名与依赖性</p>
+<h4 id="RPM包依赖性"><a href="#RPM包依赖性" class="headerlink" title="RPM包依赖性"></a>RPM包依赖性</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">树形依赖： a→b→c</span><br><span class="line"></span><br><span class="line">环形依赖： a→b→c→a</span><br><span class="line"></span><br><span class="line">模块依赖： 模块依赖查询网站：www.rpmfind.net</span><br></pre></td></tr></table></figure>
+
+<h5 id="安装升级与卸载"><a href="#安装升级与卸载" class="headerlink" title="安装升级与卸载"></a>安装升级与卸载</h5><h5 id="RPM安装"><a href="#RPM安装" class="headerlink" title="RPM安装"></a>RPM安装</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">rpm –ivh 包全名</span><br><span class="line"> </span><br><span class="line">选项：</span><br><span class="line"> </span><br><span class="line">        -i（install） 安装</span><br><span class="line"> </span><br><span class="line">        -v（verbose） 显示详细信息</span><br><span class="line"> </span><br><span class="line">        -h（hash） 显示进度</span><br><span class="line"> </span><br><span class="line">        --nodeps 不检测依赖性</span><br></pre></td></tr></table></figure>
+
+<h5 id="RPM包升级"><a href="#RPM包升级" class="headerlink" title="RPM包升级"></a>RPM包升级</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">rpm -Uvh 包全名</span><br><span class="line"> </span><br><span class="line">选项：</span><br><span class="line"> </span><br><span class="line">    -U（upgrade） 升级</span><br></pre></td></tr></table></figure>
+
+<h5 id="卸载"><a href="#卸载" class="headerlink" title="卸载"></a>卸载</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">rpm -e 包名</span><br><span class="line"> </span><br><span class="line">选项：</span><br><span class="line"> </span><br><span class="line">    -e（erase） 卸载</span><br><span class="line"> </span><br><span class="line">    --nodeps 不检查依赖性</span><br></pre></td></tr></table></figure>
+
+<h4 id="yum-命令"><a href="#yum-命令" class="headerlink" title="yum 命令"></a>yum 命令</h4><h5 id="查询"><a href="#查询" class="headerlink" title="查询"></a>查询</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">yum list</span><br><span class="line"> </span><br><span class="line">查询所有可用软件包列表</span><br><span class="line"> </span><br><span class="line">yum search 关键字</span><br><span class="line"> </span><br><span class="line">搜索服务器上所有和关键字相关的包</span><br></pre></td></tr></table></figure>
+
+<h5 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">yum –y install 包名</span><br><span class="line"> </span><br><span class="line">选项：</span><br><span class="line"> </span><br><span class="line">         install 安装</span><br><span class="line"> </span><br><span class="line">         -y 自动回答yes</span><br></pre></td></tr></table></figure>
+
+<h5 id="升级"><a href="#升级" class="headerlink" title="升级"></a>升级</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">yum -y update 包名</span><br><span class="line"> </span><br><span class="line">选项：</span><br><span class="line"> </span><br><span class="line">         update 升级</span><br><span class="line"> </span><br><span class="line">         -y 自动回答yes</span><br></pre></td></tr></table></figure>
+
+<h5 id="卸载-1"><a href="#卸载-1" class="headerlink" title="卸载"></a>卸载</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">yum -y remove 包名</span><br><span class="line"> </span><br><span class="line">选项：</span><br><span class="line"> </span><br><span class="line">         remove 卸载</span><br><span class="line"> </span><br><span class="line">         -y 自动回答yes</span><br></pre></td></tr></table></figure>
+
+<h4 id="yum软件组管理命令"><a href="#yum软件组管理命令" class="headerlink" title="yum软件组管理命令"></a>yum软件组管理命令</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">yum grouplist</span><br><span class="line">列出所有可用的软件组列表  </span><br><span class="line"> </span><br><span class="line">yum groupinstall  软件组名 </span><br><span class="line">安装指定软件组，组名可以由grouplist查询出来 </span><br><span class="line"> </span><br><span class="line">yum groupremove  软件组名 </span><br><span class="line">卸载指定软件组</span><br></pre></td></tr></table></figure>
+
+<h4 id="shell"><a href="#shell" class="headerlink" title="shell"></a>shell</h4><p>shell 是什么</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Shell是一个命令行解释器，它为用户提供了一个向Linux内核发送请求以便运行程序的界面系统级程序，用户可以用Shell来启动、挂起、停止甚至是编写一些程序。</span><br><span class="line"></span><br><span class="line">Shell还是一个功能相当强大的编程语言，易编写，易调试，灵活性较强。Shell是解释执行的脚本语言，在Shell中可以直接调用Linux系统命令。</span><br></pre></td></tr></table></figure>
+
+<p>shell 的分类</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Bourne Shell：从1979起Unix就开始使用Bourne Shell，Bourne Shell的主文件名为sh。</span><br><span class="line"></span><br><span class="line">C Shell： C Shell主要在BSD版的Unix系统中使用，其语法和C语言相类似而得名</span><br><span class="line"></span><br><span class="line">Shell的两种主要语法类型有Bourne和C，这两种语法彼此不兼容。Bourne家族主要包括sh、ksh、Bash、psh、zsh；C家族主要包括：csh、tcsh</span><br><span class="line"></span><br><span class="line">Bash： Bash与sh兼容，现在使用的Linux 就是使用Bash作为用户的基本Shell。</span><br></pre></td></tr></table></figure>
+
+<h4 id="shell-脚本的执行方式"><a href="#shell-脚本的执行方式" class="headerlink" title="shell 脚本的执行方式"></a>shell 脚本的执行方式</h4><p>echo 输出命令</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">命令名称：echo</span><br><span class="line"> </span><br><span class="line">echo [选项] [输出内容] </span><br><span class="line">选项：  -e： 支持反斜线控制的字符转换</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th align="left">控制字符</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">\\</td>
+<td>输出\</td>
+</tr>
+<tr>
+<td align="left">\a</td>
+<td>输出警告音</td>
+</tr>
+<tr>
+<td align="left">\b</td>
+<td>退格键，向左删除键</td>
+</tr>
+<tr>
+<td align="left">\c</td>
+<td>取消输出行末的换行符，和“-n”选项一致</td>
+</tr>
+<tr>
+<td align="left">\e</td>
+<td>ESCAPE键</td>
+</tr>
+<tr>
+<td align="left">\f</td>
+<td>换页符</td>
+</tr>
+<tr>
+<td align="left">\n</td>
+<td>换行符</td>
+</tr>
+<tr>
+<td align="left">\r</td>
+<td>回车键</td>
+</tr>
+<tr>
+<td align="left">\t</td>
+<td>制表符，Tab键</td>
+</tr>
+<tr>
+<td align="left">\v</td>
+<td>垂直制表符</td>
+</tr>
+<tr>
+<td align="left">\0nnn</td>
+<td>按照八进制ASCII码表输出字符，0为数字零，nnn为三位八进制数</td>
+</tr>
+<tr>
+<td align="left">\xhh</td>
+<td>按照十六进制ASCII码表输出字符，其中hh是两位十六进制数</td>
+</tr>
+<tr>
+<td align="left">示例：</td>
+<td></td>
+</tr>
+</tbody></table>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@zhangRabbitMQ zhang]# echo -e &quot;ab\bc&quot;</span><br><span class="line">ac</span><br><span class="line"> </span><br><span class="line">[root@zhangRabbitMQ zhang]# echo -e &quot;a\tb\tc\nd\te\tf&quot; </span><br><span class="line">a	b	c</span><br><span class="line">d	e	f</span><br></pre></td></tr></table></figure>
+
+<p>编写脚本 </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@zhangRabbitMQ zhang]# vi /tmp/hello.sh</span><br><span class="line">#！/bin/bash</span><br><span class="line">echo &quot;helloword&quot;</span><br></pre></td></tr></table></figure>
+
+<p>执行脚本</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@zhangRabbitMQ zhang]# chmod 755 /tmp/hello.sh</span><br><span class="line">[root@zhangRabbitMQ zhang]# /tmp/hello.sh </span><br><span class="line">helloword</span><br></pre></td></tr></table></figure>
+
+<h4 id="Bash的基本功能"><a href="#Bash的基本功能" class="headerlink" title="Bash的基本功能"></a>Bash的基本功能</h4><h5 id="历史命令与命令补全"><a href="#历史命令与命令补全" class="headerlink" title="历史命令与命令补全"></a>历史命令与命令补全</h5><p>历史命令：history</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">命令名称：history</span><br><span class="line"> </span><br><span class="line">[root@localhost ~]# history [选项] [历史命令保存文件] </span><br><span class="line">选项：  </span><br><span class="line">-c：  清空历史命令  </span><br><span class="line">-w： 把缓存中的历史命令写入历史命令保存文件    </span><br><span class="line">~/.bash_history </span><br><span class="line"></span><br><span class="line">历史命令默认会保存1000条,可以在环境变量配置文件/etc/profile中进行修改</span><br></pre></td></tr></table></figure>
+
+<h5 id="历史命令的调用"><a href="#历史命令的调用" class="headerlink" title="历史命令的调用"></a>历史命令的调用</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">使用上、下箭头调用以前的历史命令</span><br><span class="line"></span><br><span class="line">使用“!n”重复执行第n条历史命令</span><br><span class="line"></span><br><span class="line">使用“!!”重复执行上一条命令</span><br><span class="line"></span><br><span class="line">使用“!字串”重复执行最后一条以该字串开头的命令</span><br></pre></td></tr></table></figure>
+
+<h5 id="命令与文件补全"><a href="#命令与文件补全" class="headerlink" title="命令与文件补全"></a>命令与文件补全</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">在Bash中，命令与文件补全是非常方便与常用的功能，我们只要在输入命令或文件时，按“Tab”键就会自动进行补全</span><br></pre></td></tr></table></figure>
+
+<h5 id="命名别名与常用快捷键"><a href="#命名别名与常用快捷键" class="headerlink" title="命名别名与常用快捷键"></a>命名别名与常用快捷键</h5><h5 id="命令别名"><a href="#命令别名" class="headerlink" title="命令别名"></a>命令别名</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# alias 别名=&#x27;原命令&#x27; </span><br><span class="line">#设定命令别名  </span><br><span class="line">[root@localhost ~]# alias </span><br><span class="line">#查询命令别名  </span><br></pre></td></tr></table></figure>
+
+<h5 id="命令的执行顺序"><a href="#命令的执行顺序" class="headerlink" title="命令的执行顺序"></a>命令的执行顺序</h5><ol>
+<li><p>第一顺位执行用绝对路径或相对路径执行的命令。</p>
+</li>
+<li><p>第二顺位执行别名。</p>
+</li>
+<li><p>第三顺位执行Bash的内部命令。</p>
+</li>
+<li><p>第四顺位执行按照$PATH环境变量定义的目录查找顺序找到的第一个命令。</p>
+</li>
+</ol>
+<p>让别名永久生效，需要把配置写入配置文件&#x2F;root&#x2F;.bashrc中</p>
+<h5 id="Bash-常用快捷键"><a href="#Bash-常用快捷键" class="headerlink" title="Bash 常用快捷键"></a>Bash 常用快捷键</h5><p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/a7a182d4a8d4a5d9b11845e79bef899e.png" alt="img"></p>
+<h4 id="输入输出重定向"><a href="#输入输出重定向" class="headerlink" title="输入输出重定向"></a>输入输出重定向</h4><p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/89445aac50c682d7be6892d0f25ac540.png" alt="img"></p>
+<p><strong>同时输出正确和错误</strong></p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/7ac37ee1e69304d7d7756da9fe3ac645.png" alt="img"></p>
+<h4 id="多命令执行与管道符"><a href="#多命令执行与管道符" class="headerlink" title="多命令执行与管道符"></a>多命令执行与管道符</h4><p><strong>多命令顺序执行</strong></p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/be1cd81f52ec073d948be4460ea2008d.png" alt="img"></p>
+<p><strong>管道符：|</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">命令名称：|</span><br><span class="line"> </span><br><span class="line">命令格式：</span><br><span class="line">[root@localhost ~]# 命令1  |  命令2 </span><br><span class="line">#命令1的正确输出作为命令2的操作对象 </span><br><span class="line"> </span><br><span class="line">例子： </span><br><span class="line">[root@localhost ~]# ll -a /etc/  | more </span><br><span class="line">[root@localhost ~]# netstat -an | grep &quot;ESTABLISHED&quot;</span><br></pre></td></tr></table></figure>
+
+<h4 id="通配符与其他特殊符号"><a href="#通配符与其他特殊符号" class="headerlink" title="通配符与其他特殊符号"></a>通配符与其他特殊符号</h4><p><strong>通配符</strong></p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/367d1e261bd2bad8d1a7275d8d8f36e0.png" alt="img"></p>
+<p><strong>其他特殊符号</strong></p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/3854c2338a94c7c3acd7646335113a81.png" alt="img"></p>
+<h4 id="Bash变量"><a href="#Bash变量" class="headerlink" title="Bash变量"></a>Bash变量</h4><h5 id="用户自定义变量"><a href="#用户自定义变量" class="headerlink" title="用户自定义变量"></a>用户自定义变量</h5><h5 id="什么是变量"><a href="#什么是变量" class="headerlink" title="什么是变量"></a>什么是变量</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">变量是计算机内存的单元，其中存放的值可以改变。当Shell脚本需要保存一些信息时，如一个文件名或是一个数字，就把它存放在一个变量中。每个变量有一个名字，所以很容易引用它。使用变量可以保存有用信息，使系统获知用户相关设置，变量也可以用于保存暂时信息。</span><br></pre></td></tr></table></figure>
+
+<h5 id="变量设置规则"><a href="#变量设置规则" class="headerlink" title="变量设置规则"></a>变量设置规则</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">变量名称可以由字母、数字和下划线组成，但是不能以数字开头。如果变量名是“2name”则是错误的。</span><br><span class="line"></span><br><span class="line">在Bash中，变量的默认类型都是字符串型，如果要进行数值运算，则必修指定变量类型为数值型。</span><br><span class="line"></span><br><span class="line">变量用等号连接值，等号左右两侧不能有空格。</span><br><span class="line"></span><br><span class="line">变量的值如果有空格，需要使用单引号或双引号包括。</span><br><span class="line"></span><br><span class="line">在变量的值中，可以使用“\”转义符。</span><br><span class="line"></span><br><span class="line">如果需要增加变量的值，那么可以进行变量值的叠加。不过变量需要用双引号包含“$变量名”或用$&#123;变量名&#125;包含。</span><br><span class="line"></span><br><span class="line">如果是把命令的结果作为变量值赋予变量，则需要使用反引号或$()包含命令。</span><br><span class="line"></span><br><span class="line">环境变量名建议大写，便于区分。</span><br></pre></td></tr></table></figure>
+
+<h5 id="变量分类"><a href="#变量分类" class="headerlink" title="变量分类"></a>变量分类</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">用户自定义变量  环境变量：这种变量中主要保存的是和系统操作环境相关的数据。</span><br><span class="line"></span><br><span class="line">位置参数变量：这种变量主要是用来向脚本当中传递参数或数据的，变量名不能自定义，变量作用是固定的。</span><br><span class="line"></span><br><span class="line">预定义变量：是Bash中已经定义好的变量，变量名不能自定义，变量作用也是固定的。</span><br></pre></td></tr></table></figure>
+
+<h5 id="本地变量"><a href="#本地变量" class="headerlink" title="本地变量"></a>本地变量</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">变量定义</span><br><span class="line"></span><br><span class="line">    [root@localhost ~]# name=&quot;shen chao&quot;</span><br><span class="line"></span><br><span class="line">变量叠加</span><br><span class="line"></span><br><span class="line">    [root@localhost ~]# aa=123</span><br><span class="line"></span><br><span class="line">    [root@localhost ~]# aa=&quot;$aa&quot;456</span><br><span class="line"></span><br><span class="line">    [root@localhost ~]# aa=$&#123;aa&#125;789</span><br><span class="line"></span><br><span class="line">变量调用</span><br><span class="line"></span><br><span class="line">    [root@localhost ~]# echo $name</span><br><span class="line"></span><br><span class="line">变量查看</span><br><span class="line"></span><br><span class="line">    [root@localhost ~]# set</span><br><span class="line"></span><br><span class="line">    查看当前系统全部变量</span><br><span class="line"></span><br><span class="line">变量删除</span><br><span class="line"></span><br><span class="line">    [root@localhost ~]# unset name</span><br></pre></td></tr></table></figure>
+
+<h4 id="环境变量"><a href="#环境变量" class="headerlink" title="环境变量"></a>环境变量</h4><p><strong>环境变量是什么</strong></p>
+<ul>
+<li>用户自定义变量只在当前的Shell中生效，而环境变量会在当前Shell和这个Shell的所有子Shell当中生效。如果把环境变量写入相应的配置文件，那么这个环境变量就会在所有的Shell中生效</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">export 变量名=变量值 </span><br><span class="line">申明变量  </span><br><span class="line"> </span><br><span class="line">env </span><br><span class="line">查询变量  </span><br><span class="line"> </span><br><span class="line">unset 变量名 </span><br><span class="line">删除变量</span><br></pre></td></tr></table></figure>
+
+<p><strong>系统常见环境变量</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">PATH：系统查找命令的路径 </span><br><span class="line">[root@localhost ~]# echo $PATH /usr/lib/qt-3.3/bin:/usr/local/sbin:/usr/local/bin: /sbin:/bin:/usr/sbin:/usr/bin:/root/bin </span><br><span class="line"> </span><br><span class="line">PATH=&quot;$PATH&quot;:/root/sh </span><br><span class="line">PATH变量叠加</span><br><span class="line"> </span><br><span class="line">PS1：定义系统提示符的变量 </span><br><span class="line">\d：显示日期，格式为“星期 月 日” </span><br><span class="line">\h：显示简写主机名。如默认主机名“localhost” </span><br><span class="line">\t：显示24小时制时间，格式为“HH:MM:SS” </span><br><span class="line">\T：显示12小时制时间，格式为“HH:MM:SS”</span><br><span class="line">\A：显示24小时制时间，格式为“HH:MM” </span><br><span class="line">\u：显示当前用户名 </span><br><span class="line">\w：显示当前所在目录的完整名称 </span><br><span class="line">\W：显示当前所在目录的最后一个目录 </span><br><span class="line">\#：执行的第几个命令 </span><br><span class="line">\$：提示符。如果是root用户会显示提示符为“#”，如果是普通用户会显示提示符为“$”</span><br><span class="line"> </span><br><span class="line">示例：</span><br><span class="line">[root@localhost ~]# PS1=&#x27;[\u@\t \w]\$ &#x27; </span><br><span class="line">[root@04:50:08 /usr/local/src]#PS1=&#x27;[\u@\@ \h \# \W]\$‘  </span><br><span class="line">[root@04:53 上午 localhost 31 src]#PS1=&#x27;[\u@\h \W]\$ &#x27;</span><br></pre></td></tr></table></figure>
+
+<h4 id="位置参数变量"><a href="#位置参数变量" class="headerlink" title="位置参数变量"></a>位置参数变量</h4><p><strong>位置参数变量</strong></p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/c782d60407f563a386a2cdfe4c1bc36a.png" alt="img"></p>
+<p>示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash </span><br><span class="line">num1=$1 </span><br><span class="line">num2=$2 </span><br><span class="line">sum=$(( $num1 + $num2)) </span><br><span class="line">#变量sum的和是num1加num2 </span><br><span class="line">echo $sum </span><br><span class="line">#打印变量sum的值</span><br><span class="line"> </span><br><span class="line">[root@zhangRabbitMQ zhang]# /tmp/sum.sh 1 2</span><br><span class="line">3</span><br></pre></td></tr></table></figure>
+
+<h4 id="预定义变量"><a href="#预定义变量" class="headerlink" title="预定义变量"></a>预定义变量</h4><p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/dd23886dd82e994aea4c04764875e7ab.png" alt="img"></p>
+<h4 id="Bash运算符"><a href="#Bash运算符" class="headerlink" title="Bash运算符"></a>Bash运算符</h4><h5 id="数值运算与运算符"><a href="#数值运算与运算符" class="headerlink" title="数值运算与运算符"></a>数值运算与运算符</h5><p>declare声明变量类型</p>
+<p>数值运算</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# declare [+/-][选项] 变量名 </span><br><span class="line"> </span><br><span class="line">选项：  </span><br><span class="line">  -：  给变量设定类型属性  </span><br><span class="line">  +:   取消变量的类型属性  </span><br><span class="line"> -i:   将变量声明为整数型（integer）  </span><br><span class="line"> -x:   将变量声明为环境变量  </span><br><span class="line"> -p:   显示指定变量的被声明的类型 </span><br><span class="line"></span><br><span class="line">方法1：</span><br><span class="line">[root@localhost ~]# aa=11 </span><br><span class="line">[root@localhost ~]# bb=22 #给变量aa和bb赋值</span><br><span class="line">[root@localhost ~]# declare -i cc=$aa+$bb</span><br><span class="line"> </span><br><span class="line">方法2：expr或let数值运算工具 </span><br><span class="line">[root@localhost ~]# aa=11 </span><br><span class="line">[root@localhost ~]# bb=22 </span><br><span class="line">#给变量aa和变量bb赋值 </span><br><span class="line">[root@localhost ~]# dd=$(expr $aa + $bb) </span><br><span class="line">#dd的值是aa和bb的和。注意“+”号左右两侧必须有空格  </span><br><span class="line"> </span><br><span class="line">方法3：“$((运算式))”或“$[运算式]” (推荐)</span><br><span class="line">[root@localhost ~]# aa=11 </span><br><span class="line">[root@localhost ~]# bb=22 </span><br><span class="line">[root@localhost ~]# ff=$(( $aa+$bb )) </span><br><span class="line">[root@localhost ~]# gg=$[ $aa+$bb ]</span><br></pre></td></tr></table></figure>
+
+<h4 id="环境变量配置文件"><a href="#环境变量配置文件" class="headerlink" title="环境变量配置文件"></a>环境变量配置文件</h4><h5 id="配置文件简介"><a href="#配置文件简介" class="headerlink" title="配置文件简介"></a>配置文件简介</h5><h5 id="source命令"><a href="#source命令" class="headerlink" title="source命令"></a>source命令</h5><p>source命令通常用于保留、更改当前shell中的环境变量。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# source 配置文件 </span><br><span class="line">或 </span><br><span class="line">[root@localhost ~]# . 配置文件  </span><br></pre></td></tr></table></figure>
+
+<h5 id="环境变量置文件简介"><a href="#环境变量置文件简介" class="headerlink" title="环境变量置文件简介"></a>环境变量置文件简介</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">环境变量配置文件中主要是定义对系统的操作环境生效的系统默认环境变量，比如PATH、HISTSIZE、PS1、HOSTNAME等默认环境变量。</span><br><span class="line"></span><br><span class="line">/etc/profile</span><br><span class="line"></span><br><span class="line">/etc/profile.d/*.sh</span><br><span class="line"></span><br><span class="line">~/.bash_profile</span><br><span class="line"></span><br><span class="line">~/.bashrc</span><br><span class="line"></span><br><span class="line">/etc/bashrc</span><br></pre></td></tr></table></figure>
+
+<h5 id="环境变量配置文件作用"><a href="#环境变量配置文件作用" class="headerlink" title="环境变量配置文件作用"></a>环境变量配置文件作用</h5><p>配置文件列表如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">/etc/profile</span><br><span class="line"></span><br><span class="line">/etc/profile.d/*.sh</span><br><span class="line"></span><br><span class="line">~/.bash_profile</span><br><span class="line"></span><br><span class="line">~/.bashrc</span><br><span class="line"></span><br><span class="line">/etc/bashrc</span><br></pre></td></tr></table></figure>
+
+<p>tips:&#x2F;etc 目录下的对所有用户都生效</p>
+<p>~&#x2F;.bash_profile 和 ~&#x2F;.bashrc -&gt; 每个用户自己的配置文件，只对用户生效。</p>
+<h5 id="配置文件读取顺序"><a href="#配置文件读取顺序" class="headerlink" title="配置文件读取顺序"></a>配置文件读取顺序</h5><p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/7c980a975d73d87808a7749ca284e2ac.png" alt="img"></p>
+<p>上图从左到右如果有叠加。后面的命令会覆盖前面的命令。</p>
+<p>&#x2F;etc&#x2F;profile的作用：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">USER变量：</span><br><span class="line"></span><br><span class="line">LOGNAME变量：</span><br><span class="line"></span><br><span class="line">MAIL变量：</span><br><span class="line"></span><br><span class="line">PATH变量：</span><br><span class="line"></span><br><span class="line">HOSTNAME变量：</span><br><span class="line"></span><br><span class="line">HISTSIZE变量：</span><br><span class="line"></span><br><span class="line">umask：</span><br><span class="line"></span><br><span class="line">调用/etc/profile.d/*.sh文件</span><br></pre></td></tr></table></figure>
+
+<p>~&#x2F;.bash_profile的作用</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">用了~/.bashrc文件。</span><br><span class="line"></span><br><span class="line">在PATH变量后面加入了“:$HOME/bin”这个目录</span><br></pre></td></tr></table></figure>
+
+<h4 id="其他配置文件和登录信息"><a href="#其他配置文件和登录信息" class="headerlink" title="其他配置文件和登录信息"></a>其他配置文件和登录信息</h4><p>注销时生效的环境变量配置文件</p>
+<ul>
+<li>~&#x2F;.bash_logout</li>
+</ul>
+<p>其他配置文件</p>
+<ul>
+<li>~&#x2F;bash_history</li>
+</ul>
+<p>Shell登录信息</p>
+<ul>
+<li>本地终端欢迎信息： &#x2F;etc&#x2F;issue</li>
+</ul>
+<h3 id="Linux命令相关"><a href="#Linux命令相关" class="headerlink" title="Linux命令相关"></a>Linux命令相关</h3><p>[root@localhost~]#——一个交互式的shell<br>exit—–退出当前用户<br>命名:ls—-查看已拥有文件，可执行文件，默认在ls后添加“ .”<br>ls &#x2F;—–可以查看根目录<br>ls -a—-查看所有文件，包括隐藏文件<br>隐藏文件前缀会加上一个.<br>ls.. ——查看上一级目录<br>touch—-创建文件，方式：touch 文件名<br>ls -d——–查看目录<br>ls -al——–显示”所有”文件属性<br>文件属性：	开头d-目录，–文件，l-链接<br>        后续每三个为一组：所有者+所有组+其他人<br>    所有者：最大值为7，r（读）-4，w（写）-2，x（执行）-1，最大值为三者相加<br>    r-读取，w-操作，x-执行<br>    后续数学：显示当前文件数量<br>    第一个root：当前用户名<br>    第二个root：所属组<br>    后续数字：文件大小<br>    日期展示<br>    . 代表在前一个目录，..代表上级目录<br>linux系统中只包括可执行文件和文本文件<br>mkdir——–创建目录<br>mkdir -p——创建多级目录<br>cd——更换目录—-cd.<br>                   cd..返回上一级目录<br>        cd &#x2F;返回根目录<br>tmp—-临时目录，var—日志，usr—一般用于放软件</p>
+<p>&#x2F;   根目录：<br>根目录，文件的最顶端，整个文件系统的根目录</p>
+<p>&#x2F;bin   用户二进制文件：<br>存放系统所需的重要命令</p>
+<p>&#x2F;boot  引导加载程序文件<br>包含引导加载程序相关的文件（驱动）。<br>内核的initrd、vmlinux、grub文件位于&#x2F;boot下。</p>
+<p>&#x2F;dev  设备文件：<br>包含设备文件。<br>这些包括终端设备、USB或连接到系统的任何设备</p>
+<p>&#x2F;etc   配置文件：<br>包含所有程序所需的配置文件。<br>也包含了用于启动&#x2F;停止单个程序的启动和关闭shell脚本。</p>
+<p>&#x2F;home  目录<br>所有用户用home目录来存储他们的个人档案。</p>
+<p>&#x2F;lib  系统库<br>包含支持位于&#x2F;bin和&#x2F;sbin下的二进制文件的库文件.<br>（&#x2F;lib        32位函数库<br>&#x2F;lib64      64位库）</p>
+<p>&#x2F;media  可移动媒体设备<br>用于挂载可移动设备的临时目录。</p>
+<p>&#x2F;mnt   挂载目录<br>临时安装目录，系统管理员可以挂载文件系统。</p>
+<p>&#x2F;opt  可选的附加应用程序 有时候编译源码的时候可能需要<br>opt代表opitional；<br>包含从个别厂商的附加应用程序。<br>附加应用程序应该安装在&#x2F;opt&#x2F;或者&#x2F;opt&#x2F;的子目录下。</p>
+<p>&#x2F;proc  进程信息<br>虚拟的目录，是系统内存的映射。可以直接访问这个目录来获取系统信息</p>
+<p>&#x2F;root       临时设备的默认挂载点（”root”当前目录)</p>
+<p>&#x2F;sbin  系统二进制文件：<br>存放一些系统管理的命令，一般只能由超级权限用户root执行</p>
+<p>&#x2F;tmp  临时文件<br>包含系统和用户创建的临时文件。<br>当系统重新启动时，这个目录下的文件都将被删除。</p>
+<p>&#x2F;usr   用户程序<br>包含二进制文件、库文件、文档和二级程序的源代码。</p>
+<p>&#x2F;var  变量文件<br>var代表变量文件。<br>这个目录下可以找到内容可能增长的文件。</p>
+<p>whoami——查看当前用户名<br>id——-查看当前用户权限<br>pwd—–查看当前所在目录<br>rm———删除命令—rm 文件名<br>rm -f ———-强制删除—– rm -f 文件名（比较危险）<br>rm -rf———强制递归删除文件夹内容以及文件夹<br>ls &#x2F;bin|grep “mv”———筛选带“”关键字的文件<br>ls &#x2F;bin|more———–查看文件<br>ls &#x2F;bin|less————-上下查看文件（q退出）<br>cat————只能查看文本文件，查看可执行文件的话会出现乱码<br>vi———-编辑文件———-vi+文件名<br>    编辑文件时，i键开始编辑文档，Esc+:+wq！保存文件，q!退出文件不保存。<br>cat -n———–查看文件时显示行号<br>chmod———-更改文件权限<br>echo——-输出内容到文件中——echo “内容” &gt;&gt;文件<br>find—–查找文件—-find 目录 -name（表示名字） 文件名—-通过文件名查找文件<br>        find -user “root”———-查找用户<br>        find size +&#x2F;- 数字  ———-查找文件大小（+代表大于，-代表小于）<br>        find -iname “”————查找文件名，不区分大小写，名字必须准确，PS：前后加*模糊搜索</p>
+<p>—————————-下午———————————-</p>
+<p>useradd admin——–创建一个新的用户<br>passwd admin———修改用户的密码，不加后缀改现在的用户<br>ping 网址 -c “数字”——ping网址，数字代表次数。</p>
+<p>ssh登陆<br>systemct1 enable sshd<br>systemct1 start sshd<br>vi &#x2F;etc&#x2F;ssh&#x2F;sshd_config       esc:set nu显示行号<br>38 PermitRootLogin yes<br>systemmctl resetart sshd<br>update-rc.d ssh enable(开机自启动)</p>
+<p>PC执行Windows PowerShell 输入ssh root@+ip</p>
+<p>能够在主机当中运行Linux的执行代码。</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/111.png" alt="111"></p>
+<h2 id=""><a href="#" class="headerlink" title=""></a></h2>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/12/01/1.1-Linux%E5%91%BD%E4%BB%A4%E7%9B%B8%E5%85%B3/" data-id="clrcswxk70000ugwk8wxqh36x" data-title="1.1-Linux命令相关" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2023/12/02/1.2-%E6%90%AD%E5%BB%BAGitHub%E4%B8%8A%E7%9A%84Hexo%E5%8D%9A%E5%AE%A2/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          1.2-搭建GitHub上的Hexo博客
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/01/">January 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/12/">December 2023</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2024/01/14/hexo%E5%8D%9A%E5%AE%A2%E6%A0%BC%E5%BC%8F%EF%BC%88%E5%8D%9A%E5%AE%A2%E7%89%88%EF%BC%89/">markdown的使用说明</a>
+          </li>
+        
+          <li>
+            <a href="/2024/01/14/DB/">DB</a>
+          </li>
+        
+          <li>
+            <a href="/2024/01/14/13.1-%E6%89%93%E9%9D%B6/">13.1-打靶</a>
+          </li>
+        
+          <li>
+            <a href="/2024/01/14/14.1-%E4%BB%A3%E7%90%86-%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/">14.1-代理-流量分析</a>
+          </li>
+        
+          <li>
+            <a href="/2024/01/14/1.3-%E5%8D%9A%E5%AE%A2%E7%9A%84%E7%BC%96%E5%86%99%E4%B8%8E%E4%B8%8A%E4%BC%A0/">1.3-博客的编写与上传</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2024 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
