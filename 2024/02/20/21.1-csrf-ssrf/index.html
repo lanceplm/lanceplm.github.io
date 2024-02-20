@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>21.1-csrf-ssrf | lanceplm</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+ 
+  
+    <link rel="icon" href="/../img/icon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="header-outer" class="outer">
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+          <a class="main-nav-link" href="/about">关于</a>
+        
+          <a class="main-nav-link" href="/board">留言</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-21.1-csrf-ssrf" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="name">
+      21.1-csrf-ssrf
+    </h1>
+  
+
+        <div class="article-meta">
+          <a href="/2024/02/20/21.1-csrf-ssrf/" class="article-date">
+  <time datetime="2024-02-20T01:10:52.450Z" itemprop="datePublished">2024-02-20</time>
+</a>
+          
+          
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="csrf-跨站请求伪造"><a href="#csrf-跨站请求伪造" class="headerlink" title="csrf(跨站请求伪造)"></a>csrf(跨站请求伪造)</h3><p>服务端过于相信客户端</p>
+<p>没有cookie校验或二次校验可能会出现csrf漏洞</p>
+<h4 id="危害"><a href="#危害" class="headerlink" title="危害"></a>危害</h4><p>修改个人信息&#x2F;帐号密码<br>发送伪造的业务请求<br>关注他人的社交帐号,推送博文<br>在用户非自愿,不知情的情况下提交请求<br>获取信用卡等信息</p>
+<h4 id="触发条件"><a href="#触发条件" class="headerlink" title="触发条件"></a>触发条件</h4><p>①用户某一网站处于登陆状态(即身份验证状态暂未过期)</p>
+<p>②用户访问了一黑客精心构造的带有特殊url访问请求的网站</p>
+<p>③服务器无二次身份验证机制</p>
+<h4 id="漏洞核心"><a href="#漏洞核心" class="headerlink" title="漏洞核心"></a>漏洞核心</h4><p>服务器对用户身份验证不够严格(即缺少二次验证(二次验证加入验证码)或者特殊的身份验证(token))</p>
+<h4 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h4><p>pikachu-csrf-1</p>
+<p>抓包修改个人信息中的submit</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240220094611445.png" alt="image-20240220094611445"></p>
+<p>会出现一个get包</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240220094705096.png" alt="image-20240220094705096"></p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240220095250221.png" alt="image-20240220095250221"></p>
+<p>get后的语句如果修改其中的信息可以修改用户信息，可以生成恶意信息。</p>
+<p>只能在同一浏览器触发，因为该浏览器暂时拥有cookie&#x2F;token。</p>
+<h3 id="ssrf-服务端请求伪造"><a href="#ssrf-服务端请求伪造" class="headerlink" title="ssrf(服务端请求伪造)"></a>ssrf(服务端请求伪造)</h3><p>可以通过该方法读取服务器文件内容</p>
+<p>属于中&#x2F;高危漏洞</p>
+<h4 id="常见协议"><a href="#常见协议" class="headerlink" title="常见协议"></a>常见协议</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">gopher</span><br><span class="line"></span><br><span class="line">dict</span><br><span class="line"></span><br><span class="line">file</span><br><span class="line"></span><br><span class="line">http/s</span><br></pre></td></tr></table></figure>
+
+<h4 id="形成原因"><a href="#形成原因" class="headerlink" title="形成原因"></a>形成原因</h4><ol>
+<li><strong>信任关系不当</strong>：当服务器信任来自用户输入的内容（比如URL或参数）时，攻击者可以利用这一点构造恶意请求，诱使服务器发起对内部系统或其他外部服务的请求。</li>
+<li><strong>未进行足够的输入验证</strong>：如果服务器未对用户输入的URL或参数进行充分的验证和过滤，攻击者就可以利用这一漏洞来构造恶意请求，进而实施SSRF攻击。</li>
+<li><strong>缺乏权限控制</strong>：如果服务器端对于发起的请求缺乏足够的权限控制，攻击者就有可能通过SSRF漏洞来访问一些并未对外公开的系统或服务，从而对系统造成风险。</li>
+<li><strong>缺乏资源限制</strong>：服务器端对于发起的请求缺乏必要的资源限制，可能导致攻击者可以利用SSRF攻击耗尽服务器资源，产生拒绝服务（DoS）的攻击效果。</li>
+</ol>
+<p>总的来说，SSRF的形成原因主要来自于对用户输入信任过度、输入验证不足以及缺乏权限和资源控制。为了预防SSRF漏洞，服务器端需要进行严格的输入验证、权限控制和资源限制，同时尽量避免直接信任用户输入的内容。</p>
+<h4 id="危害-1"><a href="#危害-1" class="headerlink" title="危害"></a>危害</h4><ol>
+<li><strong>访问内部系统和服务</strong>：通过对受影响服务器发起的恶意请求，攻击者可以访问组织内部的系统、数据库或者其他敏感的服务。这可能导致机密信息泄露、系统瘫痪或者其他更严重的后果。</li>
+<li><strong>攻击服务和外部系统</strong>：攻击者可以利用受影响的服务器发起对其他外部系统或服务的恶意请求，比如执行 DDoS 攻击，因为请求看起来是来自内部信任的服务器。</li>
+<li><strong>绕过防火墙或访问控制</strong>：SSRF 可以被用来绕过防火墙或访问控制，因为请求看起来来自内部服务器，可能会被信任而允许通过访问控制。</li>
+<li><strong>数据泄露和篡改</strong>：攻击者可能通过 SSRF 获取敏感数据，比如从本地网络上的资源获取信息，或对外部系统进行数据篡改。</li>
+<li><strong>利用云服务中的 SSRF</strong>：在云环境下，由于内部的各种服务和资源都互相连接，因此 SSRF 可能被用来访问云中的其他资源或服务，从而导致云安全问题。</li>
+</ol>
+<p>综上所述，SSRF 的危害性主要体现在通过入侵系统、访问敏感数据、攻击其他系统或服务，以及绕过访问控制来实施各种形式的攻击。因此，对于潜在的 SSRF 漏洞，及时的识别和修复至关重要。</p>
+<p><img src="https://raw.githubusercontent.com/lanceplm/wanganpic/main/img/image-20240220110313032.png" alt="image-20240220110313032"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">        document.forms[0].submit();</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>使用该js会自动提交数据，无需点击确认。</p>
+<p><strong>Redis的默认端口号是6379。</strong></p>
+<p>端口号可以进行更改	</p>
+<h4 id="Redis攻击的三种方法"><a href="#Redis攻击的三种方法" class="headerlink" title="Redis攻击的三种方法"></a>Redis攻击的三种方法</h4><p>第一种攻击方法：利用计划任务来反弹一个shell权限。</p>
+<p>第二种攻击方法：写ssh-keygen公钥然后使用私钥登陆</p>
+<p>第三种攻击方法：写webshell</p>
+
+      
+    </div>
+  </div>
+ 
+</article>
+
+
+  
+    <section id="comments" class="comments">
+      <style>
+        .comments{margin:30px;padding:10px;background:#fff}
+        @media screen and (max-width:800px){.comments{margin:auto;padding:10px;background:#fff}}
+      </style>
+      <div id="vcomment" class="comment"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+<script src="https://cdnjs.loli.net/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+    var notify = 'true' == true ? true : false;
+    var verify = 'false' == true ? true : false;
+    new Valine({
+        av: AV,
+        el: '#vcomment',
+        notify: notify,
+        app_id: "HBismw2vU6hg56PslAF2APW1-gzGzoHsz",
+        app_key: "k41e2BJYdNbojyHuMnKT5LBK",
+        placeholder: "留下你来过的痕迹~",
+        avatar:"robohash",
+    });
+</script>
+
+  </section>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    <div class="widget-wrap">
+    <div class="widget-wrap-info">
+        <img src="/../img/avator.jpg" class="widget-wrap-info-img">
+        <div class="widget-wrap-info-author">lanceplm</div>
+        <div class="widget-wrap-info-signature">随遇而安。</div>
+    </div>
+    <div class="info-nav">
+        <ul class="info-nav-ul">
+        
+            <li class="info-nav-li">
+            <a class="info-nav-link" href="/">
+                <div class="info-nav-div">
+                    <span class="info-nav-icon">
+                        <i data-feather="home"></i>
+                    </span>
+                    <span class="info-nav-name">首页</span>
+                </div>
+            </a>
+           </li>
+          
+            <li class="info-nav-li">
+            <a class="info-nav-link" href="/archives">
+                <div class="info-nav-div">
+                    <span class="info-nav-icon">
+                        <i data-feather="archive"></i>
+                    </span>
+                    <span class="info-nav-name">归档</span>
+                </div>
+            </a>
+           </li>
+          
+            <li class="info-nav-li">
+            <a class="info-nav-link" href="/about">
+                <div class="info-nav-div">
+                    <span class="info-nav-icon">
+                        <i data-feather="alert-circle"></i>
+                    </span>
+                    <span class="info-nav-name">关于</span>
+                </div>
+            </a>
+           </li>
+          
+            <li class="info-nav-li">
+            <a class="info-nav-link" href="/board">
+                <div class="info-nav-div">
+                    <span class="info-nav-icon">
+                        <i data-feather="edit-3"></i>
+                    </span>
+                    <span class="info-nav-name">留言</span>
+                </div>
+            </a>
+           </li>
+          
+        </ul>
+    </div>
+</div>
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2024 lanceplm<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> | Theme by  <a href="https://github.com/FuShaoLei/hexo-theme-hiya" target="_blank">Hiya</a>
+      
+        <br>
+        <span id="busuanzi_container_site_pv">总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+      <span id="busuanzi_container_site_uv">
+        访客数<span id="busuanzi_value_site_uv"></span>人次
+      </span>
+        
+      
+    </div>
+    
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/,home" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives,archive" class="mobile-nav-link">归档</a>
+  
+    <a href="/about,alert-circle" class="mobile-nav-link">关于</a>
+  
+    <a href="/board,edit-3" class="mobile-nav-link">留言</a>
+  
+</nav>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<script>
+    feather.replace()
+</script>
+
+<script src="/js/script.js"></script>
+
+
+  </div>
+</body>
+</html>
